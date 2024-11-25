@@ -1,20 +1,7 @@
 import type {ReactElement} from 'react';
 
-import {Button} from '@/components/common/Button';
-import {ButtonArrow} from '@/components/common/ButtonArrow';
-import {IconArrow} from '@/components/icons/IconArrow';
+import {HomePage} from '@/components/Home';
 
 export default function Home(): ReactElement {
-	return (
-		<div>
-			<IconArrow className={'rotate-180 text-black'} />
-			<Button
-				isBusy={true}
-				title={'Button'}
-			/>
-			<Button title={'Button'} />
-			<ButtonArrow direction={'left'} />
-			<ButtonArrow direction={'right'} />
-		</div>
-	);
+	return <HomePage />;
 }

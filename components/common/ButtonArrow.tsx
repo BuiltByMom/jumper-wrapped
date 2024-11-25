@@ -6,10 +6,23 @@ import type {ReactElement} from 'react';
 
 type TButtonArrowProps = {
 	direction?: 'left' | 'right';
+	className?: string;
+	onClick: () => void;
+	disabled?: boolean;
 };
-export function ButtonArrow({direction = 'left'}: TButtonArrowProps): ReactElement {
+export function ButtonArrow({
+	direction = 'left',
+	className,
+	onClick,
+	disabled
+}: TButtonArrowProps): ReactElement | null {
+	if (disabled) {
+		return null;
+	}
 	return (
-		<Button className={'!w-[95px]'}>
+		<Button
+			onClick={onClick}
+			className={cl('!w-[95px]', className)}>
 			<IconArrow className={cl('text-black', direction === 'left' ? '' : 'rotate-180')} />
 		</Button>
 	);

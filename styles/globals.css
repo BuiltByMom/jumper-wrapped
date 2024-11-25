@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+:root {
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.font-space-grotesk {
+	font-family: var(--space-grotesk-font);
+}
+
+.wallet-adapter-button-trigger {
+    background-color: transparent !important;
+}

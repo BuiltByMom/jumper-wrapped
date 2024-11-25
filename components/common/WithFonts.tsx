@@ -1,13 +1,13 @@
 import React from 'react';
-import {Handjet, Inter} from 'next/font/google';
+import {Inter, Space_Grotesk} from 'next/font/google';
 
 import type {ReactElement, ReactNode} from 'react';
 
-const handjet = Handjet({
-	weight: ['400', '500', '600', '700', '800'],
+const spaceGrotesk = Space_Grotesk({
+	weight: ['400', '500', '600', '700'],
 	subsets: ['latin'],
 	display: 'swap',
-	variable: '--handjet-font'
+	variable: '--space-grotesk-font'
 });
 
 const inter = Inter({
@@ -19,13 +19,16 @@ const inter = Inter({
 
 export function WithFonts({children}: {children: ReactNode}): ReactElement {
 	return (
-		<div style={{fontFamily: `${handjet.style.fontFamily}, ${inter.style.fontFamily}`}}>
+		<div
+			style={{
+				fontFamily: `${spaceGrotesk.style.fontFamily}, ${inter.style.fontFamily}`
+			}}>
 			<style
 				jsx
 				global>
 				{`
 					:root {
-						--handjet-font: ${handjet.style.fontFamily};
+						--space-grotesk-font: ${spaceGrotesk.style.fontFamily};
 						--inter-font: ${inter.style.fontFamily};
 					}
 				`}
