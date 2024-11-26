@@ -2,667 +2,347 @@ import type {ReactElement} from 'react';
 
 export function MainPageBackgound(): ReactElement {
 	return (
-		<div className={'relative overflow-hidden'}>
+		<div
+			className={
+				' absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden'
+			}>
+			<div className={'absolute h-screen w-screen bg-violet-dark'} />
+			<div
+				className={
+					'border-x-6 min-w-screen border-b-20 absolute left-0 top-0 z-40 min-h-screen w-screen border-violet-light'
+				}
+			/>
 			<svg
-				width={''}
-				height={''}
-				viewBox={'0 0 1872 920'}
-				className={'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'}
+				width={'5400'}
+				height={'5300'}
+				viewBox={'0 0 5280 5280'}
 				fill={'none'}
+				className={'absolute z-10'}
 				xmlns={'http://www.w3.org/2000/svg'}>
-				<g clipPath={'url(#clip0_126_6633)'}>
+				<g
+					clipPath={'url(#clip0_126_6633)'}
+					className={'bg-violet-light'}>
 					<rect
-						// width={'1872'}
-						// height={'920'}
+						width={'1872'}
+						height={'920'}
 						fill={'#5000FF'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'348'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'288'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'228'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'168'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'108'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'48'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'408'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'468'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'528'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'588'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'648'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'708'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'768'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'828'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'888'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'948'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1008'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1068'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1128'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1188'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1248'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1308'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1368'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1428'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1488'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1548'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1608'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1668'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1728'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1788'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1848'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1908'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'1968'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2028'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2088'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2208'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2268'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2328'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2388'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2448'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2508'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2568'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2628'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2688'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'2748'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'2808'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'2868'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'2928'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'2988'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3048'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3108'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3168'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3228'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3288'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3348'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3408'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3468'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3528'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3588'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3648'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3708'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3768'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3828'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3888'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'3948'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4008'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4068'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4128'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4188'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4248'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4308'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4368'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4428'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4488'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4548'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4608'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4668'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4728'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4788'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4848'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4908'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'4968'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5028'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5088'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5148'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5208'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5268'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5328'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5388'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
-						r={'5448'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'936'}
-						cy={'460'}
+						cx={'1872'}
+						cy={'920'}
 						r={'2148'}
 						stroke={'#6120FD'}
 						strokeWidth={'24'}
 					/>
 				</g>
-				<defs>
-					<clipPath id={'clip0_126_6633'}>
-						<rect
-							width={'1872'}
-							height={'920'}
-							fill={'white'}
-						/>
-					</clipPath>
-				</defs>
 			</svg>
 		</div>
 	);

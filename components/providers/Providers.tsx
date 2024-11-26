@@ -11,6 +11,7 @@ import {UnsafeBurnerWalletAdapter} from '@solana/wallet-adapter-wallets';
 import {clusterApiUrl} from '@solana/web3.js';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
+import {Carousel} from '../carousel';
 import {WithFonts} from '../common/WithFonts';
 
 import '@rainbow-me/rainbowkit/styles.css';
@@ -50,19 +51,25 @@ export function Providers({children}: {children: ReactElement}): ReactElement {
 	);
 	return (
 		<WithFonts>
-			<WagmiProvider config={config}>
-				<QueryClientProvider client={queryClient}>
-					<RainbowKitProvider>
-						<ConnectionProvider endpoint={endpoint}>
-							<WalletProvider
-								wallets={wallets}
-								autoConnect>
-								<WalletModalProvider>{children}</WalletModalProvider>
-							</WalletProvider>
-						</ConnectionProvider>
-					</RainbowKitProvider>
-				</QueryClientProvider>
-			</WagmiProvider>
+			<Carousel
+				opts={{
+					align: 'start'
+				}}
+				className={'w-full'}>
+				<WagmiProvider config={config}>
+					<QueryClientProvider client={queryClient}>
+						<RainbowKitProvider>
+							<ConnectionProvider endpoint={endpoint}>
+								<WalletProvider
+									wallets={wallets}
+									autoConnect>
+									<WalletModalProvider>{children}</WalletModalProvider>
+								</WalletProvider>
+							</ConnectionProvider>
+						</RainbowKitProvider>
+					</QueryClientProvider>
+				</WagmiProvider>
+			</Carousel>
 		</WithFonts>
 	);
 }

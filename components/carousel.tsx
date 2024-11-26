@@ -270,8 +270,7 @@ export const CarouselDots = React.forwardRef<
 		}
 
 		set_isAnimating(false);
-		console.log(index < selectedIndex && index !== 0 ? index - 1 : index);
-		api.scrollTo(index < selectedIndex && index !== 0 ? index - 1 : index);
+		api.scrollTo(index);
 		set_isComplete(false);
 
 		// Start animation after a brief delay
@@ -289,13 +288,11 @@ export const CarouselDots = React.forwardRef<
 				<div
 					key={index}
 					onClick={() => handleDotClick(index)}
-					className={cl('relative cursor-pointer rounded-[4px] h-[4px] w-20', 'bg-[#ffffff1a]')}>
+					className={cl('relative cursor-pointer rounded-[4px] h-[4px] md:w-10 lg:w-20', 'bg-[#ffffff1a]')}>
 					<div
 						className={cl(
 							'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
-							index < selectedIndex
-								? 'w-full'
-								: index === selectedIndex
+							index === selectedIndex
 								? cl('transition-all duration-[4000ms] ease-linear', isAnimating ? 'w-full' : 'w-0')
 								: 'w-0'
 						)}

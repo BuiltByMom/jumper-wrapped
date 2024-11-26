@@ -1,19 +1,33 @@
 import {type ReactElement} from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {useAccount} from 'wagmi';
 import {ConnectButton} from '@rainbow-me/rainbowkit';
 import {useWallet} from '@solana/wallet-adapter-react';
 import {WalletMultiButton} from '@solana/wallet-adapter-react-ui';
 
+import {CarouselDots} from '../carousel';
 import {IconJumperLogo} from '../icons/IconJumperLogo';
 
 export function Header({set_isWalletSelectorOpen}: {set_isWalletSelectorOpen: (value: boolean) => void}): ReactElement {
 	const account = useWallet();
 	const {isConnected} = useAccount();
+	const router = useRouter();
 
 	return (
-		<div className={'absolute left-0 top-0 z-20 flex w-full items-center justify-between p-6'}>
-			<IconJumperLogo />
+		<div className={'absolute left-0 top-0 z-20 flex w-full items-center justify-between bg-violet-light p-6'}>
+			<Link
+				href={'https://jumper.exchange'}
+				target={'_blank'}>
+				<IconJumperLogo />
+			</Link>
+			{router.pathname !== '/' && (
+				<CarouselDots
+					className={'!static'}
+					arrayLength={6}
+				/>
+			)}
 
 			{account.connected ? (
 				<div
