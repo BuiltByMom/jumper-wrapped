@@ -19,6 +19,22 @@ export default {
         accent: '#33FFEE',
         'accent-hover': '#E64DFF'
       },
+      keyframes: {
+        circlePulse: {
+          '0%': {
+            strokeWidth: '24',
+          },
+          '50%': {
+            strokeWidth: '40',
+          },
+          '100%': {
+            strokeWidth: '24',
+          }
+        }
+      },
+      animation: {
+        'circle-pulse': 'circlePulse 2s ease-in-out infinite',
+      }
     },
   }, 
   plugins: [],

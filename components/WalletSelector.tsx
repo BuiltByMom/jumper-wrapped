@@ -66,18 +66,19 @@ export function WalletSelector({isOpen, onClose}: TWalletSelectorProps): ReactEl
 											<IconClose className={'text-white'} />
 										</button>
 									</div>
-									<SelectorItem
-										title={'Solana wallet'}
-										onClick={() => {
-											onClose();
-											set_visible(true);
-										}}
-									/>
+
 									<SelectorItem
 										title={'evm wallet'}
 										onClick={() => {
 											onClose();
 											openConnectModal?.();
+										}}
+									/>
+									<SelectorItem
+										title={'Solana wallet'}
+										onClick={() => {
+											onClose();
+											set_visible(true);
 										}}
 									/>
 								</div>

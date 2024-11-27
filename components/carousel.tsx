@@ -85,7 +85,7 @@ export const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
 		);
 
 		const handleKeyDown = React.useCallback(
-			(event: React.KeyboardEvent<HTMLDivElement>) => {
+			(event: KeyboardEvent) => {
 				if (event.key === 'ArrowLeft') {
 					event.preventDefault();
 					scrollPrev();
@@ -129,6 +129,13 @@ export const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
 			};
 		}, [api]);
 
+		React.useEffect(() => {
+			window.addEventListener('keydown', handleKeyDown);
+			return () => {
+				window.removeEventListener('keydown', handleKeyDown);
+			};
+		}, [handleKeyDown]);
+
 		return (
 			<CarouselContext.Provider
 				value={{
@@ -147,10 +154,10 @@ export const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
 				}}>
 				<div
 					ref={ref}
-					onKeyDownCapture={handleKeyDown}
 					className={cl('relative', className)}
 					role={'region'}
 					aria-roledescription={'carousel'}
+					tabIndex={0}
 					{...props}>
 					{children}
 				</div>
@@ -258,7 +265,7 @@ export const CarouselDots = React.forwardRef<
 				api.scrollNext();
 				set_isAnimating(true);
 			}
-		}, 4000);
+		}, 10000);
 
 		return () => clearTimeout(timer);
 	}, [api, selectedIndex, totalSlides, isComplete, set_isComplete]);
@@ -288,12 +295,12 @@ export const CarouselDots = React.forwardRef<
 				<div
 					key={index}
 					onClick={() => handleDotClick(index)}
-					className={cl('relative cursor-pointer rounded-[4px] h-[4px] md:w-10 lg:w-20', 'bg-[#ffffff1a]')}>
+					className={cl('relative cursor-pointer rounded-[4px] h-[5px] md:w-10 lg:w-20', 'bg-[#ffffff1a]')}>
 					<div
 						className={cl(
 							'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
 							index === selectedIndex
-								? cl('transition-all duration-[4000ms] ease-linear', isAnimating ? 'w-full' : 'w-0')
+								? cl('transition-all duration-[10000ms] ease-linear', isAnimating ? 'w-full' : 'w-0')
 								: 'w-0'
 						)}
 						onTransitionEnd={() => {

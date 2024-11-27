@@ -1,15 +1,12 @@
 import type {ReactElement} from 'react';
 
-export function MainPageBackgound(): ReactElement {
+function SvgCircles(): ReactElement {
 	return (
-		<div
-			className={
-				' absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden'
-			}>
-			<div className={'absolute h-screen w-screen bg-violet-dark'} />
+		<div className={'absolute z-10 h-screen w-screen'}>
+			{/* Frame */}
 			<div
 				className={
-					'border-x-6 min-w-screen border-b-20 absolute left-0 top-0 z-40 min-h-screen w-screen border-violet-light'
+					'absolute inset-0 z-50 h-screen w-screen border-x-[24px] border-b-[80px] border-violet-light'
 				}
 			/>
 			<svg
@@ -17,7 +14,8 @@ export function MainPageBackgound(): ReactElement {
 				height={'5300'}
 				viewBox={'0 0 5280 5280'}
 				fill={'none'}
-				className={'absolute z-10'}
+				// eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
+				className={'absolute bottom-0 right-0 -translate-y-[80px] translate-x-[24px]'}
 				xmlns={'http://www.w3.org/2000/svg'}>
 				<g
 					clipPath={'url(#clip0_126_6633)'}
@@ -27,323 +25,61 @@ export function MainPageBackgound(): ReactElement {
 						height={'920'}
 						fill={'#5000FF'}
 					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'348'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'288'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'228'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'168'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'108'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'48'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'408'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'468'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'528'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'588'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'648'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'708'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'768'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'828'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'888'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'948'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1008'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1068'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1128'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1188'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1248'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1308'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1368'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1428'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1488'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1548'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1608'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1668'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1728'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1788'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1848'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1908'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'1968'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2028'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2088'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2208'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2268'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2328'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2388'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2448'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2508'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2568'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2628'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2688'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
-					<circle
-						cx={'1872'}
-						cy={'920'}
-						r={'2148'}
-						stroke={'#6120FD'}
-						strokeWidth={'24'}
-					/>
+					{Array.from({length: 1000}).map((_, index) => {
+						const radius = 48 + index * 60;
+						const delay = index * 200;
+						const cycleDelay = Math.floor(index / 5) * 1000;
+						const finalDelay = (delay % 1000) + cycleDelay;
+
+						return (
+							<circle
+								key={index}
+								cx={'5280'}
+								cy={'5280'}
+								r={radius.toString()}
+								stroke={'#6120FD'}
+								strokeWidth={'24'}
+								className={'animate-circle-pulse'}
+								style={{
+									animationDelay: `${finalDelay}ms`,
+									animationDuration: '2s',
+									transformOrigin: 'center'
+								}}
+							/>
+						);
+					})}
 				</g>
 			</svg>
+		</div>
+	);
+}
+
+export function MainPageBackgound(): ReactElement {
+	return (
+		<div
+			className={'absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden'}>
+			<div className={'absolute h-screen w-screen bg-violet-dark'} />
+			<div
+				className={
+					'border-x-6 min-w-screen border-b-20 absolute left-0 top-0 z-40 min-h-screen w-screen border-violet-light'
+				}
+			/>
+			<SvgCircles />
+		</div>
+	);
+}
+
+export function GreetingsBackground(): ReactElement {
+	return (
+		<div
+			className={'absolute -left-1/2 -top-1/2 h-screen w-screen translate-x-1/2 translate-y-1/2 overflow-hidden'}>
+			<div className={'absolute h-screen w-screen bg-violet-dark'} />
+			<div
+				className={
+					'border-x-6 min-w-screen border-b-20 absolute left-0 top-0 z-40 min-h-screen w-screen border-violet-light'
+				}
+			/>
+			<SvgCircles />
 		</div>
 	);
 }
