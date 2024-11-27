@@ -10,6 +10,7 @@ type TButtonProps = {
 	children?: ReactElement;
 	className?: string;
 };
+
 export function Button({title, isBusy, children, className, onClick}: TButtonProps): ReactElement {
 	return (
 		<button
