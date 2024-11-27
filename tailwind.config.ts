@@ -30,10 +30,25 @@ export default {
           '100%': {
             strokeWidth: '24',
           }
-        }
+        },
+        largeCirclePulse: {
+          '0%': {
+            strokeWidth: '48',
+          },
+          '50%': {
+            strokeWidth: '80',
+          },
+          '100%': {
+            strokeWidth: '48',
+          }
+        } 
+      },
+      screens: {
+        xl: '2560px',
       },
       animation: {
-        'circle-pulse': 'circlePulse 2s ease-in-out infinite',
+        'circle-pulse': 'circlePulse 1.5s ease-in-out infinite',
+        'large-circle-pulse': 'largeCirclePulse 1.5s ease-in-out infinite',
       }
     },
   }, 

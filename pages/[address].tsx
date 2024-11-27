@@ -3,10 +3,10 @@ import {useRouter} from 'next/router';
 import {useAccount} from 'wagmi';
 import {useWallet} from '@solana/wallet-adapter-react';
 
+import {MainPageBackgound} from '@/components/Backgrounds';
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from '@/components/carousel';
 import {Button} from '@/components/common/Button';
 import {Header} from '@/components/common/Header';
-import {MainPageBackgound} from '@/components/MainPageBackgound';
 
 const cards = [
 	{name: 'lol', description: 'kek'},
