@@ -17,3 +17,27 @@ body,
 .wallet-adapter-button-trigger {
     background-color: transparent !important;
 }
+
+.wallet-adapter-dropdown {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+@media (min-width: 2560px) {
+  .wallet-adapter-button-trigger {
+    font-size: 24px;
+
+  }
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

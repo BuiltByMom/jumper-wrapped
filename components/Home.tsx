@@ -5,9 +5,13 @@ import {WalletSelector} from './WalletSelector';
 import {WrappedButton} from './WrappedButton';
 import {Header} from './common/Header';
 
-export function HomePage(): ReactElement {
-	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
-
+function GreetingsView({
+	isWalletSelectorOpen,
+	set_isWalletSelectorOpen
+}: {
+	isWalletSelectorOpen: boolean;
+	set_isWalletSelectorOpen: (value: boolean) => void;
+}): ReactElement {
 	return (
 		<div className={'flex h-screen w-full items-center justify-center bg-violet-light'}>
 			<Header set_isWalletSelectorOpen={set_isWalletSelectorOpen} />
@@ -18,5 +22,18 @@ export function HomePage(): ReactElement {
 				onClose={() => set_isWalletSelectorOpen(false)}
 			/>
 		</div>
+	);
+}
+
+export function HomePage(): ReactElement {
+	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
+
+	return (
+		<>
+			<GreetingsView
+				isWalletSelectorOpen={isWalletSelectorOpen}
+				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+			/>
+		</>
 	);
 }

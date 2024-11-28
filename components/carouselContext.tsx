@@ -295,7 +295,10 @@ export const CarouselDots = React.forwardRef<
 				<div
 					key={index}
 					onClick={() => handleDotClick(index)}
-					className={cl('relative cursor-pointer rounded-[4px] h-[5px] md:w-10 lg:w-20', 'bg-[#ffffff1a]')}>
+					className={cl(
+						'relative cursor-pointer rounded-[4px] h-[5px] md:w-10 lg:w-20 xl:h-[8px] xl:w-24',
+						'bg-[#ffffff1a]'
+					)}>
 					<div
 						className={cl(
 							'absolute top-0 left-0 rounded-[4px] h-full bg-accent',

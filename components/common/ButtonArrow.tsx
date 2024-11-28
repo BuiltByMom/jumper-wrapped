@@ -22,8 +22,8 @@ export function ButtonArrow({
 	return (
 		<Button
 			onClick={onClick}
-			className={cl('!w-[95px]', className)}>
-			<IconArrow className={cl('text-black', direction === 'left' ? '' : 'rotate-180')} />
+			className={cl('w-[95px] xl:!w-[142px] xl:!h-[96px]', className)}>
+			<IconArrow className={cl('text-black xl:size-12', direction === 'left' ? '' : 'rotate-180')} />
 		</Button>
 	);
 }

@@ -1,8 +1,9 @@
 import type {ReactElement} from 'react';
 
-export function IconJumperLogo(): ReactElement {
+export function IconJumperLogo(props: React.SVGProps<SVGSVGElement>): ReactElement {
 	return (
 		<svg
+			{...props}
 			width={'148'}
 			height={'32'}
 			viewBox={'0 0 148 32'}

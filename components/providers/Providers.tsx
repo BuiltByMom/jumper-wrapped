@@ -11,7 +11,7 @@ import {UnsafeBurnerWalletAdapter} from '@solana/wallet-adapter-wallets';
 import {clusterApiUrl} from '@solana/web3.js';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
-import {Carousel} from '../carousel';
+import {Carousel} from '../carouselContext';
 import {WithFonts} from '../common/WithFonts';
 
 import '@rainbow-me/rainbowkit/styles.css';

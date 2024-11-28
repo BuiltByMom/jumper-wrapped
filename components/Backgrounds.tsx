@@ -126,7 +126,7 @@ export function MainPageBackgound(): ReactElement {
 					centerX={'5280'}
 					centerY={'5280'}
 					// eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-					className={'absolute bottom-0 right-0 -translate-y-[80px] translate-x-[24px]'}
+					className={'absolute bottom-0 right-0 -translate-y-[79px] translate-x-[24px]'}
 					showFrame={true}
 				/>
 			</div>
@@ -135,7 +135,7 @@ export function MainPageBackgound(): ReactElement {
 					centerX={'5280'}
 					centerY={'5280'}
 					// eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-					className={'absolute bottom-0 right-0 -translate-y-[80px] translate-x-[24px]'}
+					className={'absolute bottom-0 right-0 -translate-y-[158px]'}
 					showFrame={true}
 				/>
 			</div>
