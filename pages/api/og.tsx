@@ -7,13 +7,15 @@ export const config = {
 export default async function handler(context: any): Promise<ImageResponse> {
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
-	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', stringifiedRootURL));
+	console.warn(stringifiedRootURL);
+	const boldFontDataRoot = await fetch(new URL('../../public/fonts/SpaceGrotesk-Bold.ttf', import.meta.url));
 	const boldFontData = await boldFontDataRoot.arrayBuffer();
-	const semiBoldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-SemiBold.ttf', stringifiedRootURL));
+	const semiBoldFontDataRoot = await fetch(new URL('../../public/fonts/SpaceGrotesk-SemiBold.ttf', import.meta.url));
 	const semiBoldFontData = await semiBoldFontDataRoot.arrayBuffer();
 
-	const backgroundURL = `${stringifiedRootURL}/og/wrap-bg.png`;
-	const footerBackgroundURL = `${stringifiedRootURL}/og/wrap-footer.jpg`;
+	const backgroundURL = '/og/wrap-bg.png';
+	const footerBackgroundURL = '/og/wrap-footer.jpg';
+
 	const titleOG = (
 		<svg
 			width={'558'}
