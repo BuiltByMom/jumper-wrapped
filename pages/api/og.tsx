@@ -12,8 +12,8 @@ export default async function handler(context: any): Promise<ImageResponse> {
 	const semiBoldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-SemiBold.ttf', stringifiedRootURL));
 	const semiBoldFontData = await semiBoldFontDataRoot.arrayBuffer();
 
-	const backgroundURL = 'https://builtbydad.mypinata.cloud/ipfs/QmUGThDgTsE7FQxhnqrrD3hBRCBsHjEYYbun1bt7bpudwa';
-	const footerBackgroundURL = 'https://builtbydad.mypinata.cloud/ipfs/QmPejjXKs6eP2aCjT6bNpFhMNfCfcwVha2qoVPQSECGb7D';
+	const backgroundURL = `${stringifiedRootURL}/og/wrap-bg.png`;
+	const footerBackgroundURL = `${stringifiedRootURL}/og/wrap-footer.jpg`;
 	const titleOG = (
 		<svg
 			width={'558'}
