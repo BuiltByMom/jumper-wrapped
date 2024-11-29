@@ -8,9 +8,7 @@ import {IconArrow} from '@/components/icons/IconArrow';
 
 export default function Home(): ReactElement {
 	// Get the base URL for OG image
-	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-		? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-		: 'http://localhost:3000';
+	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://jumper-wrap.vercel.app' : 'http://localhost:3000';
 
 	return (
 		<>
