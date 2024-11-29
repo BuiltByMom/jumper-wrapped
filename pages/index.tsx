@@ -6,31 +6,23 @@ import {Button} from '@/components/common/Button';
 import {ButtonArrow} from '@/components/common/ButtonArrow';
 import {IconArrow} from '@/components/icons/IconArrow';
 
-export default function Home(): ReactElement {
-	// Get the base URL for OG image
+type THomeProps = {
+	searchParams: {
+		version?: string;
+	};
+};
+
+export default function Home({searchParams}: THomeProps): ReactElement {
 	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://jumper-wrapped.vercel.app' : 'http://localhost:3000';
+	const version = searchParams?.version || '';
+	const ogImageUrl = version ? `${baseUrl}/api/og?version=${version}` : `${baseUrl}/og/og.jpg`;
 
 	return (
 		<>
 			<Head>
-				<title>{'Jumper Wrapped'}</title>
-				<meta
-					name={'description'}
-					content={'Your Jumper year in review'}
-				/>
-
-				{/* Open Graph / Social Media Meta Tags */}
-				<meta
-					property={'og:title'}
-					content={'Jumper Wrapped'}
-				/>
-				<meta
-					property={'og:description'}
-					content={'Your Jumper year in review'}
-				/>
 				<meta
 					property={'og:image'}
-					content={`${baseUrl}/api/og`}
+					content={ogImageUrl}
 				/>
 				<meta
 					property={'og:image:width'}
@@ -40,23 +32,9 @@ export default function Home(): ReactElement {
 					property={'og:image:height'}
 					content={'630'}
 				/>
-
-				{/* Twitter Card Meta Tags */}
-				<meta
-					name={'twitter:card'}
-					content={'summary_large_image'}
-				/>
-				<meta
-					name={'twitter:title'}
-					content={'Jumper Wrapped'}
-				/>
-				<meta
-					name={'twitter:description'}
-					content={'Your Jumper year in review'}
-				/>
 				<meta
 					name={'twitter:image'}
-					content={`${baseUrl}/api/og`}
+					content={ogImageUrl}
 				/>
 			</Head>
 
@@ -72,4 +50,13 @@ export default function Home(): ReactElement {
 			</div>
 		</>
 	);
+}
+
+export async function getServerSideProps(context: any): Promise<{props: {version: string}}> {
+	const version = context.query.version || '';
+	return {
+		props: {
+			version
+		}
+	};
 }
