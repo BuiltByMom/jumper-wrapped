@@ -748,6 +748,9 @@ export default async function handler(context: any): Promise<ImageResponse> {
 		</svg>
 	);
 
+	wrapButton;
+	jumperLogo;
+
 	return new ImageResponse(
 		(
 			<div
