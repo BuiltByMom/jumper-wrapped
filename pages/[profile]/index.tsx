@@ -4,13 +4,14 @@ import Image from 'next/image';
 
 import {Button} from '@/components/common/Button';
 
+const domain = 'https://jumper-wrap.builtby.dad';
 export default function Home({profile}: {profile: string}): ReactElement {
-	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://dynamicogver.vercel.app' : 'http://localhost:3000';
+	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? domain : 'http://localhost:3000';
 	const ogImageUrl = profile ? `${baseUrl}/api/og?profile=${profile}` : `${baseUrl}/og/og.jpg`;
 
 	const clickToTweet = useCallback(async () => {
 		window.open(
-			`https://twitter.com/intent/tweet?url=https://dynamicogver.vercel.app/${profile}?text=Check out my wrapped Jumper!`,
+			`https://twitter.com/intent/tweet?url=${domain}/${profile}?text=Check out my wrapped Jumper!`,
 			'_blank'
 		);
 	}, [profile]);
