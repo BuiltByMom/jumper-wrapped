@@ -1778,13 +1778,12 @@ const PROFILES = {
 	}
 };
 
+const font = fetch(new URL('../../assets/SpaceGrotesk-Bold.ttf', import.meta.url)).then(async res => res.arrayBuffer());
+
 export default async function handler(context: any): Promise<ImageResponse> {
+	const boldFontData = await font;
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
-	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', stringifiedRootURL));
-	const boldFontData = await boldFontDataRoot.arrayBuffer();
-	const semiBoldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-SemiBold.ttf', stringifiedRootURL));
-	const semiBoldFontData = await semiBoldFontDataRoot.arrayBuffer();
 
 	// get version from context (e.g. /api/og?version=2024)
 	let selectedProfile = 'multichain';
@@ -2482,7 +2481,7 @@ export default async function handler(context: any): Promise<ImageResponse> {
 									color: '#FFFFFF',
 									marginBottom: '16px',
 									fontFamily: 'Space Grotesk',
-									fontWeight: 600
+									fontWeight: 700
 								}}>
 								{'STAT EXAMPLE:'}
 							</div>
@@ -2520,12 +2519,6 @@ export default async function handler(context: any): Promise<ImageResponse> {
 					data: boldFontData,
 					style: 'normal',
 					weight: 700
-				},
-				{
-					name: 'Space Grotesk',
-					data: semiBoldFontData,
-					style: 'normal',
-					weight: 600
 				}
 			]
 		}
