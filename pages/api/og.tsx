@@ -296,7 +296,7 @@ const PROFILES = {
 };
 
 export default async function handler(context: any): Promise<ImageResponse> {
-	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', 'https://jumper-wrapped.vercel.app'));
+	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', 'https://dynamicogver.vercel.app'));
 	const boldFontData = await boldFontDataRoot.arrayBuffer();
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
@@ -834,8 +834,8 @@ export default async function handler(context: any): Promise<ImageResponse> {
 						height: '160px'
 					}}>
 					<div style={{position: 'absolute', bottom: 0, right: 0, display: 'flex'}}>{footerBackground}</div>
-					{wrapButton}
-					{jumperLogo}
+					{/* {wrapButton} */}
+					{/* {jumperLogo} */}
 				</div>
 			</div>
 		),
