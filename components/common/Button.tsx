@@ -1,7 +1,7 @@
 import {IconLoader} from '../icons/IconLoader';
 import {cl} from '../utils/tools';
 
-import type {ReactElement} from 'react';
+import type {ButtonHTMLAttributes, ReactElement} from 'react';
 
 type TButtonProps = {
 	onClick?: () => void;
@@ -9,12 +9,11 @@ type TButtonProps = {
 	isBusy?: boolean;
 	children?: ReactElement;
 	className?: string;
-};
-
-export function Button({title, isBusy, children, className, onClick}: TButtonProps): ReactElement {
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+export function Button({title, isBusy, children, className, ...props}: TButtonProps): ReactElement {
 	return (
 		<button
-			onClick={onClick}
+			{...props}
 			className={cl(
 				'flex h-14 w-60 items-center justify-center xl:rounded-[56px] rounded-[32px] bg-accent transition-all hover:bg-accent-hover xl:h-[64px] xl:w-[320px]',
 				className

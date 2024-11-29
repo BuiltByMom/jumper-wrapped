@@ -269,7 +269,6 @@ export const CarouselDots = React.forwardRef<
 
 		return () => clearTimeout(timer);
 	}, [api, selectedIndex, totalSlides, isComplete, set_isComplete]);
-	console.log(api?.slidesInView());
 
 	const handleDotClick = (index: number): void => {
 		if (!api) {

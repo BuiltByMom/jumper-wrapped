@@ -24,10 +24,10 @@ export default {
           '0%': {
             strokeWidth: '24',
           },
-          '50%': {
+          '100%': {
             strokeWidth: '40',
           },
-          '100%': {
+          '105%': {
             strokeWidth: '24',
           }
         },

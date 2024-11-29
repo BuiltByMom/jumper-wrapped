@@ -1,5 +1,4 @@
 import {type ReactElement} from 'react';
-import Error from 'next/error';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -15,7 +14,7 @@ export function Header({set_isWalletSelectorOpen}: {set_isWalletSelectorOpen: (v
 	const account = useWallet();
 	const {isConnected} = useAccount();
 	const router = useRouter();
-	console.log(Error.name);
+
 	return (
 		<div
 			className={

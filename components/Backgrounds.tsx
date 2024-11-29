@@ -1,3 +1,5 @@
+import {cl} from './utils/tools';
+
 import type {ReactElement} from 'react';
 
 type TSvgCirclesProps = {
@@ -115,7 +117,7 @@ function SvgCircles({centerX, centerY, className, showFrame = false}: TSvgCircle
 	);
 }
 
-export function MainPageBackgound(): ReactElement {
+export function PageBackgound({position = 'center'}: {position?: 'center' | 'bottom-right'}): ReactElement {
 	return (
 		<div
 			className={'absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden'}>
@@ -123,43 +125,27 @@ export function MainPageBackgound(): ReactElement {
 
 			<div className={'xl:hidden'}>
 				<SvgCircles
-					centerX={'5280'}
-					centerY={'5280'}
-					// eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-					className={'absolute bottom-0 right-0 -translate-y-[79px] translate-x-[24px]'}
+					centerX={position === 'center' ? '2640' : '5280'}
+					centerY={position === 'center' ? '2640' : '5280'}
+					className={cl(
+						'absolute',
+						position === 'center'
+							? 'left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'
+							: 'bottom-0 right-0 -translate-y-[79px] translate-x-[24px]'
+					)}
 					showFrame={true}
 				/>
 			</div>
 			<div className={'hidden xl:block'}>
 				<LargeSvgCircles
-					centerX={'5280'}
-					centerY={'5280'}
-					// eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-					className={'absolute bottom-0 right-0 -translate-y-[158px]'}
-					showFrame={true}
-				/>
-			</div>
-		</div>
-	);
-}
-
-export function GreetingsBackground(): ReactElement {
-	return (
-		<div className={'absolute left-0 top-0 h-screen w-screen overflow-hidden'}>
-			<div className={'absolute h-screen w-screen bg-violet-dark'} />
-			<div className={'xl:hidden'}>
-				<SvgCircles
-					centerX={'2640'}
-					centerY={'2640'}
-					className={'absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'}
-					showFrame={true}
-				/>
-			</div>
-			<div className={'hidden xl:block'}>
-				<LargeSvgCircles
-					centerX={'2640'}
-					centerY={'2640'}
-					className={'absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'}
+					centerX={position === 'center' ? '2640' : '5280'}
+					centerY={position === 'center' ? '2640' : '5280'}
+					className={cl(
+						'absolute',
+						position === 'center'
+							? 'left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'
+							: 'bottom-0 right-0 -translate-y-[158px]'
+					)}
 					showFrame={true}
 				/>
 			</div>

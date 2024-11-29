@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import {useAccount} from 'wagmi';
 import {useWallet} from '@solana/wallet-adapter-react';
 
@@ -11,11 +10,12 @@ import type {ReactElement} from 'react';
 
 type TProps = {
 	set_isWalletSelectorOpen: (value: boolean) => void;
+	onStart: () => void;
 };
 
-export function WrappedButton({set_isWalletSelectorOpen}: TProps): ReactElement {
+export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): ReactElement {
 	const account = useWallet();
-	const {isConnected, address} = useAccount();
+	const {isConnected} = useAccount();
 
 	const handleClick = (): void => {
 		set_isWalletSelectorOpen(true);
@@ -46,9 +46,10 @@ export function WrappedButton({set_isWalletSelectorOpen}: TProps): ReactElement 
 					{"Let's get into your jumper wrapped and find out what defi degen you are…"}
 				</p>
 				{account.connected || isConnected ? (
-					<Link href={account.connected ? `/${account.publicKey?.toBase58()}` : `/${address}`}>
-						<Button title={'Start'} />
-					</Link>
+					<Button
+						onClick={onStart}
+						title={'Start'}
+					/>
 				) : (
 					<Button
 						onClick={handleClick}

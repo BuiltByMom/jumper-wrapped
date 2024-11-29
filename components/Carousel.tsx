@@ -1,11 +1,19 @@
+import Link from 'next/link';
+
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from './carouselContext';
 import {Button} from './common/Button';
 
 import type {ReactElement} from 'react';
 
-export function Carousel({cards}: {cards: {name: string; description: string}[]}): ReactElement {
+export function Carousel({
+	cards,
+	profile
+}: {
+	cards: {name: string; description: string}[];
+	profile?: string;
+}): ReactElement {
 	return (
-		<>
+		<div className={'relative w-[800px] px-20 xl:w-[1200px]'}>
 			<CarouselContent className={'-ml-2 md:-ml-4'}>
 				{cards.map((game, index) => (
 					<CarouselItem
@@ -26,14 +34,16 @@ export function Carousel({cards}: {cards: {name: string; description: string}[]}
 									}>
 									<p className={'text-3xl font-bold uppercase text-white'}>{game.name}</p>
 								</div>
-								<Button
-									className={
-										'absolute bottom-[-25px] left-1/2 z-50 -translate-x-1/2 xl:bottom-[-32px] xl:!w-[320px]'
-									}>
-									<p className={'text-2xl font-bold uppercase text-black xl:text-3xl'}>
-										{'Share on X'}
-									</p>
-								</Button>
+								<Link href={`/wrapped?profile=${profile}`}>
+									<Button
+										className={
+											'absolute bottom-[-25px] left-1/2 z-50 -translate-x-1/2 xl:bottom-[-32px] xl:!w-[320px]'
+										}>
+										<p className={'text-2xl font-bold uppercase text-black xl:text-3xl'}>
+											{'Share on X'}
+										</p>
+									</Button>
+								</Link>
 							</div>
 						)}
 					</CarouselItem>
@@ -41,6 +51,6 @@ export function Carousel({cards}: {cards: {name: string; description: string}[]}
 			</CarouselContent>
 			<CarouselPrevious />
 			<CarouselNext />
-		</>
+		</div>
 	);
 }
