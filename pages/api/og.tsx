@@ -4,7 +4,7 @@ export const config = {
 	runtime: 'edge'
 };
 
-export default async function handler(context: any) {
+export default async function handler(context: any): Promise<ImageResponse> {
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.toString();
 	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', stringifiedRootURL));
