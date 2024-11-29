@@ -8,7 +8,6 @@ type TMeta = {
 	titleColor: string;
 	themeColor: string;
 	description: string;
-	og: string;
 	uri: string;
 };
 
@@ -145,10 +144,6 @@ export function Meta(meta: TMeta): ReactElement {
 			/>
 			<meta charSet={'utf-8'} />
 			<meta
-				property={'twitter:image'}
-				content={meta.og}
-			/>
-			<meta
 				property={'twitter:card'}
 				content={'summary_large_image'}
 			/>
@@ -161,10 +156,6 @@ export function Meta(meta: TMeta): ReactElement {
 				content={meta.description}
 			/>
 
-			<meta
-				property={'og:image'}
-				content={meta.og}
-			/>
 			<meta
 				property={'og:url'}
 				content={meta.uri}
