@@ -748,7 +748,6 @@ export default async function handler(context: any): Promise<ImageResponse> {
 			/>
 		</svg>
 	);
-	const msSince = new Date().getTime() - time;
 
 	return new ImageResponse(
 		(
