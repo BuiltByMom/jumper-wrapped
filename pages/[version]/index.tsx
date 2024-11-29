@@ -33,7 +33,10 @@ export default function Home({version}: {version: string}): ReactElement {
 }
 
 export async function getServerSideProps(context: any): Promise<{props: {version: string}}> {
-	const version = context.query.version || '';
+	let version = context.query.version || '';
+	if (version && version === 'divo') {
+		version = 'diva';
+	}
 	return {
 		props: {version}
 	};
