@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import {useRouter} from 'next/router';
 
 import type {ReactElement} from 'react';
 
@@ -6,15 +7,10 @@ import {Button} from '@/components/common/Button';
 import {ButtonArrow} from '@/components/common/ButtonArrow';
 import {IconArrow} from '@/components/icons/IconArrow';
 
-type THomeProps = {
-	searchParams: {
-		version?: string;
-	};
-};
-
-export default function Home({searchParams}: THomeProps): ReactElement {
+export default function Home(): ReactElement {
+	const router = useRouter();
 	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://jumper-wrapped.vercel.app' : 'http://localhost:3000';
-	const version = searchParams?.version || '';
+	const version = router.query.version || '';
 	const ogImageUrl = version ? `${baseUrl}/api/og?version=${version}` : `${baseUrl}/og/og.jpg`;
 
 	return (
