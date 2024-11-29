@@ -8,9 +8,9 @@ export default async function handler(context: any): Promise<ImageResponse> {
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
 	console.warn(stringifiedRootURL);
-	const boldFontDataRoot = await fetch(new URL('../../public/fonts/SpaceGrotesk-Bold.ttf', import.meta.url));
+	const boldFontDataRoot = await fetch(new URL('./SpaceGrotesk-Bold.ttf', import.meta.url));
 	const boldFontData = await boldFontDataRoot.arrayBuffer();
-	const semiBoldFontDataRoot = await fetch(new URL('../../public/fonts/SpaceGrotesk-SemiBold.ttf', import.meta.url));
+	const semiBoldFontDataRoot = await fetch(new URL('./SpaceGrotesk-SemiBold.ttf', import.meta.url));
 	const semiBoldFontData = await semiBoldFontDataRoot.arrayBuffer();
 
 	const backgroundURL = '/og/wrap-bg.png';
