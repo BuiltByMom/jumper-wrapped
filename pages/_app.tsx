@@ -15,7 +15,7 @@ export default function App({Component, pageProps}: AppProps): ReactElement {
 				titleColor={'#FFFFFF'}
 				themeColor={'#6120FD'}
 				description={'Your Jumper year in review'}
-				og={'/og/og.jpg'}
+				og={'https://jumper-wrapped.vercel.app/og/og.jpg'}
 				uri={'https://jumper-wrapped.vercel.app'}
 			/>
 		</Providers>
