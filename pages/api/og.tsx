@@ -6,7 +6,7 @@ export const config = {
 
 export default async function handler(context: any): Promise<ImageResponse> {
 	const rootURL = new URL(context.url);
-	const stringifiedRootURL = rootURL.toString();
+	const stringifiedRootURL = rootURL.origin;
 	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', stringifiedRootURL));
 	const boldFontData = await boldFontDataRoot.arrayBuffer();
 	const semiBoldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-SemiBold.ttf', stringifiedRootURL));
