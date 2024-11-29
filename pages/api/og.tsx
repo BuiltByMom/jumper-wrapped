@@ -7,14 +7,12 @@ export const config = {
 export default async function handler(context: any): Promise<ImageResponse> {
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
-	console.warn(stringifiedRootURL);
-	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', import.meta.url));
+	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', stringifiedRootURL));
 	const boldFontData = await boldFontDataRoot.arrayBuffer();
-	const semiBoldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-SemiBold.ttf', import.meta.url));
+	const semiBoldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-SemiBold.ttf', stringifiedRootURL));
 	const semiBoldFontData = await semiBoldFontDataRoot.arrayBuffer();
 
-	const backgroundURL = '/og/wrap-bg.png';
-	const footerBackgroundURL = '/og/wrap-footer.jpg';
+	const backgroundURL = `${stringifiedRootURL}/og/wrap-bg.jpg`;
 
 	const titleOG = (
 		<svg
@@ -294,6 +292,447 @@ export default async function handler(context: any): Promise<ImageResponse> {
 			</defs>
 		</svg>
 	);
+	const footerBackground = (
+		<svg
+			width={'1200'}
+			height={'160'}
+			viewBox={'0 0 1200 160'}
+			fill={'none'}
+			xmlns={'http://www.w3.org/2000/svg'}>
+			<g clip-path={'url(#clip0_312_4837)'}>
+				<rect
+					width={'1200'}
+					height={'160'}
+					fill={'#5000FF'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'217.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'180'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'142.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'105'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'67.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'30'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'255'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'292.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'330'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'367.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'405'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'442.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'480'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'517.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'555'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'592.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'630'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'667.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'705'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'742.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'780'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'817.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'855'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'892.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'930'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'967.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1005'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1042.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1080'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1117.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1155'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1192.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1230'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1267.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1305'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1380'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1417.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1455'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1492.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1530'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1567.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1605'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1642.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1680'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+				<circle
+					cx={'280.75'}
+					cy={'80.5'}
+					r={'1342.5'}
+					stroke={'#6120FD'}
+					stroke-width={'15'}
+				/>
+			</g>
+			<defs>
+				<clipPath id={'clip0_312_4837'}>
+					<rect
+						width={'1200'}
+						height={'160'}
+						fill={'white'}
+					/>
+				</clipPath>
+			</defs>
+		</svg>
+	);
+	const defiDegenProfile = (
+		<svg
+			width={'170'}
+			height={'86'}
+			viewBox={'0 0 170 86'}
+			fill={'none'}
+			xmlns={'http://www.w3.org/2000/svg'}>
+			<rect
+				width={'170'}
+				height={'86'}
+				rx={'8'}
+				fill={'#6120FD'}
+			/>
+			<path
+				d={
+					'M135.125 35.6538V18.3461H141.132L144.458 33.4286H144.889V18.3461H148V35.6538H141.993L138.667 20.5714H138.236V35.6538H135.125Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M121.874 35.6538V18.3461H132.643V21.3132H125.032V25.4423H131.973V28.4093H125.032V32.6868H132.786V35.6538H121.874Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M111.82 36C110.671 36 109.626 35.7363 108.685 35.2088C107.76 34.6648 107.018 33.8819 106.459 32.8599C105.917 31.8214 105.646 30.5604 105.646 29.0769V24.9231C105.646 22.6978 106.252 20.9918 107.465 19.8049C108.677 18.6016 110.32 18 112.394 18C114.453 18 116.04 18.5687 117.157 19.706C118.29 20.8269 118.856 22.3516 118.856 24.2802V24.3791H115.745V24.1813C115.745 23.5714 115.617 23.0192 115.362 22.5247C115.123 22.0302 114.756 21.6429 114.261 21.3626C113.767 21.0659 113.144 20.9176 112.394 20.9176C111.278 20.9176 110.4 21.272 109.762 21.9808C109.124 22.6896 108.805 23.6538 108.805 24.8736V29.1264C108.805 30.3297 109.124 31.3022 109.762 32.044C110.4 32.7692 111.294 33.1319 112.442 33.1319C113.591 33.1319 114.429 32.8187 114.955 32.1923C115.482 31.5659 115.745 30.7747 115.745 29.8187V29.5714H111.772V26.8022H118.856V35.6538H115.936V33.9973H115.506C115.394 34.2775 115.21 34.5742 114.955 34.8874C114.716 35.2006 114.349 35.4643 113.854 35.6786C113.36 35.8929 112.682 36 111.82 36Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M92.7773 35.6538V18.3461H103.547V21.3132H95.9363V25.4423H102.876V28.4093H95.9363V32.6868H103.69V35.6538H92.7773Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M76.3599 35.6538V32.7857H78.5616V21.2143H76.3599V18.3461H83.2521C85.5017 18.3461 87.2088 18.9396 88.3735 20.1264C89.5541 21.2967 90.1444 23.0439 90.1444 25.3681V28.6319C90.1444 30.956 89.5541 32.7115 88.3735 33.8983C87.2088 35.0687 85.5017 35.6538 83.2521 35.6538H76.3599ZM81.7205 32.6868H83.3C84.5763 32.6868 85.5097 32.3407 86.1 31.6483C86.6903 30.956 86.9854 29.9835 86.9854 28.7308V25.2692C86.9854 24 86.6903 23.0275 86.1 22.3516C85.5097 21.6593 84.5763 21.3132 83.3 21.3132H81.7205V32.6868Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={'M64.4521 35.6538V18.3461H67.6111V35.6538H64.4521Z'}
+				fill={'white'}
+			/>
+			<path
+				d={'M51.6685 35.6538V18.3461H62.1983V21.3132H54.8274V25.4918H61.624V28.4588H54.8274V35.6538H51.6685Z'}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M38.4175 35.6538V18.3461H49.1866V21.3132H41.5764V25.4423H48.5166V28.4093H41.5764V32.6868H49.3302V35.6538H38.4175Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M22 35.6538V32.7857H24.2017V21.2143H22V18.3461H28.8923C31.1418 18.3461 32.8489 18.9396 34.0136 20.1264C35.1942 21.2967 35.7845 23.0439 35.7845 25.3681V28.6319C35.7845 30.956 35.1942 32.7115 34.0136 33.8983C32.8489 35.0687 31.1418 35.6538 28.8923 35.6538H22ZM27.3607 32.6868H28.9401C30.2165 32.6868 31.1498 32.3407 31.7401 31.6483C32.3304 30.956 32.6256 29.9835 32.6256 28.7308V25.2692C32.6256 24 32.3304 23.0275 31.7401 22.3516C31.1498 21.6593 30.2165 21.3132 28.9401 21.3132H27.3607V32.6868Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M132.5 67.5385V44.4615H147.796V48.4176H136.987V53.9231H146.844V57.8791H136.987V63.5824H148V67.5385H132.5Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={'M114.078 67.5385V44.4615H118.565V63.5824H129.442V67.5385H114.078Z'}
+				fill={'white'}
+			/>
+			<path
+				d={'M105.116 67.5385V44.4615H109.603V67.5385H105.116Z'}
+				fill={'white'}
+			/>
+			<path
+				d={'M86.9595 67.5385V44.4615H101.915V48.4176H91.4461V53.989H101.099V57.9451H91.4461V67.5385H86.9595Z'}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M73.2349 68C70.2438 68 67.8645 67.2088 66.097 65.6264C64.3295 64.022 63.4458 61.7363 63.4458 58.7692V53.2308C63.4458 50.2637 64.3295 47.989 66.097 46.4066C67.8645 44.8022 70.2438 44 73.2349 44C76.226 44 78.6053 44.8022 80.3728 46.4066C82.1403 47.989 83.024 50.2637 83.024 53.2308V58.7692C83.024 61.7363 82.1403 64.022 80.3728 65.6264C78.6053 67.2088 76.226 68 73.2349 68ZM73.2349 64.1099C74.9117 64.1099 76.2147 63.6374 77.1438 62.6923C78.0728 61.7473 78.5373 60.4835 78.5373 58.9011V53.0989C78.5373 51.5165 78.0728 50.2527 77.1438 49.3077C76.2147 48.3626 74.9117 47.8901 73.2349 47.8901C71.5807 47.8901 70.2778 48.3626 69.3261 49.3077C68.397 50.2527 67.9325 51.5165 67.9325 53.0989V58.9011C67.9325 60.4835 68.397 61.7473 69.3261 62.6923C70.2778 63.6374 71.5807 64.1099 73.2349 64.1099Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M42.5137 67.5385V44.4615H52.8466C54.3422 44.4615 55.6451 44.7143 56.7555 45.2198C57.8658 45.7253 58.7269 46.4396 59.3387 47.3626C59.9505 48.2857 60.2564 49.3736 60.2564 50.6264V51.022C60.2564 52.4066 59.9165 53.5275 59.2367 54.3846C58.5569 55.2418 57.7185 55.8681 56.7215 56.2637V56.8572C57.6279 56.9011 58.3303 57.2088 58.8289 57.7802C59.3274 58.3297 59.5766 59.0659 59.5766 59.989V67.5385H55.09V60.6154C55.09 60.0879 54.9427 59.6594 54.6481 59.3297C54.3762 59 53.9116 58.8352 53.2545 58.8352H47.0003V67.5385H42.5137ZM47.0003 54.8791H52.3708C53.4358 54.8791 54.2629 54.6044 54.852 54.055C55.4639 53.4835 55.7698 52.7363 55.7698 51.8132V51.4835C55.7698 50.5604 55.4752 49.8242 54.886 49.2747C54.2969 48.7033 53.4584 48.4176 52.3708 48.4176H47.0003V54.8791Z'
+				}
+				fill={'white'}
+			/>
+			<path
+				d={
+					'M22 67.5385V44.4615H31.7891C33.2847 44.4615 34.5989 44.7583 35.7319 45.3517C36.8876 45.9231 37.7827 46.7363 38.4172 47.7912C39.0743 48.8462 39.4029 50.0989 39.4029 51.5495V52.011C39.4029 53.4396 39.063 54.6923 38.3832 55.7692C37.726 56.8242 36.8196 57.6484 35.664 58.2418C34.531 58.8132 33.2393 59.0989 31.7891 59.0989H26.4867V67.5385H22ZM26.4867 55.1429H31.3472C32.4123 55.1429 33.2733 54.8572 33.9305 54.2857C34.5876 53.7143 34.9162 52.9341 34.9162 51.9451V51.6154C34.9162 50.6264 34.5876 49.8462 33.9305 49.2747C33.2733 48.7033 32.4123 48.4176 31.3472 48.4176H26.4867V55.1429Z'
+				}
+				fill={'white'}
+			/>
+		</svg>
+	);
 
 	return new ImageResponse(
 		(
@@ -331,15 +770,10 @@ export default async function handler(context: any): Promise<ImageResponse> {
 							position: 'absolute',
 							top: -40,
 							right: 24,
-							backgroundColor: '#7C3AED',
-							padding: '12px 20px',
-							borderRadius: '8px',
-							color: 'white',
 							display: 'flex',
 							flexDirection: 'column'
 						}}>
-						<p style={{fontSize: '24px', lineHeight: '28px'}}>{'DEFI DEGEN'}</p>
-						<p style={{fontSize: '34px', lineHeight: '34px', marginTop: -12}}>{'PROFILE'}</p>
+						{defiDegenProfile}
 					</div>
 				</div>
 
@@ -377,17 +811,19 @@ export default async function handler(context: any): Promise<ImageResponse> {
 				<div
 					style={{
 						marginTop: '40px',
+						padding: '20px 80px',
 						display: 'flex',
 						justifyContent: 'space-between',
 						alignItems: 'center',
-						background: `url(${footerBackgroundURL})`,
-						backgroundSize: 'cover',
-						padding: '20px',
+						position: 'relative',
 						width: '100%',
 						height: '160px'
 					}}>
-					{wrapButton}
-					{jumperLogo}
+					<div style={{position: 'absolute', bottom: 0, right: 0, display: 'flex', zIndex: 10}}>
+						{footerBackground}
+					</div>
+					<div style={{display: 'flex', zIndex: 20}}>{wrapButton}</div>
+					<div style={{display: 'flex', zIndex: 20}}>{jumperLogo}</div>
 				</div>
 			</div>
 		),
