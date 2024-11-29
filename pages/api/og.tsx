@@ -1788,7 +1788,7 @@ export default async function handler(context: any): Promise<ImageResponse> {
 
 	// get version from context (e.g. /api/og?version=2024)
 	let selectedProfile = 'multichain';
-	const version = context.searchParams.get('version');
+	const version = rootURL.searchParams.get('version');
 	if (version) {
 		selectedProfile = version;
 	}
