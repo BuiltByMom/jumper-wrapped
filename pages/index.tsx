@@ -7,7 +7,7 @@ import {HomePage} from '@/components/Home';
 
 export default function Index(): ReactElement {
 	const router = useRouter();
-	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://dynamicogver.vercel.app' : 'http://localhost:3000';
+	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://jumper-wrap.builtby.dad' : 'http://localhost:3000';
 	const version = router.query.version || '';
 	const ogImageUrl = version ? `${baseUrl}/api/og?version=${version}` : `${baseUrl}/og/og.jpg`;
 

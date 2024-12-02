@@ -296,7 +296,7 @@ const PROFILES = {
 };
 
 export default async function handler(context: any): Promise<ImageResponse> {
-	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', 'https://dynamicogver.vercel.app'));
+	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', 'https://jumper-wrap.builtby.dad'));
 	const boldFontData = await boldFontDataRoot.arrayBuffer();
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
