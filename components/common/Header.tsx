@@ -9,8 +9,15 @@ import {WalletMultiButton} from '@solana/wallet-adapter-react-ui';
 
 import {CarouselDots} from '../carouselContext';
 import {IconJumperLogo} from '../icons/IconJumperLogo';
+import {IconJumperSmall} from '../icons/IconJumperSmall';
 
-export function Header({set_isWalletSelectorOpen}: {set_isWalletSelectorOpen: (value: boolean) => void}): ReactElement {
+export function Header({
+	set_isWalletSelectorOpen,
+	isCarouselView
+}: {
+	set_isWalletSelectorOpen: (value: boolean) => void;
+	isCarouselView?: boolean;
+}): ReactElement {
 	const account = useWallet();
 	const {isConnected} = useAccount();
 	const router = useRouter();
@@ -18,14 +25,19 @@ export function Header({set_isWalletSelectorOpen}: {set_isWalletSelectorOpen: (v
 	return (
 		<div
 			className={
-				'absolute left-0 top-0 z-20 flex w-full items-center justify-between bg-violet-light p-6 xl:p-16'
+				'absolute left-0 top-0 z-20 flex w-full items-center justify-between p-6 md:bg-violet-light xl:p-16'
 			}>
 			<Link
 				href={'https://jumper.exchange'}
 				target={'_blank'}>
-				<IconJumperLogo className={'xl:h-[64px] xl:w-[320px]'} />
+				<div className={'hidden md:block'}>
+					<IconJumperLogo className={'xl:h-[64px] xl:w-[320px]'} />
+				</div>
+				<div className={'block md:hidden'}>
+					<IconJumperSmall className={'text-white'} />
+				</div>
 			</Link>
-			{router.pathname !== '/404' && router.pathname !== '/' && (
+			{router.pathname !== '/404' && isCarouselView && (
 				<CarouselDots
 					className={'!static'}
 					arrayLength={6}

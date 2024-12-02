@@ -11,12 +11,12 @@ import {Header} from './common/Header';
 import {cl} from './utils/tools';
 
 const cards = [
-	{name: 'lol', description: 'kek'},
-	{name: 'lol1', description: 'kek'},
-	{name: 'lol2', description: 'kek'},
-	{name: 'lol3', description: 'kek'},
-	{name: 'lol4', description: 'kek'},
-	{name: 'lol5', description: 'kek'}
+	{name: 'Card 1', description: 'kek'},
+	{name: 'Card 2', description: 'kek'},
+	{name: 'Card 3', description: 'kek'},
+	{name: 'Card 4', description: 'kek'},
+	{name: 'Card 5', description: 'kek'},
+	{name: 'Card 6', description: 'kek'}
 ];
 
 export function HomePage(): ReactElement {
@@ -45,7 +45,10 @@ export function HomePage(): ReactElement {
 	return (
 		<>
 			<div className={cl('flex h-screen items-center justify-center w-full')}>
-				<Header set_isWalletSelectorOpen={set_isWalletSelectorOpen} />
+				<Header
+					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+					isCarouselView={view === 'carousel'}
+				/>
 				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
 
 				{view === 'greetings' ? (

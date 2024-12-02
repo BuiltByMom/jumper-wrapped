@@ -20,17 +20,19 @@ export function Carousel({
 						key={index}
 						className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 						{index < cards.length - 1 ? (
-							<div
-								className={
-									'flex h-[600px] w-[440px] items-center justify-center rounded-[32px] border-4 border-[#B999FF] bg-black p-1 xl:h-[982px] xl:w-[660px] xl:rounded-[48px]'
-								}>
-								<p className={'text-3xl font-bold uppercase text-white'}>{game.name}</p>
-							</div>
-						) : (
-							<div className={'relative z-40'}>
+							<div className={'relative z-40 overflow-hidden'}>
 								<div
 									className={
-										'flex h-[600px] w-[440px] items-center justify-center rounded-[32px] border-4 border-accent bg-black bg-gradient-to-b from-[#9700F4] to-[#3238C9] p-1 xl:h-[982px] xl:w-[660px] xl:rounded-[48px]'
+										'flex h-[600px] w-[440px] items-center justify-center overflow-hidden rounded-[32px] border-4 border-[#B999FF] bg-gradient-to-b from-[#D1F3C0] to-[#32C968] p-1 xl:h-[982px] xl:w-[660px] xl:rounded-[48px]'
+									}>
+									<p className={'text-3xl font-bold uppercase text-black'}>{game.name}</p>
+								</div>
+							</div>
+						) : (
+							<div className={'relative z-40 rounded-[32px]'}>
+								<div
+									className={
+										'flex h-[600px] w-[440px] items-center justify-center overflow-hidden rounded-[32px] border-4 border-accent bg-black bg-gradient-to-b from-[#9700F4] to-[#3238C9] p-1 xl:h-[982px] xl:w-[660px] xl:rounded-[48px]'
 									}>
 									<p className={'text-3xl font-bold uppercase text-white'}>{game.name}</p>
 								</div>

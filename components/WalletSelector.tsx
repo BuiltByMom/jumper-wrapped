@@ -5,6 +5,8 @@ import {useWalletModal} from '@solana/wallet-adapter-react-ui';
 
 import {SelectorItem} from './common/SelectorItem';
 import {IconClose} from './icons/IconClose';
+import {IconETH} from './icons/IconETH';
+import {IconSol} from './icons/IconSol';
 import {cl} from './utils/tools';
 
 import type {ReactElement} from 'react';
@@ -57,9 +59,12 @@ export function WalletSelector({isOpen, onClose}: TWalletSelectorProps): ReactEl
 									'flex-col items-center justify-center',
 									'!p-10 transition-all rounded-2xl'
 								)}>
-								<div className={'rounded-2xl'}>
-									<div className={'flex w-full items-center justify-between bg-black px-6 py-5'}>
-										<p className={'font-space-grotesk text-xl leading-6 text-white'}>
+								<div className={'max-w-[343px] rounded-2xl md:max-w-none'}>
+									<div
+										className={
+											'flex w-full items-center justify-between rounded-t-2xl bg-black px-6 py-5'
+										}>
+										<p className={'font-space-grotesk text-left text-xl  leading-6 text-white'}>
 											{'Connect a wallet to continue'}
 										</p>
 										<button onClick={onClose}>
@@ -73,6 +78,7 @@ export function WalletSelector({isOpen, onClose}: TWalletSelectorProps): ReactEl
 											onClose();
 											openConnectModal?.();
 										}}
+										icon={<IconETH />}
 									/>
 									<SelectorItem
 										title={'Solana wallet'}
@@ -80,6 +86,8 @@ export function WalletSelector({isOpen, onClose}: TWalletSelectorProps): ReactEl
 											onClose();
 											set_visible(true);
 										}}
+										icon={<IconSol />}
+										className={'rounded-b-2xl'}
 									/>
 								</div>
 							</DialogPanel>

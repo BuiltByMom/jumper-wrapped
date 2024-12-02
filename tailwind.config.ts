@@ -49,6 +49,15 @@ export default {
 			animation: {
 				'circle-pulse': 'circlePulse 1.5s ease-in-out infinite',
 				'large-circle-pulse': 'largeCirclePulse 1.5s ease-in-out infinite'
+			},
+			transitionProperty: {
+				transform: 'transform'
+			},
+			perspective: {
+				'1000': '1000px'
+			},
+			backfaceVisibility: {
+				hidden: 'hidden'
 			}
 		}
 	},
