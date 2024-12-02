@@ -12,12 +12,12 @@ import {Header} from './common/Header';
 import {cl} from './utils/tools';
 
 const cards = [
-	{name: 'Card 1', description: 'kek'},
-	{name: 'Card 2', description: 'kek'},
-	{name: 'Card 3', description: 'kek'},
-	{name: 'Card 4', description: 'kek'},
-	{name: 'Card 5', description: 'kek'},
-	{name: 'Card 6', description: 'kek'}
+	{title: 'Card 1', description: 'kek'},
+	{title: 'Card 2', description: 'kek'},
+	{title: 'Card 3', description: 'kek'},
+	{title: 'Card 4', description: 'kek'},
+	{title: 'Card 5', description: 'kek'},
+	{title: 'Card 6', description: 'kek'}
 ];
 
 export function HomePage(): ReactElement {
