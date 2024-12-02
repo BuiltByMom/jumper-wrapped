@@ -5,6 +5,7 @@ import {useWallet} from '@solana/wallet-adapter-react';
 
 import {PageBackgound} from './Backgrounds';
 import {Carousel} from './Carousel';
+import {NextYearButton} from './NextYearButton';
 import {WalletSelector} from './WalletSelector';
 import {WrappedButton} from './WrappedButton';
 import {Header} from './common/Header';
@@ -27,6 +28,8 @@ export function HomePage(): ReactElement {
 	const {isConnected, address} = useAccount();
 	const router = useRouter();
 
+	const isNotEnoughData = false;
+
 	/**********************************************************************************************
 	 * Redirect to home if user is not connected
 	 *********************************************************************************************/
@@ -40,8 +43,6 @@ export function HomePage(): ReactElement {
 		set_view('carousel');
 	};
 
-	console.log(account.publicKey, address);
-
 	return (
 		<>
 			<div className={cl('flex h-screen items-center justify-center w-full')}>
@@ -51,7 +52,7 @@ export function HomePage(): ReactElement {
 				/>
 				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
 
-				{view === 'greetings' ? (
+				{!isNotEnoughData && view === 'greetings' ? (
 					<>
 						<WrappedButton
 							set_isWalletSelectorOpen={set_isWalletSelectorOpen}
@@ -62,6 +63,8 @@ export function HomePage(): ReactElement {
 							onClose={() => set_isWalletSelectorOpen(false)}
 						/>
 					</>
+				) : isNotEnoughData ? (
+					<NextYearButton />
 				) : (
 					<Carousel
 						profile={account.publicKey?.toString() || address}
