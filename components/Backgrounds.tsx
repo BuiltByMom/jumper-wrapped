@@ -150,7 +150,7 @@ export function PageBackgound({
 					centerX={'2640'}
 					centerY={'2640'}
 					className={cl(
-						'absolute transition-all duration-1000',
+						'absolute transition-all duration-1000 w-[200vw]',
 						position === 'center'
 							? 'background-position-bottom-center'
 							: 'background-position-bottom-right-big'

@@ -288,37 +288,44 @@ export const CarouselDots = React.forwardRef<
 	return (
 		<div
 			ref={ref}
-			className={cl('absolute top-[-40px] left-0 right-0 flex justify-center gap-2', className)}
+			className={cl('absolute top-[-40px] left-0 right-0 flex justify-center gap-2 h-10 items-center', className)}
 			{...props}>
 			{Array.from({length: totalSlides}).map((_, index) => (
 				<div
 					key={index}
 					onClick={() => handleDotClick(index)}
-					className={cl(
-						'relative cursor-pointer rounded-[4px] h-[5px] md:w-10 lg:w-20 xl:h-[8px] xl:w-24',
-						'bg-[#ffffff1a]'
-					)}>
+					className={'group -m-4 cursor-pointer p-4'}>
 					<div
 						className={cl(
-							'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
-							index === selectedIndex
-								? cl('transition-all duration-[10000ms] ease-linear', isAnimating ? 'w-full' : 'w-0')
-								: 'w-0'
-						)}
-						onTransitionEnd={() => {
-							if (index === selectedIndex && !isComplete) {
-								set_isAnimating(false);
-								setTimeout(() => {
-									if (selectedIndex === totalSlides - 1) {
-										set_isComplete(true);
-									} else {
-										api?.scrollNext();
-										set_isAnimating(true);
-									}
-								}, 50);
-							}
-						}}
-					/>
+							'relative h-[5px] md:w-10 lg:w-20 xl:h-[8px] xl:w-24',
+							'group-hover:h-3 rounded-full transition-all duration-100',
+							'bg-[#ffffff1a]'
+						)}>
+						<div
+							className={cl(
+								'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
+								index === selectedIndex
+									? cl(
+											'transition-all duration-[10000ms] ease-linear',
+											isAnimating ? 'w-full' : 'w-0'
+									  )
+									: 'w-0'
+							)}
+							onTransitionEnd={() => {
+								if (index === selectedIndex && !isComplete) {
+									set_isAnimating(false);
+									setTimeout(() => {
+										if (selectedIndex === totalSlides - 1) {
+											set_isComplete(true);
+										} else {
+											api?.scrollNext();
+											set_isAnimating(true);
+										}
+									}, 50);
+								}
+							}}
+						/>
+					</div>
 				</div>
 			))}
 		</div>
