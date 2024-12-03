@@ -26,12 +26,8 @@ export default function Index(): ReactElement {
 				<div className={'size-full rounded-2xl bg-red-500'} />
 			</VolumeCard>
 
-			<TimeCard variant={'Day'}>
-				<div className={'size-full rounded-2xl bg-red-500'} />
-			</TimeCard>
-			<TimeCard variant={'Night'}>
-				<div className={'size-full rounded-2xl bg-red-500'} />
-			</TimeCard>
+			<TimeCard timestamp={'1733195469'} />
+			<TimeCard timestamp={'1733235069'} />
 		</div>
 	);
 }
