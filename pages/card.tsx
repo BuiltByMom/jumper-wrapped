@@ -2,10 +2,12 @@ import type {ReactElement} from 'react';
 
 import DivaCardCard from '@/components/cards/share/Diva';
 import SerBridgealotCard from '@/components/cards/share/SerBridgealot';
+import TimeCard from '@/components/cards/stat/Time';
+import VolumeCard from '@/components/cards/stat/Volume';
 
 export default function Index(): ReactElement {
 	return (
-		<div className={'flex items-center justify-center'}>
+		<div className={'grid grid-cols-3 items-center justify-center gap-4'}>
 			<DivaCardCard
 				tokens={['DAI', 'USDC', 'USDT']}
 				topRatio={42.42}
@@ -16,6 +18,20 @@ export default function Index(): ReactElement {
 				topRatio={42.42}
 				width={440}
 			/>
+
+			<VolumeCard variant={'Green'}>
+				<div className={'size-full rounded-2xl bg-red-500'} />
+			</VolumeCard>
+			<VolumeCard variant={'Purple'}>
+				<div className={'size-full rounded-2xl bg-red-500'} />
+			</VolumeCard>
+
+			<TimeCard variant={'Day'}>
+				<div className={'size-full rounded-2xl bg-red-500'} />
+			</TimeCard>
+			<TimeCard variant={'Night'}>
+				<div className={'size-full rounded-2xl bg-red-500'} />
+			</TimeCard>
 		</div>
 	);
 }
