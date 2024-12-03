@@ -2,7 +2,7 @@ import {type ReactElement, useCallback} from 'react';
 
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from './carouselContext';
 import NoSleepCard from './cards/share/NoSleep';
-import VolumeCard from './cards/stat/Volume';
+import {MonthCard} from './cards/stat/Month';
 import {Button} from './common/Button';
 
 const domain = 'https://jumper-wrap.builtby.dad';
@@ -30,12 +30,7 @@ export function Carousel({
 							key={index}
 							className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 							{index < cards.length - 1 ? (
-								<VolumeCard variant={'Green'}>
-									<div className={'flex flex-col gap-2'}>
-										<p className={'text-xl font-bold'}>{'Volume'}</p>
-										<p className={'text-sm font-medium'}>{'123,456'}</p>
-									</div>
-								</VolumeCard>
+								<MonthCard month={'October'} />
 							) : (
 								<div className={'relative'}>
 									<NoSleepCard
