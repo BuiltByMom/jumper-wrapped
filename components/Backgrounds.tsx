@@ -136,26 +136,24 @@ export function PageBackgound({
 
 			<div className={'xl:hidden'}>
 				<SvgCircles
-					centerX={position === 'center' ? '2640' : '5280'}
-					centerY={position === 'center' ? '2640' : '5280'}
+					centerX={'2640'}
+					centerY={'2640'}
 					className={cl(
-						'absolute',
-						position === 'center'
-							? 'left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'
-							: 'bottom-0 right-0 -translate-y-[79px] translate-x-[24px]'
+						'absolute transition-all duration-1000 hello',
+						position === 'center' ? 'background-position-bottom-center' : 'background-position-bottom-right'
 					)}
 					showFrame={showFrame}
 				/>
 			</div>
 			<div className={'hidden xl:block'}>
 				<LargeSvgCircles
-					centerX={position === 'center' ? '2640' : '5280'}
-					centerY={position === 'center' ? '2640' : '5280'}
+					centerX={'2640'}
+					centerY={'2640'}
 					className={cl(
-						'absolute',
+						'absolute transition-all duration-1000',
 						position === 'center'
-							? 'left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'
-							: 'bottom-0 right-0 -translate-y-[158px]'
+							? 'background-position-bottom-center'
+							: 'background-position-bottom-right-big'
 					)}
 					showFrame={true}
 				/>

@@ -1,6 +1,7 @@
 import {type ReactElement, useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
 import {useAccount} from 'wagmi';
+import {AnimatePresence, motion} from 'framer-motion';
 import {useWallet} from '@solana/wallet-adapter-react';
 
 import {PageBackgound} from './Backgrounds';
@@ -22,6 +23,25 @@ const cards = [
 	{title: 'Card 6', description: 'kek'}
 ];
 
+const wiggleAnimation = {
+	initial: {opacity: 0, scale: 0},
+	animate: {
+		opacity: 1,
+		scale: 1,
+		rotate: [0, -2, 2, -2, 0], // Wiggle rotation angles
+		transition: {
+			duration: 0.5,
+			rotate: {
+				duration: 0.4,
+				delay: 0.2, // Start wiggle after initial scale animation
+				ease: 'easeInOut',
+				repeat: 1 // Wiggle once
+			}
+		}
+	},
+	exit: {opacity: 0, scale: 0.8}
+};
+
 export function HomePage(): ReactElement {
 	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
 	const [view, set_view] = useState<'greetings' | 'carousel'>('greetings');
@@ -29,7 +49,6 @@ export function HomePage(): ReactElement {
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
 	const router = useRouter();
-
 	const isNotEnoughData = false;
 
 	/**********************************************************************************************
@@ -40,10 +59,6 @@ export function HomePage(): ReactElement {
 			router.push('/');
 		}
 	}, [account, isConnected, router]);
-
-	const onStart = (): void => {
-		set_view('carousel');
-	};
 
 	const {api} = useCarousel();
 	const isLastSlide = api?.selectedScrollSnap() === (api?.scrollSnapList().length || 0) - 1;
@@ -57,28 +72,55 @@ export function HomePage(): ReactElement {
 				/>
 				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
 
-				{!isNotEnoughData && view === 'greetings' ? (
-					<>
-						<WrappedButton
-							set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-							onStart={onStart}
-						/>
-						<WalletSelector
-							isOpen={isWalletSelectorOpen}
-							onClose={() => set_isWalletSelectorOpen(false)}
-						/>
-					</>
-				) : isNotEnoughData ? (
-					<NextYearButton />
-				) : (
-					<>
-						{isLastSlide ? <JumperPopup /> : null}
-						<Carousel
-							profile={account.publicKey?.toString() || address}
-							cards={cards}
-						/>
-					</>
-				)}
+				<AnimatePresence
+					mode={'wait'}
+					initial={true}>
+					{!isNotEnoughData && view === 'greetings' && (
+						<motion.div
+							key={'greetings-section'}
+							initial={{opacity: 0, scale: 0}}
+							animate={{opacity: 1, scale: 1}}
+							exit={{opacity: 0, scale: 0}}
+							transition={{duration: 0.5}}>
+							<WrappedButton
+								set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+								onStart={() => set_view('carousel')}
+							/>
+							<WalletSelector
+								isOpen={isWalletSelectorOpen}
+								onClose={() => set_isWalletSelectorOpen(false)}
+							/>
+						</motion.div>
+					)}
+
+					{!isNotEnoughData && view === 'carousel' && (
+						<motion.div
+							key={'carousel-section'}
+							variants={wiggleAnimation}
+							initial={'initial'}
+							animate={'animate'}
+							exit={'exit'}>
+							<div className={''}>
+								{isLastSlide ? <JumperPopup /> : null}
+								<Carousel
+									profile={account.publicKey?.toString() || address}
+									cards={cards}
+								/>
+							</div>
+						</motion.div>
+					)}
+
+					{isNotEnoughData && (
+						<motion.div
+							key={'no-data-section'}
+							initial={{opacity: 0, scale: 0.9}}
+							animate={{opacity: 1, scale: 1}}
+							exit={{opacity: 0, scale: 0.8}}
+							transition={{duration: 1}}>
+							<NextYearButton />
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 		</>
 	);

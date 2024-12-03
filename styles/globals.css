@@ -6,8 +6,8 @@ html,
 body,
 :root {
 	margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .font-space-grotesk {
@@ -15,29 +15,43 @@ body,
 }
 
 .wallet-adapter-button-trigger {
-    background-color: transparent !important;
+	background-color: transparent !important;
 }
 
 .wallet-adapter-dropdown {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 @media (min-width: 2560px) {
-  .wallet-adapter-button-trigger {
-    font-size: 24px;
-
-  }
+	.wallet-adapter-button-trigger {
+		font-size: 24px;
+	}
 }
 
 .transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-property: all;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .transition-opacity {
-  transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-property: opacity;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.background-position-bottom-center {
+	@apply -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10;
+}
+.background-position-bottom-right {
+	@apply -translate-x-1/2 -translate-y-1/2;
+	left: calc(100% - 24px);
+	top: calc(100% - 79px);
+}
+
+.background-position-bottom-right-big {
+	@apply -translate-x-1/2 -translate-y-1/2;
+	left: calc(100% - 48px);
+	top: calc(100% - 158px);
 }
