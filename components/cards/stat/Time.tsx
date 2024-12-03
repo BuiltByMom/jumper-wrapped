@@ -69,9 +69,7 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 
 				<div className={'mt-auto flex items-center justify-center pt-6 text-center'}>
 					<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-white'}>
-						{dayOrNight === 'NIGHT'
-							? "Night owl? You're most active when others sleep!"
-							: 'Early bird gets the alpha!'}
+						{'Chasing gains, sniping bags or trawling pump.fun?'}
 					</p>
 				</div>
 			</div>
