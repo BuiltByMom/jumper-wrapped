@@ -5,6 +5,8 @@ import {useWallet} from '@solana/wallet-adapter-react';
 
 import {PageBackgound} from './Backgrounds';
 import {Carousel} from './Carousel';
+import {useCarousel} from './carouselContext';
+import {JumperPopup} from './JumperPopup';
 import {NextYearButton} from './NextYearButton';
 import {WalletSelector} from './WalletSelector';
 import {WrappedButton} from './WrappedButton';
@@ -43,9 +45,12 @@ export function HomePage(): ReactElement {
 		set_view('carousel');
 	};
 
+	const {api} = useCarousel();
+	const isLastSlide = api?.selectedScrollSnap() === (api?.scrollSnapList().length || 0) - 1;
+
 	return (
 		<>
-			<div className={cl('flex h-screen items-center justify-center w-full')}>
+			<div className={cl('flex h-screen relative items-center justify-center w-full')}>
 				<Header
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 					isCarouselView={view === 'carousel'}
@@ -66,10 +71,13 @@ export function HomePage(): ReactElement {
 				) : isNotEnoughData ? (
 					<NextYearButton />
 				) : (
-					<Carousel
-						profile={account.publicKey?.toString() || address}
-						cards={cards}
-					/>
+					<>
+						{isLastSlide ? <JumperPopup /> : null}
+						<Carousel
+							profile={account.publicKey?.toString() || address}
+							cards={cards}
+						/>
+					</>
 				)}
 			</div>
 		</>

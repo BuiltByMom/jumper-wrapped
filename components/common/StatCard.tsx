@@ -22,7 +22,7 @@ export function StatCard({
 	}, [profile]);
 
 	return isShareCard ? (
-		<div className={'relative z-40 rounded-[32px]'}>
+		<div className={'relative z-40 rounded-[32px] md:scale-90 lg:scale-110'}>
 			<div
 				className={cl(
 					'flex h-[600px] w-[440px] items-center justify-center',
@@ -42,7 +42,7 @@ export function StatCard({
 			</Button>
 		</div>
 	) : (
-		<div className={'relative z-40 overflow-hidden'}>
+		<div className={'relative z-40 scale-90 overflow-hidden md:scale-75 lg:scale-110'}>
 			<div
 				className={cl(
 					'flex h-[600px] w-[440px] items-center justify-center',

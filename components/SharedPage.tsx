@@ -3,9 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import {PageBackgound} from './Backgrounds';
+import DivaCardCard from './cards/share/Diva';
 import {Button} from './common/Button';
-import {StatCard} from './common/StatCard';
 import {IconJumperLogo} from './icons/IconJumperLogo';
+import {cl} from './utils/tools';
 
 const stats = [
 	{
@@ -46,36 +47,64 @@ const stats = [
 	}
 ];
 
+function StatOwner({address, className}: {address: string; className?: string}): ReactElement {
+	return (
+		<div
+			className={cl(
+				'flex w-full justify-center md:text-lg lg:text-xl rounded-2xl bg-violet-light px-9 py-2 text-xl font-bold text-white',
+				className
+			)}>
+			<span>{`${address.slice(0, 7)}...${address.slice(address.length - 7, address.length - 1)}`}</span>
+			&nbsp;
+			<span className={'uppercase'}>{' stats:'}</span>
+		</div>
+	);
+}
+
 export function SharedPage({profile}: {profile: string}): ReactElement {
 	return (
-		<div className={'flex h-screen w-screen justify-between gap-10 bg-violet-dark p-10'}>
-			<div className={'flex h-full w-2/5 flex-col justify-center p-32'}>
+		<div className={'flex justify-between gap-10 bg-violet-dark p-6 md:h-screen md:w-screen'}>
+			<div
+				className={
+					'flex size-full flex-col items-center justify-center p-[4%] md:w-2/5 md:items-baseline lg:p-32'
+				}>
 				<IconJumperLogo className={'min-h-10'} />
-				<div className={'mb-10 mt-4 w-[252px] md:w-[400px]'}>
+				<div className={'mb-10 mt-4 w-full'}>
 					<Image
 						src={'/logo.png'}
 						alt={'Wrapped'}
 						width={460}
 						height={320}
-						className={'xl:w-[660px]'}
 					/>
 				</div>
 
-				<div className={'flex flex-col gap-2'}>
+				<StatOwner
+					address={profile}
+					className={'mb-6'}
+				/>
+				<div className={'mb-6 flex w-full flex-col items-center md:hidden'}>
+					<DivaCardCard
+						width={300}
+						tokens={['Wrapped', 'Wrapped', 'Wrapped']}
+						topRatio={0.5}
+					/>
+				</div>
+
+				<div className={'flex w-full flex-col justify-between gap-2'}>
 					{stats.map((stat, index) => (
 						<div
 							key={index}
 							className={'flex justify-between gap-2 text-xl font-medium leading-[24px]'}>
-							<p className={'text-base  font-medium text-white'}>
+							<p className={'font-medium text-white'}>
 								{stat.title}
 								{':'}
 							</p>
-							<p className={'text-base font-medium text-white'}>{stat.value}</p>
+							<p className={'font-medium text-white'}>{stat.value}</p>
 						</div>
 					))}
 				</div>
 
-				<div className={'mt-10 flex flex-col gap-4'}>
+				<div className={'mt-10 flex w-full flex-col gap-4'}>
 					<Link href={'/'}>
 						<Button
 							className={'!w-full'}
@@ -90,18 +119,27 @@ export function SharedPage({profile}: {profile: string}): ReactElement {
 				</div>
 			</div>
 
-			<div className={'relative size-full w-3/5 justify-between overflow-hidden rounded-[64px]'}>
+			<div className={'relative hidden size-full w-3/5 justify-between overflow-hidden rounded-[64px] md:flex'}>
 				<PageBackgound
 					position={'bottom-right'}
 					showFrame={false}
 					className={'!left-[12%] !top-[52%]'}
 				/>
 				<div className={'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'}>
-					<StatCard
-						profile={profile}
-						stat={{name: 'Wrapped', description: '100'}}
-						isShareCard={false}
-					/>
+					<div className={'md:hidden lg:block'}>
+						<DivaCardCard
+							width={440}
+							tokens={['Wrapped', 'Wrapped', 'Wrapped']}
+							topRatio={0.5}
+						/>
+					</div>
+					<div className={'lg:hidden'}>
+						<DivaCardCard
+							width={350}
+							tokens={['Wrapped', 'Wrapped', 'Wrapped']}
+							topRatio={0.5}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

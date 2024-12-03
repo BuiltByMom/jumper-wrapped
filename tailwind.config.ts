@@ -44,6 +44,7 @@ export default {
 				}
 			},
 			screens: {
+				lg: '1300px',
 				xl: '2560px'
 			},
 			animation: {
