@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import {type ReactElement, useCallback} from 'react';
 
 import {cl} from '../utils/tools';
 import {Button} from './Button';
 
-import type {ReactElement} from 'react';
+const domain = 'https://jumper-wrap.builtby.dad';
 
 export function StatCard({
 	stat,
@@ -14,6 +14,13 @@ export function StatCard({
 	isShareCard?: boolean;
 	profile?: string;
 }): ReactElement {
+	const clickToTweet = useCallback(async () => {
+		window.open(
+			`https://twitter.com/intent/tweet?url=${domain}/${profile}?text=Check out my wrapped Jumper!`,
+			'_blank'
+		);
+	}, [profile]);
+
 	return isShareCard ? (
 		<div className={'relative z-40 rounded-[32px]'}>
 			<div
@@ -25,15 +32,14 @@ export function StatCard({
 				)}>
 				<p className={'text-3xl font-bold uppercase text-white'}>{stat.name}</p>
 			</div>
-			<Link href={`/wrapped?profile=${profile}`}>
-				<Button
-					className={cl(
-						'absolute bottom-[-25px] left-1/2 -translate-x-1/2',
-						'xl:bottom-[-32px] xl:!w-[320px] z-50 '
-					)}>
-					<p className={'text-2xl font-bold uppercase text-black xl:text-3xl'}>{'Share on X'}</p>
-				</Button>
-			</Link>
+			<Button
+				onClick={clickToTweet}
+				className={cl(
+					'absolute bottom-[-25px] left-1/2 -translate-x-1/2',
+					'xl:bottom-[-32px] xl:!w-[320px] z-50 '
+				)}>
+				<p className={'text-2xl font-bold uppercase text-black xl:text-3xl'}>{'Share on X'}</p>
+			</Button>
 		</div>
 	) : (
 		<div className={'relative z-40 overflow-hidden'}>

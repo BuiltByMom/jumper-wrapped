@@ -117,10 +117,21 @@ function SvgCircles({centerX, centerY, className, showFrame = false}: TSvgCircle
 	);
 }
 
-export function PageBackgound({position = 'center'}: {position?: 'center' | 'bottom-right'}): ReactElement {
+export function PageBackgound({
+	position = 'center',
+	showFrame = true,
+	className
+}: {
+	position?: 'center' | 'bottom-right';
+	showFrame?: boolean;
+	className?: string;
+}): ReactElement {
 	return (
 		<div
-			className={'absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden'}>
+			className={cl(
+				'absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden',
+				className
+			)}>
 			<div className={'absolute h-screen w-screen bg-violet-dark'} />
 
 			<div className={'xl:hidden'}>
@@ -133,7 +144,7 @@ export function PageBackgound({position = 'center'}: {position?: 'center' | 'bot
 							? 'left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2'
 							: 'bottom-0 right-0 -translate-y-[79px] translate-x-[24px]'
 					)}
-					showFrame={true}
+					showFrame={showFrame}
 				/>
 			</div>
 			<div className={'hidden xl:block'}>
