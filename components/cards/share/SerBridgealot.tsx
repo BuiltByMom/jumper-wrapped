@@ -6,7 +6,6 @@ import type {TCardProps} from './Card';
 type TSerBridgealotCardProps = Omit<TCardProps, 'children'> & {
 	volumeInUSD: number;
 	topRatio: number;
-	showShareButton?: boolean;
 };
 
 export default function SerBridgealotCard(props: TSerBridgealotCardProps): ReactElement {
