@@ -3,27 +3,25 @@ import Card from './Card';
 import type {ReactElement} from 'react';
 import type {TCardProps} from './Card';
 
-type TMultiChainCardProps = Omit<TCardProps, 'children'> & {
-	numberOfChains: number;
+type TDivaCardCardProps = Omit<TCardProps, 'children'> & {
+	tokens: string[];
 	topRatio: number;
 };
 
-export default function MultiChainCard(props: TMultiChainCardProps): ReactElement {
+export default function DivaCardCard(props: TDivaCardCardProps): ReactElement {
 	return (
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
-				<div className={'absolute top-[365px] px-6'}>
+				<div className={'absolute top-[276px] px-6'}>
 					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
-						{`You aped into ${props.numberOfChains} chains, flexing on ${props.topRatio.toFixed(
-							2
-						)}% of plebs! LFG!`}
+						{`You HODLed ${props.tokens[0]}, ${props.tokens[1]}, and ${props.tokens[2]}. Diamond hands for the diamond diva!`}
 					</p>
 				</div>
 			</div>
 
 			<div
 				className={'absolute inset-0 z-10 bg-cover bg-no-repeat'}
-				style={{backgroundImage: 'url(/cards/share/multichain.jpg)'}}
+				style={{backgroundImage: 'url(/cards/share/diva.jpg)'}}
 			/>
 		</Card>
 	);
