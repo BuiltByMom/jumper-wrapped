@@ -22,38 +22,42 @@ export function Carousel({
 	}, [profile]);
 
 	return (
-		<div className={'relative w-[800px] px-20 xl:w-[1200px]'}>
-			<CarouselContent className={'-ml-2 md:-ml-4'}>
-				{cards.map((_, index) => (
-					<CarouselItem
-						key={index}
-						className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
-						{index < cards.length - 1 ? (
-							<VolumeCard variant={'Green'}>
-								<div className={'flex flex-col gap-2'}>
-									<p className={'text-xl font-bold'}>{'Volume'}</p>
-									<p className={'text-sm font-medium'}>{'123,456'}</p>
-								</div>
-							</VolumeCard>
-						) : (
-							<div className={'relative'}>
-								<NoSleepCard
-									width={440}
-									timestamp={'1312312'}
-								/>
-								<div className={'absolute -bottom-6 left-1/2 -translate-x-1/2'}>
-									<Button
-										onClick={clickToTweet}
-										title={'Share on X'}
+		<div className={'relative'}>
+			<div className={'relative w-screen'}>
+				<CarouselContent className={'-ml-2 md:-ml-4'}>
+					{cards.map((_, index) => (
+						<CarouselItem
+							key={index}
+							className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
+							{index < cards.length - 1 ? (
+								<VolumeCard variant={'Green'}>
+									<div className={'flex flex-col gap-2'}>
+										<p className={'text-xl font-bold'}>{'Volume'}</p>
+										<p className={'text-sm font-medium'}>{'123,456'}</p>
+									</div>
+								</VolumeCard>
+							) : (
+								<div className={'relative'}>
+									<NoSleepCard
+										width={440}
+										timestamp={'1312312'}
 									/>
+									<div className={'absolute -bottom-6 left-1/2 -translate-x-1/2'}>
+										<Button
+											onClick={clickToTweet}
+											title={'Share on X'}
+										/>
+									</div>
 								</div>
-							</div>
-						)}
-					</CarouselItem>
-				))}
-			</CarouselContent>
-			<CarouselPrevious />
-			<CarouselNext />
+							)}
+						</CarouselItem>
+					))}
+				</CarouselContent>
+			</div>
+			<div className={'absolute inset-0 mx-auto w-[800px] px-20 xl:w-[1200px]'}>
+				<CarouselPrevious />
+				<CarouselNext />
+			</div>
 		</div>
 	);
 }
