@@ -3,11 +3,9 @@ import {useRouter} from 'next/router';
 
 import type {ReactElement} from 'react';
 
-import {Button} from '@/components/common/Button';
-import {ButtonArrow} from '@/components/common/ButtonArrow';
-import {IconArrow} from '@/components/icons/IconArrow';
+import {HomePage} from '@/components/Home';
 
-export default function Home(): ReactElement {
+export default function Index(): ReactElement {
 	const router = useRouter();
 	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? 'https://jumper-wrap.builtby.dad' : 'http://localhost:3000';
 	const version = router.query.version || '';
@@ -33,17 +31,7 @@ export default function Home(): ReactElement {
 					content={ogImageUrl}
 				/>
 			</Head>
-
-			<div>
-				<IconArrow className={'rotate-180 text-black'} />
-				<Button
-					isBusy={true}
-					title={'Button'}
-				/>
-				<Button title={'Button'} />
-				<ButtonArrow direction={'left'} />
-				<ButtonArrow direction={'right'} />
-			</div>
+			<HomePage />
 		</>
 	);
 }

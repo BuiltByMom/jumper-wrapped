@@ -1,20 +1,12 @@
-import {type ReactElement, useCallback} from 'react';
+import {type ReactElement} from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 
-import {Button} from '@/components/common/Button';
+import {SharedPage} from '@/components/SharedPage';
 
 const domain = 'https://jumper-wrap.builtby.dad';
 export default function Home({profile}: {profile: string}): ReactElement {
 	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? domain : 'http://localhost:3000';
 	const ogImageUrl = profile ? `${baseUrl}/api/og?profile=${profile}` : `${baseUrl}/og/og.jpg`;
-
-	const clickToTweet = useCallback(async () => {
-		window.open(
-			`https://twitter.com/intent/tweet?url=${domain}/${profile}?text=Check out my wrapped Jumper!`,
-			'_blank'
-		);
-	}, [profile]);
 
 	return (
 		<>
@@ -37,18 +29,7 @@ export default function Home({profile}: {profile: string}): ReactElement {
 				/>
 			</Head>
 
-			<div>{`Hello ${profile}`}</div>
-			<Image
-				src={ogImageUrl}
-				alt={'diva-wrap-bg'}
-				unoptimized
-				width={1200}
-				height={630}
-			/>
-			<Button
-				onClick={clickToTweet}
-				title={'Button'}
-			/>
+			<SharedPage profile={profile} />
 		</>
 	);
 }
