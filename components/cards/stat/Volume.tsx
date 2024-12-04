@@ -4,6 +4,7 @@ import {cl} from '@/components/utils/tools';
 
 export type TVolumeCardProps = {
 	volume: number;
+	position: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 const padsConfig = [
@@ -44,7 +45,6 @@ function VolumePads({value}: {value: string}): ReactElement {
 }
 
 export default function VolumeCard(props: TVolumeCardProps): ReactElement {
-	const raitingPercentage = 5;
 	const formattedVolume = useMemo(() => {
 		if (props.volume >= 100_000 && props.volume < 1_000_000) {
 			return `$${Math.floor(props.volume / 1_000)}k`;
@@ -61,7 +61,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 				<div className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Ur volume'}</b>
 					<p className={'font-space-grotesk text-2xl font-medium'}>
-						{`Putting you in the top ${raitingPercentage}%`}
+						{`Putting you in the top ${props.position}%`}
 					</p>
 				</div>
 

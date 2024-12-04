@@ -19,7 +19,15 @@ import {Header} from './common/Header';
 import {cl} from './utils/tools';
 
 const cards = [
-	{title: 'Card 1', component: <VolumeCard volume={34233} />},
+	{
+		title: 'Card 1',
+		component: (
+			<VolumeCard
+				volume={34233}
+				position={4}
+			/>
+		)
+	},
 	{
 		title: 'Card 2',
 		component: (

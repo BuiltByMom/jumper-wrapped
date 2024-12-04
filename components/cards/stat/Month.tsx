@@ -14,21 +14,6 @@ export const fontMonth = localFont({
 	style: 'normal'
 });
 
-export const monthMap = {
-	January: 'Jan',
-	February: 'Feb',
-	March: 'Mar',
-	April: 'Apr',
-	May: 'May',
-	June: 'Jun',
-	July: 'Jul',
-	August: 'Aug',
-	September: 'Sep',
-	October: 'Oct',
-	November: 'Nov',
-	December: 'Dec'
-} as const;
-
 export function MonthCard(props: TMonthCardProps): ReactElement {
 	return (
 		<div className={cl('relative flex aspect-[440/600] rounded-[32px] overflow-hidden w-[440px]', props.className)}>
@@ -39,7 +24,7 @@ export function MonthCard(props: TMonthCardProps): ReactElement {
 							'text-[320px] font-bold uppercase leading-[200px] text-[#00FFB2]',
 							fontMonth.className
 						)}>
-						{monthMap[props.month as keyof typeof monthMap]}
+						{props.month.slice(0, 3)}
 					</p>
 				</div>
 				<div className={'absolute top-1/4 -translate-y-1/4'}>

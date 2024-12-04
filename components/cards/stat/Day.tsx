@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import {fontMonth, monthMap} from './Month';
+import {fontMonth} from './Month';
 
 import type {HTMLAttributes, ReactElement} from 'react';
 
@@ -18,7 +18,7 @@ export default function DayCard(props: TDayCardProps): ReactElement {
 				className={
 					'absolute left-1/2 top-[32px] z-50 w-[392px] -translate-x-1/2 text-center text-[40px] font-bold uppercase leading-[40px]'
 				}>
-				{`On ${monthMap[props.month as keyof typeof monthMap]} ${props.day}, you went full ape mode.`}
+				{`On ${props.month.slice(0, 3)} ${props.day}, you went full ape mode.`}
 			</p>
 			<div className={'absolute left-1/2 top-[152px] z-50 h-[360px] w-[440px] -translate-x-1/2'}>
 				<p
@@ -26,7 +26,7 @@ export default function DayCard(props: TDayCardProps): ReactElement {
 						'absolute left-1/2 top-[60px] z-50 -translate-x-1/2 text-center text-[48px] font-bold uppercase leading-[48px] text-[#0064FF]',
 						fontMonth.className
 					)}>
-					{monthMap[props.month as keyof typeof monthMap]}
+					{props.month.slice(0, 3)}
 				</p>
 				<p
 					className={cl(
