@@ -18,7 +18,7 @@ export function Header({
 }: {
 	set_isWalletSelectorOpen: (value: boolean) => void;
 	isCarouselView?: boolean;
-	cardsAmount?: number;
+	cardsAmount: number;
 }): ReactElement {
 	const account = useWallet();
 	const {isConnected} = useAccount();
@@ -29,6 +29,11 @@ export function Header({
 			className={
 				'absolute left-0 top-0 z-20 flex w-full items-center justify-between p-6 md:bg-violet-light xl:p-16'
 			}>
+			<div
+				className={
+					'absolute left-0 top-0 -z-10 size-full bg-gradient-to-b from-[#000000] to-transparent md:hidden'
+				}
+			/>
 			<Link
 				href={'https://jumper.exchange'}
 				target={'_blank'}>

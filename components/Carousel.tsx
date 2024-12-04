@@ -38,16 +38,19 @@ export function Carousel({
 					].map((_, index) => (
 						<CarouselItem
 							key={index}
-							className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
+							className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 							{index < cards.length ? (
 								<>{cards[index].component}</>
 							) : (
-								<div className={'relative'}>
+								<div className={'relative max-sm:mb-40'}>
 									<NoSleepCard
 										width={440}
 										timestamp={'1312312'}
 									/>
-									<div className={'absolute -bottom-6 left-1/2 z-50 -translate-x-1/2'}>
+									<div
+										className={
+											'absolute left-1/2 z-50 -translate-x-1/2 max-sm:bottom-12 md:-bottom-6'
+										}>
 										<Button
 											onClick={clickToTweet}
 											title={'Share on X'}
@@ -59,7 +62,7 @@ export function Carousel({
 					))}
 				</CarouselContent>
 			</div>
-			<div className={'absolute inset-0 mx-auto w-[800px] px-20 xl:w-[1200px]'}>
+			<div className={'absolute inset-0 mx-auto w-screen px-20 md:w-[800px] xl:w-[1200px]'}>
 				<CarouselPrevious />
 				<CarouselNext />
 			</div>

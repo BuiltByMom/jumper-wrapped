@@ -1,5 +1,7 @@
 import {type HTMLAttributes, type ReactElement, useMemo} from 'react';
 
+import {Card} from './Card';
+
 import {cl} from '@/components/utils/tools';
 
 export type TVolumeCardProps = {
@@ -56,8 +58,13 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 	}, [props.volume]);
 
 	return (
-		<div className={cl('relative flex aspect-[440/600] rounded-[32px] overflow-hidden w-[440px]', props.className)}>
-			<div className={'relative z-50 flex size-full flex-col items-center p-6'}>
+		<Card
+			{...props}
+			backgroundImage={`url(/cards/stat/backgroundVolume${props.position <= 50 ? 'Green' : 'Purple'}.jpg)`}
+			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeMobile${
+				props.position <= 50 ? 'Green' : 'Purple'
+			}.jpg)`}>
+			<>
 				<div className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Ur volume'}</b>
 					<p className={'font-space-grotesk text-2xl font-medium'}>
@@ -72,13 +79,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 						{'Which makes you a bit of a chad, LFG.'}
 					</p>
 				</div>
-			</div>
-			<div
-				className={'absolute inset-0 z-10 bg-cover bg-no-repeat'}
-				style={{
-					backgroundImage: `url(/cards/stat/backgroundVolume${props.position <= 50 ? 'Green' : 'Purple'}.jpg)`
-				}}
-			/>
-		</div>
+			</>
+		</Card>
 	);
 }

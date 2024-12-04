@@ -206,13 +206,22 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.Compon
 		const {scrollPrev, canScrollPrev} = useCarousel();
 
 		return (
-			<ButtonArrow
-				onClick={scrollPrev}
-				disabled={!canScrollPrev}
-				className={cl('absolute z-30 top-1/2 -translate-y-1/2', '-left-16', className)}
-				direction={'left'}
-				{...props}
-			/>
+			<>
+				<div className={'hidden md:block'}>
+					<ButtonArrow
+						onClick={scrollPrev}
+						disabled={!canScrollPrev}
+						className={cl('flex absolute z-30 top-1/2 -translate-y-1/2', '-left-16', className)}
+						direction={'left'}
+						{...props}
+					/>
+				</div>
+				<button
+					className={'screen absolute left-0 top-[96px] z-[1000] h-[calc(100vh-96px)] w-[50vw] md:hidden'}
+					onClick={scrollPrev}
+					disabled={!canScrollPrev}
+				/>
+			</>
 		);
 	}
 );
@@ -223,13 +232,22 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentP
 		const {scrollNext, canScrollNext} = useCarousel();
 
 		return (
-			<ButtonArrow
-				onClick={scrollNext}
-				disabled={!canScrollNext}
-				className={cl('absolute z-30 top-1/2 -translate-y-1/2', '-right-16', className)}
-				direction={'right'}
-				{...props}
-			/>
+			<>
+				<div className={'hidden md:block'}>
+					<ButtonArrow
+						onClick={scrollNext}
+						disabled={!canScrollNext}
+						className={cl('hidden md:flex absolute z-30 top-1/2 -translate-y-1/2', '-right-16', className)}
+						direction={'right'}
+						{...props}
+					/>
+				</div>
+				<button
+					className={'screen absolute right-0 top-[96px] z-[1000] h-[calc(100vh-96px)] w-[50vw] md:hidden'}
+					onClick={scrollNext}
+					disabled={!canScrollNext}
+				/>
+			</>
 		);
 	}
 );
@@ -265,7 +283,7 @@ export const CarouselDots = React.forwardRef<
 				api.scrollNext();
 				set_isAnimating(true);
 			}
-		}, 10000);
+		}, 50000);
 
 		return () => clearTimeout(timer);
 	}, [api, selectedIndex, totalSlides, isComplete, set_isComplete]);
@@ -288,7 +306,10 @@ export const CarouselDots = React.forwardRef<
 	return (
 		<div
 			ref={ref}
-			className={cl('absolute top-[-40px] left-0 right-0 flex justify-center gap-2 h-10 items-center', className)}
+			className={cl(
+				'absolute md:top-[-40px] z-50 left-0 right-0 flex justify-center gap-2 h-10 items-center',
+				className
+			)}
 			{...props}>
 			{Array.from({length: totalSlides}).map((_, index) => (
 				<div
@@ -306,7 +327,7 @@ export const CarouselDots = React.forwardRef<
 								'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
 								index === selectedIndex
 									? cl(
-											'transition-all duration-[10000ms] ease-linear',
+											'transition-all duration-[50000ms] ease-linear',
 											isAnimating ? 'w-full' : 'w-0'
 									  )
 									: 'w-0'

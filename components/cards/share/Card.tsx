@@ -11,7 +11,7 @@ export default function Card(props: TCardProps): ReactElement {
 	const {width} = props;
 
 	return (
-		<div className={'w-auto'}>
+		<div className={'w-auto scale-75 md:scale-100'}>
 			<div
 				style={{transform: `scale(${width / 440})`, width: 440}}
 				className={cl(

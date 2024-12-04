@@ -1,6 +1,8 @@
 import {type HTMLAttributes, type ReactElement, useMemo} from 'react';
 import localFont from 'next/font/local';
 
+import {Card} from './Card';
+
 import {cl} from '@/components/utils/tools';
 
 const fontTime = localFont({
@@ -33,8 +35,15 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 	}, [timestamp]);
 
 	return (
-		<div className={cl('relative flex aspect-[440/600] rounded-[32px] overflow-hidden w-[440px]', props.className)}>
-			<div className={'relative z-50 flex size-full flex-col items-center p-6'}>
+		<Card
+			{...props}
+			backgroundImage={`url(/cards/stat/${
+				dayOrNight === 'NIGHT' ? 'backgroundTimeNight' : 'backgroundTimeDay'
+			}.jpg)`}
+			mobileBackgroundImage={`url(/cards/stat/${
+				dayOrNight === 'NIGHT' ? 'backgroundTimeNightMobile' : 'backgroundTimeDayMobile'
+			}.jpg)`}>
+			<>
 				<div className={'flex flex-col gap-2 pb-6 pt-2 text-center text-white'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
 						{'Wen trade?'}
@@ -44,7 +53,7 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 
 				<div
 					className={cl(
-						'relative',
+						'relative w-[320px] md:w-[392px]',
 						'flex aspect-[392/192] w-full items-center justify-center rounded-2xl border-8',
 						'border-[#7AFFB2] text-[#009E5C]'
 					)}
@@ -55,7 +64,7 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 					<div className={'flex flex-col items-center'}>
 						<b
 							className={cl(
-								'text-center text-[160px] font-bold leading-[144px] tabular-nums tracking-wider',
+								'text-center text-[120px] md:text-[160px] leading-[120px] md:leading-[144px] font-bold tabular-nums tracking-wider',
 								fontTime.className
 							)}>
 							{time}
@@ -67,20 +76,12 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 					</div>
 				</div>
 
-				<div className={'mt-auto flex items-center justify-center pt-6 text-center'}>
+				<div className={'mt-20 flex items-center justify-center pt-6 text-center'}>
 					<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-white'}>
 						{'Chasing gains, sniping bags or trawling pump.fun?'}
 					</p>
 				</div>
-			</div>
-			<div
-				className={'absolute inset-0 z-10 bg-cover bg-no-repeat'}
-				style={{
-					backgroundImage: `url(/cards/stat/${
-						dayOrNight === 'NIGHT' ? 'backgroundTimeNight' : 'backgroundTimeDay'
-					}.jpg)`
-				}}
-			/>
-		</div>
+			</>
+		</Card>
 	);
 }
