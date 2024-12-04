@@ -11,16 +11,32 @@ import {JumperPopup} from './JumperPopup';
 import {NextYearButton} from './NextYearButton';
 import {WalletSelector} from './WalletSelector';
 import {WrappedButton} from './WrappedButton';
+import DayCard from './cards/stat/Day';
+import {MonthCard} from './cards/stat/Month';
+import TimeCard from './cards/stat/Time';
+import VolumeCard from './cards/stat/Volume';
 import {Header} from './common/Header';
 import {cl} from './utils/tools';
 
 const cards = [
-	{title: 'Card 1', description: 'kek'},
-	{title: 'Card 2', description: 'kek'},
-	{title: 'Card 3', description: 'kek'},
-	{title: 'Card 4', description: 'kek'},
-	{title: 'Card 5', description: 'kek'},
-	{title: 'Card 6', description: 'kek'}
+	{title: 'Card 1', component: <VolumeCard volume={34233} />},
+	{
+		title: 'Card 2',
+		component: (
+			<DayCard
+				day={'12'}
+				month={'December'}
+			/>
+		)
+	},
+	{
+		title: 'Card 3',
+		component: <TimeCard timestamp={'13312312'} />
+	},
+	{
+		title: 'Card 4',
+		component: <MonthCard month={'March'} />
+	}
 ];
 
 const wiggleAnimation = {
@@ -69,6 +85,7 @@ export function HomePage(): ReactElement {
 				<Header
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 					isCarouselView={view === 'carousel'}
+					cardsAmount={cards.length + 1}
 				/>
 				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
 

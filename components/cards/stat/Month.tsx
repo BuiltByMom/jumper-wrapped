@@ -48,9 +48,10 @@ export function MonthCard(props: TMonthCardProps): ReactElement {
 					</p>
 				</div>
 
-				<div className={'absolute bottom-[71px] left-1/2 w-[380px] -translate-x-1/2 text-center'}>
+				<div className={'absolute bottom-[24px] left-1/2 w-[392px] -translate-x-1/2 text-center'}>
 					<p className={'text-2xl font-bold leading-[40px] text-white'}>
-						{"was your crypto marathon. Who needs sleep when you're chasing gains?"}
+						<span className={'uppercase'}>{props.month}</span>
+						{" was your crypto marathon. Who needs sleep when you're chasing gains?"}
 					</p>
 				</div>
 			</div>

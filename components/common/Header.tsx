@@ -13,10 +13,12 @@ import {IconJumperSmall} from '../icons/IconJumperSmall';
 
 export function Header({
 	set_isWalletSelectorOpen,
-	isCarouselView
+	isCarouselView,
+	cardsAmount
 }: {
 	set_isWalletSelectorOpen: (value: boolean) => void;
 	isCarouselView?: boolean;
+	cardsAmount?: number;
 }): ReactElement {
 	const account = useWallet();
 	const {isConnected} = useAccount();
@@ -40,7 +42,7 @@ export function Header({
 			{router.pathname !== '/404' && isCarouselView && (
 				<CarouselDots
 					className={'!static'}
-					arrayLength={6}
+					arrayLength={cardsAmount}
 				/>
 			)}
 

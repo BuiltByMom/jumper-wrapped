@@ -2,7 +2,6 @@ import {type ReactElement, useCallback} from 'react';
 
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from './carouselContext';
 import NoSleepCard from './cards/share/NoSleep';
-import DayCard from './cards/stat/Day';
 import {Button} from './common/Button';
 
 const domain = 'https://jumper-wrap.builtby.dad';
@@ -11,7 +10,7 @@ export function Carousel({
 	cards,
 	profile
 }: {
-	cards: {title: string; description: string}[];
+	cards: {title: string; component: ReactElement}[];
 	profile?: string;
 }): ReactElement {
 	const clickToTweet = useCallback(async () => {
@@ -25,22 +24,30 @@ export function Carousel({
 		<div className={'relative'}>
 			<div className={'relative w-screen'}>
 				<CarouselContent className={'-ml-2 md:-ml-4'}>
-					{cards.map((_, index) => (
+					{[
+						...cards,
+						{
+							title: 'Card 5',
+							component: (
+								<NoSleepCard
+									width={440}
+									timestamp={'121121212'}
+								/>
+							)
+						}
+					].map((_, index) => (
 						<CarouselItem
 							key={index}
 							className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
-							{index < cards.length - 1 ? (
-								<DayCard
-									month={'May'}
-									day={'10'}
-								/>
+							{index < cards.length ? (
+								<>{cards[index].component}</>
 							) : (
 								<div className={'relative'}>
 									<NoSleepCard
 										width={440}
 										timestamp={'1312312'}
 									/>
-									<div className={'absolute -bottom-6 left-1/2 -translate-x-1/2'}>
+									<div className={'absolute -bottom-6 left-1/2 z-50 -translate-x-1/2'}>
 										<Button
 											onClick={clickToTweet}
 											title={'Share on X'}

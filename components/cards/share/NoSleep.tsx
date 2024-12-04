@@ -25,7 +25,7 @@ export default function NoSleepCard(props: TNoSleepCardProps): ReactElement {
 	return (
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
-				<div className={'absolute top-[507px] px-6'}>
+				<div className={'absolute bottom-[48px] px-6'}>
 					<p className={'font-space-grotesk text-center text-xl font-medium text-[#02693E]'}>
 						{`Trading at ${time} ${amOrPm} while normies catch Z's. NGMI? Not you!`}
 					</p>
