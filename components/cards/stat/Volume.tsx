@@ -76,9 +76,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 			<div
 				className={'absolute inset-0 z-10 bg-cover bg-no-repeat'}
 				style={{
-					backgroundImage: `url(/cards/stat/backgroundVolume${
-						props.volume < 1_000_000 ? 'Green' : 'Purple'
-					}.jpg)`
+					backgroundImage: `url(/cards/stat/backgroundVolume${props.position <= 50 ? 'Green' : 'Purple'}.jpg)`
 				}}
 			/>
 		</div>
