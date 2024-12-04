@@ -2,7 +2,7 @@ import {type ReactElement, useCallback} from 'react';
 
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from './carouselContext';
 import NoSleepCard from './cards/share/NoSleep';
-import {MonthCard} from './cards/stat/Month';
+import DayCard from './cards/stat/Day';
 import {Button} from './common/Button';
 
 const domain = 'https://jumper-wrap.builtby.dad';
@@ -30,7 +30,10 @@ export function Carousel({
 							key={index}
 							className={'h-[655px] w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 							{index < cards.length - 1 ? (
-								<MonthCard month={'October'} />
+								<DayCard
+									month={'May'}
+									day={'10'}
+								/>
 							) : (
 								<div className={'relative'}>
 									<NoSleepCard

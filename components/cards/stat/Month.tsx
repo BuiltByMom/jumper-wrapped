@@ -8,13 +8,13 @@ export type TMonthCardProps = {
 	month: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-const fontMonth = localFont({
+export const fontMonth = localFont({
 	src: '../../../public/fonts/Thunder-BoldLC.otf',
 	weight: '700',
 	style: 'normal'
 });
 
-const monthMap = {
+export const monthMap = {
 	January: 'Jan',
 	February: 'Feb',
 	March: 'Mar',
