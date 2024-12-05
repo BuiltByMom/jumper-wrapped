@@ -52,7 +52,7 @@ const copyAnimation = {
 	}
 };
 
-export default function TimeCard({hour, ...props}: TTimeCardProps): ReactElement {
+export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactElement {
 	const [time, amOrPm, dayOrNight] = useMemo((): [string, string, string] => {
 		// Convert UTC hour to local hour
 		const date = new Date();

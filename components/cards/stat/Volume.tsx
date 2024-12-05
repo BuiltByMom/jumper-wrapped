@@ -112,9 +112,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 					animate={'animate'}
 					className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Ur volume'}</b>
-					<p className={'font-space-grotesk text-2xl font-medium'}>
-						{`Putting you in the top ${props.percentile}%`}
-					</p>
+					<p className={'font-space-grotesk text-2xl font-medium'}>{'Whao, all this?!'}</p>
 				</motion.div>
 
 				<motion.div

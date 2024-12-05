@@ -53,7 +53,7 @@ const copyAnimation = {
 	}
 };
 
-export function MonthCard(props: TMonthCardProps): ReactElement {
+export default function MonthCard(props: TMonthCardProps): ReactElement {
 	return (
 		<Card
 			{...props}

@@ -2,9 +2,9 @@ import PlaceholderCard from '../cards/stat/Placeholder';
 
 import type {ReactElement} from 'react';
 
-import DayCard from '@/components/cards/stat/Day';
-import {MonthCard} from '@/components/cards/stat/Month';
-import TimeCard from '@/components/cards/stat/Time';
+import DayOfYearCard from '@/components/cards/stat/DayOfYear';
+import MonthCard from '@/components/cards/stat/Month';
+import TimeOfDayCard from '@/components/cards/stat/TimeOfDay';
 import VolumeCard from '@/components/cards/stat/Volume';
 
 /************************************************************************************************
@@ -82,13 +82,13 @@ export const CARD_COMPONENTS: {
 			percentile={percentile}
 		/>
 	),
-	BusiestHour: hour => <TimeCard hour={hour} />,
+	BusiestHour: hour => <TimeOfDayCard hour={hour} />,
 	ChainsExplored: ({chainsExplored}) => <PlaceholderCard volume={chainsExplored} />,
 	FavoriteToken: ({volume}) => <PlaceholderCard volume={volume} />,
 	BelovedChain: ({volume}) => <PlaceholderCard volume={volume} />,
 	TopBridgeChain: ({count}) => <PlaceholderCard volume={count} />,
 	JumperWash: () => <PlaceholderCard volume={0} />, // Need specific component
-	BusiestDay: dayOfYear => <DayCard dayOfYear={dayOfYear} />,
+	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
 	BusiestWeekday: weekday => <PlaceholderCard day={weekday} />
 };

@@ -48,7 +48,7 @@ const copyAnimation = {
 	}
 };
 
-export default function DayCard({dayOfYear, ...props}: TDayCardProps): ReactElement {
+export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): ReactElement {
 	const date = new Date(2024, 0, 1); // Start with January 1, 2024
 	date.setDate(Number(dayOfYear)); // Add days
 	const day = date.getDate().toString();
