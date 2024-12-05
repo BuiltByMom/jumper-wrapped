@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, useCarousel} from './carouselContext';
-import DegenElderCard from './cards/share/DegenElderCard';
+import DegenElderCard from './cards/profiles/DegenElderCard';
 import {Button} from './common/Button';
 import {getCardComponent, type TCardData} from './utils/cards';
 

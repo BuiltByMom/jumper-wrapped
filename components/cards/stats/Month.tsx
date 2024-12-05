@@ -20,8 +20,8 @@ export default function MonthCard({month, ...props}: TMonthCardProps): ReactElem
 	return (
 		<Card
 			{...props}
-			backgroundImage={'url(/cards/stat/backgroundMonth.jpg)'}
-			mobileBackgroundImage={'url(/cards/stat/backgroundMonthMobile.jpg)'}>
+			backgroundImage={'url(/cards/stats/backgroundMonth.jpg)'}
+			mobileBackgroundImage={'url(/cards/stats/backgroundMonthMobile.jpg)'}>
 			<CardTitle className={'absolute top-28 max-sm:top-36'}>
 				<p
 					className={cl(

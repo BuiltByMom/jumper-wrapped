@@ -24,8 +24,8 @@ export default function PlaceholderCard({
 	return (
 		<Card
 			{...props}
-			backgroundImage={'url(/cards/stat/backgroundDay.jpg)'}
-			mobileBackgroundImage={'url(/cards/stat/backgroundDayMobile.jpg)'}>
+			backgroundImage={'url(/cards/stats/backgroundDay.jpg)'}
+			mobileBackgroundImage={'url(/cards/stats/backgroundDayMobile.jpg)'}>
 			<CardTitle className={'text-white'}>
 				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{title}</b>
 			</CardTitle>

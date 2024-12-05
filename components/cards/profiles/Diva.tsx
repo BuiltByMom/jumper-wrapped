@@ -21,7 +21,7 @@ export default function DivaCardCard(props: TDivaCardCardProps): ReactElement {
 
 			<div
 				className={'absolute inset-0 z-10 bg-cover bg-no-repeat'}
-				style={{backgroundImage: 'url(/cards/share/diva.jpg)'}}
+				style={{backgroundImage: 'url(/cards/profiles/diva.jpg)'}}
 			/>
 		</Card>
 	);

@@ -18,8 +18,8 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 	return (
 		<Card
 			{...props}
-			backgroundImage={'url(/cards/stat/backgroundBelovedChain.jpg)'}
-			mobileBackgroundImage={'url(/cards/stat/backgroundBelovedChainMobile.jpg)'}>
+			backgroundImage={'url(/cards/stats/backgroundBelovedChain.jpg)'}
+			mobileBackgroundImage={'url(/cards/stats/backgroundBelovedChainMobile.jpg)'}>
 			<CardTitle className={'text-white'}>
 				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
 					{`Just can't quit ${chainName}, huh?`}

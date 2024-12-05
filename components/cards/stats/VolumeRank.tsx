@@ -24,8 +24,8 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 	return (
 		<Card
 			{...props}
-			backgroundImage={`url(/cards/stat/backgroundVolumeRank${cardVariant}.jpg)`}
-			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeRankMobile${cardVariant}.jpg)`}>
+			backgroundImage={`url(/cards/stats/backgroundVolumeRank${cardVariant}.jpg)`}
+			mobileBackgroundImage={`url(/cards/stats/backgroundVolumeRankMobile${cardVariant}.jpg)`}>
 			<CardTitle>
 				<b
 					className={cl(

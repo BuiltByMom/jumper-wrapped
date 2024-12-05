@@ -34,8 +34,8 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 	return (
 		<Card
 			{...props}
-			backgroundImage={'url(/cards/stat/backgroundDay.jpg)'}
-			mobileBackgroundImage={'url(/cards/stat/backgroundDayMobile.jpg)'}>
+			backgroundImage={'url(/cards/stats/backgroundDay.jpg)'}
+			mobileBackgroundImage={'url(/cards/stats/backgroundDayMobile.jpg)'}>
 			<CardTitle>
 				<p className={'z-50 w-[392px] text-center text-[40px] font-bold uppercase leading-[40px]'}>
 					{'On this day you went full ape mode.'}
@@ -44,7 +44,7 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 
 			<CardContent className={'relative z-50 h-[360px] w-[440px]'}>
 				<Image
-					src={'/cards/stat/dayBox.png'}
+					src={'/cards/stats/dayBox.png'}
 					alt={'backgroundDay'}
 					width={616}
 					height={616}

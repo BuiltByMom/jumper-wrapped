@@ -23,10 +23,10 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 	return (
 		<Card
 			{...props}
-			backgroundImage={`url(/cards/stat/${
+			backgroundImage={`url(/cards/stats/${
 				dayOrNight === 'NIGHT' ? 'backgroundTimeNight' : 'backgroundTimeDay'
 			}.jpg)`}
-			mobileBackgroundImage={`url(/cards/stat/${
+			mobileBackgroundImage={`url(/cards/stats/${
 				dayOrNight === 'NIGHT' ? 'backgroundTimeNightMobile' : 'backgroundTimeDayMobile'
 			}.jpg)`}>
 			<CardTitle className={'text-white'}>

@@ -33,7 +33,7 @@ export default function NoSleepCard(props: TNoSleepCardProps): ReactElement {
 			</div>
 			<div
 				className={'absolute inset-0 z-10 bg-cover bg-no-repeat'}
-				style={{backgroundImage: 'url(/cards/share/no-sleep.jpg)'}}
+				style={{backgroundImage: 'url(/cards/profiles/no-sleep.jpg)'}}
 			/>
 		</Card>
 	);

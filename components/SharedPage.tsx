@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import {PageBackgound} from './Backgrounds';
-import DivaCardCard from './cards/share/Diva';
+import DivaCardCard from './cards/profiles/Diva';
 import {Button} from './common/Button';
 import {IconJumperLogo} from './icons/IconJumperLogo';
 import {cl} from './utils/tools';

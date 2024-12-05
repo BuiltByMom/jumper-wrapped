@@ -45,8 +45,8 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 	return (
 		<Card
 			{...props}
-			backgroundImage={`url(/cards/stat/backgroundVolume${cardVariant}.jpg)`}
-			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeMobile${cardVariant}.jpg)`}>
+			backgroundImage={`url(/cards/stats/backgroundVolume${cardVariant}.jpg)`}
+			mobileBackgroundImage={`url(/cards/stats/backgroundVolumeMobile${cardVariant}.jpg)`}>
 			<CardTitle>
 				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
 					{`${props.kind === 'swap' ? 'Ur Swap Volume' : 'Ur Bridge Volume'}`}

@@ -1,7 +1,7 @@
 import type {ReactElement} from 'react';
 
-import DivaCardCard from '@/components/cards/share/Diva';
-import SerBridgealotCard from '@/components/cards/share/SerBridgealot';
+import DivaCardCard from '@/components/cards/profiles/Diva';
+import SerBridgealotCard from '@/components/cards/profiles/SerBridgealot';
 import {CARD_COMPONENTS} from '@/components/utils/cards';
 
 export default function Index(): ReactElement {

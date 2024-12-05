@@ -1,13 +1,13 @@
-import PlaceholderCard from '../cards/stat/Placeholder';
-import TopBridgeChain from '../cards/stat/TopBridgeChain';
-import VolumeRankCard from '../cards/stat/VolumeRank';
+import PlaceholderCard from '../cards/stats/Placeholder';
+import TopBridgeChain from '../cards/stats/TopBridgeChain';
+import VolumeRankCard from '../cards/stats/VolumeRank';
 
 import type {ReactElement} from 'react';
 
-import DayOfYearCard from '@/components/cards/stat/DayOfYear';
-import MonthCard from '@/components/cards/stat/Month';
-import TimeOfDayCard from '@/components/cards/stat/TimeOfDay';
-import VolumeCard from '@/components/cards/stat/Volume';
+import DayOfYearCard from '@/components/cards/stats/DayOfYear';
+import MonthCard from '@/components/cards/stats/Month';
+import TimeOfDayCard from '@/components/cards/stats/TimeOfDay';
+import VolumeCard from '@/components/cards/stats/Volume';
 
 /************************************************************************************************
  * Card Types Definition
