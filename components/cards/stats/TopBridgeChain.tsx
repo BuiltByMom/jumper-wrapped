@@ -26,7 +26,8 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 				</b>
 			</CardTitle>
 
-			<CardContent className={'relative mt-auto flex aspect-square w-[208px] items-center justify-center pt-2'}>
+			<CardContent
+				className={'relative mt-[120px] flex aspect-square w-[208px] items-center justify-center md:mt-auto'}>
 				<Image
 					className={chainName === 'solana' ? 'size-[180px]' : 'size-[208px] rounded-full'}
 					src={`/chains/${chainName}.svg`}
@@ -37,7 +38,7 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 				/>
 			</CardContent>
 
-			<CardCopy>
+			<CardCopy className={'mt-28 md:mt-auto'}>
 				<p className={'font-space-grotesk text-2xl font-medium text-white'}>
 					{'True degen romance right there.'}
 				</p>
