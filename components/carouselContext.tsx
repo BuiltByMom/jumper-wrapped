@@ -335,7 +335,7 @@ export const CarouselDots = React.forwardRef<
 							className={cl(
 								'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
 								index === selectedIndex
-									? cl('transition-all duration-[150s] ease-linear', isAnimating ? 'w-full' : 'w-0')
+									? cl('transition-all duration-[15s] ease-linear', isAnimating ? 'w-full' : 'w-0')
 									: 'w-0'
 							)}
 							onTransitionEnd={() => {
@@ -412,7 +412,7 @@ export const MobileCarouselDots = React.forwardRef<
 							className={cl(
 								'absolute top-0 left-0 rounded-[4px] h-full bg-white',
 								index === selectedIndex
-									? cl('transition-all duration-[150s] linear', isAnimating ? 'w-full' : 'w-0')
+									? cl('transition-all duration-[15s] linear', isAnimating ? 'w-full' : 'w-0')
 									: 'w-0'
 							)}
 							onTransitionEnd={() => {
