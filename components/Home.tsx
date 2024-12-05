@@ -44,12 +44,12 @@ const greetingsAnimation = {
 export function HomePage(): ReactElement {
 	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
 	const [view, set_view] = useState<'greetings' | 'carousel'>('greetings');
-	const [cards, set_cards] = useState<TCardData[]>([]);
+	const [cards, set_cards] = useState<TCardData[] | undefined>(undefined);
 
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
 	const router = useRouter();
-	const isNotEnoughData = cards.length === 0;
+	const isNotEnoughData = cards && cards.length === 0;
 
 	/**********************************************************************************************
 	 * Redirect to home if user is not connected
@@ -75,23 +75,13 @@ export function HomePage(): ReactElement {
 				<Header
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 					isCarouselView={view === 'carousel'}
-					cardsAmount={cards.length}
+					cardsAmount={cards?.length || 0}
 				/>
 				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
 
 				<AnimatePresence
 					mode={'wait'}
 					initial={true}>
-					{isNotEnoughData && (
-						<motion.div
-							key={'no-data-section'}
-							initial={{opacity: 0, scale: 0.9}}
-							animate={{opacity: 1, scale: 1}}
-							exit={{opacity: 0, scale: 0.8}}
-							transition={{duration: 1}}>
-							<NextYearButton />
-						</motion.div>
-					)}
 					{!isNotEnoughData && view === 'greetings' && (
 						<motion.div
 							key={'greetings-section'}
@@ -116,10 +106,21 @@ export function HomePage(): ReactElement {
 								{isLastSlide ? <JumperPopup /> : null}
 								<Carousel
 									profile={account.publicKey?.toString() || address}
-									cards={cards}
+									cards={cards || []}
 								/>
 							</div>
 						</div>
+					)}
+
+					{isNotEnoughData && (
+						<motion.div
+							key={'no-data-section'}
+							initial={{opacity: 0, scale: 0.9}}
+							animate={{opacity: 1, scale: 1}}
+							exit={{opacity: 0, scale: 0.8}}
+							transition={{duration: 1}}>
+							<NextYearButton />
+						</motion.div>
 					)}
 				</AnimatePresence>
 			</div>
