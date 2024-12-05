@@ -261,6 +261,7 @@ export const CarouselDots = React.forwardRef<
 	const slideCount = api?.scrollSnapList().length || 0;
 	const [isAnimating, set_isAnimating] = React.useState(false);
 	const totalSlides = arrayLength || slideCount;
+	const duration = 15 * 1000;
 
 	// Start animation on mount
 	React.useEffect(() => {
@@ -283,10 +284,10 @@ export const CarouselDots = React.forwardRef<
 				api.scrollNext();
 				set_isAnimating(true);
 			}
-		}, 50000);
+		}, duration);
 
 		return () => clearTimeout(timer);
-	}, [api, selectedIndex, totalSlides, isComplete, set_isComplete]);
+	}, [api, selectedIndex, totalSlides, isComplete, set_isComplete, duration]);
 
 	const handleDotClick = (index: number): void => {
 		if (!api) {
@@ -320,16 +321,13 @@ export const CarouselDots = React.forwardRef<
 						className={cl(
 							'relative h-[5px] md:w-10 lg:w-20 xl:h-[8px] xl:w-24',
 							'group-hover:h-3 rounded-full transition-all duration-100',
-							'bg-[#ffffff1a]'
+							'bg-[#ffffff1a] overflow-hidden'
 						)}>
 						<div
 							className={cl(
 								'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
 								index === selectedIndex
-									? cl(
-											'transition-all duration-[50000ms] ease-linear',
-											isAnimating ? 'w-full' : 'w-0'
-									  )
+									? cl('transition-all duration-[15s] ease-linear', isAnimating ? 'w-full' : 'w-0')
 									: 'w-0'
 							)}
 							onTransitionEnd={() => {
