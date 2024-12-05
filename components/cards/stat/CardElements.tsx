@@ -16,7 +16,7 @@ export function CardTitle({children, className = ''}: {children: ReactNode; clas
 			variants={animations.title}
 			initial={'initial'}
 			animate={'animate'}
-			className={cl('flex flex-col gap-2 pb-6 pt-2 text-center', className)}>
+			className={cl('flex flex-col gap-2 text-center', className)}>
 			{children}
 		</motion.div>
 	);
@@ -43,7 +43,7 @@ export function CardCopy({children, className = ''}: {children: ReactNode; class
 			variants={animations.copy}
 			initial={'initial'}
 			animate={'animate'}
-			className={cl('mt-auto flex items-center justify-center pt-6 text-center', className)}>
+			className={cl('mt-auto flex items-center justify-center text-center', className)}>
 			{children}
 		</motion.div>
 	);
