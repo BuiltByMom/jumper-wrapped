@@ -2,10 +2,10 @@ import Image from 'next/image';
 import {motion} from 'framer-motion';
 
 import {Card} from './Card';
-import {fontMonth} from './Month';
 
 import type {HTMLAttributes, ReactElement} from 'react';
 
+import {fontThunder} from '@/components/utils/fonts';
 import {cl} from '@/components/utils/tools';
 
 type TDayCardProps = {
@@ -85,14 +85,14 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 							'absolute left-1/2 top-[60px] z-50 -translate-x-1/2',
 							'text-center text-[48px] font-bold uppercase leading-[48px]',
 							'text-[#0064FF]',
-							fontMonth.className
+							fontThunder.className
 						)}>
 						{month.slice(0, 3)}
 					</p>
 					<p
 						className={cl(
 							'absolute left-1/2 top-[130px] z-50 -translate-x-1/2 text-center text-[192px] font-bold uppercase leading-[192px]',
-							fontMonth.className
+							fontThunder.className
 						)}>
 						{day}
 					</p>

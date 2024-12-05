@@ -1,4 +1,5 @@
 import PlaceholderCard from '../cards/stat/Placeholder';
+import VolumeRankCard from '../cards/stat/VolumeRank';
 
 import type {ReactElement} from 'react';
 
@@ -77,7 +78,7 @@ export const CARD_COMPONENTS: {
 		/>
 	),
 	VolumePercentile: ({kind, percentile}) => (
-		<PlaceholderCard
+		<VolumeRankCard
 			kind={kind}
 			percentile={percentile}
 		/>

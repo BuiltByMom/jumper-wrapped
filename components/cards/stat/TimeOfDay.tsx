@@ -96,7 +96,7 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 					initial={'initial'}
 					animate={'animate'}
 					className={cl(
-						'relative w-[320px] md:w-[392px]',
+						'relative w-[320px] md:w-[392px] mt-auto',
 						'flex aspect-[392/192] w-full items-center justify-center rounded-2xl border-8',
 						'border-[#7AFFB2] text-[#009E5C] border-collapse'
 					)}
@@ -123,8 +123,8 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 					variants={copyAnimation}
 					initial={'initial'}
 					animate={'animate'}
-					className={'mt-20 flex items-center justify-center pt-6 text-center'}>
-					<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-white'}>
+					className={'mt-auto flex items-center justify-center pt-6 text-center'}>
+					<p className={'font-space-grotesk text-2xl font-medium text-white'}>
 						{'Chasing gains, sniping bags or trawling pump.fun?'}
 					</p>
 				</motion.div>

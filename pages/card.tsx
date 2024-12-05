@@ -19,17 +19,29 @@ export default function Index(): ReactElement {
 			/>
 
 			{CARD_COMPONENTS.Volume({volume: '34233', percentile: '0.19', kind: 'swap'})}
-			{CARD_COMPONENTS.Volume({volume: '4564545', percentile: '0.42', kind: 'swap'})}
+			{CARD_COMPONENTS.Volume({volume: '4564545', percentile: '0.52', kind: 'bridge'})}
+			{CARD_COMPONENTS.VolumePercentile({percentile: '0.19', kind: 'swap'})}
+			{CARD_COMPONENTS.VolumePercentile({percentile: '0.52', kind: 'bridge'})}
+
 			{CARD_COMPONENTS.BusiestHour('14')}
 			{CARD_COMPONENTS.BusiestHour('21')}
+
+			{CARD_COMPONENTS.BusiestDay('245')}
+			{CARD_COMPONENTS.BusiestDay('21')}
+
+			{CARD_COMPONENTS.BusiestMonth('November')}
+			{CARD_COMPONENTS.BusiestMonth('June')}
+
+			{CARD_COMPONENTS.BusiestWeekday('Monday')}
+			{CARD_COMPONENTS.BusiestWeekday('Wednesday')}
+			{CARD_COMPONENTS.BusiestWeekday('Friday')}
+			{CARD_COMPONENTS.BusiestWeekday('Sunday')}
+
 			{CARD_COMPONENTS.ChainsExplored({chainsExplored: 123, position: 4})}
 			{CARD_COMPONENTS.FavoriteToken({volume: 123, address: '0x123', symbol: 'DAI'})}
 			{CARD_COMPONENTS.BelovedChain({volume: 123, chainId: 1, name: 'Solana'})}
 			{CARD_COMPONENTS.TopBridgeChain({count: 123, chainId: 1, name: 'Solana'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
-			{CARD_COMPONENTS.BusiestDay('245')}
-			{CARD_COMPONENTS.BusiestMonth('November')}
-			{CARD_COMPONENTS.BusiestWeekday('Monday')}
 		</div>
 	);
 }

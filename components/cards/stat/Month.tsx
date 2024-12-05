@@ -1,21 +1,15 @@
-import localFont from 'next/font/local';
 import {motion} from 'framer-motion';
 
 import {Card} from './Card';
 
 import type {HTMLAttributes, ReactElement} from 'react';
 
+import {fontThunder} from '@/components/utils/fonts';
 import {cl} from '@/components/utils/tools';
 
 export type TMonthCardProps = {
 	month: string;
 } & HTMLAttributes<HTMLDivElement>;
-
-export const fontMonth = localFont({
-	src: '../../../public/fonts/Thunder-BoldLC.otf',
-	weight: '700',
-	style: 'normal'
-});
 
 const animationConfig = {
 	type: 'spring',
@@ -65,37 +59,34 @@ export default function MonthCard(props: TMonthCardProps): ReactElement {
 					initial={'initial'}
 					animate={'animate'}
 					className={'absolute top-28 max-sm:top-36'}>
-					<div className={'relative size-full'}>
-						<p
-							className={cl(
-								'text-[320px] font-bold uppercase leading-[200px] text-[#00FFB2]',
-								fontMonth.className
-							)}>
-							{props.month.slice(0, 3)}
-						</p>
-						<motion.div
-							variants={monthAnimation}
-							initial={'initial'}
-							animate={'animate'}
-							className={
-								'absolute left-[27%] top-[18%] h-[67px] w-[197px] -translate-x-1/2 -translate-y-1/2'
-							}>
-							<p
-								className={cl(
-									'uppercase text-[96px] font-bold leading-[96px] text-white',
-									fontMonth.className
-								)}>
-								{props.month}
-							</p>
-						</motion.div>
-					</div>
+					<p
+						className={cl(
+							'text-[320px] font-bold uppercase leading-[200px] text-[#00FFB2]',
+							fontThunder.className
+						)}>
+						{props.month.slice(0, 3)}
+					</p>
+				</motion.div>
+
+				<motion.div
+					variants={monthAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'absolute left-[27%] top-[18%] h-[67px] w-[197px] -translate-x-1/2 -translate-y-1/2'}>
+					<p
+						className={cl(
+							'uppercase text-[96px] font-bold leading-[96px] text-white',
+							fontThunder.className
+						)}>
+						{props.month}
+					</p>
 				</motion.div>
 
 				<motion.div
 					variants={copyAnimation}
 					initial={'initial'}
 					animate={'animate'}
-					className={'absolute inset-x-0 bottom-[-80px] mx-auto  w-[392px] text-center md:bottom-[-500px]'}>
+					className={'mx-auto mt-auto w-full text-center'}>
 					<p className={'text-2xl font-bold leading-[40px] text-white'}>
 						<span className={'uppercase'}>{props.month}</span>
 						{" was your crypto marathon. Who needs sleep when you're chasing gains?"}

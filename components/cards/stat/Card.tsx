@@ -16,7 +16,7 @@ export function Card(props: {
 			)}>
 			<div
 				className={
-					'relative z-50 flex size-full h-[50vh] scale-90 flex-col items-center p-6 max-sm:mt-[-25vh] md:mb-0 md:h-auto md:scale-100'
+					'relative z-50 flex size-full h-[50vh] scale-90 flex-col items-center p-6 max-sm:mt-[-25vh] md:mb-0 md:h-full md:scale-100'
 				}>
 				{props.children}
 			</div>
