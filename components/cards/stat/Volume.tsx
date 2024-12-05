@@ -69,7 +69,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 
 function VolumePads({value}: {value: string}): ReactElement {
 	return (
-		<div>
+		<div className={'pt-6'}>
 			{padsConfig.map(({gradientClasses, textClasses}, index) => (
 				<div
 					key={index}
