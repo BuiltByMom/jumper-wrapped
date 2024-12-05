@@ -7,7 +7,8 @@ import {cl} from '@/components/utils/tools';
 
 export type TVolumeCardProps = {
 	volume: number;
-	position: number;
+	rank: number;
+	kind: 'swap' | 'bridge';
 } & HTMLAttributes<HTMLDivElement>;
 
 const padsConfig = [
@@ -97,9 +98,9 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 	return (
 		<Card
 			{...props}
-			backgroundImage={`url(/cards/stat/backgroundVolume${props.position <= 50 ? 'Green' : 'Purple'}.jpg)`}
+			backgroundImage={`url(/cards/stat/backgroundVolume${props.rank <= 50 ? 'Green' : 'Purple'}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeMobile${
-				props.position <= 50 ? 'Green' : 'Purple'
+				props.rank <= 50 ? 'Green' : 'Purple'
 			}.jpg)`}>
 			<>
 				<motion.div
@@ -109,7 +110,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 					className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Ur volume'}</b>
 					<p className={'font-space-grotesk text-2xl font-medium'}>
-						{`Putting you in the top ${props.position}%`}
+						{`Putting you in the top ${props.rank}%`}
 					</p>
 				</motion.div>
 

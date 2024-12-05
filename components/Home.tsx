@@ -24,7 +24,8 @@ const cards = [
 		component: (
 			<VolumeCard
 				volume={34233}
-				position={4}
+				rank={4}
+				kind={'swap'}
 			/>
 		)
 	},

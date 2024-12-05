@@ -13,8 +13,13 @@ import VolumeCard from '@/components/cards/stat/Volume';
  ************************************************************************************************/
 export type TCardTypes = {
 	Volume: {
-		volume: number; // Swap + Bridge
-		position: number; // avg(Swap + Bridge) ? (1 - value)
+		kind: 'swap' | 'bridge';
+		volume: number;
+		rank: number;
+	};
+	VolumeRank: {
+		kind: 'swap' | 'bridge';
+		rank: number;
 	};
 	Wen: {
 		timestamp: number; // Night or day, timestamp
@@ -56,12 +61,6 @@ export type TCardTypes = {
 	};
 
 	// ONLY FOR SOLANA
-	BridgeVolumeToSolana: {
-		volume: number; // Bridged SOL
-	};
-	SolanaVolume: {
-		volume: number; // Overall volume on Solana
-	};
 	JumperWash: {
 		hasWashedNFT: boolean;
 	};
@@ -81,15 +80,21 @@ export type TCardData<T extends TPossibleStatsCardsIDs = TPossibleStatsCardsIDs>
 export const CARD_COMPONENTS: {
 	[K in TPossibleStatsCardsIDs]: (data: TCardTypes[K]) => ReactElement;
 } = {
-	Volume: ({volume, position}) => (
+	Volume: ({volume, kind, rank}) => (
 		<VolumeCard
 			volume={volume}
-			position={position}
+			kind={kind}
+			rank={rank}
+		/>
+	),
+	VolumeRank: ({rank, kind}) => (
+		<PlaceholderCard
+			volume={rank}
+			kind={kind}
 		/>
 	),
 	Wen: ({timestamp}) => <TimeCard timestamp={String(timestamp)} />,
 	ChainsExplored: ({chainsExplored}) => <PlaceholderCard volume={chainsExplored} />,
-	BridgeVolumeToSolana: ({volume}) => <PlaceholderCard volume={volume} />,
 	DumpToken: ({volume}) => <PlaceholderCard volume={volume} />,
 	BelovedChain: ({volume}) => <PlaceholderCard volume={volume} />,
 	TopBridgeChain: ({count}) => <PlaceholderCard volume={count} />,
@@ -111,8 +116,7 @@ export const CARD_COMPONENTS: {
 	BusiestWeekday: ({weekday}) => {
 		const day = new Date(Number(weekday)).toLocaleString('en-US', {weekday: 'long'});
 		return <PlaceholderCard day={day} />;
-	},
-	SolanaVolume: ({volume}) => <PlaceholderCard volume={volume} />
+	}
 };
 
 /************************************************************************************************

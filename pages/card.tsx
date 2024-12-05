@@ -18,23 +18,18 @@ export default function Index(): ReactElement {
 				width={440}
 			/>
 
-			{CARD_COMPONENTS.Volume({volume: 34233, position: 4})}
-			{CARD_COMPONENTS.Volume({volume: 4564545, position: 90})}
+			{CARD_COMPONENTS.Volume({volume: 34233, rank: 4, kind: 'swap'})}
+			{CARD_COMPONENTS.Volume({volume: 4564545, rank: 90, kind: 'swap'})}
 			{CARD_COMPONENTS.Wen({timestamp: 1733195469})}
 			{CARD_COMPONENTS.Wen({timestamp: 1733235069})}
 			{CARD_COMPONENTS.ChainsExplored({chainsExplored: 123, position: 4})}
-			{CARD_COMPONENTS.TopTradedBags({tokens: [{volume: 123, symbol: 'DAI'}]})}
-			{CARD_COMPONENTS.BridgeVolumeToSolana({volume: 123})}
 			{CARD_COMPONENTS.DumpToken({volume: 123, address: '0x123', symbol: 'DAI'})}
-			{CARD_COMPONENTS.BoughtToken({volume: 123, address: '0x123', symbol: 'DAI'})}
 			{CARD_COMPONENTS.BelovedChain({volume: 123, chainId: 1, name: 'Solana'})}
 			{CARD_COMPONENTS.TopBridgeChain({count: 123, chainId: 1, name: 'Solana'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
 			{CARD_COMPONENTS.BusiestDay({date: '1733195469', volume: 123})}
 			{CARD_COMPONENTS.BusiestMonth({month: '1733195469', volume: 123})}
 			{CARD_COMPONENTS.BusiestWeekday({weekday: '1733195469', volume: 123})}
-			{CARD_COMPONENTS.TradingStreak({days: 123, startDate: '1733195469', endDate: '1733235069'})}
-			{CARD_COMPONENTS.SolanaVolume({volume: 123})}
 		</div>
 	);
 }
