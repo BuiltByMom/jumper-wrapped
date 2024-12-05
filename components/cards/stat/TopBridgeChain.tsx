@@ -66,7 +66,7 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 				animate={'animate'}
 				className={'relative mt-auto flex aspect-square w-[208px] items-center justify-center'}>
 				<Image
-					src={`/chains/${chainName}.png`}
+					src={`/chains/${chainName}.svg`}
 					alt={chainName}
 					width={208}
 					height={208}
