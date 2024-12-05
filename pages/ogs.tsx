@@ -2,7 +2,16 @@ import Image from 'next/image';
 
 import type {ReactElement} from 'react';
 
-const availableProfiles = ['bridgealot', 'multichain', 'diva', 'nosleep', 'chainwhale', 'elder', 'swapaholic'];
+const availableProfiles = [
+	'bridgealot',
+	'multichain',
+	'diva',
+	'nosleep',
+	'chainwhale',
+	'elder',
+	'swapaholic',
+	'solanaSoldier'
+];
 
 export default function Index(): ReactElement {
 	return (

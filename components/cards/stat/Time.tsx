@@ -13,7 +13,7 @@ const fontTime = localFont({
 });
 
 type TTimeCardProps = {
-	timestamp: string;
+	hour: string; // UTC hour (1-24)
 } & HTMLAttributes<HTMLDivElement>;
 
 const animationConfig = {
@@ -52,24 +52,23 @@ const copyAnimation = {
 	}
 };
 
-export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactElement {
+export default function TimeCard({hour, ...props}: TTimeCardProps): ReactElement {
 	const [time, amOrPm, dayOrNight] = useMemo((): [string, string, string] => {
-		const date = new Date(Number(timestamp) * 1000);
-		const hours = date.getHours();
-		const minutes = date.getMinutes();
-
-		// Format time as HH:MM
-		const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+		// Convert UTC hour to local hour
+		const date = new Date();
+		date.setUTCHours(Number(hour), 0, 0, 0);
+		const localHour = date.getHours();
 
 		// Determine AM/PM
-		const amPm = hours >= 12 ? 'PM' : 'AM';
+		const amPm = localHour >= 12 ? 'PM' : 'AM';
 
 		// Determine day/night (night is between 20:00 and 08:00)
-		const isNight = hours >= 20 || hours < 8;
+		const isNight = localHour >= 20 || localHour < 8;
 		const timeOfDay = isNight ? 'NIGHT' : 'DAY';
+		const timeAs12 = `${localHour % 12 || 12}:00`;
 
-		return [formattedTime, amPm, timeOfDay];
-	}, [timestamp]);
+		return [timeAs12, amPm, timeOfDay];
+	}, [hour]);
 
 	return (
 		<Card

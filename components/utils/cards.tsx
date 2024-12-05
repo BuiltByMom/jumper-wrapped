@@ -14,17 +14,14 @@ import VolumeCard from '@/components/cards/stat/Volume';
 export type TCardTypes = {
 	Volume: {
 		kind: 'swap' | 'bridge';
-		volume: number;
-		rank: number;
+		volume: string;
+		percentile: string;
 	};
-	VolumeRank: {
+	VolumePercentile: {
 		kind: 'swap' | 'bridge';
-		rank: number;
+		percentile: string;
 	};
-	Wen: {
-		timestamp: number; // Night or day, timestamp
-	};
-	DumpToken: {
+	FavoriteToken: {
 		address: string;
 		volume: number;
 		symbol: string;
@@ -46,19 +43,11 @@ export type TCardTypes = {
 		name: string;
 	};
 
+	BusiestHour: string;
 	// DAY / MONTH / WEEKDAY
-	BusiestDay: {
-		date: string;
-		volume: number;
-	};
-	BusiestMonth: {
-		month: string;
-		volume: number;
-	};
-	BusiestWeekday: {
-		weekday: string;
-		volume: number;
-	};
+	BusiestDay: string;
+	BusiestMonth: string;
+	BusiestWeekday: string;
 
 	// ONLY FOR SOLANA
 	JumperWash: {
@@ -80,44 +69,37 @@ export type TCardData<T extends TPossibleStatsCardsIDs = TPossibleStatsCardsIDs>
 export const CARD_COMPONENTS: {
 	[K in TPossibleStatsCardsIDs]: (data: TCardTypes[K]) => ReactElement;
 } = {
-	Volume: ({volume, kind, rank}) => (
+	Volume: ({volume, kind, percentile}) => (
 		<VolumeCard
 			volume={volume}
 			kind={kind}
-			rank={rank}
+			percentile={percentile}
 		/>
 	),
-	VolumeRank: ({rank, kind}) => (
+	VolumePercentile: ({kind, percentile}) => (
 		<PlaceholderCard
-			volume={rank}
 			kind={kind}
+			percentile={percentile}
 		/>
 	),
-	Wen: ({timestamp}) => <TimeCard timestamp={String(timestamp)} />,
+	BusiestHour: hour => <TimeCard hour={hour} />,
 	ChainsExplored: ({chainsExplored}) => <PlaceholderCard volume={chainsExplored} />,
-	DumpToken: ({volume}) => <PlaceholderCard volume={volume} />,
+	FavoriteToken: ({volume}) => <PlaceholderCard volume={volume} />,
 	BelovedChain: ({volume}) => <PlaceholderCard volume={volume} />,
 	TopBridgeChain: ({count}) => <PlaceholderCard volume={count} />,
 	JumperWash: () => <PlaceholderCard volume={0} />, // Need specific component
-	BusiestDay: ({date}) => {
-		const day = new Date(Number(date)).getDate().toString();
-		const month = new Date(Number(date)).toLocaleString('en-US', {month: 'long'});
-		return (
-			<DayCard
-				day={day}
-				month={month}
-			/>
-		);
-	},
-	BusiestMonth: ({month}) => {
-		const monthName = new Date(Number(month)).toLocaleString('en-US', {month: 'long'});
-		return <MonthCard month={monthName} />;
-	},
-	BusiestWeekday: ({weekday}) => {
-		const day = new Date(Number(weekday)).toLocaleString('en-US', {weekday: 'long'});
-		return <PlaceholderCard day={day} />;
-	}
+	BusiestDay: dayOfYear => <DayCard dayOfYear={dayOfYear} />,
+	BusiestMonth: month => <MonthCard month={month} />,
+	BusiestWeekday: weekday => <PlaceholderCard day={weekday} />
 };
+
+export function getCardComponent(id: TPossibleStatsCardsIDs, data: TCardTypes[TPossibleStatsCardsIDs]): ReactElement {
+	if (!CARD_COMPONENTS[id]) {
+		throw new Error(`Card component for ${id} not found`);
+	}
+
+	return CARD_COMPONENTS[id](data as any);
+}
 
 /************************************************************************************************
  * Fetch User Cards
@@ -125,7 +107,7 @@ export const CARD_COMPONENTS: {
  ************************************************************************************************/
 export async function fetchUserCards(address: string): Promise<TCardData[]> {
 	try {
-		const response = await fetch(`/api/user-stats/${address}`);
+		const response = await fetch(`https://jumper-wash.builtby.dad/user/${address.toLowerCase()}`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch user stats');
 		}

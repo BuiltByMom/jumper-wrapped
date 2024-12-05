@@ -6,8 +6,8 @@ import {Card} from './Card';
 import {cl} from '@/components/utils/tools';
 
 export type TVolumeCardProps = {
-	volume: number;
-	rank: number;
+	volume: string;
+	percentile: string;
 	kind: 'swap' | 'bridge';
 } & HTMLAttributes<HTMLDivElement>;
 
@@ -86,21 +86,24 @@ function VolumePads({value}: {value: string}): ReactElement {
 
 export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 	const formattedVolume = useMemo(() => {
-		if (props.volume >= 100_000 && props.volume < 1_000_000) {
-			return `$${Math.floor(props.volume / 1_000)}k`;
+		const volume = Number(Number(props.volume).toFixed(0));
+		if (volume >= 100_000 && volume < 1_000_000) {
+			return `$${Math.floor(volume / 1_000)}k`;
 		}
-		if (props.volume >= 1_000_000) {
-			return `$${(props.volume / 1_000_000).toFixed(1)}M`;
+		if (volume >= 1_000_000) {
+			return `$${(volume / 1_000_000).toFixed(1)}M`;
 		}
-		return `$${props.volume.toLocaleString()}`;
+		return `$${volume.toLocaleString()}`;
 	}, [props.volume]);
 
 	return (
 		<Card
 			{...props}
-			backgroundImage={`url(/cards/stat/backgroundVolume${props.rank <= 50 ? 'Green' : 'Purple'}.jpg)`}
+			backgroundImage={`url(/cards/stat/backgroundVolume${
+				Number(props.percentile) <= 50 ? 'Green' : 'Purple'
+			}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeMobile${
-				props.rank <= 50 ? 'Green' : 'Purple'
+				Number(props.percentile) <= 50 ? 'Green' : 'Purple'
 			}.jpg)`}>
 			<>
 				<motion.div
@@ -110,7 +113,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 					className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Ur volume'}</b>
 					<p className={'font-space-grotesk text-2xl font-medium'}>
-						{`Putting you in the top ${props.rank}%`}
+						{`Putting you in the top ${props.percentile}%`}
 					</p>
 				</motion.div>
 

@@ -9,8 +9,7 @@ import type {HTMLAttributes, ReactElement} from 'react';
 import {cl} from '@/components/utils/tools';
 
 type TDayCardProps = {
-	day: string;
-	month: string;
+	dayOfYear: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 const animationConfig = {
@@ -49,7 +48,12 @@ const copyAnimation = {
 	}
 };
 
-export default function DayCard(props: TDayCardProps): ReactElement {
+export default function DayCard({dayOfYear, ...props}: TDayCardProps): ReactElement {
+	const date = new Date(2024, 0, 1); // Start with January 1, 2024
+	date.setDate(Number(dayOfYear)); // Add days
+	const day = date.getDate().toString();
+	const month = date.toLocaleString('en-US', {month: 'long'});
+
 	return (
 		<Card
 			{...props}
@@ -83,14 +87,14 @@ export default function DayCard(props: TDayCardProps): ReactElement {
 							'text-[#0064FF]',
 							fontMonth.className
 						)}>
-						{props.month.slice(0, 3)}
+						{month.slice(0, 3)}
 					</p>
 					<p
 						className={cl(
 							'absolute left-1/2 top-[130px] z-50 -translate-x-1/2 text-center text-[192px] font-bold uppercase leading-[192px]',
 							fontMonth.className
 						)}>
-						{props.day}
+						{day}
 					</p>
 				</motion.div>
 

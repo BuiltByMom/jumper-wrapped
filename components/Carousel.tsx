@@ -4,6 +4,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, useCarousel} from './carouselContext';
 import NoSleepCard from './cards/share/NoSleep';
 import {Button} from './common/Button';
+import {getCardComponent, type TCardData} from './utils/cards';
 
 const domain = 'https://jumper-wrap.builtby.dad';
 
@@ -46,42 +47,25 @@ function CarouselCard(props: React.HTMLAttributes<HTMLDivElement>): ReactElement
 	);
 }
 
-export function Carousel({
-	cards,
-	profile
-}: {
-	cards: {title: string; component: ReactElement}[];
-	profile?: string;
-}): ReactElement {
+export function Carousel(props: {cards: TCardData[]; profile?: string}): ReactElement {
 	const clickToTweet = useCallback(async () => {
 		window.open(
-			`https://twitter.com/intent/tweet?url=${domain}/${profile}?text=Check out my wrapped Jumper!`,
+			`https://twitter.com/intent/tweet?url=${domain}/${props.profile}?text=Check out my wrapped Jumper!`,
 			'_blank'
 		);
-	}, [profile]);
+	}, [props.profile]);
 
 	return (
 		<div className={'relative'}>
 			<div className={'relative w-screen'}>
 				<CarouselContent className={'-ml-2 md:-ml-4'}>
-					{[
-						...cards,
-						{
-							title: 'Card 5',
-							component: (
-								<NoSleepCard
-									width={440}
-									timestamp={'121121212'}
-								/>
-							)
-						}
-					].map((_, index) => (
+					{props.cards.map((_, index) => (
 						<CarouselItem
 							key={index}
 							className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 							<CarouselCard>
-								{index < cards.length ? (
-									<>{cards[index].component}</>
+								{index < props.cards.length ? (
+									getCardComponent(props.cards[index].id, props.cards[index].data)
 								) : (
 									<div className={'relative max-sm:mb-40'}>
 										<NoSleepCard

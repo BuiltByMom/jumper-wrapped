@@ -11,42 +11,11 @@ import {JumperPopup} from './JumperPopup';
 import {NextYearButton} from './NextYearButton';
 import {WalletSelector} from './WalletSelector';
 import {WrappedButton} from './WrappedButton';
-import DayCard from './cards/stat/Day';
-import {MonthCard} from './cards/stat/Month';
-import TimeCard from './cards/stat/Time';
-import VolumeCard from './cards/stat/Volume';
 import {Header} from './common/Header';
+import {fetchUserCards} from './utils/cards';
 import {cl} from './utils/tools';
 
-const cards = [
-	{
-		title: 'Card 1',
-		component: (
-			<VolumeCard
-				volume={34233}
-				rank={4}
-				kind={'swap'}
-			/>
-		)
-	},
-	{
-		title: 'Card 2',
-		component: (
-			<DayCard
-				day={'12'}
-				month={'December'}
-			/>
-		)
-	},
-	{
-		title: 'Card 3',
-		component: <TimeCard timestamp={'13312312'} />
-	},
-	{
-		title: 'Card 4',
-		component: <MonthCard month={'March'} />
-	}
-];
+import type {TCardData} from './utils/cards';
 
 const greetingsAnimation = {
 	initial: {opacity: 0, scale: 0},
@@ -75,6 +44,7 @@ const greetingsAnimation = {
 export function HomePage(): ReactElement {
 	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
 	const [view, set_view] = useState<'greetings' | 'carousel'>('greetings');
+	const [cards, set_cards] = useState<TCardData[]>([]);
 
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
@@ -89,6 +59,12 @@ export function HomePage(): ReactElement {
 			router.push('/');
 		}
 	}, [account, isConnected, router]);
+
+	useEffect(() => {
+		if (address) {
+			fetchUserCards(address).then(cards => set_cards(cards));
+		}
+	}, [address]);
 
 	const {api} = useCarousel();
 	const isLastSlide = api?.selectedScrollSnap() === (api?.scrollSnapList().length || 0) - 1;
