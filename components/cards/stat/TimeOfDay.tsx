@@ -6,7 +6,7 @@ import {getLocalTimeFromUTC} from './utils';
 
 import type {TBaseCardProps} from './types';
 
-import {fontThunder} from '@/components/utils/fonts';
+import {clockFont} from '@/components/utils/fonts';
 import {cl} from '@/components/utils/tools';
 
 /************************************************************************************************
@@ -48,14 +48,14 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 					<b
 						className={cl(
 							'text-center text-[120px] md:text-[160px] leading-[120px] md:leading-[144px] font-bold tabular-nums tracking-wider',
-							fontThunder.className
+							clockFont.className
 						)}>
 						{time}
 					</b>
 					<span
 						className={cl(
 							'font-space-grotesk absolute right-4 top-0.5 text-[40px] font-bold leading-[36px]',
-							fontThunder.className
+							clockFont.className
 						)}>
 						{amPm}
 					</span>

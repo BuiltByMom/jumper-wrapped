@@ -5,3 +5,9 @@ export const fontThunder = localFont({
 	weight: '700',
 	style: 'normal'
 });
+
+export const clockFont = localFont({
+	src: '../../public/fonts/dsFont.ttf',
+	weight: '400',
+	style: 'normal'
+});
