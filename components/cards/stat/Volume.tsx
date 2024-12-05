@@ -1,16 +1,17 @@
-import {type HTMLAttributes, type ReactElement, useMemo} from 'react';
-import {motion} from 'framer-motion';
+import {type ReactElement, useMemo} from 'react';
 
 import {Card} from './Card';
+import {CardContent, CardCopy, CardTitle} from './CardElements';
+import {formatVolume, getCardVariant} from './utils';
+
+import type {TBaseCardProps, TWithKind, TWithVolume} from './types';
 
 import {cl} from '@/components/utils/tools';
 
-export type TVolumeCardProps = {
-	volume: string;
-	percentile: string;
-	kind: 'swap' | 'bridge';
-} & HTMLAttributes<HTMLDivElement>;
-
+/************************************************************************************************
+ * Volume Card Configuration
+ * Visual settings for the volume display pads
+ ************************************************************************************************/
 const padsConfig = [
 	{
 		gradientClasses: 'from-[#FAA322] to-[#FEED23]',
@@ -30,41 +31,41 @@ const padsConfig = [
 	}
 ];
 
-const animationConfig = {
-	type: 'spring',
-	bounce: 0.3,
-	duration: 0.6,
-	delay: 0.3,
-	stiffness: 150,
-	damping: 15
-};
+type TVolumeCardProps = TBaseCardProps & TWithVolume & TWithKind;
 
-const titleAnimation = {
-	initial: {y: -120, opacity: 0},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
+export default function VolumeCard(props: TVolumeCardProps): ReactElement {
+	const cardVariant = useMemo(() => {
+		return getCardVariant(props.percentile);
+	}, [props.percentile]);
 
-const contentAnimation = {
-	initial: {scale: 0.6, opacity: 0},
-	animate: {
-		scale: 1,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
+	const formattedVolume = useMemo(() => {
+		return formatVolume(props.volume);
+	}, [props.volume]);
 
-const copyAnimation = {
-	initial: {y: 120, opacity: 0},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
+	return (
+		<Card
+			{...props}
+			backgroundImage={`url(/cards/stat/backgroundVolume${cardVariant}.jpg)`}
+			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeMobile${cardVariant}.jpg)`}>
+			<CardTitle>
+				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
+					{`${props.kind === 'swap' ? 'Ur Swap Volume' : 'Ur Bridge Volume'}`}
+				</b>
+				<p className={'font-space-grotesk text-2xl font-medium'}>{'Whao, all this?!'}</p>
+			</CardTitle>
+
+			<CardContent>
+				<VolumePads value={formattedVolume} />
+			</CardContent>
+
+			<CardCopy>
+				<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-black'}>
+					{'Which makes you a bit of a chad, LFG.'}
+				</p>
+			</CardCopy>
+		</Card>
+	);
+}
 
 function VolumePads({value}: {value: string}): ReactElement {
 	return (
@@ -81,57 +82,5 @@ function VolumePads({value}: {value: string}): ReactElement {
 				</div>
 			))}
 		</div>
-	);
-}
-
-export default function VolumeCard(props: TVolumeCardProps): ReactElement {
-	const cardVariant = useMemo(() => {
-		return Number(props.percentile) <= 0.5 ? 'Green' : 'Purple';
-	}, [props.percentile]);
-
-	const formattedVolume = useMemo(() => {
-		const volume = Number(Number(props.volume).toFixed(0));
-		if (volume >= 100_000 && volume < 1_000_000) {
-			return `$${Math.floor(volume / 1_000)}k`;
-		}
-		if (volume >= 1_000_000) {
-			return `$${(volume / 1_000_000).toFixed(1)}M`;
-		}
-		return `$${volume.toLocaleString()}`;
-	}, [props.volume]);
-
-	return (
-		<Card
-			{...props}
-			backgroundImage={`url(/cards/stat/backgroundVolume${cardVariant}.jpg)`}
-			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeMobile${cardVariant}.jpg)`}>
-			<motion.div
-				variants={titleAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
-					{`${props.kind === 'swap' ? 'Ur Swap Volume' : 'Ur Bridge Volume'}`}
-				</b>
-				<p className={'font-space-grotesk text-2xl font-medium'}>{'Whao, all this?!'}</p>
-			</motion.div>
-
-			<motion.div
-				variants={contentAnimation}
-				initial={'initial'}
-				animate={'animate'}>
-				<VolumePads value={formattedVolume} />
-			</motion.div>
-
-			<motion.div
-				variants={copyAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'mt-auto flex items-center justify-center pt-6 text-center'}>
-				<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-black'}>
-					{'Which makes you a bit of a chad, LFG.'}
-				</p>
-			</motion.div>
-		</Card>
 	);
 }

@@ -28,8 +28,6 @@ export type TCardTypes = {
 		volume: number;
 		symbol: string;
 	};
-
-	// One of them: 33/33/33
 	ChainsExplored: {
 		chainsExplored: number;
 		position: number;
@@ -42,14 +40,10 @@ export type TCardTypes = {
 		chain: string;
 		volume: number;
 	};
-
 	BusiestHour: string;
-	// DAY / MONTH / WEEKDAY
 	BusiestDay: string;
 	BusiestMonth: string;
 	BusiestWeekday: string;
-
-	// ONLY FOR SOLANA
 	JumperWash: {
 		hasWashedNFT: boolean;
 	};
@@ -83,16 +77,44 @@ export const CARD_COMPONENTS: {
 		/>
 	),
 	BusiestHour: hour => <TimeOfDayCard hour={hour} />,
-	ChainsExplored: ({chainsExplored}) => <PlaceholderCard volume={chainsExplored} />,
-	FavoriteToken: ({volume}) => <PlaceholderCard volume={volume} />,
+	ChainsExplored: ({chainsExplored}) => (
+		<PlaceholderCard
+			title={'Chains Explored'}
+			content={`You've explored ${chainsExplored} chains`}
+			copy={'Quite the adventurer!'}
+		/>
+	),
+	FavoriteToken: ({symbol}) => (
+		<PlaceholderCard
+			title={'Favorite Token'}
+			content={`Your favorite token was ${symbol}`}
+			copy={'Good choice!'}
+		/>
+	),
 	BelovedChain: ({chain}) => <TopBridgeChain chainName={chain} />,
 	TopBridgeChain: ({chain}) => <TopBridgeChain chainName={chain} />,
-	JumperWash: () => <PlaceholderCard volume={0} />, // Need specific component
+	JumperWash: ({hasWashedNFT}) => (
+		<PlaceholderCard
+			title={'NFT Washer'}
+			content={hasWashedNFT ? 'You washed some NFTs!' : 'No NFT washing detected'}
+			copy={'Keeping it clean!'}
+		/>
+	),
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
-	BusiestWeekday: weekday => <PlaceholderCard day={weekday} />
+	BusiestWeekday: weekday => (
+		<PlaceholderCard
+			title={'Busiest Day'}
+			content={`Your busiest day was ${weekday}`}
+			copy={'Weekend warrior or weekday warrior?'}
+		/>
+	)
 };
 
+/************************************************************************************************
+ * Get Card Component
+ * Retrieves the appropriate component for a given card ID and data
+ ************************************************************************************************/
 export function getCardComponent(id: TPossibleStatsCardsIDs, data: TCardTypes[TPossibleStatsCardsIDs]): ReactElement {
 	if (!CARD_COMPONENTS[id]) {
 		throw new Error(`Card component for ${id} not found`);
@@ -112,10 +134,7 @@ export async function fetchUserCards(address: string): Promise<TCardData[]> {
 			throw new Error('Failed to fetch user stats');
 		}
 
-		// The API should return an array of TCardData, max 5 items
 		const cards: TCardData[] = await response.json();
-
-		// Validate the response
 		if (!Array.isArray(cards)) {
 			throw new Error('Invalid API response format');
 		}

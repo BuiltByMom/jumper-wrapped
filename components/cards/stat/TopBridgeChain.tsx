@@ -1,48 +1,18 @@
-import {type HTMLAttributes, type ReactElement} from 'react';
+import {type ReactElement} from 'react';
 import Image from 'next/image';
-import {motion} from 'framer-motion';
 
 import {Card} from './Card';
+import {CardContent, CardCopy, CardTitle} from './CardElements';
 
+import type {TBaseCardProps} from './types';
+
+/************************************************************************************************
+ * Top Bridge Chain Card Props
+ * Displays user's most used blockchain for bridging
+ ************************************************************************************************/
 type TTopBridgeChainCardProps = {
 	chainName: string;
-} & HTMLAttributes<HTMLDivElement>;
-
-const animationConfig = {
-	type: 'spring',
-	bounce: 0.3,
-	duration: 0.6,
-	delay: 0.3,
-	stiffness: 150,
-	damping: 15
-};
-
-const titleAnimation = {
-	initial: {y: -120, opacity: 0},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
-
-const timeAnimation = {
-	initial: {scale: 0.6, opacity: 0},
-	animate: {
-		scale: 1,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
-
-const copyAnimation = {
-	initial: {y: 120, opacity: 0},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
+} & TBaseCardProps;
 
 export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChainCardProps): ReactElement {
 	return (
@@ -50,21 +20,13 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 			{...props}
 			backgroundImage={'url(/cards/stat/backgroundBelovedChain.jpg)'}
 			mobileBackgroundImage={'url(/cards/stat/backgroundBelovedChainMobile.jpg)'}>
-			<motion.div
-				variants={titleAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'flex flex-col gap-2 pb-6 pt-2 text-center text-white'}>
+			<CardTitle className={'text-white'}>
 				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
-					{`Just can’t quit ${chainName}, huh?`}
+					{`Just can't quit ${chainName}, huh?`}
 				</b>
-			</motion.div>
+			</CardTitle>
 
-			<motion.div
-				variants={timeAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'relative mt-auto flex aspect-square w-[208px] items-center justify-center'}>
+			<CardContent className={'relative mt-auto flex aspect-square w-[208px] items-center justify-center'}>
 				<Image
 					className={chainName === 'solana' ? 'size-[180px]' : 'size-[208px] rounded-full'}
 					src={`/chains/${chainName}.svg`}
@@ -73,17 +35,13 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 					height={208}
 					quality={100}
 				/>
-			</motion.div>
+			</CardContent>
 
-			<motion.div
-				variants={copyAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'mt-auto flex items-center justify-center pt-6 text-center'}>
+			<CardCopy>
 				<p className={'font-space-grotesk text-2xl font-medium text-white'}>
 					{'True degen romance right there.'}
 				</p>
-			</motion.div>
+			</CardCopy>
 		</Card>
 	);
 }

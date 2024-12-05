@@ -1,67 +1,32 @@
-import {type HTMLAttributes, type ReactElement, useMemo} from 'react';
-import {motion} from 'framer-motion';
+import {type ReactElement, useMemo} from 'react';
 
 import {Card} from './Card';
+import {CardContent, CardCopy, CardTitle} from './CardElements';
+import {getCardVariant} from './utils';
+
+import type {TBaseCardProps, TWithKind} from './types';
 
 import {fontThunder} from '@/components/utils/fonts';
 import {cl} from '@/components/utils/tools';
 
-export type TVolumeRankCardProps = {
+/************************************************************************************************
+ * Volume Rank Card Props
+ * Shows user's ranking among all users based on volume
+ ************************************************************************************************/
+type TVolumeRankCardProps = {
 	percentile: string;
-	kind: 'swap' | 'bridge';
-} & HTMLAttributes<HTMLDivElement>;
-
-const animationConfig = {
-	type: 'spring',
-	bounce: 0.3,
-	duration: 0.6,
-	delay: 0.3,
-	stiffness: 150,
-	damping: 15
-};
-
-const titleAnimation = {
-	initial: {y: -120, opacity: 0},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
-
-const contentAnimation = {
-	initial: {scale: 0.6, opacity: 0},
-	animate: {
-		scale: 1,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
-
-const copyAnimation = {
-	initial: {y: 120, opacity: 0},
-	animate: {
-		y: 0,
-		opacity: 1,
-		transition: animationConfig
-	}
-};
+} & TBaseCardProps &
+	TWithKind;
 
 export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElement {
-	const cardVariant = useMemo(() => {
-		return Number(props.percentile) <= 0.5 ? 'Green' : 'Purple';
-	}, [props.percentile]);
+	const cardVariant = useMemo(() => getCardVariant(props.percentile), [props.percentile]);
 
 	return (
 		<Card
 			{...props}
 			backgroundImage={`url(/cards/stat/backgroundVolumeRank${cardVariant}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stat/backgroundVolumeRankMobile${cardVariant}.jpg)`}>
-			<motion.div
-				variants={titleAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
+			<CardTitle>
 				<b
 					className={cl(
 						'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]',
@@ -69,26 +34,18 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 					)}>
 					{`${props.kind === 'swap' ? 'Swap rank' : 'Bridge rank'}`}
 				</b>
-			</motion.div>
+			</CardTitle>
 
-			<motion.div
-				variants={contentAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'mt-32 md:mt-auto'}>
+			<CardContent className={'mt-32 md:mt-auto'}>
 				<div className={cl(cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]')}>
 					<b className={cl('block text-center text-[40px] leading-[4px]', fontThunder.className)}>{'TOP'}</b>
 					<b className={cl('block text-center text-[200px] leading-[200px] pt-6', fontThunder.className)}>
 						{`${(Number(props.percentile) * 100).toFixed(0)}%`}
 					</b>
 				</div>
-			</motion.div>
+			</CardContent>
 
-			<motion.div
-				variants={copyAnimation}
-				initial={'initial'}
-				animate={'animate'}
-				className={'mt-auto flex items-center justify-center pt-6 text-center'}>
+			<CardCopy>
 				<p
 					className={cl(
 						'font-space-grotesk text-2xl font-medium',
@@ -96,7 +53,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 					)}>
 					{'Copy copy copy'}
 				</p>
-			</motion.div>
+			</CardCopy>
 		</Card>
 	);
 }
