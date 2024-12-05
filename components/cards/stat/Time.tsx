@@ -99,7 +99,7 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 					className={cl(
 						'relative w-[320px] md:w-[392px]',
 						'flex aspect-[392/192] w-full items-center justify-center rounded-2xl border-8',
-						'border-[#7AFFB2] text-[#009E5C]'
+						'border-[#7AFFB2] text-[#009E5C] border-collapse'
 					)}
 					style={{
 						background: 'radial-gradient(50% 50% at 50% 50%, #7AFFA7 0%, #47FF86 100%)',
