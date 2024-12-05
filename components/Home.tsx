@@ -47,6 +47,24 @@ const cards = [
 	}
 ];
 
+const breathingAnimation = {
+	initial: {opacity: 0, scale: 0},
+	animate: {
+		opacity: 1,
+		scale: [1, 1.02, 1], // Subtle scale breathing effect
+		transition: {
+			duration: 3,
+			scale: {
+				repeat: Infinity,
+				repeatType: 'reverse',
+				ease: 'easeInOut',
+				duration: 3 // Slower breathing
+			}
+		}
+	},
+	exit: {opacity: 0, scale: 0}
+};
+
 const wiggleAnimation = {
 	initial: {opacity: 0, scale: 0},
 	animate: {
@@ -107,14 +125,20 @@ export function HomePage(): ReactElement {
 							animate={{opacity: 1, scale: 1}}
 							exit={{opacity: 0, scale: 0}}
 							transition={{duration: 0.5}}>
-							<WrappedButton
-								set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-								onStart={() => set_view('carousel')}
-							/>
-							<WalletSelector
-								isOpen={isWalletSelectorOpen}
-								onClose={() => set_isWalletSelectorOpen(false)}
-							/>
+							<motion.div
+								key={'greetings-section'}
+								variants={breathingAnimation}
+								animate={'animate'}
+								exit={'exit'}>
+								<WrappedButton
+									set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+									onStart={() => set_view('carousel')}
+								/>
+								<WalletSelector
+									isOpen={isWalletSelectorOpen}
+									onClose={() => set_isWalletSelectorOpen(false)}
+								/>
+							</motion.div>
 						</motion.div>
 					)}
 
