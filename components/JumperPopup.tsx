@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import {Button} from './common/Button';
 import {IconJumperLogo} from './icons/IconJumperLogo';
+import {cl} from './utils/tools';
 
 import type {ReactElement} from 'react';
-import {cl} from './utils/tools';
 
 export function JumperPopup(): ReactElement {
 	return (
