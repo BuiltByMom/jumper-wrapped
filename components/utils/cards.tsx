@@ -1,4 +1,5 @@
 import PlaceholderCard from '../cards/stat/Placeholder';
+import TopBridgeChain from '../cards/stat/TopBridgeChain';
 import VolumeRankCard from '../cards/stat/VolumeRank';
 
 import type {ReactElement} from 'react';
@@ -34,14 +35,12 @@ export type TCardTypes = {
 		position: number;
 	};
 	BelovedChain: {
-		chainId: number;
+		chain: string;
 		volume: number;
-		name: string;
 	};
 	TopBridgeChain: {
-		chainId: number;
-		count: number;
-		name: string;
+		chain: string;
+		volume: number;
 	};
 
 	BusiestHour: string;
@@ -86,8 +85,8 @@ export const CARD_COMPONENTS: {
 	BusiestHour: hour => <TimeOfDayCard hour={hour} />,
 	ChainsExplored: ({chainsExplored}) => <PlaceholderCard volume={chainsExplored} />,
 	FavoriteToken: ({volume}) => <PlaceholderCard volume={volume} />,
-	BelovedChain: ({volume}) => <PlaceholderCard volume={volume} />,
-	TopBridgeChain: ({count}) => <PlaceholderCard volume={count} />,
+	BelovedChain: ({chain}) => <TopBridgeChain chainName={chain} />,
+	TopBridgeChain: ({chain}) => <TopBridgeChain chainName={chain} />,
 	JumperWash: () => <PlaceholderCard volume={0} />, // Need specific component
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,

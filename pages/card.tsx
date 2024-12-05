@@ -39,7 +39,7 @@ export default function Index(): ReactElement {
 
 			{CARD_COMPONENTS.ChainsExplored({chainsExplored: 123, position: 4})}
 			{CARD_COMPONENTS.FavoriteToken({volume: 123, address: '0x123', symbol: 'DAI'})}
-			{CARD_COMPONENTS.BelovedChain({volume: 123, chainId: 1, name: 'Solana'})}
+			{CARD_COMPONENTS.BelovedChain({volume: 123, chain: 'solana'})}
 			{CARD_COMPONENTS.TopBridgeChain({count: 123, chainId: 1, name: 'Solana'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
 		</div>

@@ -134,7 +134,7 @@ export function PageBackgound({
 			)}>
 			<div className={'absolute h-screen w-screen bg-violet-dark'} />
 
-			<div className={'xl:hidden'}>
+			<div className={'hidden md:block xl:hidden'}>
 				<SvgCircles
 					centerX={'2640'}
 					centerY={'2640'}

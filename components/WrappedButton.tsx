@@ -50,13 +50,14 @@ export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): Reac
 				<div
 					className={cl(
 						'z-50 flex size-[311px] md:size-[560px] flex-col items-center justify-center rounded-full',
+						'-mt-[50%] md:mt-0',
 						'border-4 relative border-accent bg-violet-dark xl:size-[840px]',
 						'transition-all duration-[700ms] ease-in-out',
 						'shadow-[0px_0px_100px_30px_#33FFEE] xl:shadow-[0px_0px_180px_60px_#33FFEE]',
 						'hover:shadow-[0px_0px_180px_60px_#33FFEE] xl:hover:shadow-[0px_0px_240px_90px_#33FFEE]'
 					)}>
 					<div className={'flex flex-col items-center md:mt-[70px]'}>
-						<IconJumperLogo className={'md:2-[148px] w-20 xl:mb-6 xl:h-[120px] xl:w-[320px]'} />
+						<IconJumperLogo className={'w-20 xl:mb-6 xl:h-[120px] xl:w-[320px]'} />
 						<div className={'w-[252px] md:w-[464px]'}>
 							<Image
 								src={'/logo.png'}
