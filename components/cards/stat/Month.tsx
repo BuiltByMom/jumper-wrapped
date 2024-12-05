@@ -65,23 +65,30 @@ export default function MonthCard(props: TMonthCardProps): ReactElement {
 					initial={'initial'}
 					animate={'animate'}
 					className={'absolute top-28 max-sm:top-36'}>
-					<p
-						className={cl(
-							'text-[320px] font-bold uppercase leading-[200px] text-[#00FFB2]',
-							fontMonth.className
-						)}>
-						{props.month.slice(0, 3)}
-					</p>
-				</motion.div>
-
-				<motion.div
-					variants={monthAnimation}
-					initial={'initial'}
-					animate={'animate'}
-					className={'absolute top-1/2 -translate-y-1/4 md:top-[170px]'}>
-					<p className={cl('uppercase text-[96px] font-bold leading-[96px] text-white', fontMonth.className)}>
-						{props.month}
-					</p>
+					<div className={'relative size-full'}>
+						<p
+							className={cl(
+								'text-[320px] font-bold uppercase leading-[200px] text-[#00FFB2]',
+								fontMonth.className
+							)}>
+							{props.month.slice(0, 3)}
+						</p>
+						<motion.div
+							variants={monthAnimation}
+							initial={'initial'}
+							animate={'animate'}
+							className={
+								'absolute left-[27%] top-[18%] h-[67px] w-[197px] -translate-x-1/2 -translate-y-1/2'
+							}>
+							<p
+								className={cl(
+									'uppercase text-[96px] font-bold leading-[96px] text-white',
+									fontMonth.className
+								)}>
+								{props.month}
+							</p>
+						</motion.div>
+					</div>
 				</motion.div>
 
 				<motion.div

@@ -75,7 +75,7 @@ export function HomePage(): ReactElement {
 				<Header
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 					isCarouselView={view === 'carousel'}
-					cardsAmount={cards.length + 1}
+					cardsAmount={cards.length}
 				/>
 				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
 

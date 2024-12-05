@@ -11,7 +11,7 @@ export function Card(props: {
 	return (
 		<div
 			className={cl(
-				'relative h-screen md:h-auto flex md:items-baseline items-center aspect-[440/600] md:rounded-[32px] overflow-hidden w-[440px]',
+				'relative h-screen md:h-auto w-[calc(100vw+7px)] flex md:items-baseline items-center aspect-[440/600] md:rounded-[32px] overflow-hidden md:w-[440px]',
 				props.className
 			)}>
 			<div

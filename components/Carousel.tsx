@@ -1,12 +1,10 @@
-import {type ReactElement, useCallback} from 'react';
+import {type ReactElement} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, useCarousel} from './carouselContext';
-import NoSleepCard from './cards/share/NoSleep';
-import {Button} from './common/Button';
 import {getCardComponent, type TCardData} from './utils/cards';
 
-const domain = 'https://jumper-wrap.builtby.dad';
+// const domain = 'https://jumper-wrap.builtby.dad';
 
 const cardAnimation = {
 	initial: {opacity: 0, scale: 0, x: 50},
@@ -48,12 +46,13 @@ function CarouselCard(props: React.HTMLAttributes<HTMLDivElement>): ReactElement
 }
 
 export function Carousel(props: {cards: TCardData[]; profile?: string}): ReactElement {
-	const clickToTweet = useCallback(async () => {
-		window.open(
-			`https://twitter.com/intent/tweet?url=${domain}/${props.profile}?text=Check out my wrapped Jumper!`,
-			'_blank'
-		);
-	}, [props.profile]);
+	// add to the share card 'Share on X' button
+	// const clickToTweet = useCallback(async () => {
+	// 	window.open(
+	// 		`https://twitter.com/intent/tweet?url=${domain}/${props.profile}?text=Check out my wrapped Jumper!`,
+	// 		'_blank'
+	// 	);
+	// }, [props.profile]);
 
 	return (
 		<div className={'relative'}>
@@ -64,25 +63,7 @@ export function Carousel(props: {cards: TCardData[]; profile?: string}): ReactEl
 							key={index}
 							className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 							<CarouselCard>
-								{index < props.cards.length ? (
-									getCardComponent(props.cards[index].id, props.cards[index].data)
-								) : (
-									<div className={'relative max-sm:mb-40'}>
-										<NoSleepCard
-											width={440}
-											timestamp={'1312312'}
-										/>
-										<div
-											className={
-												'absolute left-1/2 z-50 -translate-x-1/2 max-sm:bottom-12 md:-bottom-6'
-											}>
-											<Button
-												onClick={clickToTweet}
-												title={'Share on X'}
-											/>
-										</div>
-									</div>
-								)}
+								{getCardComponent(props.cards[index].id, props.cards[index].data)}
 							</CarouselCard>
 						</CarouselItem>
 					))}

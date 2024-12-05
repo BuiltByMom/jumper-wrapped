@@ -217,7 +217,7 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.Compon
 					/>
 				</div>
 				<button
-					className={'screen absolute left-0 top-[96px] z-[1000] h-[calc(100vh-96px)] w-[50vw] md:hidden'}
+					className={'screen absolute left-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] md:hidden'}
 					onClick={scrollPrev}
 					disabled={!canScrollPrev}
 				/>
@@ -243,7 +243,7 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentP
 					/>
 				</div>
 				<button
-					className={'screen absolute right-0 top-[96px] z-[1000] h-[calc(100vh-96px)] w-[50vw] md:hidden'}
+					className={'screen absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] md:hidden'}
 					onClick={scrollNext}
 					disabled={!canScrollNext}
 				/>
@@ -261,33 +261,38 @@ export const CarouselDots = React.forwardRef<
 	const slideCount = api?.scrollSnapList().length || 0;
 	const [isAnimating, set_isAnimating] = React.useState(false);
 	const totalSlides = arrayLength || slideCount;
-	const duration = 15 * 1000;
+	const MOUNT_DELAY = 1500; // 1.5 seconds in milliseconds
 
-	// Start animation on mount
-	React.useEffect(() => {
-		const startTimer = setTimeout(() => {
+	const goToNextSlide = React.useCallback(() => {
+		if (selectedIndex === totalSlides - 1) {
+			set_isComplete(true);
+		} else {
+			api?.scrollNext();
 			set_isAnimating(true);
-		}, 100);
-
-		return () => clearTimeout(startTimer);
-	}, []);
-
-	React.useEffect(() => {
-		if (!api || isComplete) {
-			return;
 		}
+	}, [api, selectedIndex, totalSlides, set_isComplete]);
 
+	const handleTransitionEnd = React.useCallback(() => {
+		if (!isComplete) {
+			goToNextSlide();
+		}
+	}, [goToNextSlide, isComplete]);
+
+	// Start animation after 1.5s on mount
+	React.useEffect(() => {
 		const timer = setTimeout(() => {
-			if (selectedIndex === totalSlides - 1) {
-				set_isComplete(true);
-			} else {
-				api.scrollNext();
-				set_isAnimating(true);
-			}
-		}, duration);
+			set_isAnimating(true);
+		}, MOUNT_DELAY);
 
 		return () => clearTimeout(timer);
-	}, [api, selectedIndex, totalSlides, isComplete, set_isComplete, duration]);
+	}, []);
+
+	// Handle animation on slide change
+	React.useEffect(() => {
+		if (!isComplete && selectedIndex !== 0) {
+			set_isAnimating(true);
+		}
+	}, [selectedIndex, isComplete]);
 
 	const handleDotClick = (index: number): void => {
 		if (!api) {
@@ -298,7 +303,6 @@ export const CarouselDots = React.forwardRef<
 		api.scrollTo(index);
 		set_isComplete(false);
 
-		// Start animation after a brief delay
 		setTimeout(() => {
 			set_isAnimating(true);
 		}, 50);
@@ -331,16 +335,8 @@ export const CarouselDots = React.forwardRef<
 									: 'w-0'
 							)}
 							onTransitionEnd={() => {
-								if (index === selectedIndex && !isComplete) {
-									set_isAnimating(false);
-									setTimeout(() => {
-										if (selectedIndex === totalSlides - 1) {
-											set_isComplete(true);
-										} else {
-											api?.scrollNext();
-											set_isAnimating(true);
-										}
-									}, 50);
+								if (index === selectedIndex) {
+									handleTransitionEnd();
 								}
 							}}
 						/>
@@ -351,3 +347,80 @@ export const CarouselDots = React.forwardRef<
 	);
 });
 CarouselDots.displayName = 'CarouselDots';
+
+export const MobileCarouselDots = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement> & {arrayLength?: number}
+>(({className, arrayLength, ...props}, ref) => {
+	const {api, selectedIndex, set_isComplete, isComplete} = useCarousel();
+	const slideCount = api?.scrollSnapList().length || 0;
+	const [isAnimating, set_isAnimating] = React.useState(false);
+	const totalSlides = arrayLength || slideCount;
+	const MOUNT_DELAY = 1500; // 1.5 seconds in milliseconds
+
+	const goToNextSlide = React.useCallback(() => {
+		if (selectedIndex === totalSlides - 1) {
+			set_isComplete(true);
+		} else {
+			api?.scrollNext();
+			set_isAnimating(true);
+		}
+	}, [api, selectedIndex, totalSlides, set_isComplete]);
+
+	const handleTransitionEnd = React.useCallback(() => {
+		if (!isComplete) {
+			goToNextSlide();
+		}
+	}, [goToNextSlide, isComplete]);
+
+	// Start animation after 1.5s on mount
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			set_isAnimating(true);
+		}, MOUNT_DELAY);
+
+		return () => clearTimeout(timer);
+	}, []);
+
+	// Handle animation on slide change
+	React.useEffect(() => {
+		if (!isComplete && selectedIndex !== 0) {
+			set_isAnimating(true);
+		}
+	}, [selectedIndex, isComplete]);
+
+	return (
+		<div
+			ref={ref}
+			className={cl('flex justify-center z-[1000] gap-2 h-10 items-center', className)}
+			{...props}>
+			{Array.from({length: totalSlides}).map((_, index) => (
+				<div
+					key={index}
+					className={'group -m-4 w-full cursor-pointer p-4'}>
+					<div
+						className={cl(
+							'relative h-[4px] w-full',
+							'rounded-full transition-all duration-100',
+							'bg-[#ffffff1a]'
+						)}>
+						<div
+							className={cl(
+								'absolute top-0 left-0 rounded-[4px] h-full bg-white',
+								index === selectedIndex
+									? cl('transition-all duration-[15s] linear', isAnimating ? 'w-full' : 'w-0')
+									: 'w-0'
+							)}
+							onTransitionEnd={() => {
+								if (index === selectedIndex) {
+									handleTransitionEnd();
+								}
+							}}
+						/>
+					</div>
+				</div>
+			))}
+		</div>
+	);
+});
+MobileCarouselDots.displayName = 'MobileCarouselDots';
