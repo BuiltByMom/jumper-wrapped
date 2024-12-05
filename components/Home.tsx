@@ -47,41 +47,28 @@ const cards = [
 	}
 ];
 
-const breathingAnimation = {
-	initial: {opacity: 0, scale: 0},
-	animate: {
-		opacity: 1,
-		scale: [1, 1.02, 1], // Subtle scale breathing effect
-		transition: {
-			duration: 3,
-			scale: {
-				repeat: Infinity,
-				repeatType: 'reverse',
-				ease: 'easeInOut',
-				duration: 3 // Slower breathing
-			}
-		}
-	},
-	exit: {opacity: 0, scale: 0}
-};
-
-const wiggleAnimation = {
+const greetingsAnimation = {
 	initial: {opacity: 0, scale: 0},
 	animate: {
 		opacity: 1,
 		scale: 1,
-		rotate: [0, -2, 2, -2, 0], // Wiggle rotation angles
 		transition: {
-			duration: 0.5,
-			rotate: {
-				duration: 0.4,
-				delay: 0.2, // Start wiggle after initial scale animation
-				ease: 'easeInOut',
-				repeat: 1 // Wiggle once
-			}
+			type: 'spring',
+			stiffness: 100,
+			damping: 17,
+			mass: 1.5,
+			opacity: {duration: 0.4}
 		}
 	},
-	exit: {opacity: 0, scale: 0.8}
+	exit: {
+		opacity: 0,
+		scale: 0.8,
+		transition: {
+			type: 'spring',
+			stiffness: 200,
+			damping: 10
+		}
+	}
 };
 
 export function HomePage(): ReactElement {
@@ -121,34 +108,23 @@ export function HomePage(): ReactElement {
 					{!isNotEnoughData && view === 'greetings' && (
 						<motion.div
 							key={'greetings-section'}
-							initial={{opacity: 0, scale: 0}}
-							animate={{opacity: 1, scale: 1}}
-							exit={{opacity: 0, scale: 0}}
-							transition={{duration: 0.5}}>
-							<motion.div
-								key={'greetings-section'}
-								variants={breathingAnimation}
-								animate={'animate'}
-								exit={'exit'}>
-								<WrappedButton
-									set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-									onStart={() => set_view('carousel')}
-								/>
-								<WalletSelector
-									isOpen={isWalletSelectorOpen}
-									onClose={() => set_isWalletSelectorOpen(false)}
-								/>
-							</motion.div>
+							variants={greetingsAnimation}
+							initial={'initial'}
+							animate={'animate'}
+							exit={'exit'}>
+							<WrappedButton
+								set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+								onStart={() => set_view('carousel')}
+							/>
+							<WalletSelector
+								isOpen={isWalletSelectorOpen}
+								onClose={() => set_isWalletSelectorOpen(false)}
+							/>
 						</motion.div>
 					)}
 
 					{!isNotEnoughData && view === 'carousel' && (
-						<motion.div
-							key={'carousel-section'}
-							variants={wiggleAnimation}
-							initial={'initial'}
-							animate={'animate'}
-							exit={'exit'}>
+						<div>
 							<div className={''}>
 								{isLastSlide ? <JumperPopup /> : null}
 								<Carousel
@@ -156,7 +132,7 @@ export function HomePage(): ReactElement {
 									cards={cards}
 								/>
 							</div>
-						</motion.div>
+						</div>
 					)}
 
 					{isNotEnoughData && (

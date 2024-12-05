@@ -211,7 +211,7 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.Compon
 					<ButtonArrow
 						onClick={scrollPrev}
 						disabled={!canScrollPrev}
-						className={cl('flex absolute z-30 top-1/2 -translate-y-1/2', '-left-16', className)}
+						className={cl('hidden md:flex absolute z-30 top-1/2 -mt-7', '-left-16', className)}
 						direction={'left'}
 						{...props}
 					/>
@@ -237,7 +237,7 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentP
 					<ButtonArrow
 						onClick={scrollNext}
 						disabled={!canScrollNext}
-						className={cl('hidden md:flex absolute z-30 top-1/2 -translate-y-1/2', '-right-16', className)}
+						className={cl('hidden md:flex absolute z-30 top-1/2 -mt-7', '-right-16', className)}
 						direction={'right'}
 						{...props}
 					/>

@@ -1,4 +1,5 @@
 import {type HTMLAttributes, type ReactElement, useMemo} from 'react';
+import {motion} from 'framer-motion';
 
 import {Card} from './Card';
 
@@ -27,6 +28,42 @@ const padsConfig = [
 		textClasses: 'text-[#7EF6E8] text-[72px] font-bold leading-[72px]'
 	}
 ];
+
+const animationConfig = {
+	type: 'spring',
+	bounce: 0.3,
+	duration: 0.6,
+	delay: 0.3,
+	stiffness: 150,
+	damping: 15
+};
+
+const titleAnimation = {
+	initial: {y: -120, opacity: 0},
+	animate: {
+		y: 0,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
+const contentAnimation = {
+	initial: {scale: 0.6, opacity: 0},
+	animate: {
+		scale: 1,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
+const copyAnimation = {
+	initial: {y: 120, opacity: 0},
+	animate: {
+		y: 0,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
 
 function VolumePads({value}: {value: string}): ReactElement {
 	return (
@@ -65,20 +102,33 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 				props.position <= 50 ? 'Green' : 'Purple'
 			}.jpg)`}>
 			<>
-				<div className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
+				<motion.div
+					variants={titleAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'flex flex-col gap-2 pb-6 pt-2 text-center text-black'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Ur volume'}</b>
 					<p className={'font-space-grotesk text-2xl font-medium'}>
 						{`Putting you in the top ${props.position}%`}
 					</p>
-				</div>
+				</motion.div>
 
-				<VolumePads value={formattedVolume} />
+				<motion.div
+					variants={contentAnimation}
+					initial={'initial'}
+					animate={'animate'}>
+					<VolumePads value={formattedVolume} />
+				</motion.div>
 
-				<div className={'mt-auto flex items-center justify-center pt-6 text-center'}>
+				<motion.div
+					variants={copyAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'mt-auto flex items-center justify-center pt-6 text-center'}>
 					<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-black'}>
 						{'Which makes you a bit of a chad, LFG.'}
 					</p>
-				</div>
+				</motion.div>
 			</>
 		</Card>
 	);

@@ -1,5 +1,6 @@
 import {type HTMLAttributes, type ReactElement, useMemo} from 'react';
 import localFont from 'next/font/local';
+import {motion} from 'framer-motion';
 
 import {Card} from './Card';
 
@@ -14,6 +15,42 @@ const fontTime = localFont({
 type TTimeCardProps = {
 	timestamp: string;
 } & HTMLAttributes<HTMLDivElement>;
+
+const animationConfig = {
+	type: 'spring',
+	bounce: 0.3,
+	duration: 0.6,
+	delay: 0.3,
+	stiffness: 150,
+	damping: 15
+};
+
+const titleAnimation = {
+	initial: {y: -120, opacity: 0},
+	animate: {
+		y: 0,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
+const timeAnimation = {
+	initial: {scale: 0.6, opacity: 0},
+	animate: {
+		scale: 1,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
+const copyAnimation = {
+	initial: {y: 120, opacity: 0},
+	animate: {
+		y: 0,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
 
 export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactElement {
 	const [time, amOrPm, dayOrNight] = useMemo((): [string, string, string] => {
@@ -44,14 +81,21 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 				dayOrNight === 'NIGHT' ? 'backgroundTimeNightMobile' : 'backgroundTimeDayMobile'
 			}.jpg)`}>
 			<>
-				<div className={'flex flex-col gap-2 pb-6 pt-2 text-center text-white'}>
+				<motion.div
+					variants={titleAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'flex flex-col gap-2 pb-6 pt-2 text-center text-white'}>
 					<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
 						{'Wen trade?'}
 					</b>
 					<p className={'font-space-grotesk text-2xl font-medium'}>{'You traded most at'}</p>
-				</div>
+				</motion.div>
 
-				<div
+				<motion.div
+					variants={timeAnimation}
+					initial={'initial'}
+					animate={'animate'}
 					className={cl(
 						'relative w-[320px] md:w-[392px]',
 						'flex aspect-[392/192] w-full items-center justify-center rounded-2xl border-8',
@@ -74,13 +118,17 @@ export default function TimeCard({timestamp, ...props}: TTimeCardProps): ReactEl
 							{amOrPm}
 						</span>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className={'mt-20 flex items-center justify-center pt-6 text-center'}>
+				<motion.div
+					variants={copyAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'mt-20 flex items-center justify-center pt-6 text-center'}>
 					<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-white'}>
 						{'Chasing gains, sniping bags or trawling pump.fun?'}
 					</p>
-				</div>
+				</motion.div>
 			</>
 		</Card>
 	);

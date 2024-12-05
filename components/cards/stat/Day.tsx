@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import {motion} from 'framer-motion';
 
 import {Card} from './Card';
 import {fontMonth} from './Month';
@@ -12,6 +13,42 @@ type TDayCardProps = {
 	month: string;
 } & HTMLAttributes<HTMLDivElement>;
 
+const animationConfig = {
+	type: 'spring',
+	bounce: 0.3,
+	duration: 0.6,
+	delay: 0.3,
+	stiffness: 150,
+	damping: 15
+};
+
+const titleAnimation = {
+	initial: {y: -120, opacity: 0},
+	animate: {
+		y: 0,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
+const contentAnimation = {
+	initial: {scale: 0.6, opacity: 0},
+	animate: {
+		scale: 1,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
+const copyAnimation = {
+	initial: {y: 120, opacity: 0},
+	animate: {
+		y: 0,
+		opacity: 1,
+		transition: animationConfig
+	}
+};
+
 export default function DayCard(props: TDayCardProps): ReactElement {
 	return (
 		<Card
@@ -19,10 +56,19 @@ export default function DayCard(props: TDayCardProps): ReactElement {
 			backgroundImage={'url(/cards/stat/backgroundDay.jpg)'}
 			mobileBackgroundImage={'url(/cards/stat/backgroundDayMobile.jpg)'}>
 			<>
-				<p className={'z-50 w-[392px] text-center text-[40px] font-bold uppercase leading-[40px]'}>
+				<motion.p
+					variants={titleAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'z-50 w-[392px] text-center text-[40px] font-bold uppercase leading-[40px]'}>
 					{'On this day you went full ape mode.'}
-				</p>
-				<div className={'relative z-50 h-[360px] w-[440px]'}>
+				</motion.p>
+
+				<motion.div
+					variants={contentAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'relative z-50 h-[360px] w-[440px]'}>
 					<Image
 						src={'/cards/stat/dayBox.png'}
 						alt={'backgroundDay'}
@@ -46,13 +92,17 @@ export default function DayCard(props: TDayCardProps): ReactElement {
 						)}>
 						{props.day}
 					</p>
-				</div>
+				</motion.div>
 
-				<div className={'mt-auto flex items-center justify-center text-center'}>
+				<motion.div
+					variants={copyAnimation}
+					initial={'initial'}
+					animate={'animate'}
+					className={'mt-auto flex items-center justify-center text-center'}>
 					<p className={'z-50 w-[392px] text-center text-2xl font-medium'}>
 						{'The market felt your weighty presence.'}
 					</p>
-				</div>
+				</motion.div>
 			</>
 		</Card>
 	);

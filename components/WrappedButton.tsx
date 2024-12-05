@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import {useAccount} from 'wagmi';
+import {motion} from 'framer-motion';
 import {useWallet} from '@solana/wallet-adapter-react';
 
 import {Button} from './common/Button';
@@ -13,6 +14,24 @@ type TProps = {
 	onStart: () => void;
 };
 
+const breathingAnimation = {
+	initial: {opacity: 0, scale: 0},
+	animate: {
+		opacity: 1,
+		scale: [1, 1.02, 1],
+		transition: {
+			duration: 3,
+			scale: {
+				repeat: Infinity,
+				repeatType: 'reverse',
+				ease: 'easeInOut',
+				duration: 3
+			}
+		}
+	},
+	exit: {opacity: 0, scale: 0}
+};
+
 export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): ReactElement {
 	const account = useWallet();
 	const {isConnected} = useAccount();
@@ -23,46 +42,52 @@ export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): Reac
 
 	return (
 		<div className={'relative'}>
-			<div
-				className={cl(
-					'z-50 flex size-[311px] md:size-[560px] flex-col items-center justify-center rounded-full',
-					'border-4 relative border-accent bg-violet-dark xl:size-[840px]',
-					'transition-all duration-[700ms] ease-in-out',
-					'shadow-[0px_0px_100px_30px_#33FFEE] xl:shadow-[0px_0px_180px_60px_#33FFEE]',
-					'hover:shadow-[0px_0px_180px_60px_#33FFEE] xl:hover:shadow-[0px_0px_240px_90px_#33FFEE]'
-				)}>
-				<div className={'flex flex-col items-center md:mt-[70px]'}>
-					<IconJumperLogo className={'md:2-[148px] w-20 xl:mb-6 xl:h-[120px] xl:w-[320px]'} />
-					<div className={'w-[252px] md:w-[464px]'}>
-						<Image
-							src={'/logo.png'}
-							alt={'Wrapped'}
-							width={460}
-							height={320}
-							className={'xl:w-[660px]'}
-						/>
-					</div>
-					<p
-						className={
-							'mb-6 mt-20 hidden max-w-[320px] text-center text-base font-medium text-white md:block xl:mb-16 xl:max-w-[570px] xl:text-3xl'
-						}>
-						{"Let's get into your jumper wrapped and find out what defi degen you are…"}
-					</p>
-					<div className={'hidden md:block'}>
-						{account.connected || isConnected ? (
-							<Button
-								onClick={onStart}
-								title={'Start'}
+			<motion.div
+				key={'greetings-section'}
+				variants={breathingAnimation}
+				animate={'animate'}
+				exit={'exit'}>
+				<div
+					className={cl(
+						'z-50 flex size-[311px] md:size-[560px] flex-col items-center justify-center rounded-full',
+						'border-4 relative border-accent bg-violet-dark xl:size-[840px]',
+						'transition-all duration-[700ms] ease-in-out',
+						'shadow-[0px_0px_100px_30px_#33FFEE] xl:shadow-[0px_0px_180px_60px_#33FFEE]',
+						'hover:shadow-[0px_0px_180px_60px_#33FFEE] xl:hover:shadow-[0px_0px_240px_90px_#33FFEE]'
+					)}>
+					<div className={'flex flex-col items-center md:mt-[70px]'}>
+						<IconJumperLogo className={'md:2-[148px] w-20 xl:mb-6 xl:h-[120px] xl:w-[320px]'} />
+						<div className={'w-[252px] md:w-[464px]'}>
+							<Image
+								src={'/logo.png'}
+								alt={'Wrapped'}
+								width={460}
+								height={320}
+								className={'xl:w-[660px]'}
 							/>
-						) : (
-							<Button
-								onClick={handleClick}
-								title={'Connect wallet'}
-							/>
-						)}
+						</div>
+						<p
+							className={
+								'mb-6 mt-20 hidden max-w-[320px] text-center text-base font-medium text-white md:block xl:mb-16 xl:max-w-[570px] xl:text-3xl'
+							}>
+							{"Let's get into your jumper wrapped and find out what defi degen you are…"}
+						</p>
+						<div className={'hidden md:block'}>
+							{account.connected || isConnected ? (
+								<Button
+									onClick={onStart}
+									title={'Start'}
+								/>
+							) : (
+								<Button
+									onClick={handleClick}
+									title={'Connect wallet'}
+								/>
+							)}
+						</div>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 			<div className={'absolute left-1/2 top-80 z-50 mt-10 -translate-x-1/2 md:hidden'}>
 				<p
 					className={
