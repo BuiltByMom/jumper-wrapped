@@ -56,7 +56,7 @@ export function HomePage(): ReactElement {
 	 *********************************************************************************************/
 	useEffect(() => {
 		if (!account.connected && !isConnected) {
-			router.push('/');
+			set_view('greetings');
 		}
 	}, [account, isConnected, router]);
 

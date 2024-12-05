@@ -75,7 +75,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 				variants={contentAnimation}
 				initial={'initial'}
 				animate={'animate'}
-				className={'mt-auto'}>
+				className={'mt-32 md:mt-auto'}>
 				<div className={cl(cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]')}>
 					<b className={cl('block text-center text-[40px] leading-[4px]', fontThunder.className)}>{'TOP'}</b>
 					<b className={cl('block text-center text-[200px] leading-[200px] pt-6', fontThunder.className)}>
