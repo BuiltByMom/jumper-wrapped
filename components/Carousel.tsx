@@ -1,11 +1,12 @@
-import type {ReactNode} from 'react';
-import {type ReactElement, useCallback} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, useCarousel} from './carouselContext';
 import DegenElderCard from './cards/share/DegenElderCard';
 import {Button} from './common/Button';
 import {getCardComponent, type TCardData} from './utils/cards';
+
+import type {ReactElement, ReactNode} from 'react';
 
 const domain = 'https://jumper-wrap.builtby.dad';
 
@@ -33,7 +34,14 @@ const cardAnimation = {
 };
 
 function CarouselCard(props: {index: number; children: ReactNode}): ReactElement {
+	const [hasBeenDiscovered, set_hasBeenDiscovered] = useState(false);
 	const {selectedIndex} = useCarousel();
+
+	useEffect(() => {
+		if (props.index <= selectedIndex) {
+			set_hasBeenDiscovered(true);
+		}
+	}, [selectedIndex, props.index]);
 
 	return (
 		<AnimatePresence mode={'popLayout'}>
@@ -42,7 +50,7 @@ function CarouselCard(props: {index: number; children: ReactNode}): ReactElement
 				variants={cardAnimation}
 				initial={'initial'}
 				animate={'animate'}
-				className={props.index === selectedIndex ? 'visible' : 'invisible'}>
+				className={props.index <= selectedIndex || hasBeenDiscovered ? 'visible' : 'invisible'}>
 				{props.children}
 			</motion.div>
 		</AnimatePresence>
