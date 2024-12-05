@@ -13,34 +13,22 @@ import VolumeCard from '@/components/cards/stat/Volume';
  ************************************************************************************************/
 export type TCardTypes = {
 	Volume: {
-		volume: number;
-		position: number;
+		volume: number; // Swap + Bridge
+		position: number; // avg(Swap + Bridge) ? (1 - value)
 	};
 	Wen: {
-		timestamp: number;
-	};
-	ChainsExplored: {
-		chainsExplored: number;
-		position: number;
-	};
-	TopTradedBags: {
-		tokens: {
-			symbol: string;
-			volume: number;
-		}[];
-	};
-	BridgeVolumeToSolana: {
-		volume: number;
+		timestamp: number; // Night or day, timestamp
 	};
 	DumpToken: {
 		address: string;
 		volume: number;
 		symbol: string;
 	};
-	BoughtToken: {
-		address: string;
-		volume: number;
-		symbol: string;
+
+	// One of them: 33/33/33
+	ChainsExplored: {
+		chainsExplored: number;
+		position: number;
 	};
 	BelovedChain: {
 		chainId: number;
@@ -52,9 +40,8 @@ export type TCardTypes = {
 		count: number;
 		name: string;
 	};
-	JumperWash: {
-		hasWashedNFT: boolean;
-	};
+
+	// DAY / MONTH / WEEKDAY
 	BusiestDay: {
 		date: string;
 		volume: number;
@@ -67,13 +54,16 @@ export type TCardTypes = {
 		weekday: string;
 		volume: number;
 	};
-	TradingStreak: {
-		days: number;
-		startDate: string;
-		endDate: string;
+
+	// ONLY FOR SOLANA
+	BridgeVolumeToSolana: {
+		volume: number; // Bridged SOL
 	};
 	SolanaVolume: {
-		volume: number;
+		volume: number; // Overall volume on Solana
+	};
+	JumperWash: {
+		hasWashedNFT: boolean;
 	};
 };
 
@@ -99,10 +89,8 @@ export const CARD_COMPONENTS: {
 	),
 	Wen: ({timestamp}) => <TimeCard timestamp={String(timestamp)} />,
 	ChainsExplored: ({chainsExplored}) => <PlaceholderCard volume={chainsExplored} />,
-	TopTradedBags: ({tokens}) => <PlaceholderCard volume={tokens[0].volume} />, // Need specific component
 	BridgeVolumeToSolana: ({volume}) => <PlaceholderCard volume={volume} />,
 	DumpToken: ({volume}) => <PlaceholderCard volume={volume} />,
-	BoughtToken: ({volume}) => <PlaceholderCard volume={volume} />,
 	BelovedChain: ({volume}) => <PlaceholderCard volume={volume} />,
 	TopBridgeChain: ({count}) => <PlaceholderCard volume={count} />,
 	JumperWash: () => <PlaceholderCard volume={0} />, // Need specific component
@@ -124,7 +112,6 @@ export const CARD_COMPONENTS: {
 		const day = new Date(Number(weekday)).toLocaleString('en-US', {weekday: 'long'});
 		return <PlaceholderCard day={day} />;
 	},
-	TradingStreak: ({days}) => <PlaceholderCard volume={days} />,
 	SolanaVolume: ({volume}) => <PlaceholderCard volume={volume} />
 };
 
