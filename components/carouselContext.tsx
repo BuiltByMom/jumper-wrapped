@@ -207,7 +207,7 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.Compon
 
 		return (
 			<>
-				<div className={'hidden md:block'}>
+				<div className={'pointer-events-auto hidden cursor-pointer md:block'}>
 					<ButtonArrow
 						onClick={scrollPrev}
 						disabled={!canScrollPrev}
@@ -217,7 +217,9 @@ export const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.Compon
 					/>
 				</div>
 				<button
-					className={'screen absolute left-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] md:hidden'}
+					className={
+						'screen pointer-events-auto absolute left-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden'
+					}
 					onClick={scrollPrev}
 					disabled={!canScrollPrev}
 				/>
@@ -233,7 +235,7 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentP
 
 		return (
 			<>
-				<div className={'hidden md:block'}>
+				<div className={'pointer-events-auto hidden cursor-pointer md:block'}>
 					<ButtonArrow
 						onClick={scrollNext}
 						disabled={!canScrollNext}
@@ -243,7 +245,9 @@ export const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentP
 					/>
 				</div>
 				<button
-					className={'screen absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] md:hidden'}
+					className={
+						'screen pointer-events-auto absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden'
+					}
 					onClick={scrollNext}
 					disabled={!canScrollNext}
 				/>

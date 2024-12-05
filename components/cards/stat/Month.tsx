@@ -72,7 +72,7 @@ export default function MonthCard(props: TMonthCardProps): ReactElement {
 					variants={monthAnimation}
 					initial={'initial'}
 					animate={'animate'}
-					className={'absolute left-[27%] top-[18%] h-[67px] w-[197px] -translate-x-1/2 -translate-y-1/2'}>
+					className={'absolute top-[18%] flex h-[67px] w-full justify-center'}>
 					<p
 						className={cl(
 							'uppercase text-[96px] font-bold leading-[96px] text-white',

@@ -1,3 +1,4 @@
+import type {ReactNode} from 'react';
 import {type ReactElement, useCallback} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 
@@ -31,7 +32,7 @@ const cardAnimation = {
 	}
 };
 
-function CarouselCard(props: React.HTMLAttributes<HTMLDivElement>): ReactElement {
+function CarouselCard(props: {index: number; children: ReactNode}): ReactElement {
 	const {selectedIndex} = useCarousel();
 
 	return (
@@ -40,7 +41,8 @@ function CarouselCard(props: React.HTMLAttributes<HTMLDivElement>): ReactElement
 				key={selectedIndex}
 				variants={cardAnimation}
 				initial={'initial'}
-				animate={'animate'}>
+				animate={'animate'}
+				className={props.index === selectedIndex ? 'visible' : 'invisible'}>
 				{props.children}
 			</motion.div>
 		</AnimatePresence>
@@ -57,13 +59,13 @@ export function Carousel(props: {cards: TCardData[]; profile?: string}): ReactEl
 
 	return (
 		<div className={'relative'}>
-			<div className={'relative w-screen'}>
+			<div className={'relative z-10 w-screen'}>
 				<CarouselContent className={'-ml-2 md:-ml-4'}>
 					{[...props.cards, {id: 'swapaholic', data: {}}].map((_, index) => (
 						<CarouselItem
 							key={index}
 							className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
-							<CarouselCard>
+							<CarouselCard index={index}>
 								{index < props.cards.length ? (
 									getCardComponent(props.cards[index].id, props.cards[index].data)
 								) : (
@@ -89,7 +91,10 @@ export function Carousel(props: {cards: TCardData[]; profile?: string}): ReactEl
 					))}
 				</CarouselContent>
 			</div>
-			<div className={'absolute inset-0 mx-auto w-screen px-20 md:w-[800px] xl:w-[1200px]'}>
+			<div
+				className={
+					'pointer-events-none absolute inset-0 z-10 mx-auto w-screen px-20 md:w-[800px] xl:w-[1200px]'
+				}>
 				<CarouselPrevious />
 				<CarouselNext />
 			</div>
