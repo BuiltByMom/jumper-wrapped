@@ -49,7 +49,7 @@ export function HomePage(): ReactElement {
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
 	const router = useRouter();
-	const isNotEnoughData = false;
+	const isNotEnoughData = cards.length === 0;
 
 	/**********************************************************************************************
 	 * Redirect to home if user is not connected
@@ -82,6 +82,16 @@ export function HomePage(): ReactElement {
 				<AnimatePresence
 					mode={'wait'}
 					initial={true}>
+					{isNotEnoughData && (
+						<motion.div
+							key={'no-data-section'}
+							initial={{opacity: 0, scale: 0.9}}
+							animate={{opacity: 1, scale: 1}}
+							exit={{opacity: 0, scale: 0.8}}
+							transition={{duration: 1}}>
+							<NextYearButton />
+						</motion.div>
+					)}
 					{!isNotEnoughData && view === 'greetings' && (
 						<motion.div
 							key={'greetings-section'}
@@ -110,17 +120,6 @@ export function HomePage(): ReactElement {
 								/>
 							</div>
 						</div>
-					)}
-
-					{isNotEnoughData && (
-						<motion.div
-							key={'no-data-section'}
-							initial={{opacity: 0, scale: 0.9}}
-							animate={{opacity: 1, scale: 1}}
-							exit={{opacity: 0, scale: 0.8}}
-							transition={{duration: 1}}>
-							<NextYearButton />
-						</motion.div>
 					)}
 				</AnimatePresence>
 			</div>
