@@ -6,7 +6,10 @@ import {CARD_COMPONENTS} from '@/components/utils/cards';
 
 export default function Index(): ReactElement {
 	return (
-		<div className={'grid grid-cols-3 items-center justify-center gap-4'}>
+		<div
+			className={
+				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6'
+			}>
 			<DivaCardCard
 				tokens={['DAI', 'USDC', 'USDT']}
 				topRatio={42.42}
