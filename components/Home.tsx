@@ -4,7 +4,7 @@ import {useAccount} from 'wagmi';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useWallet} from '@solana/wallet-adapter-react';
 
-import {PageBackgound} from './Backgrounds';
+import {PageBackground} from './Backgrounds';
 import {Carousel} from './Carousel';
 import {useCarousel} from './carouselContext';
 import {JumperPopup} from './JumperPopup';
@@ -77,7 +77,7 @@ export function HomePage(): ReactElement {
 					isCarouselView={view === 'carousel'}
 					cardsAmount={cards?.length || 0}
 				/>
-				<PageBackgound position={view === 'greetings' ? 'center' : 'bottom-right'} />
+				<PageBackground position={view === 'greetings' ? 'center' : 'bottom-right'} />
 
 				<AnimatePresence
 					mode={'wait'}
