@@ -47,6 +47,7 @@ export type TCardProps = {
 	children: ReactNode;
 	width: number;
 	className?: string;
+	disableAnimation?: boolean;
 };
 
 export default function Card(props: TCardProps): ReactElement {
@@ -60,9 +61,9 @@ export default function Card(props: TCardProps): ReactElement {
 		<motion.div
 			variants={cardAnimation}
 			initial={'initial'}
-			animate={!canScrollNext ? 'animate' : 'exit'}
+			animate={!canScrollNext || props.disableAnimation ? 'animate' : 'exit'}
 			exit={'exit'}
-			className={'w-auto !scale-75 md:!scale-100'}>
+			className={'relative w-fit !scale-75 md:!scale-100'}>
 			<div
 				style={{transform: `scale(${width / 440})`, width: 440}}
 				className={cl(

@@ -14,31 +14,50 @@ export default function Index(): ReactElement {
 	return (
 		<div
 			className={
-				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6'
+				'mx-auto grid grid-cols-1 items-center justify-center gap-10 p-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6'
 			}>
 			<DivaCardCard
 				tokens={['DAI', 'USDC', 'USDT']}
 				topRatio={42.42}
 				width={440}
+				disableAnimation
 			/>
 			<SerBridgealotCard
 				volumeInUSD={1234567.89}
 				topRatio={42.42}
 				width={440}
+				disableAnimation
 			/>
-			<ChainWhaleCard width={440} />
-			<DegenElderCard width={440} />
-			<SwapaholicCard width={440} />
-			<SolanaSoldierCard width={440} />
-			<PaperHandedCard width={440} />
+			<ChainWhaleCard
+				width={440}
+				disableAnimation
+			/>
+			<DegenElderCard
+				width={440}
+				disableAnimation
+			/>
+			<SwapaholicCard
+				width={440}
+				disableAnimation
+			/>
+			<SolanaSoldierCard
+				width={440}
+				disableAnimation
+			/>
+			<PaperHandedCard
+				width={440}
+				disableAnimation
+			/>
 			<MultiChainCard
 				width={440}
 				numberOfChains={3}
 				topRatio={1}
+				disableAnimation
 			/>
 			<NoSleepCard
 				width={440}
 				timestamp={'234234234'}
+				disableAnimation
 			/>
 		</div>
 	);
