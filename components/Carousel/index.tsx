@@ -1,4 +1,4 @@
-import DegenElderCard from '../cards/profiles/DegenElderCard';
+import PaperHandedCard from '../cards/profiles/PaperHanded';
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from '../carouselContext';
 import {getCardComponent} from '../utils/cards';
 import {CarouselCard} from './Card';
@@ -31,7 +31,7 @@ export function Carousel({cards, profile}: TCarouselProps): ReactElement {
 									getCardComponent(cards[index].id, cards[index].data)
 								) : (
 									<div className={'relative max-sm:mb-40'}>
-										<DegenElderCard
+										<PaperHandedCard
 											topRatio={20}
 											width={440}
 										/>

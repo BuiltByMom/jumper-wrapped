@@ -1,7 +1,5 @@
 import type {ReactElement} from 'react';
 
-import DivaCardCard from '@/components/cards/profiles/Diva';
-import SerBridgealotCard from '@/components/cards/profiles/SerBridgealot';
 import {CARD_COMPONENTS} from '@/components/utils/cards';
 
 export default function Index(): ReactElement {
@@ -10,17 +8,6 @@ export default function Index(): ReactElement {
 			className={
 				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6'
 			}>
-			<DivaCardCard
-				tokens={['DAI', 'USDC', 'USDT']}
-				topRatio={42.42}
-				width={440}
-			/>
-			<SerBridgealotCard
-				volumeInUSD={1234567.89}
-				topRatio={42.42}
-				width={440}
-			/>
-
 			{CARD_COMPONENTS.Volume({volume: '34233', percentile: '0.19', kind: 'swap'})}
 			{CARD_COMPONENTS.Volume({volume: '4564545', percentile: '0.52', kind: 'bridge'})}
 			{CARD_COMPONENTS.VolumePercentile({percentile: '0.19', kind: 'swap'})}
