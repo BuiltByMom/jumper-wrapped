@@ -1,7 +1,8 @@
+import BelovedChain from '../cards/stats/BelovedChain';
 import ChainExploredCard from '../cards/stats/ChainExplored';
 import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import PlaceholderCard from '../cards/stats/Placeholder';
-import TopBridgeChain from '../cards/stats/TopBridgeChain';
+import TopBridgedChainCard from '../cards/stats/TopBridgedChain';
 import VolumeRankCard from '../cards/stats/VolumeRank';
 import WashTradeCard from '../cards/stats/WashTrade';
 
@@ -38,11 +39,9 @@ export type TCardTypes = {
 	};
 	BelovedChain: {
 		chain: string;
-		volume: number;
 	};
 	TopBridgeChain: {
 		chain: string;
-		volume: number;
 	};
 	BusiestHour: string;
 	BusiestDay: string;
@@ -95,14 +94,8 @@ export const CARD_COMPONENTS: {
 			copy={'Good choice!'}
 		/>
 	),
-	BelovedChain: ({chain}) => <TopBridgeChain chainName={chain} />,
-	TopBridgeChain: ({chain}) => (
-		<PlaceholderCard
-			title={'Top Bridge Chain'}
-			content={`Your top bridge chain was ${chain}`}
-			copy={'Good choice!'}
-		/>
-	),
+	BelovedChain: ({chain}) => <BelovedChain chainName={chain} />,
+	TopBridgeChain: ({chain}) => <TopBridgedChainCard chainName={chain} />,
 	JumperWash: () => <WashTradeCard />,
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,

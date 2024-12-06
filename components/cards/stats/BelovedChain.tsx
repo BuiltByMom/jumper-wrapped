@@ -8,15 +8,11 @@ import type {TBaseCardProps} from './types';
 
 import {cl} from '@/components/utils/tools';
 
-/************************************************************************************************
- * Top Bridge Chain Card Props
- * Displays user's most used blockchain for bridging
- ************************************************************************************************/
-type TTopBridgeChainCardProps = {
+type TBelovedChainCardProps = {
 	chainName: string;
 } & TBaseCardProps;
 
-export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChainCardProps): ReactElement {
+export default function BelovedChainCard({chainName, ...props}: TBelovedChainCardProps): ReactElement {
 	return (
 		<Card
 			{...props}
@@ -34,8 +30,8 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 				}>
 				<Image
 					className={cl(
-						chainName === 'solana' ? 'size-[180px]' : 'size-[208px] rounded-full',
-						'-mt-[120px] md:mt-0'
+						chainName === 'solana' ? 'size-[180px]' : 'h-[208px] w-auto rounded-full',
+						'-mt-[120px] md:mt-2'
 					)}
 					src={`/chains/${chainName}.svg`}
 					alt={chainName}
