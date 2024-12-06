@@ -54,9 +54,9 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 				return 'backgroundWeekDayFri';
 			case 'Saturday' || 'Sunday':
 				return 'backgroundWeekDaySatSun';
+			default:
+				return 'backgroundWeekDaySatSun';
 		}
-
-		return 'backgroundWeekDaySatSun';
 	};
 
 	return (
