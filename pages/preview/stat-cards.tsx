@@ -29,16 +29,17 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.BusiestWeekday('Friday')}
 			{CARD_COMPONENTS.BusiestWeekday('Sunday')}
 
-			{CARD_COMPONENTS.FavoriteToken({volume: 123, address: '0x123', symbol: 'DAI'})}
 			{CARD_COMPONENTS.ChainsExplored({chainsExplored: 123, position: 4})}
-			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'solana'})}
-			{CARD_COMPONENTS.TransactionCount(123)}
-
+			{CARD_COMPONENTS.FavoriteToken({volume: 123, address: '0x123', symbol: 'DAI'})}
 			{CARD_COMPONENTS.BelovedChain({volume: 123, chain: 'solana'})}
-			{CARD_COMPONENTS.BelovedChain({volume: 123, chain: 'arbitrum'})}
-			{CARD_COMPONENTS.BelovedChain({volume: 123, chain: 'optimism'})}
-			{CARD_COMPONENTS.BelovedChain({volume: 123, chain: 'base'})}
+			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'arbitrum'})}
+			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'optimism'})}
+			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'base'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Monday'})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Wednesday'})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Friday'})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Sunday'})}
 		</div>
 	);
 }

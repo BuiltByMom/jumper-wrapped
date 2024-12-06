@@ -12,11 +12,11 @@ export function Card(props: {
 		<div
 			className={cl(
 				'relative overflow-hidden flex md:aspect-[440/600]',
-				'h-screen w-screen items-center',
+				'h-screen w-[calc(100vw+7px)] items-center pt-[120px] md:pt-0',
 				'md:h-auto md:w-[440px] md:items-baseline md:rounded-[32px] ',
 				props.className
 			)}>
-			<div className={'relative z-50 flex size-full h-full flex-col items-center p-6 md:mb-0'}>
+			<div className={'relative z-50 flex size-full h-full flex-col items-center p-6 md:mb-0 md:scale-100'}>
 				{props.children}
 			</div>
 			<div

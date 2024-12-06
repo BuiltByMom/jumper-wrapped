@@ -6,6 +6,8 @@ import {CardContent, CardCopy, CardTitle} from './CardElements';
 
 import type {TBaseCardProps} from './types';
 
+import {cl} from '@/components/utils/tools';
+
 /************************************************************************************************
  * Top Bridge Chain Card Props
  * Displays user's most used blockchain for bridging
@@ -31,7 +33,10 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 					'relative mt-auto flex aspect-square w-[208px] items-center justify-center pb-8 md:mt-auto md:pb-0'
 				}>
 				<Image
-					className={chainName === 'solana' ? 'size-[180px]' : 'size-[208px] rounded-full'}
+					className={cl(
+						chainName === 'solana' ? 'size-[180px]' : 'size-[208px] rounded-full',
+						'-mt-[120px] md:mt-0'
+					)}
 					src={`/chains/${chainName}.svg`}
 					alt={chainName}
 					width={208}

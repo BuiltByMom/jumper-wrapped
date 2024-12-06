@@ -42,18 +42,29 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 				</p>
 			</CardTitle>
 
-			<CardContent className={'relative z-50 h-[360px] w-[440px]'}>
-				<Image
-					src={'/cards/stats/dayBox.png'}
-					alt={'backgroundDay'}
-					width={616}
-					height={616}
-					className={'size-full object-contain'}
-				/>
+			<CardContent className={'relative z-50 !flex h-[360px] w-[440px] !justify-center'}>
+				<div className={'hidden md:block'}>
+					<Image
+						src={'/cards/stats/dayBox.png'}
+						alt={'backgroundDay'}
+						width={616}
+						height={616}
+						className={'size-full object-contain'}
+					/>
+				</div>
+				<div className={'max-h-[320px] max-w-[320px] md:hidden'}>
+					<Image
+						src={'/cards/stats/dayBoxMobile.png'}
+						alt={'backgroundDay'}
+						width={300}
+						height={300}
+						className={'size-full object-contain'}
+					/>
+				</div>
 				<p
 					className={cl(
 						'absolute left-1/2 top-[60px] z-50 -translate-x-1/2',
-						'text-center text-[48px] font-bold uppercase leading-[48px]',
+						'text-center text-[40px] font-bold uppercase leading-[40px] md:text-[48px] md:leading-[48px]',
 						'text-[#0064FF]',
 						fontThunder.className
 					)}>
@@ -61,7 +72,7 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 				</p>
 				<p
 					className={cl(
-						'absolute left-1/2 top-[130px] z-50 -translate-x-1/2 text-center text-[192px] font-bold uppercase leading-[192px]',
+						'absolute left-1/2 top-[130px] z-50 -translate-x-1/2 text-center text-[140px] font-bold uppercase leading-[140px] md:text-[192px] md:leading-[192px]',
 						fontThunder.className
 					)}>
 					{day}

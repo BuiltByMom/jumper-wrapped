@@ -15,19 +15,19 @@ import {cl} from '@/components/utils/tools';
 const padsConfig = [
 	{
 		gradientClasses: 'from-[#FAA322] to-[#FEED23]',
-		textClasses: 'text-[72px] font-bold leading-[72px]'
+		textClasses: 'text-[48px] font-bold leading-[48px] md:leading-[72px] md:text-[72px]'
 	},
 	{
 		gradientClasses: 'from-[#DF1006] to-[#FE764D]',
-		textClasses: 'text-white text-[72px] font-bold leading-[72px]'
+		textClasses: 'text-white text-[48px] font-bold leading-[48px] md:leading-[72px] md:text-[72px]'
 	},
 	{
 		gradientClasses: 'from-[#12522D] to-[#19A256]',
-		textClasses: 'text-[#FFE55C] text-[72px] font-bold leading-[72px]'
+		textClasses: 'text-[#FFE55C] text-[48px] font-bold leading-[48px] md:leading-[72px] md:text-[72px]'
 	},
 	{
 		gradientClasses: 'from-[#162EE8] to-[#3D94FB]',
-		textClasses: 'text-[#7EF6E8] text-[72px] font-bold leading-[72px]'
+		textClasses: 'text-[#7EF6E8] text-[48px] font-bold leading-[48px] md:leading-[72px] md:text-[72px]'
 	}
 ];
 

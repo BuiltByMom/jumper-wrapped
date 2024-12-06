@@ -46,11 +46,13 @@ export type TCardTypes = {
 	BusiestHour: string;
 	BusiestDay: string;
 	BusiestMonth: string;
-	BusiestWeekday: TDayOfWeek;
+	BusiestWeekday: string;
 	JumperWash: {
 		hasWashedNFT: boolean;
 	};
-	TransactionCount: number;
+	DayOfWeek: {
+		dayOfWeek: TDayOfWeek;
+	};
 };
 
 export type TPossibleStatsCardsIDs = keyof TCardTypes;
@@ -96,24 +98,18 @@ export const CARD_COMPONENTS: {
 		/>
 	),
 	BelovedChain: ({chain}) => <TopBridgeChain chainName={chain} />,
-	TopBridgeChain: ({chain}) => (
-		<PlaceholderCard
-			title={'Top Bridge Chain'}
-			content={`Your top bridge chain was ${chain}`}
-			copy={'Good choice!'}
-		/>
-	),
+	TopBridgeChain: ({chain}) => <TopBridgeChain chainName={chain} />,
 	JumperWash: () => <WashTradeCard />,
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
-	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />,
-	TransactionCount: volume => (
+	BusiestWeekday: weekday => (
 		<PlaceholderCard
-			title={'Transaction Count'}
-			content={`You've made ${volume} transactions`}
-			copy={'Good choice!'}
+			title={'Busiest Day'}
+			content={`Your busiest day was ${weekday}`}
+			copy={'Weekend warrior or weekday warrior?'}
 		/>
-	)
+	),
+	DayOfWeek: ({dayOfWeek}) => <DayOfWeekCard dayOfWeek={dayOfWeek} />
 };
 
 /************************************************************************************************
@@ -125,7 +121,7 @@ export function getCardComponent(id: TPossibleStatsCardsIDs, data: TCardTypes[TP
 		throw new Error(`Card component for ${id} not found`);
 	}
 
-	return CARD_COMPONENTS[id](data as never);
+	return CARD_COMPONENTS[id](data as any);
 }
 
 /************************************************************************************************
