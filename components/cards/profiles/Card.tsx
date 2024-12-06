@@ -62,7 +62,7 @@ export default function Card(props: TCardProps): ReactElement {
 			initial={'initial'}
 			animate={!canScrollNext ? 'animate' : 'exit'}
 			exit={'exit'}
-			className={'w-auto scale-75 md:scale-100'}>
+			className={'w-auto !scale-75 md:!scale-100'}>
 			<div
 				style={{transform: `scale(${width / 440})`, width: 440}}
 				className={cl(

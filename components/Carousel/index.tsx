@@ -43,7 +43,7 @@ export function Carousel({cards}: TCarouselProps): ReactElement {
 			</div>
 			<div
 				className={
-					'pointer-events-none absolute inset-0 z-10 mx-auto w-screen px-20 md:w-[800px] xl:w-[1200px]'
+					'pointer-events-none absolute inset-0 z-10 mx-auto w-screen md:w-[800px] md:px-20 xl:w-[1200px]'
 				}>
 				<CarouselPrevious />
 				<CarouselNext />

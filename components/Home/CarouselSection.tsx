@@ -44,8 +44,8 @@ export function CarouselSection({cards}: {cards: TCardData[]}): ReactElement {
 
 	return (
 		<div>
-			<div className={''}>
-				{isLastSlide ? <JumperPopup /> : null}
+			<div>
+				{!canScrollNext ? <JumperPopup /> : null}
 				<Carousel cards={cards} />
 			</div>
 			{shouldShowConfetti && (
