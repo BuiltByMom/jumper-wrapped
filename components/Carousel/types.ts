@@ -7,7 +7,6 @@ import type {TCardData} from '../utils/cards';
  ************************************************************************************************/
 export type TCarouselProps = {
 	cards: TCardData[];
-	profile?: string;
 };
 
 export type TCarouselCardProps = {

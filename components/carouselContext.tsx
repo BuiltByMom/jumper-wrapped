@@ -174,9 +174,7 @@ export const CarouselContent = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDiv
 		const {carouselRef} = useCarousel();
 
 		return (
-			<div
-				ref={carouselRef}
-				className={'overflow-hidden'}>
+			<div ref={carouselRef}>
 				<div
 					ref={ref}
 					className={cl('flex', className)}

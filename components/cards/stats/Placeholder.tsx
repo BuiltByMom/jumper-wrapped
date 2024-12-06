@@ -31,7 +31,7 @@ export default function PlaceholderCard({
 			</CardTitle>
 
 			<CardContent className={'flex items-center justify-center'}>
-				<p className={'text-2xl font-medium text-white'}>{content}</p>
+				<p className={'text-center text-2xl font-medium text-white'}>{content}</p>
 			</CardContent>
 
 			<CardCopy>

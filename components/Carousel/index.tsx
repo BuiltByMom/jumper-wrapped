@@ -2,7 +2,6 @@ import PaperHandedCard from '../cards/profiles/PaperHanded';
 import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from '../carouselContext';
 import {getCardComponent} from '../utils/cards';
 import {CarouselCard} from './Card';
-import {ShareButton} from './ShareButton';
 
 import type {ReactElement} from 'react';
 import type {TCarouselProps} from './types';
@@ -17,7 +16,7 @@ import type {TCarouselProps} from './types';
  * - Social sharing integration
  * - Final card with sharing options
  ************************************************************************************************/
-export function Carousel({cards, profile}: TCarouselProps): ReactElement {
+export function Carousel({cards}: TCarouselProps): ReactElement {
 	return (
 		<div className={'relative'}>
 			<div className={'relative z-10 w-screen'}>
@@ -35,7 +34,6 @@ export function Carousel({cards, profile}: TCarouselProps): ReactElement {
 											topRatio={20}
 											width={440}
 										/>
-										<ShareButton profile={profile} />
 									</div>
 								)}
 							</CarouselCard>
