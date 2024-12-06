@@ -125,7 +125,7 @@ export function getCardComponent(id: TPossibleStatsCardsIDs, data: TCardTypes[TP
 		throw new Error(`Card component for ${id} not found`);
 	}
 
-	return CARD_COMPONENTS[id](data as any);
+	return CARD_COMPONENTS[id](data as never);
 }
 
 /************************************************************************************************
