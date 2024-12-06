@@ -6,7 +6,7 @@ export default function Index(): ReactElement {
 	return (
 		<div
 			className={
-				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6'
+				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-0 md:grid-cols-2 md:p-10 lg:grid-cols-3 xl:grid-cols-6'
 			}>
 			{CARD_COMPONENTS.Volume({volume: '34233', percentile: '0.19', kind: 'swap'})}
 			{CARD_COMPONENTS.Volume({volume: '4564545', percentile: '0.52', kind: 'bridge'})}

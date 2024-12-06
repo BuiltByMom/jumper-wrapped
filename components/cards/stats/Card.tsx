@@ -11,25 +11,26 @@ export function Card(props: {
 	return (
 		<div
 			className={cl(
-				'relative h-screen md:h-auto w-[calc(100vw+7px)] flex md:items-baseline items-center aspect-[440/600] md:rounded-[32px] overflow-hidden md:w-[440px]',
+				'relative overflow-hidden flex md:aspect-[440/600]',
+				'h-screen w-screen items-center',
+				'md:h-auto md:w-[440px] md:items-baseline md:rounded-[32px] ',
 				props.className
 			)}>
-			<div
-				className={
-					'relative z-50 flex size-full h-[50vh] scale-90 flex-col items-center p-6 max-sm:mt-[-25vh] md:mb-0 md:h-full md:scale-100'
-				}>
+			<div className={'relative z-50 flex size-full h-full flex-col items-center p-6 md:mb-0'}>
 				{props.children}
 			</div>
 			<div
 				className={'absolute inset-0 z-10 hidden bg-cover bg-no-repeat md:block'}
 				style={{
-					backgroundImage: props.backgroundImage
+					backgroundImage: props.backgroundImage,
+					backgroundPosition: 'center'
 				}}
 			/>
 			<div
 				className={'absolute inset-0 z-10 bg-cover bg-no-repeat md:hidden'}
 				style={{
-					backgroundImage: props.mobileBackgroundImage
+					backgroundImage: props.mobileBackgroundImage,
+					backgroundPosition: 'center'
 				}}
 			/>
 		</div>
