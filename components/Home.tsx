@@ -56,7 +56,7 @@ export function HomePage(): ReactElement {
 	 *********************************************************************************************/
 	useEffect(() => {
 		if (!account.connected && !isConnected) {
-			set_view('greetings');
+			set_view('carousel');
 		}
 	}, [account, isConnected, router]);
 
