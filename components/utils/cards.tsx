@@ -134,7 +134,7 @@ export function getCardComponent(id: TPossibleStatsCardsIDs, data: TCardTypes[TP
  ************************************************************************************************/
 export async function fetchUserCards(address: string): Promise<TCardData[]> {
 	try {
-		const response = await fetch('https://jumper-wash.builtby.dad/user/0x10001192576E8079f12d6695b0948C2F41320040');
+		const response = await fetch(`https://jumper-wash.builtby.dad/user/${address}`);
 		if (!response.ok) {
 			throw new Error('Failed to fetch user stats');
 		}
