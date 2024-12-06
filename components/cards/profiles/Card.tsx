@@ -8,7 +8,7 @@ import {useCarousel} from '@/components/carouselContext';
 import {cl} from '@/components/utils/tools';
 
 /************************************************************************************************
- * Card Animation Configurations
+ * Card Animation Configuration
  * Defines shared animations for both profile and stat cards
  * Features:
  * - Scale and fade entrance
@@ -41,6 +41,7 @@ const cardAnimation = {
  * - Responsive scaling
  * - Entrance animations
  * - Consistent styling
+ * - Celebration effects
  ************************************************************************************************/
 export type TCardProps = {
 	children: ReactNode;
