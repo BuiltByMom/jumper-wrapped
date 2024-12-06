@@ -58,7 +58,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 				<VolumePads value={formattedVolume} />
 			</CardContent>
 
-			<CardCopy>
+			<CardCopy className={'!pt-6'}>
 				<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-black'}>
 					{'Which makes you a bit of a chad, LFG.'}
 				</p>

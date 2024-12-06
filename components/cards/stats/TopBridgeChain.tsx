@@ -38,7 +38,7 @@ export default function TopBridgeChainCard({chainName, ...props}: TTopBridgeChai
 				/>
 			</CardContent>
 
-			<CardCopy className={'mt-28 md:mt-auto'}>
+			<CardCopy className={'mt-36 md:mt-auto'}>
 				<p className={'font-space-grotesk text-2xl font-medium text-white'}>
 					{'True degen romance right there.'}
 				</p>

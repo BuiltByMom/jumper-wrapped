@@ -412,42 +412,78 @@ CarouselDots.displayName = 'CarouselDots';
 
 export const MobileCarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & {arrayLength?: number}>(
 	({className, arrayLength, ...props}, ref) => {
-		const {api, selectedIndex, set_isComplete, isComplete} = useCarousel();
+		const {api, selectedIndex} = useCarousel();
 		const slideCount = api?.scrollSnapList().length || 0;
-		const [isAnimating, set_isAnimating] = useState(false);
+		const [progress, set_progress] = useState<number>(0); // Progress percentage of current slide (0-100)
+		const [canAnimate, set_canAnimate] = useState(false); // Controls if progress animation can start
+		const [completedSlides, set_completedSlides] = useState<number[]>([]); // Tracks which slides are done
 		const totalSlides = arrayLength || slideCount;
-		const MOUNT_DELAY = 1500; // 1.5 seconds in milliseconds
+		const MOUNT_DELAY = 1500; // Delay before starting first animation
 
-		const goToNextSlide = useCallback(() => {
-			if (selectedIndex === totalSlides - 1) {
-				set_isComplete(true);
-			} else {
+		/************************************************************************************************
+		 * Animation Start Delay
+		 * Delays the start of progress animation by MOUNT_DELAY milliseconds after component mount
+		 * - Prevents animation from starting immediately when carousel loads
+		 * - Gives user time to orient themselves before auto-advance begins
+		 * - Sets canAnimate flag which controls progress bar animation
+		 ************************************************************************************************/
+		useTimeout(() => set_canAnimate(true), MOUNT_DELAY);
+
+		/************************************************************************************************
+		 * Progress Completion Effect
+		 * Handles auto-advancing carousel when progress reaches 100%:
+		 * - Scrolls to next slide
+		 * - Marks current slide as completed
+		 * - Resets progress for next slide
+		 * Dependencies: Updates when progress, selectedIndex, or api changes
+		 ************************************************************************************************/
+		useEffect(() => {
+			if (progress === 100) {
 				api?.scrollNext();
-				set_isAnimating(true);
+				set_completedSlides(() => {
+					// Mark all previous slides as complete when jumping forward
+					const newCompletedSlides = [];
+					//All previous slides must be set as completed
+					for (let i = 0; i < selectedIndex; i++) {
+						newCompletedSlides.push(i);
+					}
+					return newCompletedSlides;
+				});
+				set_progress(0);
 			}
-		}, [api, selectedIndex, totalSlides, set_isComplete]);
+		}, [selectedIndex, completedSlides, progress, api]);
 
-		const handleTransitionEnd = useCallback(() => {
-			if (!isComplete) {
-				goToNextSlide();
-			}
-		}, [goToNextSlide, isComplete]);
-
-		// Start animation after 1.5s on mount
+		/************************************************************************************************
+		 * Slide Change Effect
+		 * Updates completed slides and progress when selected slide index changes:
+		 * - Marks all previous slides as completed when navigating to a new slide
+		 * - Resets progress animation for the new slide
+		 * - Ensures consistent state when jumping between slides
+		 * Dependencies: Updates when selectedIndex changes
+		 ************************************************************************************************/
 		useEffect(() => {
-			const timer = setTimeout(() => {
-				set_isAnimating(true);
-			}, MOUNT_DELAY);
+			set_completedSlides(() => {
+				// Mark all previous slides as complete when jumping forward
+				const newCompletedSlides = [];
+				//All previous slides must be set as completed
+				for (let i = 0; i < selectedIndex; i++) {
+					newCompletedSlides.push(i);
+				}
+				return newCompletedSlides;
+			});
+			set_progress(0);
+		}, [selectedIndex]);
 
-			return () => clearTimeout(timer);
-		}, []);
-
-		// Handle animation on slide change
-		useEffect(() => {
-			if (!isComplete && selectedIndex !== 0) {
-				set_isAnimating(true);
-			}
-		}, [selectedIndex, isComplete]);
+		/************************************************************************************************
+		 * Progress Animation Interval
+		 * Updates progress bar animation for carousel dots:
+		 * - Increments progress counter by 1 every 100ms when animation is enabled
+		 * - Only runs when:
+		 *   1. Animation is allowed (canAnimate is true)
+		 *   2. Not on the last slide (selectedIndex !== totalSlides)
+		 * - Progress updates trigger the Progress Completion Effect above
+		 ************************************************************************************************/
+		useInterval(() => set_progress(s => s + 1), canAnimate && selectedIndex !== totalSlides ? 100 : null);
 
 		return (
 			<div
@@ -467,15 +503,14 @@ export const MobileCarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTML
 							<div
 								className={cl(
 									'absolute top-0 left-0 rounded-[4px] h-full bg-white',
-									index <= selectedIndex ? 'w-full' : 'w-0',
-									index === selectedIndex
-										? cl('transition-all duration-[15s] linear', isAnimating ? 'w-full' : 'w-0')
-										: ''
+									'transition-all duration-100 ease-linear'
 								)}
-								onTransitionEnd={() => {
-									if (index === selectedIndex) {
-										handleTransitionEnd();
-									}
+								style={{
+									width: completedSlides.includes(index)
+										? '100%'
+										: selectedIndex === index
+										? `${progress}%`
+										: '0%'
 								}}
 							/>
 						</div>

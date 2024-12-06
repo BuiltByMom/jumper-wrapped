@@ -2,7 +2,7 @@ import {type ReactElement} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import {PageBackgound} from './Backgrounds';
+import {PageBackground} from './Backgrounds';
 import DivaCardCard from './cards/profiles/Diva';
 import {Button} from './common/Button';
 import {IconJumperLogo} from './icons/IconJumperLogo';
@@ -120,7 +120,7 @@ export function SharedPage({profile}: {profile: string}): ReactElement {
 			</div>
 
 			<div className={'relative hidden size-full w-3/5 justify-between overflow-hidden rounded-[64px] md:flex'}>
-				<PageBackgound
+				<PageBackground
 					position={'bottom-right'}
 					showFrame={false}
 					className={'!left-[12%] !top-[52%]'}
