@@ -43,7 +43,7 @@ const greetingsAnimation = {
 
 export function HomePage(): ReactElement {
 	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
-	const [view, set_view] = useState<'greetings' | 'carousel'>('greetings');
+	const [view, set_view] = useState<'greetings' | 'carousel'>('carousel');
 	const [cards, set_cards] = useState<TCardData[] | undefined>(undefined);
 
 	const account = useWallet();
