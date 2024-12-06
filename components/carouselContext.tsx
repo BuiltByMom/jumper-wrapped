@@ -293,10 +293,39 @@ export const CarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
 		useEffect(() => {
 			if (progress === 100) {
 				api?.scrollNext();
-				set_completedSlides(prev => [...prev, selectedIndex]);
+				set_completedSlides(() => {
+					// Mark all previous slides as complete when jumping forward
+					const newCompletedSlides = [];
+					//All previous slides must be set as completed
+					for (let i = 0; i < selectedIndex; i++) {
+						newCompletedSlides.push(i);
+					}
+					return newCompletedSlides;
+				});
 				set_progress(0);
 			}
 		}, [selectedIndex, completedSlides, progress, api]);
+
+		/************************************************************************************************
+		 * Slide Change Effect
+		 * Updates completed slides and progress when selected slide index changes:
+		 * - Marks all previous slides as completed when navigating to a new slide
+		 * - Resets progress animation for the new slide
+		 * - Ensures consistent state when jumping between slides
+		 * Dependencies: Updates when selectedIndex changes
+		 ************************************************************************************************/
+		useEffect(() => {
+			set_completedSlides(() => {
+				// Mark all previous slides as complete when jumping forward
+				const newCompletedSlides = [];
+				//All previous slides must be set as completed
+				for (let i = 0; i < selectedIndex; i++) {
+					newCompletedSlides.push(i);
+				}
+				return newCompletedSlides;
+			});
+			set_progress(0);
+		}, [selectedIndex]);
 
 		/************************************************************************************************
 		 * Handle Dot Click Event
