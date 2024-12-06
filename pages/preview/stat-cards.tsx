@@ -40,7 +40,8 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 2, topRatio: 0.2})}
 			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 6, topRatio: 0.5})}
 			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 7, topRatio: 0.8})}
-			{CARD_COMPONENTS.FavoriteToken({volume: 123, address: '0x123', symbol: 'DAI'})}
+			{CARD_COMPONENTS.FavoriteToken({symbol: 'DAI'})}
+			{CARD_COMPONENTS.FavoriteToken({symbol: 'ETH'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
 		</div>
 	);

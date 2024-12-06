@@ -1,6 +1,7 @@
 import BelovedChain from '../cards/stats/BelovedChain';
 import ChainExploredCard from '../cards/stats/ChainExplored';
 import DayOfWeekCard from '../cards/stats/DayOfWeek';
+import FavTokenCard from '../cards/stats/FavToken';
 import PlaceholderCard from '../cards/stats/Placeholder';
 import TopBridgedChainCard from '../cards/stats/TopBridgedChain';
 import VolumeRankCard from '../cards/stats/VolumeRank';
@@ -29,8 +30,6 @@ export type TCardTypes = {
 		percentile: string;
 	};
 	FavoriteToken: {
-		address: string;
-		volume: number;
 		symbol: string;
 	};
 	ChainsExplored: {
@@ -87,13 +86,7 @@ export const CARD_COMPONENTS: {
 			topRatio={topRatio}
 		/>
 	),
-	FavoriteToken: ({symbol}) => (
-		<PlaceholderCard
-			title={'Favorite Token'}
-			content={`Your favorite token was ${symbol}`}
-			copy={'Good choice!'}
-		/>
-	),
+	FavoriteToken: ({symbol}) => <FavTokenCard tokenName={symbol} />,
 	BelovedChain: ({chain}) => <BelovedChain chainName={chain} />,
 	TopBridgeChain: ({chain}) => <TopBridgedChainCard chainName={chain} />,
 	JumperWash: () => <WashTradeCard />,
