@@ -6,7 +6,7 @@ export default function Index(): ReactElement {
 	return (
 		<div
 			className={
-				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6'
+				'mx-auto grid grid-cols-1 items-center justify-center gap-4 p-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6'
 			}>
 			{CARD_COMPONENTS.Volume({volume: '34233', percentile: '0.19', kind: 'swap'})}
 			{CARD_COMPONENTS.Volume({volume: '4564545', percentile: '0.52', kind: 'bridge'})}
@@ -19,8 +19,10 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.BusiestDay('245')}
 			{CARD_COMPONENTS.BusiestDay('21')}
 
-			{CARD_COMPONENTS.BusiestMonth('November')}
+			{CARD_COMPONENTS.BusiestMonth('December')}
+			{CARD_COMPONENTS.BusiestMonth('March')}
 			{CARD_COMPONENTS.BusiestMonth('June')}
+			{CARD_COMPONENTS.BusiestMonth('September')}
 
 			{CARD_COMPONENTS.BusiestWeekday('Monday')}
 			{CARD_COMPONENTS.BusiestWeekday('Wednesday')}
