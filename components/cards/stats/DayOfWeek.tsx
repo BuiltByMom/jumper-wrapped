@@ -46,13 +46,16 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 	 ************************************************************************************************/
 	const getBackgroundImage = (dayOfWeek: TDayOfWeek): string => {
 		switch (dayOfWeek) {
-			case 'Monday' || 'Tuesday':
+			case 'Monday':
+			case 'Tuesday':
 				return 'backgroundWeekDayMonTue';
-			case 'Wednesday' || 'Thursday':
+			case 'Wednesday':
+			case 'Thursday':
 				return 'backgroundWeekDayWedThu';
 			case 'Friday':
 				return 'backgroundWeekDayFri';
-			case 'Saturday' || 'Sunday':
+			case 'Saturday':
+			case 'Sunday':
 				return 'backgroundWeekDaySatSun';
 			default:
 				return 'backgroundWeekDaySatSun';
