@@ -2,6 +2,7 @@ import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import PlaceholderCard from '../cards/stats/Placeholder';
 import TopBridgeChain from '../cards/stats/TopBridgeChain';
 import VolumeRankCard from '../cards/stats/VolumeRank';
+import WashTradeCard from '../cards/stats/WashTrade';
 
 import type {ReactElement} from 'react';
 import type {TDayOfWeek} from '../cards/stats/DayOfWeek';
@@ -98,13 +99,7 @@ export const CARD_COMPONENTS: {
 	),
 	BelovedChain: ({chain}) => <TopBridgeChain chainName={chain} />,
 	TopBridgeChain: ({chain}) => <TopBridgeChain chainName={chain} />,
-	JumperWash: ({hasWashedNFT}) => (
-		<PlaceholderCard
-			title={'NFT Washer'}
-			content={hasWashedNFT ? 'You washed some NFTs!' : 'No NFT washing detected'}
-			copy={'Keeping it clean!'}
-		/>
-	),
+	JumperWash: () => <WashTradeCard />,
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
 	BusiestWeekday: weekday => (
