@@ -36,6 +36,10 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'optimism'})}
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'base'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Monday'})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Wednesday'})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Friday'})}
+			{CARD_COMPONENTS.DayOfWeek({dayOfWeek: 'Sunday'})}
 		</div>
 	);
 }

@@ -1,8 +1,10 @@
+import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import PlaceholderCard from '../cards/stats/Placeholder';
 import TopBridgeChain from '../cards/stats/TopBridgeChain';
 import VolumeRankCard from '../cards/stats/VolumeRank';
 
 import type {ReactElement} from 'react';
+import type {TDayOfWeek} from '../cards/stats/DayOfWeek';
 
 import DayOfYearCard from '@/components/cards/stats/DayOfYear';
 import MonthCard from '@/components/cards/stats/Month';
@@ -46,6 +48,9 @@ export type TCardTypes = {
 	BusiestWeekday: string;
 	JumperWash: {
 		hasWashedNFT: boolean;
+	};
+	DayOfWeek: {
+		dayOfWeek: TDayOfWeek;
 	};
 };
 
@@ -108,7 +113,8 @@ export const CARD_COMPONENTS: {
 			content={`Your busiest day was ${weekday}`}
 			copy={'Weekend warrior or weekday warrior?'}
 		/>
-	)
+	),
+	DayOfWeek: ({dayOfWeek}) => <DayOfWeekCard dayOfWeek={dayOfWeek} />
 };
 
 /************************************************************************************************
