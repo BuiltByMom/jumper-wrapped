@@ -1,3 +1,17 @@
+/************************************************************************************************
+ * Day of Week Card Component
+ * Displays a stylized card showing the current day of the week
+ * Features:
+ * - Dynamic background based on day grouping
+ * - Three-letter day abbreviation display
+ * - Responsive layout with mobile/desktop backgrounds
+ * - Thunder font for main day display
+ *
+ * Props:
+ * - dayOfWeek: Current day (Monday-Sunday)
+ * - ...TBaseCardProps: Base card properties
+ ************************************************************************************************/
+
 import {type ReactElement} from 'react';
 
 import {Card} from './Card';
@@ -8,6 +22,11 @@ import type {TBaseCardProps} from './types';
 import {fontThunder} from '@/components/utils/fonts';
 import {cl} from '@/components/utils/tools';
 
+/************************************************************************************************
+ * Day of Week Type Definition
+ * Defines valid days of the week for type safety
+ * Used to ensure only valid day values are passed to the component
+ ************************************************************************************************/
 export type TDayOfWeek = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday';
 
 type TDayCardProps = {
@@ -15,6 +34,16 @@ type TDayCardProps = {
 } & TBaseCardProps;
 
 export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): ReactElement {
+	/************************************************************************************************
+	 * Background Image Selection
+	 * Determines appropriate background image based on day of week
+	 * Groups days with similar backgrounds:
+	 * - Monday/Tuesday
+	 * - Wednesday/Thursday
+	 * - Friday (unique)
+	 * - Saturday/Sunday
+	 * Returns image name for both mobile and desktop versions
+	 ************************************************************************************************/
 	const getBackgroundImage = (dayOfWeek: TDayOfWeek): string => {
 		switch (dayOfWeek) {
 			case 'Monday' || 'Tuesday':
