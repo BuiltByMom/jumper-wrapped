@@ -303,13 +303,19 @@ export const CarouselDots = React.forwardRef<
 			return;
 		}
 
-		set_isAnimating(false);
-		api.scrollTo(index);
-		set_isComplete(false);
-
-		setTimeout(() => {
-			set_isAnimating(true);
-		}, 50);
+		if (index === selectedIndex) {
+			set_isAnimating(false);
+			setTimeout(() => {
+				set_isAnimating(true);
+			}, 50);
+		} else {
+			set_isAnimating(false);
+			api.scrollTo(index);
+			set_isComplete(false);
+			setTimeout(() => {
+				set_isAnimating(true);
+			}, 50);
+		}
 	};
 
 	return (
@@ -334,9 +340,10 @@ export const CarouselDots = React.forwardRef<
 						<div
 							className={cl(
 								'absolute top-0 left-0 rounded-[4px] h-full bg-accent',
+								index < selectedIndex ? 'w-full' : 'w-0',
 								index === selectedIndex
 									? cl('transition-all duration-[15s] ease-linear', isAnimating ? 'w-full' : 'w-0')
-									: 'w-0'
+									: ''
 							)}
 							onTransitionEnd={() => {
 								if (index === selectedIndex) {
@@ -411,9 +418,10 @@ export const MobileCarouselDots = React.forwardRef<
 						<div
 							className={cl(
 								'absolute top-0 left-0 rounded-[4px] h-full bg-white',
+								index <= selectedIndex ? 'w-full' : 'w-0',
 								index === selectedIndex
 									? cl('transition-all duration-[15s] linear', isAnimating ? 'w-full' : 'w-0')
-									: 'w-0'
+									: ''
 							)}
 							onTransitionEnd={() => {
 								if (index === selectedIndex) {
