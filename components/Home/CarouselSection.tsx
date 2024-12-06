@@ -16,8 +16,7 @@ import type {TCardData} from '../utils/cards';
  * - Responsive layout
  ************************************************************************************************/
 export function CarouselSection({cards}: {cards: TCardData[]}): ReactElement {
-	const {api, canScrollNext} = useCarousel();
-	const isLastSlide = api?.selectedScrollSnap() === (api?.scrollSnapList().length || 0) - 1;
+	const {canScrollNext} = useCarousel();
 
 	// Confetti state
 	const [shouldShowConfetti, set_shouldShowConfetti] = useState(false);
