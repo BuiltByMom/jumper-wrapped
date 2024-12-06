@@ -9,12 +9,12 @@ import type {TBaseCardProps} from './types';
  * Top Bridge Chain Card Props
  * Displays user's most used blockchain for bridging
  ************************************************************************************************/
-type TChainExplorerCardProps = {
+type TChainExploredCardProps = {
 	amountOfChains: number;
 	topRatio: number;
 } & TBaseCardProps;
 
-export default function ChainExplorerCard({amountOfChains, topRatio, ...props}: TChainExplorerCardProps): ReactElement {
+export default function ChainExploredCard({amountOfChains, topRatio, ...props}: TChainExploredCardProps): ReactElement {
 	return (
 		<Card
 			{...props}
@@ -40,7 +40,7 @@ export default function ChainExplorerCard({amountOfChains, topRatio, ...props}: 
 
 			<CardCopy className={'mt-auto'}>
 				<p className={'font-space-grotesk text-2xl font-medium'}>
-					{`${topRatio ?? 0}% of where sit within others users`}
+					{`${(topRatio * 100).toFixed(0) ?? 0}% of where sit within others users`}
 				</p>
 			</CardCopy>
 		</Card>

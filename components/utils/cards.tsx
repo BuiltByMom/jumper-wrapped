@@ -1,4 +1,4 @@
-import ChainExplorerCard from '../cards/stats/ChainExplorer';
+import ChainExploredCard from '../cards/stats/ChainExplored';
 import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import PlaceholderCard from '../cards/stats/Placeholder';
 import TopBridgeChain from '../cards/stats/TopBridgeChain';
@@ -33,8 +33,8 @@ export type TCardTypes = {
 		symbol: string;
 	};
 	ChainsExplored: {
-		chainsExplored: number;
-		position: number;
+		amountOfChains: number;
+		topRatio: number;
 	};
 	BelovedChain: {
 		chain: string;
@@ -52,10 +52,6 @@ export type TCardTypes = {
 		hasWashedNFT: boolean;
 	};
 	TransactionCount: number;
-	ChainExplorer: {
-		amountOfChains: number;
-		topRatio: number;
-	};
 };
 
 export type TPossibleStatsCardsIDs = keyof TCardTypes;
@@ -86,11 +82,10 @@ export const CARD_COMPONENTS: {
 		/>
 	),
 	BusiestHour: hour => <TimeOfDayCard hour={hour} />,
-	ChainsExplored: ({chainsExplored}) => (
-		<PlaceholderCard
-			title={'Chains Explored'}
-			content={`You've explored ${chainsExplored} chains`}
-			copy={'Quite the adventurer!'}
+	ChainsExplored: ({amountOfChains, topRatio}) => (
+		<ChainExploredCard
+			amountOfChains={amountOfChains}
+			topRatio={topRatio}
 		/>
 	),
 	FavoriteToken: ({symbol}) => (
@@ -117,12 +112,6 @@ export const CARD_COMPONENTS: {
 			title={'Transaction Count'}
 			content={`You've made ${volume} transactions`}
 			copy={'Good choice!'}
-		/>
-	),
-	ChainExplorer: ({amountOfChains, topRatio}) => (
-		<ChainExplorerCard
-			amountOfChains={amountOfChains}
-			topRatio={topRatio}
 		/>
 	)
 };

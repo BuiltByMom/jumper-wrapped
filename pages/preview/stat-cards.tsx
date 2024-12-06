@@ -29,17 +29,16 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.BusiestWeekday('Friday')}
 			{CARD_COMPONENTS.BusiestWeekday('Sunday')}
 
-			{CARD_COMPONENTS.ChainsExplored({chainsExplored: 123, position: 4})}
+			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 1, topRatio: 10})}
+			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 2, topRatio: 20})}
+			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 6, topRatio: 50})}
+			{CARD_COMPONENTS.ChainsExplored({amountOfChains: 7, topRatio: 80})}
 			{CARD_COMPONENTS.FavoriteToken({volume: 123, address: '0x123', symbol: 'DAI'})}
 			{CARD_COMPONENTS.BelovedChain({volume: 123, chain: 'solana'})}
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'arbitrum'})}
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'optimism'})}
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'base'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
-			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 1, topRatio: 10})}
-			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 2, topRatio: 10})}
-			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 6, topRatio: 10})}
-			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 7, topRatio: 10})}
 		</div>
 	);
 }
