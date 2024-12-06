@@ -43,7 +43,7 @@ export function CarouselSection({cards}: {cards: TCardData[]}): ReactElement {
 
 	return (
 		<div>
-			<div>
+			<div className={'overflow-x-hidden'}>
 				{!canScrollNext ? <JumperPopup /> : null}
 				<Carousel cards={cards} />
 			</div>
