@@ -50,6 +50,7 @@ export type TCardTypes = {
 	JumperWash: {
 		hasWashedNFT: boolean;
 	};
+	TransactionCount: number;
 };
 
 export type TPossibleStatsCardsIDs = keyof TCardTypes;
@@ -95,11 +96,24 @@ export const CARD_COMPONENTS: {
 		/>
 	),
 	BelovedChain: ({chain}) => <TopBridgeChain chainName={chain} />,
-	TopBridgeChain: ({chain}) => <TopBridgeChain chainName={chain} />,
+	TopBridgeChain: ({chain}) => (
+		<PlaceholderCard
+			title={'Top Bridge Chain'}
+			content={`Your top bridge chain was ${chain}`}
+			copy={'Good choice!'}
+		/>
+	),
 	JumperWash: () => <WashTradeCard />,
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
-	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />
+	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />,
+	TransactionCount: volume => (
+		<PlaceholderCard
+			title={'Transaction Count'}
+			content={`You've made ${volume} transactions`}
+			copy={'Good choice!'}
+		/>
+	)
 };
 
 /************************************************************************************************
