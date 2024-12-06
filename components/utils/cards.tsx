@@ -46,12 +46,9 @@ export type TCardTypes = {
 	BusiestHour: string;
 	BusiestDay: string;
 	BusiestMonth: string;
-	BusiestWeekday: string;
+	BusiestWeekday: TDayOfWeek;
 	JumperWash: {
 		hasWashedNFT: boolean;
-	};
-	DayOfWeek: {
-		dayOfWeek: TDayOfWeek;
 	};
 };
 
@@ -102,14 +99,7 @@ export const CARD_COMPONENTS: {
 	JumperWash: () => <WashTradeCard />,
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
-	BusiestWeekday: weekday => (
-		<PlaceholderCard
-			title={'Busiest Day'}
-			content={`Your busiest day was ${weekday}`}
-			copy={'Weekend warrior or weekday warrior?'}
-		/>
-	),
-	DayOfWeek: ({dayOfWeek}) => <DayOfWeekCard dayOfWeek={dayOfWeek} />
+	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />
 };
 
 /************************************************************************************************
