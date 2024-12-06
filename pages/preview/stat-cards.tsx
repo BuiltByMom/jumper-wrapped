@@ -43,6 +43,9 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.FavoriteToken({symbol: 'DAI'})}
 			{CARD_COMPONENTS.FavoriteToken({symbol: 'ETH'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
+			{CARD_COMPONENTS.TransactionCount(41)}
+			{CARD_COMPONENTS.TransactionCount(104)}
+			{CARD_COMPONENTS.TransactionCount(1450)}
 		</div>
 	);
 }

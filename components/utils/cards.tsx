@@ -2,7 +2,7 @@ import BelovedChain from '../cards/stats/BelovedChain';
 import ChainExploredCard from '../cards/stats/ChainExplored';
 import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import FavTokenCard from '../cards/stats/FavToken';
-import PlaceholderCard from '../cards/stats/Placeholder';
+import NumberOfTradeCard from '../cards/stats/NumberOfTrade';
 import TopBridgedChainCard from '../cards/stats/TopBridgedChain';
 import VolumeRankCard from '../cards/stats/VolumeRank';
 import WashTradeCard from '../cards/stats/WashTrade';
@@ -93,13 +93,7 @@ export const CARD_COMPONENTS: {
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
 	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />,
-	TransactionCount: volume => (
-		<PlaceholderCard
-			title={'Transaction Count'}
-			content={`You've made ${volume} transactions`}
-			copy={'Good choice!'}
-		/>
-	)
+	TransactionCount: count => <NumberOfTradeCard count={count} />
 };
 
 /************************************************************************************************
