@@ -1,3 +1,4 @@
+import ChainExplorerCard from '../cards/stats/ChainExplorer';
 import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import PlaceholderCard from '../cards/stats/Placeholder';
 import TopBridgeChain from '../cards/stats/TopBridgeChain';
@@ -51,6 +52,10 @@ export type TCardTypes = {
 		hasWashedNFT: boolean;
 	};
 	TransactionCount: number;
+	ChainExplorer: {
+		amountOfChains: number;
+		topRatio: number;
+	};
 };
 
 export type TPossibleStatsCardsIDs = keyof TCardTypes;
@@ -112,6 +117,12 @@ export const CARD_COMPONENTS: {
 			title={'Transaction Count'}
 			content={`You've made ${volume} transactions`}
 			copy={'Good choice!'}
+		/>
+	),
+	ChainExplorer: ({amountOfChains, topRatio}) => (
+		<ChainExplorerCard
+			amountOfChains={amountOfChains}
+			topRatio={topRatio}
 		/>
 	)
 };

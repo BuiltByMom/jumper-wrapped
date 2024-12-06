@@ -36,6 +36,10 @@ export default function Index(): ReactElement {
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'optimism'})}
 			{CARD_COMPONENTS.TopBridgeChain({volume: 123, chain: 'base'})}
 			{CARD_COMPONENTS.JumperWash({hasWashedNFT: true})}
+			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 1, topRatio: 10})}
+			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 2, topRatio: 10})}
+			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 6, topRatio: 10})}
+			{CARD_COMPONENTS.ChainExplorer({amountOfChains: 7, topRatio: 10})}
 		</div>
 	);
 }
