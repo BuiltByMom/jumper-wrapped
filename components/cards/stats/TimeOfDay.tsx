@@ -30,8 +30,8 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 				dayOrNight === 'NIGHT' ? 'backgroundTimeNightMobile' : 'backgroundTimeDayMobile'
 			}.jpg)`}>
 			<CardTitle className={'text-white'}>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{'Wen trade?'}</b>
-				<p className={'font-space-grotesk text-2xl font-medium'}>{'You traded most at'}</p>
+				<b className={'font-space-grotesk text-[32px] font-bold  uppercase leading-8'}>{'Wen trade?'}</b>
+				<p className={'font-space-grotesk text-xl font-medium'}>{'You traded most at'}</p>
 			</CardTitle>
 
 			<CardContent
@@ -63,7 +63,7 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 			</CardContent>
 
 			<CardCopy>
-				<p className={'font-space-grotesk text-2xl font-medium text-white'}>
+				<p className={'font-space-grotesk text-xl font-medium text-white'}>
 					{'Chasing gains, sniping bags or trawling pump.fun?'}
 				</p>
 			</CardCopy>

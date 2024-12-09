@@ -26,13 +26,13 @@ export default function WashTradeCard(props: TWashTradeCardProps): ReactElement 
 			backgroundImage={'url(/cards/stats/backgroundWashTrade.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundWashTradeMobile.jpg)'}>
 			<CardTitle>
-				<p className={'z-50 text-center text-[40px] font-bold uppercase leading-[40px] text-white'}>
+				<p className={'z-50 text-center text-[32px] font-bold uppercase leading-8 text-white'}>
 					{'Wash trade headline'}
 				</p>
 			</CardTitle>
 
 			<CardCopy>
-				<p className={'z-50 mt-auto text-center text-2xl font-medium text-white'}>
+				<p className={'z-50 mt-auto text-center text-xl font-medium text-white'}>
 					{'Copy copy copy copy copy copy copy copy copy'}
 				</p>
 			</CardCopy>

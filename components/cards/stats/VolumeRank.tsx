@@ -29,7 +29,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 			<CardTitle>
 				<b
 					className={cl(
-						'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]',
+						'font-space-grotesk text-[32px] leading-8 font-bold uppercase',
 						cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]'
 					)}>
 					{`${props.kind === 'swap' ? 'Swap rank' : 'Bridge rank'}`}
@@ -48,7 +48,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 			<CardCopy>
 				<p
 					className={cl(
-						'font-space-grotesk text-2xl font-medium',
+						'font-space-grotesk text-xl font-medium',
 						cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]'
 					)}>
 					{'Copy copy copy'}

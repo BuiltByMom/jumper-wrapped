@@ -48,10 +48,10 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 			backgroundImage={`url(/cards/stats/backgroundVolume${cardVariant}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stats/backgroundVolumeMobile${cardVariant}.jpg)`}>
 			<CardTitle>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
+				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>
 					{`${props.kind === 'swap' ? 'Ur Swap Volume' : 'Ur Bridge Volume'}`}
 				</b>
-				<p className={'font-space-grotesk text-2xl font-medium'}>{'Whao, all this?!'}</p>
+				<p className={'font-space-grotesk text-xl font-medium'}>{'Whao, all this?!'}</p>
 			</CardTitle>
 
 			<CardContent>
@@ -59,7 +59,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 			</CardContent>
 
 			<CardCopy className={'!pt-6'}>
-				<p className={'font-space-grotesk w-3/4 text-2xl font-medium text-black'}>
+				<p className={'font-space-grotesk w-3/4 text-xl font-medium text-black'}>
 					{'Which makes you a bit of a chad, LFG.'}
 				</p>
 			</CardCopy>

@@ -23,7 +23,7 @@ export function ShareButton({profile}: {profile?: string}): ReactElement {
 	}, [profile]);
 
 	return (
-		<div className={'absolute left-1/2 z-50 -translate-x-1/2 max-sm:bottom-12 md:-bottom-6'}>
+		<div className={'absolute left-1/2 z-50 -translate-x-1/2 max-md:-bottom-6 md:-bottom-6'}>
 			<Button
 				onClick={clickToTweet}
 				title={'Share on X'}

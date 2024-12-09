@@ -1501,7 +1501,7 @@ export default async function handler(context: any): Promise<ImageResponse> {
 						height: '120px'
 					}}>
 					<div style={{position: 'absolute', bottom: 0, right: 0, display: 'flex'}}>{footerBackground}</div>
-					{jumperLogo}
+					<div style={{marginTop: '4px'}}>{jumperLogo}</div>
 					{wrapButton}
 				</div>
 			</div>
