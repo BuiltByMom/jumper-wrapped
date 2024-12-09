@@ -25,16 +25,18 @@ export function Carousel({cards}: TCarouselProps): ReactElement {
 						return (
 							<CarouselItem
 								key={index}
-								className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
+								className={'h-screen w-screen md:h-[732px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 								<CarouselCard index={index}>
 									{index < cards.length ? (
 										getCardComponent(cards[index].id, cards[index].data)
 									) : (
-										<div className={'relative max-sm:mb-40'}>
-											<PaperHandedCard
-												topRatio={20}
-												width={440}
-											/>
+										<div>
+											<div className={'relative max-sm:mb-40'}>
+												<PaperHandedCard
+													topRatio={20}
+													width={440}
+												/>
+											</div>
 										</div>
 									)}
 								</CarouselCard>
