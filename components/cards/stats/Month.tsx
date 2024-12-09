@@ -84,12 +84,12 @@ export default function MonthCard({month, ...props}: TMonthCardProps): ReactElem
 			<CardTitle className={'absolute top-28 max-sm:top-36'}>
 				<p
 					style={{color}}
-					className={cl('text-[320px] font-bold uppercase leading-[200px]', fontThunder.className)}>
+					className={cl('text-[320px] font-bold uppercase leading-[160px]', fontThunder.className)}>
 					{month.slice(0, 3)}
 				</p>
 			</CardTitle>
 
-			<CardContent className={'absolute top-[18%] flex h-[67px] w-full justify-center'}>
+			<CardContent className={'absolute top-[122px] flex h-[67px] w-full justify-center'}>
 				<p className={cl('uppercase text-[96px] font-bold leading-[96px] text-white', fontThunder.className)}>
 					{month}
 				</p>
