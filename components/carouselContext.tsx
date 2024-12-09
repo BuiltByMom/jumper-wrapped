@@ -290,7 +290,6 @@ export const CarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
 		 ************************************************************************************************/
 		useEffect(() => {
 			if (progress === 100) {
-				api?.scrollNext();
 				set_completedSlides(() => {
 					// Mark all previous slides as complete when jumping forward
 					const newCompletedSlides = [];
