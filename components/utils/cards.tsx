@@ -49,7 +49,7 @@ export type TCardTypes = {
 	JumperWash: {
 		hasWashedNFT: boolean;
 	};
-	TransactionCount: number;
+	TransactionsNumber: {value: number; percentile: string};
 };
 
 export type TPossibleStatsCardsIDs = keyof TCardTypes;
@@ -93,7 +93,7 @@ export const CARD_COMPONENTS: {
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
 	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />,
-	TransactionCount: count => <NumberOfTradeCard count={count} />
+	TransactionsNumber: ({value}) => <NumberOfTradeCard count={value} />
 };
 
 /************************************************************************************************

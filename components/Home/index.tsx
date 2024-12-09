@@ -49,7 +49,9 @@ export function HomePage(): ReactElement {
 
 	useEffect(() => {
 		if (address) {
-			fetchUserCards(address).then(cards => set_cards(cards));
+			fetchUserCards(address).then(cards => {
+				set_cards(cards);
+			});
 		}
 	}, [address]);
 

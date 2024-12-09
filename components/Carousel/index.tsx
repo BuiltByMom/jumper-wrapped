@@ -21,24 +21,26 @@ export function Carousel({cards}: TCarouselProps): ReactElement {
 		<div className={'relative'}>
 			<div className={'relative z-10 w-screen'}>
 				<CarouselContent className={'-ml-2 md:-ml-4'}>
-					{[...cards, {id: 'swapaholic', data: {}}].map((_, index) => (
-						<CarouselItem
-							key={index}
-							className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
-							<CarouselCard index={index}>
-								{index < cards.length ? (
-									getCardComponent(cards[index].id, cards[index].data)
-								) : (
-									<div className={'relative max-sm:mb-40'}>
-										<PaperHandedCard
-											topRatio={20}
-											width={440}
-										/>
-									</div>
-								)}
-							</CarouselCard>
-						</CarouselItem>
-					))}
+					{[...cards, {id: 'swapaholic', data: {}}].map((_, index) => {
+						return (
+							<CarouselItem
+								key={index}
+								className={'h-screen w-screen md:h-[655px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
+								<CarouselCard index={index}>
+									{index < cards.length ? (
+										getCardComponent(cards[index].id, cards[index].data)
+									) : (
+										<div className={'relative max-sm:mb-40'}>
+											<PaperHandedCard
+												topRatio={20}
+												width={440}
+											/>
+										</div>
+									)}
+								</CarouselCard>
+							</CarouselItem>
+						);
+					})}
 				</CarouselContent>
 			</div>
 			<div
