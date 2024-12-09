@@ -53,33 +53,33 @@ const popupAnimation = {
  ************************************************************************************************/
 export function JumperPopup(): ReactElement {
 	return (
-		<div className={'absolute bottom-2 z-[1005] px-6 md:bottom-[99px] md:right-10 md:px-0'}>
+		<div className={'absolute bottom-2 z-[1005] px-6 max-md:w-full md:bottom-[99px] md:right-10 md:px-0'}>
 			<motion.div
 				variants={popupAnimation}
 				initial={'initial'}
 				animate={'animate'}
 				exit={'exit'}
 				className={cl(
-					'group max-sm:gap-2 md:left-auto',
-					'md:-translate-x-0 flex md:w-[300px] md:size-60 flex-col',
+					'group max-md:gap-2 md:left-auto',
+					'md:-translate-x-0 flex md:size-60 flex-col',
 					'justify-between rounded-[24px] border border-[#FFFFFF1A]',
-					'p-4 backdrop-blur [box-shadow:0px_0px_80px_0px_#FFFFFF33_inset]',
+					'pt-6 pb-4 px-4 backdrop-blur [box-shadow:0px_0px_80px_0px_#FFFFFF33_inset]',
 					'hover:[box-shadow:0px_0px_80px_0px_#6120FD] hover:border-[#FFFFFF66]',
 					'transition-[box-shadow,border-color] duration-300',
 					'cursor-pointer'
 				)}>
-				<div className={'flex justify-between'}>
+				<div className={'flex items-center justify-between'}>
 					<span className={'text-xl font-bold text-white'}>{'Anon'}</span>
-					<IconJumperLogo />
+					<IconJumperLogo className={'h-6'} />
 				</div>
 				<p className={'font-semibold text-white'}>
 					{'Thank you for being a Jumper Chad! May your 2025 be just as bullish. WAGMI'}
 				</p>
 				<Link
 					href={'https://jumper.exchange'}
-					className={'w-full'}
+					className={'w-full max-md:mt-12'}
 					target={'_blank'}>
-					<Button className={cl('!bg-white group-hover:!bg-accent-hover', 'w-full')}>
+					<Button className={cl('!bg-white group-hover:!bg-accent-hover !xl:rounded-[32px] !h-10', 'w-full')}>
 						<p className={'font-bold uppercase'}>{'Go to jumper'}</p>
 					</Button>
 				</Link>

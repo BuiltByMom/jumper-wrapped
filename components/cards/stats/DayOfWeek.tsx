@@ -68,7 +68,7 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 			backgroundImage={`url(/cards/stats/${getBackgroundImage(dayOfWeek)}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stats/${getBackgroundImage(dayOfWeek)}Mobile.jpg)`}>
 			<CardTitle>
-				<p className={'z-50 text-center text-[40px] font-bold uppercase leading-[40px] text-white'}>
+				<p className={'z-50 text-center text-[32px] font-bold uppercase leading-8 text-white'}>
 					{dayOfWeek.slice(0, 3)}
 				</p>
 			</CardTitle>
@@ -84,7 +84,7 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 			</CardContent>
 
 			<CardCopy>
-				<p className={'z-50 text-center text-2xl font-medium text-white'}>{'Copy copy copy copy.'}</p>
+				<p className={'z-50 text-center text-xl font-medium text-white'}>{'Copy copy copy copy.'}</p>
 			</CardCopy>
 		</Card>
 	);

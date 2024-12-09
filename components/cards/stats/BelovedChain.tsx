@@ -19,7 +19,7 @@ export default function BelovedChainCard({chainName, ...props}: TBelovedChainCar
 			backgroundImage={'url(/cards/stats/backgroundBelovedChain.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundBelovedChainMobile.jpg)'}>
 			<CardTitle className={'text-white'}>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
+				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>
 					{`Just can't quit ${chainName}, huh?`}
 				</b>
 			</CardTitle>
@@ -42,7 +42,7 @@ export default function BelovedChainCard({chainName, ...props}: TBelovedChainCar
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-space-grotesk text-2xl font-medium text-white'}>
+				<p className={'font-space-grotesk text-xl font-medium text-white'}>
 					{'True degen romance right there.'}
 				</p>
 			</CardCopy>

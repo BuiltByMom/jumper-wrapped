@@ -96,7 +96,7 @@ export default function MonthCard({month, ...props}: TMonthCardProps): ReactElem
 			</CardContent>
 
 			<CardCopy className={'mx-auto mt-auto w-full text-center'}>
-				<p className={'text-2xl font-bold leading-[40px] text-white'}>
+				<p className={'text-xl font-bold leading-[40px] text-white'}>
 					<span className={'uppercase'}>{month}</span>
 					{" was your crypto marathon. Who needs sleep when you're chasing gains?"}
 				</p>

@@ -17,7 +17,7 @@ export default function TopBridgedChainCard({chainName, ...props}: TTopBridgedCh
 			backgroundImage={'url(/cards/stats/backgroundTopBridged.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundTopBridgedMobile.jpg)'}>
 			<CardTitle className={''}>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px] text-white'}>
+				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8 text-white'}>
 					{'Top bridged chain headline'}
 				</b>
 			</CardTitle>
@@ -37,7 +37,7 @@ export default function TopBridgedChainCard({chainName, ...props}: TTopBridgedCh
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-space-grotesk text-2xl font-medium text-white'}>
+				<p className={'font-space-grotesk text-xl font-medium text-white'}>
 					{'Copy copy copy copy copy copy copy copy copy copy copy'}
 				</p>
 			</CardCopy>

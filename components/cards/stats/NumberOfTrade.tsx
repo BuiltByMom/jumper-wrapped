@@ -16,7 +16,7 @@ export default function NumberOfTradeCard({count, ...props}: TNumberOfTradeCardP
 			backgroundImage={'url(/cards/stats/backgroundNumberTrade.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundNumberTradeMobile.jpg)'}>
 			<CardTitle className={''}>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>
+				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>
 					{'Number of trades Headline'}
 				</b>
 			</CardTitle>
@@ -32,7 +32,7 @@ export default function NumberOfTradeCard({count, ...props}: TNumberOfTradeCardP
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-space-grotesk text-2xl font-medium'}>
+				<p className={'font-space-grotesk text-xl font-medium'}>
 					{'Copy copy copy copy copy copy copy copy copy copy copy'}
 				</p>
 			</CardCopy>

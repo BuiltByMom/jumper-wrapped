@@ -27,15 +27,15 @@ export default function PlaceholderCard({
 			backgroundImage={'url(/cards/stats/backgroundDay.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundDayMobile.jpg)'}>
 			<CardTitle className={'text-white'}>
-				<b className={'font-space-grotesk text-[40px] font-bold uppercase leading-[40px]'}>{title}</b>
+				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>{title}</b>
 			</CardTitle>
 
 			<CardContent className={'flex items-center justify-center'}>
-				<p className={'text-center text-2xl font-medium text-white'}>{content}</p>
+				<p className={'text-center text-xl font-medium text-white'}>{content}</p>
 			</CardContent>
 
 			<CardCopy>
-				<p className={'font-space-grotesk text-2xl font-medium text-white'}>{copy}</p>
+				<p className={'font-space-grotesk text-xl font-medium text-white'}>{copy}</p>
 			</CardCopy>
 		</Card>
 	);

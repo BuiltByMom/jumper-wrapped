@@ -37,7 +37,7 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 			backgroundImage={'url(/cards/stats/backgroundDay.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundDayMobile.jpg)'}>
 			<CardTitle>
-				<p className={'z-50 text-center text-[40px] font-bold uppercase leading-[40px]'}>
+				<p className={'z-50 text-center text-[32px] font-bold uppercase leading-8'}>
 					{'On this day you went full ape mode.'}
 				</p>
 			</CardTitle>
@@ -80,7 +80,7 @@ export default function DayOfYearCard({dayOfYear, ...props}: TDayCardProps): Rea
 			</CardContent>
 
 			<CardCopy>
-				<p className={'z-50 text-center text-2xl font-medium'}>{'The market felt your weighty presence.'}</p>
+				<p className={'z-50 text-center text-xl font-medium'}>{'The market felt your weighty presence.'}</p>
 			</CardCopy>
 		</Card>
 	);
