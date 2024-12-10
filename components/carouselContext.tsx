@@ -290,7 +290,6 @@ export const CarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
 		 ************************************************************************************************/
 		useEffect(() => {
 			if (progress === 100) {
-				api?.scrollNext();
 				set_completedSlides(() => {
 					// Mark all previous slides as complete when jumping forward
 					const newCompletedSlides = [];
@@ -402,6 +401,16 @@ export const CarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEle
 						</div>
 					</div>
 				))}
+				<button
+					id={'pause-on-desktop'}
+					onClick={() => set_canAnimate(false)}
+					className={'pointer-events-none invisible'}
+				/>
+				<button
+					id={'continue-on-desktop'}
+					onClick={() => set_canAnimate(true)}
+					className={'pointer-events-none invisible'}
+				/>
 			</div>
 		);
 	}
@@ -514,6 +523,16 @@ export const MobileCarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTML
 						</div>
 					</div>
 				))}
+				<button
+					id={'pause-on-mobile'}
+					onClick={() => set_canAnimate(false)}
+					className={'pointer-events-none invisible'}
+				/>
+				<button
+					id={'continue-on-mobile'}
+					onClick={() => set_canAnimate(true)}
+					className={'pointer-events-none invisible'}
+				/>
 			</div>
 		);
 	}

@@ -34,12 +34,12 @@ export function CarouselSection({cards}: {cards: TCardData[]}): ReactElement {
 
 	// Show confetti when it's the last card
 	useEffect(() => {
-		if (!canScrollNext) {
+		if (!canScrollNext && cards.length > 0) {
 			set_shouldShowConfetti(true);
 			const timer = setTimeout(() => set_shouldShowConfetti(false), 5000);
 			return () => clearTimeout(timer);
 		}
-	}, [canScrollNext]);
+	}, [canScrollNext, cards]);
 
 	return (
 		<div>

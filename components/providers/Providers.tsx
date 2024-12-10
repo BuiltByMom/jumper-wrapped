@@ -59,13 +59,19 @@ export function Providers({children}: {children: ReactElement}): ReactElement {
 				<WagmiProvider config={config}>
 					<QueryClientProvider client={queryClient}>
 						<RainbowKitProvider
+							modalSize={'compact'}
 							theme={{
-								...darkTheme(),
+								...darkTheme({
+									borderRadius: 'large'
+								}),
 								colors: {
 									...darkTheme().colors,
-									modalBackground: '#5102FF',
-									accentColor: '#33FFEE',
-									accentColorForeground: 'black'
+									modalBackground: '#5000FF',
+									modalBorder: '#33FFEE',
+									menuItemBackground: '#E64DFF',
+									modalText: '#FFFFFF',
+									modalTextSecondary: '#FFFFFFDD',
+									accentColor: '#33FFEE'
 								}
 							}}>
 							<ConnectionProvider endpoint={endpoint}>
