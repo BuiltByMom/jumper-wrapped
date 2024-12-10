@@ -5,7 +5,7 @@ import {Carousel} from '../Carousel';
 import {useCarousel} from '../carouselContext';
 import {JumperPopup} from '../JumperPopup';
 
-import type {TCardData} from '../utils/cards';
+import type {TCardData, TUserProfile} from '../utils/cards';
 
 /************************************************************************************************
  * Carousel Section Component
@@ -15,7 +15,7 @@ import type {TCardData} from '../utils/cards';
  * - Final slide popup
  * - Responsive layout
  ************************************************************************************************/
-export function CarouselSection({cards}: {cards: TCardData[]}): ReactElement {
+export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: TUserProfile | null}): ReactElement {
 	const {canScrollNext} = useCarousel();
 
 	// Confetti state
@@ -45,7 +45,10 @@ export function CarouselSection({cards}: {cards: TCardData[]}): ReactElement {
 		<div>
 			<div className={'overflow-x-hidden'}>
 				{!canScrollNext ? <JumperPopup /> : null}
-				<Carousel cards={cards} />
+				<Carousel
+					cards={cards}
+					profile={profile}
+				/>
 			</div>
 			{shouldShowConfetti && (
 				<Confetti

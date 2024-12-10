@@ -5,7 +5,6 @@ import type {TCardProps} from './Card';
 
 type TMultiChainCardProps = Omit<TCardProps, 'children'> & {
 	numberOfChains: number;
-	topRatio: number;
 };
 
 export default function MultiChainCard(props: TMultiChainCardProps): ReactElement {
@@ -14,9 +13,7 @@ export default function MultiChainCard(props: TMultiChainCardProps): ReactElemen
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[365px] px-6'}>
 					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
-						{`You aped into ${props.numberOfChains} chains, flexing on ${props.topRatio.toFixed(
-							2
-						)}% of plebs! LFG!`}
+						{`You aped into ${props.numberOfChains} chains! LFG!`}
 					</p>
 				</div>
 			</div>

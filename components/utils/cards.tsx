@@ -15,6 +15,17 @@ import MonthCard from '@/components/cards/stats/Month';
 import TimeOfDayCard from '@/components/cards/stats/TimeOfDay';
 import VolumeCard from '@/components/cards/stats/Volume';
 
+export type TUserProfile = {
+	profileName: string;
+	profileId: number;
+	swapVolume: number;
+	bridgeVolume: number;
+	numberOfChains: number;
+	favoriteChain: string;
+	swapVolumeRank: string;
+	bridgeVolumeRank: string;
+};
+
 /************************************************************************************************
  * Card Types Definition
  * Each card type represents a specific statistic or achievement for the user
@@ -128,5 +139,21 @@ export async function fetchUserCards(address: string): Promise<TCardData[]> {
 	} catch (error) {
 		console.error('Error fetching user cards:', error);
 		return [];
+	}
+}
+
+export async function fetchUserProfile(address: string): Promise<TUserProfile | null> {
+	try {
+		const response = await fetch(`https://jumper-wash.builtby.dad/user/${address}/og`);
+		if (!response.ok) {
+			throw new Error('Failed to fetch user stats');
+		}
+
+		const profile: TUserProfile = await response.json();
+
+		return profile;
+	} catch (error) {
+		console.error('Error fetching user profile:', error);
+		return null;
 	}
 }

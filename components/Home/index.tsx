@@ -6,13 +6,13 @@ import {useWallet} from '@solana/wallet-adapter-react';
 
 import {PageBackground} from '../Backgrounds';
 import {Header} from '../common/Header';
-import {fetchUserCards} from '../utils/cards';
+import {fetchUserCards, fetchUserProfile} from '../utils/cards';
 import {CarouselSection} from './CarouselSection';
 import {GreetingsSection} from './GreetingsSection';
 import {NoDataSection} from './NoDataSection';
 
 import type {ReactElement} from 'react';
-import type {TCardData} from '../utils/cards';
+import type {TCardData, TUserProfile} from '../utils/cards';
 import type {TViewState} from './types';
 
 import {cl} from '@/components/utils/tools';
@@ -31,6 +31,7 @@ export function HomePage(): ReactElement {
 	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
 	const [view, set_view] = useState<TViewState>('greetings');
 	const [cards, set_cards] = useState<TCardData[] | undefined>(undefined);
+	const [profile, set_profile] = useState<TUserProfile | null>(null);
 
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
@@ -52,8 +53,13 @@ export function HomePage(): ReactElement {
 			fetchUserCards(address).then(cards => {
 				set_cards(cards);
 			});
+			fetchUserProfile(address).then(profile => {
+				set_profile(profile);
+			});
 		}
 	}, [address]);
+
+	console.warn(profile);
 
 	return (
 		<>
@@ -77,7 +83,12 @@ export function HomePage(): ReactElement {
 						/>
 					)}
 
-					{!isNotEnoughData && view === 'carousel' && <CarouselSection cards={cards || []} />}
+					{!isNotEnoughData && view === 'carousel' && (
+						<CarouselSection
+							profile={profile}
+							cards={cards || []}
+						/>
+					)}
 
 					{isNotEnoughData && <NoDataSection />}
 				</AnimatePresence>
