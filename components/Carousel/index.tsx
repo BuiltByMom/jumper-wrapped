@@ -15,7 +15,10 @@ import type {ReactElement} from 'react';
 import type {TUserProfile} from '../utils/cards';
 import type {TCarouselProps} from './types';
 
-function ProfileByID({profile}: {profile: TUserProfile}): ReactElement {
+function ProfileByID({profile}: {profile: TUserProfile | null}): ReactElement {
+	if (!profile) {
+		return <PaperHandedCard width={440} />;
+	}
 	if (profile.profileId === 1) {
 		return (
 			<SerBridgealotCard

@@ -15,7 +15,7 @@ import type {TCardData, TUserProfile} from '../utils/cards';
  * - Final slide popup
  * - Responsive layout
  ************************************************************************************************/
-export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: TUserProfile}): ReactElement {
+export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: TUserProfile | null}): ReactElement {
 	const {canScrollNext} = useCarousel();
 
 	// Confetti state
