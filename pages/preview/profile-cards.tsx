@@ -51,7 +51,6 @@ export default function Index(): ReactElement {
 			<MultiChainCard
 				width={440}
 				numberOfChains={3}
-				topRatio={1}
 				disableAnimation
 			/>
 			<NoSleepCard

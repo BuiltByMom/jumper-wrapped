@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react';
-import type {TCardData} from '../utils/cards';
+import type {TCardData, TUserProfile} from '../utils/cards';
 
 /************************************************************************************************
  * Carousel Types
@@ -7,6 +7,7 @@ import type {TCardData} from '../utils/cards';
  ************************************************************************************************/
 export type TCarouselProps = {
 	cards: TCardData[];
+	profile: TUserProfile;
 };
 
 export type TCarouselCardProps = {

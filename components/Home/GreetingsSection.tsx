@@ -1,10 +1,11 @@
+import {type ReactElement, useCallback} from 'react';
+import {useAccount} from 'wagmi';
 import {motion} from 'framer-motion';
 
 import {WalletSelector} from '../WalletSelector';
 import {WrappedButton} from '../WrappedButton';
 import {greetingsAnimation} from './animations';
 
-import type {ReactElement} from 'react';
 import type {THomeProps} from './types';
 
 /************************************************************************************************
@@ -16,6 +17,19 @@ import type {THomeProps} from './types';
  * - Wallet selector modal
  ************************************************************************************************/
 export function GreetingsSection({set_isWalletSelectorOpen, isWalletSelectorOpen, set_view}: THomeProps): ReactElement {
+	const {address} = useAccount();
+
+	const postOnStartMessage = useCallback(() => {
+		try {
+			fetch(`https://jumper-wash.builtby.dad/user/${address}`, {
+				method: 'POST'
+			});
+		} catch (error) {
+			console.error(error);
+		}
+		set_view('carousel');
+	}, [address, set_view]);
+
 	return (
 		<motion.div
 			key={'greetings-section'}
@@ -25,7 +39,7 @@ export function GreetingsSection({set_isWalletSelectorOpen, isWalletSelectorOpen
 			exit={'exit'}>
 			<WrappedButton
 				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-				onStart={() => set_view('carousel')}
+				onStart={postOnStartMessage}
 			/>
 			<WalletSelector
 				isOpen={isWalletSelectorOpen}
