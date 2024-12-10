@@ -14,7 +14,7 @@ export default function ChainWhaleCard(props: TChainWhaleCardProps): ReactElemen
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[288px] px-6'}>
-					<p className={'font-space-grotesk mt-5 text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist mt-5 text-center text-xl font-medium text-white'}>
 						{`Moved $${props.volume?.toLocaleString()} on ${props.chainName}, putting you in the top ${
 							props.topRatio
 						}% of traders. Chad.`}

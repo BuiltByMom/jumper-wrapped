@@ -21,6 +21,19 @@ type TVolumeRankCardProps = {
 export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElement {
 	const cardVariant = useMemo(() => getCardVariant(props.percentile), [props.percentile]);
 
+	const cardCopy = useMemo(() => {
+		if (cardVariant === 'Green') {
+			return (
+				<p className={cl('font-urbanist text-xl font-medium', 'text-black')}>{'Straight up chad right here'}</p>
+			);
+		}
+		return (
+			<p className={cl('font-urbanist text-xl font-medium', 'text-white')}>
+				{'One smol step for anon. Every step counts.'}
+			</p>
+		);
+	}, []);
+
 	return (
 		<Card
 			{...props}
@@ -29,7 +42,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 			<CardTitle>
 				<b
 					className={cl(
-						'font-space-grotesk text-[32px] leading-8 font-bold uppercase',
+						'font-urbanist text-[32px] leading-8 font-bold uppercase',
 						cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]'
 					)}>
 					{`${props.kind === 'swap' ? 'Swap rank' : 'Bridge rank'}`}
@@ -45,15 +58,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 				</div>
 			</CardContent>
 
-			<CardCopy>
-				<p
-					className={cl(
-						'font-space-grotesk text-xl font-medium',
-						cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]'
-					)}>
-					{'Copy copy copy'}
-				</p>
-			</CardCopy>
+			<CardCopy>{cardCopy}</CardCopy>
 		</Card>
 	);
 }

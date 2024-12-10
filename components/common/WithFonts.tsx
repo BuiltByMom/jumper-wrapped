@@ -1,14 +1,7 @@
 import React from 'react';
-import {Inter, Space_Grotesk} from 'next/font/google';
+import {Inter, Urbanist} from 'next/font/google';
 
 import type {ReactElement, ReactNode} from 'react';
-
-const spaceGrotesk = Space_Grotesk({
-	weight: ['400', '500', '600', '700'],
-	subsets: ['latin'],
-	display: 'swap',
-	variable: '--space-grotesk-font'
-});
 
 const inter = Inter({
 	weight: ['400', '500', '600', '700'],
@@ -17,18 +10,25 @@ const inter = Inter({
 	variable: '--inter-font'
 });
 
+const urbanist = Urbanist({
+	weight: ['400', '500', '600', '700'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--urbanist-font'
+});
+
 export function WithFonts({children}: {children: ReactNode}): ReactElement {
 	return (
 		<div
 			style={{
-				fontFamily: `${spaceGrotesk.style.fontFamily}, ${inter.style.fontFamily}`
+				fontFamily: `${urbanist.style.fontFamily}, ${inter.style.fontFamily}`
 			}}>
 			<style
 				jsx
 				global>
 				{`
 					:root {
-						--space-grotesk-font: ${spaceGrotesk.style.fontFamily};
+						--urbanist-font: ${urbanist.style.fontFamily};
 						--inter-font: ${inter.style.fontFamily};
 					}
 				`}

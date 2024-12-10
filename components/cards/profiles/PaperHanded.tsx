@@ -13,7 +13,7 @@ export default function PaperHandedCard(props: TPaperHandedCardProps): ReactElem
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[244px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium'}>
+					<p className={'font-urbanist text-center text-xl font-medium'}>
 						{'What can we say. You folded some real plays. The only way is up. Hopefully WAGMI?'}
 					</p>
 				</div>

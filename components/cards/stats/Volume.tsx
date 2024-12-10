@@ -38,6 +38,25 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 		return getCardVariant(props.percentile);
 	}, [props.percentile]);
 
+	const cardCopy = useMemo(() => {
+		if (cardVariant === 'Green') {
+			return (
+				<p className={' w-full text-xl font-medium text-black'}>
+					{'Swapped token like it’s no tomorrow.'}
+					<br />
+					{'Nickname: Liquidity Queen'}
+				</p>
+			);
+		}
+		return (
+			<p className={' w-full text-xl font-medium text-black'}>
+				{'Just dipping your toes into the swap game?'}
+				<br />
+				{'Even the biggest whales start small anon.'}
+			</p>
+		);
+	}, [cardVariant]);
+
 	const formattedVolume = useMemo(() => {
 		return formatVolume(props.volume);
 	}, [props.volume]);
@@ -48,28 +67,23 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 			backgroundImage={`url(/cards/stats/backgroundVolume${cardVariant}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stats/backgroundVolumeMobile${cardVariant}.jpg)`}>
 			<CardTitle>
-				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
 					{`${props.kind === 'swap' ? 'Ur Swap Volume' : 'Ur Bridge Volume'}`}
 				</b>
-				<p className={'font-space-grotesk text-xl font-medium'}>{'Whao, all this?!'}</p>
 			</CardTitle>
 
 			<CardContent>
 				<VolumePads value={formattedVolume} />
 			</CardContent>
 
-			<CardCopy className={'!pt-6'}>
-				<p className={'font-space-grotesk w-3/4 text-xl font-medium text-black'}>
-					{'Which makes you a bit of a chad, LFG.'}
-				</p>
-			</CardCopy>
+			<CardCopy className={'!pt-6'}>{cardCopy}</CardCopy>
 		</Card>
 	);
 }
 
 function VolumePads({value}: {value: string}): ReactElement {
 	return (
-		<div className={'pt-6'}>
+		<div className={'pt-12'}>
 			{padsConfig.map(({gradientClasses, textClasses}, index) => (
 				<div
 					key={index}

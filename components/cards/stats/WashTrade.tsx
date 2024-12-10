@@ -27,13 +27,13 @@ export default function WashTradeCard(props: TWashTradeCardProps): ReactElement 
 			mobileBackgroundImage={'url(/cards/stats/backgroundWashTradeMobile.jpg)'}>
 			<CardTitle>
 				<p className={'z-50 text-center text-[32px] font-bold uppercase leading-8 text-white'}>
-					{'Wash trade headline'}
+					{'Wash trade og'}
 				</p>
 			</CardTitle>
 
 			<CardCopy>
 				<p className={'z-50 mt-auto text-center text-xl font-medium text-white'}>
-					{'Copy copy copy copy copy copy copy copy copy'}
+					{'We tip our cap to you ser. Look out for the next Jumper activation in 2025.'}
 				</p>
 			</CardCopy>
 		</Card>

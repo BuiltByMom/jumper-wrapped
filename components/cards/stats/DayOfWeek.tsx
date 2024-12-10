@@ -50,15 +50,59 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 			case 'Tuesday':
 				return 'backgroundWeekDayMonTue';
 			case 'Wednesday':
+				return 'backgroundWeekDayWed';
 			case 'Thursday':
-				return 'backgroundWeekDayWedThu';
 			case 'Friday':
-				return 'backgroundWeekDayFri';
+				return 'backgroundWeekDayThuFri';
 			case 'Saturday':
 			case 'Sunday':
 				return 'backgroundWeekDaySatSun';
 			default:
 				return 'backgroundWeekDaySatSun';
+		}
+	};
+
+	const getCopy = (dayOfWeek: TDayOfWeek): ReactElement => {
+		switch (dayOfWeek) {
+			case 'Monday':
+			case 'Tuesday':
+				return (
+					<p className={'z-50 text-center text-xl font-medium text-white'}>
+						{'While normie no-coiners fear the start of the week, you’re diving straight in. No chart is '}
+						{'safe. Fair play to ya.'}
+					</p>
+				);
+			case 'Wednesday':
+				return (
+					<p className={'z-50 text-center text-xl font-medium text-white'}>
+						{'Humpday?'}
+						<br />
+						{'More like pump day for you ser.'}
+					</p>
+				);
+			case 'Thursday':
+			case 'Friday':
+				return (
+					<p className={'z-50 text-center text-xl font-medium text-white'}>
+						{'A thirsty little end to the week.'}
+						<br />
+						{' Ain’t no FOMO with you is there…'}
+						<br />
+						{'Woof woof.'}
+					</p>
+				);
+			case 'Saturday':
+			case 'Sunday':
+				return (
+					<p className={'z-50 text-center text-xl font-medium text-white'}>
+						{'Who needs rest. Not you.'}
+						<br />
+						{'While losers spend time with their families, you’re securing those '}
+						{'gains.'}
+					</p>
+				);
+			default:
+				return <p></p>;
 		}
 	};
 
@@ -69,7 +113,7 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 			mobileBackgroundImage={`url(/cards/stats/${getBackgroundImage(dayOfWeek)}Mobile.jpg)`}>
 			<CardTitle>
 				<p className={'z-50 text-center text-[32px] font-bold uppercase leading-8 text-white'}>
-					{dayOfWeek.slice(0, 3)}
+					{'Most traded day of the week'}
 				</p>
 			</CardTitle>
 
@@ -83,9 +127,7 @@ export default function DayOfWeekCard({dayOfWeek, ...props}: TDayCardProps): Rea
 				</p>
 			</CardContent>
 
-			<CardCopy>
-				<p className={'z-50 text-center text-xl font-medium text-white'}>{'Copy copy copy copy.'}</p>
-			</CardCopy>
+			<CardCopy>{getCopy(dayOfWeek)}</CardCopy>
 		</Card>
 	);
 }
