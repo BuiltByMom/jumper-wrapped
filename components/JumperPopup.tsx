@@ -79,7 +79,11 @@ export function JumperPopup(): ReactElement {
 					href={'https://jumper.exchange'}
 					className={'w-full max-md:mt-12'}
 					target={'_blank'}>
-					<Button className={cl('!bg-white group-hover:!bg-accent-hover !xl:rounded-[32px] !h-10', 'w-full')}>
+					<Button
+						className={cl(
+							'!bg-white group-hover:!bg-accent-hover group-hover:text-white !xl:rounded-[32px] !h-10',
+							'w-full'
+						)}>
 						<p className={'font-bold uppercase'}>{'Go to jumper'}</p>
 					</Button>
 				</Link>
