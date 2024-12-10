@@ -25,7 +25,10 @@ export function Header({
 	const router = useRouter();
 
 	return (
-		<div className={'absolute left-0 top-0 z-20 flex w-full flex-col items-center p-6 md:bg-violet-light xl:p-16'}>
+		<div
+			className={
+				'absolute left-0 top-0 z-20 flex w-full flex-col items-center px-6 py-4 md:bg-violet-light xl:p-16'
+			}>
 			<div
 				className={
 					'absolute left-0 top-0 -z-10 size-full bg-gradient-to-b from-[#000000] to-transparent md:hidden'

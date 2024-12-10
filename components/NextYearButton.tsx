@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import {Button} from './common/Button';
+import {IconJumperLogo} from './icons/IconJumperLogo';
 import {cl} from './utils/tools';
 
 import type {ReactElement} from 'react';
@@ -24,15 +25,20 @@ export function NextYearButton(): ReactElement {
 					<p>{'U better use Jumper next year'}</p>
 				</div>
 				<Link
-					href={'https://jumper.exchange'}
-					className={'hidden md:flex'}>
-					<Button title={'Go to jumper'} />
+					href={'https://jumper.exchange/'}
+					className={'absolute left-1/2 top-80 z-50 mt-10 hidden -translate-x-1/2 flex-col md:flex'}>
+					<Button className={'!w-full !bg-accent-hover !px-12 hover:!bg-accent'}>
+						<IconJumperLogo />
+					</Button>
 				</Link>
 			</div>
+
 			<Link
-				href={'https://jumper.exchange'}
-				className={'absolute left-1/2 top-80 z-50 mt-10 flex -translate-x-1/2 flex-col gap-4 md:hidden'}>
-				<Button title={'Go to jumper'} />
+				href={'https://jumper.exchange/'}
+				className={'absolute left-1/2 top-80 z-50 mt-10 flex -translate-x-1/2 flex-col md:hidden'}>
+				<Button className={'!w-full !bg-accent-hover !px-12 hover:!bg-accent'}>
+					<IconJumperLogo />
+				</Button>
 			</Link>
 		</div>
 	);

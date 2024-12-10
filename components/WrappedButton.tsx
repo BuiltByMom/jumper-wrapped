@@ -57,7 +57,7 @@ export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): Reac
 						'hover:shadow-[0px_0px_180px_60px_#33FFEE] xl:hover:shadow-[0px_0px_240px_90px_#33FFEE]'
 					)}>
 					<div className={'flex flex-col items-center md:mt-[70px]'}>
-						<IconJumperLogo className={'w-20 xl:mb-6 xl:h-[120px] xl:w-[320px]'} />
+						<IconJumperLogo className={'mb-2 w-40 md:mb-4 xl:mb-8 xl:h-[120px] xl:w-[320px]'} />
 						<div className={'w-[252px] md:w-[464px]'}>
 							<Image
 								src={'/logo.png'}

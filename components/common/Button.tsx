@@ -23,7 +23,7 @@ export function Button({title, isBusy, children, className, ...props}: TButtonPr
 			) : isBusy ? (
 				<IconLoader className={'animate-spin text-black'} />
 			) : (
-				<p className={'text-2xl font-semibold uppercase text-black xl:text-3xl'}>{title}</p>
+				<p className={'text-xl font-semibold uppercase text-black'}>{title}</p>
 			)}
 		</button>
 	);

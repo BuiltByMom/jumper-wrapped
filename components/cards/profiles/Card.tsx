@@ -1,4 +1,5 @@
 import {type ReactElement, type ReactNode, useMemo} from 'react';
+import Link from 'next/link';
 import {useAccount} from 'wagmi';
 import {motion} from 'framer-motion';
 import {useWallet} from '@solana/wallet-adapter-react';
@@ -75,6 +76,14 @@ export default function Card(props: TCardProps): ReactElement {
 				{props.children}
 			</div>
 			<ShareButton profile={profile} />
+			<Link
+				href={'/'}
+				target={'_blank'}
+				className={
+					'absolute -bottom-16 left-1/2 z-50 -translate-x-1/2 text-accent underline transition-colors hover:text-white'
+				}>
+				{'How to share?'}
+			</Link>
 		</motion.div>
 	);
 }
