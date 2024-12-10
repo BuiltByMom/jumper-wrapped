@@ -30,8 +30,8 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 				dayOrNight === 'NIGHT' ? 'backgroundTimeNightMobile' : 'backgroundTimeDayMobile'
 			}.jpg)`}>
 			<CardTitle className={'text-white'}>
-				<b className={'font-space-grotesk text-[32px] font-bold  uppercase leading-8'}>{'Wen trade?'}</b>
-				<p className={'font-space-grotesk text-xl font-medium'}>{'You traded most at'}</p>
+				<b className={'font-urbanist text-[32px] font-bold  uppercase leading-8'}>{'Wen trade?'}</b>
+				<p className={'font-urbanist text-xl font-medium'}>{'You traded most at'}</p>
 			</CardTitle>
 
 			<CardContent
@@ -54,7 +54,7 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 					</b>
 					<span
 						className={cl(
-							'font-space-grotesk absolute right-4 top-0.5 text-[40px] font-bold leading-[36px]',
+							'font-urbanist absolute right-4 top-0.5 text-[40px] font-bold leading-[36px]',
 							clockFont.className
 						)}>
 						{amPm}
@@ -63,8 +63,10 @@ export default function TimeOfDayCard({hour, ...props}: TTimeCardProps): ReactEl
 			</CardContent>
 
 			<CardCopy>
-				<p className={'font-space-grotesk text-xl font-medium text-white'}>
-					{'Chasing gains, sniping bags or trawling pump.fun?'}
+				<p className={'font-urbanist text-xl font-medium text-white'}>
+					{dayOrNight === 'NIGHT'
+						? 'Chasing gains, sniping bags or trawling pump.fun?'
+						: 'Trading waits for no manlet.'}
 				</p>
 			</CardCopy>
 		</Card>

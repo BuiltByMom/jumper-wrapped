@@ -10,8 +10,8 @@ body,
 	box-sizing: border-box;
 }
 
-.font-space-grotesk {
-	font-family: var(--space-grotesk-font);
+.font-urbanist {
+	font-family: var(--urbanist-font);
 }
 
 .wallet-adapter-button-trigger {

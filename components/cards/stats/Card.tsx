@@ -42,7 +42,10 @@ export function Card(props: {
 				'md:h-auto md:w-[440px] md:items-baseline md:rounded-[32px]',
 				props.className
 			)}>
-			<div className={'relative z-50 flex size-full h-full flex-col items-center p-6 md:mb-0 md:scale-100'}>
+			<div
+				className={
+					'relative z-50 flex size-full h-full flex-col items-center px-6 pb-6 pt-8 md:mb-0 md:scale-100'
+				}>
 				{props.children}
 			</div>
 			<div

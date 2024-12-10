@@ -13,7 +13,7 @@ export default function SolanaSoldierCard(props: TSolanaSoldierCardProps): React
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[288px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
 						{
 							'An unwavering ape in the Solana trenches. Fast transactions, low fees — this soldier rides the SOL wave while normies ask where their profits went.'
 						}

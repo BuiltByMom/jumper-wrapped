@@ -23,7 +23,7 @@ export default function ChainExploredCard({amountOfChains, topRatio, ...props}: 
 				amountOfChains < 6 ? 'Few' : 'Alot'
 			}Mobile.jpg)`}>
 			<CardTitle className={''}>
-				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
 					{amountOfChains < 6
 						? 'You need to touch grass a little less and bridge more anon'
 						: 'Wow, look at you, you little multi chain adventurer!'}
@@ -39,7 +39,7 @@ export default function ChainExploredCard({amountOfChains, topRatio, ...props}: 
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-space-grotesk text-xl font-medium'}>
+				<p className={'font-urbanist text-xl font-medium'}>
 					{`${(topRatio * 100).toFixed(0) ?? 0}% of where sit within others users`}
 				</p>
 			</CardCopy>

@@ -17,14 +17,14 @@ export default function TopBridgedChainCard({chainName, ...props}: TTopBridgedCh
 			backgroundImage={'url(/cards/stats/backgroundTopBridged.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundTopBridgedMobile.jpg)'}>
 			<CardTitle className={''}>
-				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8 text-white'}>
-					{'Top bridged chain headline'}
+				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8 text-white'}>
+					{'You seem a little addicted'}
 				</b>
 			</CardTitle>
 
 			<CardContent
 				className={
-					' relative mt-auto flex items-center justify-center rounded-full border-[6px] border-[#F1F0F0] bg-[#F1F0F0]'
+					'relative mt-auto flex items-center justify-center rounded-full border-[6px] border-[#F1F0F0] bg-[#F1F0F0]'
 				}>
 				<Image
 					className={'size-[160px] rounded-full'}
@@ -37,9 +37,7 @@ export default function TopBridgedChainCard({chainName, ...props}: TTopBridgedCh
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-space-grotesk text-xl font-medium text-white'}>
-					{'Copy copy copy copy copy copy copy copy copy copy copy'}
-				</p>
+				<p className={'font-urbanist text-xl font-medium text-white'}>{'Do you need an intervention?'}</p>
 			</CardCopy>
 		</Card>
 	);

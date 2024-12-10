@@ -20,7 +20,7 @@ export function SelectorItem({title, onClick, icon, className}: TSelectorItemPro
 			onClick={onClick}>
 			<div className={'flex items-center'}>
 				{icon && <div className={'mr-4'}>{icon}</div>}
-				<p className={'font-space-grotesk text-2xl font-bold uppercase text-white group-hover:text-black'}>
+				<p className={'font-urbanist text-2xl font-bold uppercase text-white group-hover:text-black'}>
 					{title}
 				</p>
 			</div>
