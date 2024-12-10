@@ -31,7 +31,7 @@ export default function NumberOfTradeCard({count, ...props}: TNumberOfTradeCardP
 
 			<CardCopy className={'mt-auto'}>
 				<p className={'font-urbanist text-xl font-medium'}>
-					{count <= 10
+					{count <= 12
 						? 'Wouldn’t say those are whale numbers just yet ser. But fear not, ya got the whole of 2025 to cook up some tasty txns.'
 						: 'Jeeeeeeeez. anon been putting the work in. lfg Ser Chadingtons of Gigatron.'}
 				</p>
