@@ -2,6 +2,7 @@ import ChainWhaleCard from '../cards/profiles/ChainWhale';
 import DegenElderCard from '../cards/profiles/DegenElder';
 import DivaCardCard from '../cards/profiles/Diva';
 import MultiChainCard from '../cards/profiles/Multichain';
+import NoobCard from '../cards/profiles/Noob';
 import NoSleepCard from '../cards/profiles/NoSleep';
 import PaperHandedCard from '../cards/profiles/PaperHanded';
 import SerBridgealotCard from '../cards/profiles/SerBridgealot';
@@ -17,7 +18,7 @@ import type {TCarouselProps} from './types';
 
 function ProfileByID({profile}: {profile: TUserProfile | null}): ReactElement {
 	if (!profile) {
-		return <PaperHandedCard width={440} />;
+		return <NoobCard width={440} />;
 	}
 	if (profile.profileId === 1) {
 		return (
@@ -68,7 +69,7 @@ function ProfileByID({profile}: {profile: TUserProfile | null}): ReactElement {
 	if (profile.profileId === 9) {
 		return <PaperHandedCard width={440} />;
 	}
-	return <PaperHandedCard width={440} />;
+	return <NoobCard width={440} />;
 }
 
 /************************************************************************************************
