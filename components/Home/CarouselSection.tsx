@@ -3,7 +3,6 @@ import Confetti from 'react-confetti';
 
 import {Carousel} from '../Carousel';
 import {useCarousel} from '../carouselContext';
-import {JumperPopup} from '../JumperPopup';
 
 import type {TCardData, TUserProfile} from '../utils/cards';
 
@@ -43,8 +42,7 @@ export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: 
 
 	return (
 		<div>
-			<div className={'overflow-x-hidden'}>
-				{!canScrollNext ? <JumperPopup /> : null}
+			<div>
 				<Carousel
 					cards={cards}
 					profile={profile}

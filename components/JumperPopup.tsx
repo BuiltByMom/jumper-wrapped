@@ -53,7 +53,10 @@ const popupAnimation = {
  ************************************************************************************************/
 export function JumperPopup(): ReactElement {
 	return (
-		<div className={'absolute bottom-2 z-[1005] px-6 max-md:w-full md:bottom-[99px] md:right-10 md:px-0'}>
+		<div
+			className={
+				'bottom-2 z-[1005] -mt-4 px-6 max-md:mx-auto max-md:w-screen max-md:pb-10 md:absolute md:bottom-[99px] md:right-10 md:mt-0 md:px-0'
+			}>
 			<motion.div
 				variants={popupAnimation}
 				initial={'initial'}
@@ -61,7 +64,9 @@ export function JumperPopup(): ReactElement {
 				exit={'exit'}
 				className={cl(
 					'group max-md:gap-2 md:left-auto',
-					'md:-translate-x-0 flex md:size-60 flex-col',
+					'lg:h-60 lg:w-80',
+					'md:h-60 md:w-60',
+					'md:-translate-x-0 flex flex-col',
 					'justify-between rounded-[24px] border border-[#FFFFFF1A]',
 					'pt-6 pb-4 px-4 backdrop-blur [box-shadow:0px_0px_80px_0px_#FFFFFF33_inset]',
 					'hover:[box-shadow:0px_0px_80px_0px_#6120FD] hover:border-[#FFFFFF66]',

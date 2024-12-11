@@ -8,7 +8,8 @@ import PaperHandedCard from '../cards/profiles/PaperHanded';
 import SerBridgealotCard from '../cards/profiles/SerBridgealot';
 import SolanaSoldierCard from '../cards/profiles/SolanaSoldier';
 import SwapaholicCard from '../cards/profiles/Swapaholic';
-import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from '../carouselContext';
+import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, useCarousel} from '../carouselContext';
+import {JumperPopup} from '../JumperPopup';
 import {getCardComponent} from '../utils/cards';
 import {CarouselCard} from './Card';
 
@@ -141,10 +142,12 @@ export function ProfileByID(props: {
  * - Final card with sharing options
  ************************************************************************************************/
 export function Carousel({cards, profile}: TCarouselProps): ReactElement {
+	const {canScrollNext} = useCarousel();
+
 	return (
-		<div className={'relative'}>
-			<div className={'relative z-10 w-screen'}>
-				<CarouselContent className={'-ml-2 md:-ml-4'}>
+		<div>
+			<div className={'z-10 w-screen'}>
+				<CarouselContent className={'-ml-2 md:-ml-4 '}>
 					{[...cards].map((_, index) => {
 						return (
 							<CarouselItem
@@ -158,15 +161,20 @@ export function Carousel({cards, profile}: TCarouselProps): ReactElement {
 					})}
 					<CarouselItem className={'h-screen w-screen md:h-[732px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 						<CarouselCard index={cards.length}>
-							<div>
-								<div className={'relative max-sm:mb-40'}>
-									<ProfileByID profile={profile} />
-								</div>
+							<div
+								className={
+									'relative flex items-center justify-center max-md:mt-16 max-md:scale-75 max-xs:mt-64'
+								}>
+								<ProfileByID profile={profile} />
+							</div>
+							<div className={'block md:hidden'}>
+								<JumperPopup />
 							</div>
 						</CarouselCard>
 					</CarouselItem>
 				</CarouselContent>
 			</div>
+			<div className={'hidden md:block'}>{!canScrollNext ? <JumperPopup /> : null}</div>
 			<div
 				className={
 					'pointer-events-none absolute inset-0 z-10 mx-auto w-screen md:w-[800px] md:px-20 xl:w-[1200px]'

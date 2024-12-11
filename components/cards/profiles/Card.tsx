@@ -65,10 +65,15 @@ export default function Card(props: TCardProps): ReactElement {
 			initial={'initial'}
 			animate={!api || !canScrollNext || props.disableAnimation ? 'animate' : 'exit'}
 			exit={'exit'}
-			className={'relative w-fit scale-100'}>
+			className={'relative w-fit md:scale-100'}>
 			<div
-				style={{transform: `scale(${width / 440})`, width: 440}}
-				className={cl('relative flex aspect-[440/600]', 'origin-top', 'border-collapse', props.className)}>
+				style={{transform: `scale(${width / 440})`}}
+				className={cl(
+					'w-[440px] relative flex aspect-[440/600]',
+					'origin-top',
+					'border-collapse',
+					props.className
+				)}>
 				{props.children}
 				{!props.noShare && <ShareButton profile={profile} />}
 				{!props.noShare && (

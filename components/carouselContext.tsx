@@ -215,9 +215,11 @@ export const CarouselPrevious = forwardRef<HTMLButtonElement, ComponentProps<typ
 					/>
 				</div>
 				<button
-					className={
-						'screen pointer-events-auto absolute left-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden'
-					}
+					className={cl(
+						'screen absolute left-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden',
+						canScrollPrev ? 'pointer-events-auto' : 'pointer-events-none',
+						'hidden'
+					)}
 					onClick={scrollPrev}
 					disabled={!canScrollPrev}
 				/>
@@ -242,9 +244,10 @@ export const CarouselNext = forwardRef<HTMLButtonElement, ComponentProps<typeof 
 				/>
 			</div>
 			<button
-				className={
-					'screen pointer-events-auto absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden'
-				}
+				className={cl(
+					'screen absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-full cursor-pointer md:hidden',
+					canScrollNext ? 'pointer-events-auto' : 'pointer-events-none'
+				)}
 				onClick={scrollNext}
 				disabled={!canScrollNext}
 			/>
@@ -461,6 +464,37 @@ export const MobileCarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTML
 		}, [selectedIndex, completedSlides, progress, api]);
 
 		/************************************************************************************************
+		 * Handle Dot Click Event
+		 * Manages carousel navigation when a dot indicator is clicked:
+		 * - Resets progress animation for the new slide
+		 * - Updates completed slides array based on navigation direction:
+		 *   - Forward: Marks all previous slides as complete
+		 *   - Backward: Removes completion status of skipped slides
+		 * - Scrolls carousel to selected slide index
+		 * - Early returns if carousel API is not available
+		 ************************************************************************************************/
+		const handleDotClick = (index: number): void => {
+			if (!api) {
+				return;
+			}
+			set_progress(0);
+			set_completedSlides(prev => {
+				if (index > selectedIndex) {
+					// Mark all previous slides as complete when jumping forward
+					const newCompletedSlides = [];
+					//All previous slides must be set as completed
+					for (let i = 0; i < index; i++) {
+						newCompletedSlides.push(i);
+					}
+					return newCompletedSlides;
+				}
+				const newCompletedSlides = prev.filter(i => i < index);
+				return newCompletedSlides;
+			});
+			api.scrollTo(index);
+		};
+
+		/************************************************************************************************
 		 * Slide Change Effect
 		 * Updates completed slides and progress when selected slide index changes:
 		 * - Marks all previous slides as completed when navigating to a new slide
@@ -500,6 +534,7 @@ export const MobileCarouselDots = forwardRef<HTMLDivElement, HTMLAttributes<HTML
 				{Array.from({length: totalSlides}).map((_, index) => (
 					<div
 						key={index}
+						onClick={() => handleDotClick(index)}
 						className={'group -m-4 w-full cursor-pointer p-4'}>
 						<div
 							className={cl(
