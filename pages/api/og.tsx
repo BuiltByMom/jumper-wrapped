@@ -1136,8 +1136,13 @@ export default async function handler(context: any): Promise<ImageResponse> {
 	const address = (rootURL.searchParams.get('address') || '')?.toLowerCase();
 
 	if (!address) {
-		console.warn('No address provided');
-		return new Response('No address provided', {status: 400});
+		const defaultOGResponse = await fetch(new URL('/og/og.jpg', stringifiedRootURL));
+		return new Response(await defaultOGResponse.arrayBuffer(), {
+			headers: {
+				'Content-Type': 'image/jpeg',
+				'Cache-Control': 'public, max-age=31536000, immutable'
+			}
+		});
 	}
 
 	const [boldFontDataRoot, profileEndpoint] = await Promise.all([
@@ -1148,71 +1153,77 @@ export default async function handler(context: any): Promise<ImageResponse> {
 	const statsToUse: {key: string; value: string | number}[] = [];
 	let detectedProfile = 'Noob';
 	if (!profileEndpoint.ok) {
-		detectedProfile = 'Noob';
+		const defaultOGResponse = await fetch(new URL('/og/og.jpg', stringifiedRootURL));
+		return new Response(await defaultOGResponse.arrayBuffer(), {
+			headers: {
+				'Content-Type': 'image/jpeg',
+				'Cache-Control': 'public, max-age=31536000, immutable'
+			}
+		});
+	}
+
+	const fromProfileEndpoint: TUserProfile = await profileEndpoint.json();
+	detectedProfile = fromProfileEndpoint.profileName || 'Noob';
+	if (!detectedProfile || detectedProfile === null || detectedProfile === 'Noob') {
+		statsToUse.push({
+			key: 'Swap Volume',
+			value: `$${Number(fromProfileEndpoint.swapVolume).toFixed(0)}`
+		});
+		if (fromProfileEndpoint.numberOfChains === 0) {
+			statsToUse.push({key: 'Chains Explored', value: '1'});
+		} else {
+			statsToUse.push({key: 'Chains Explored', value: fromProfileEndpoint.numberOfChains});
+		}
+
+		if (address.startsWith('0x') && address.length === 42) {
+			if (fromProfileEndpoint.favoriteChain) {
+				const capitalizedChain =
+					fromProfileEndpoint.favoriteChain.charAt(0).toUpperCase() +
+					fromProfileEndpoint.favoriteChain.slice(1);
+				statsToUse.push({key: 'Favorite Chain', value: capitalizedChain});
+			}
+		} else {
+			statsToUse.push({key: 'Favorite Chain', value: 'Solana'});
+		}
 	} else {
-		const fromProfileEndpoint: TUserProfile = await profileEndpoint.json();
-		detectedProfile = fromProfileEndpoint.profileName || 'Noob';
-		if (!detectedProfile || detectedProfile === null || detectedProfile === 'Noob') {
+		if (Number(fromProfileEndpoint.bridgeVolume) > 0) {
+			statsToUse.push({
+				key: 'Bridge Volume',
+				value: `$${Number(fromProfileEndpoint.bridgeVolume).toFixed(0)}`
+			});
+		} else {
+			statsToUse.push({
+				key: 'Bridge Rank',
+				value: `Top ${(Number(fromProfileEndpoint.bridgeVolumeRank) * 100).toFixed(0)}%`
+			});
+		}
+
+		if (Number(fromProfileEndpoint.swapVolume) > 0) {
 			statsToUse.push({
 				key: 'Swap Volume',
 				value: `$${Number(fromProfileEndpoint.swapVolume).toFixed(0)}`
 			});
-			if (fromProfileEndpoint.numberOfChains === 0) {
-				statsToUse.push({key: 'Chains Explored', value: '1'});
-			} else {
-				statsToUse.push({key: 'Chains Explored', value: fromProfileEndpoint.numberOfChains});
-			}
-
-			if (address.startsWith('0x') && address.length === 42) {
-				if (fromProfileEndpoint.favoriteChain) {
-					const capitalizedChain =
-						fromProfileEndpoint.favoriteChain.charAt(0).toUpperCase() +
-						fromProfileEndpoint.favoriteChain.slice(1);
-					statsToUse.push({key: 'Favorite Chain', value: capitalizedChain});
-				}
-			} else {
-				statsToUse.push({key: 'Favorite Chain', value: 'Solana'});
-			}
 		} else {
-			if (Number(fromProfileEndpoint.bridgeVolume) > 0) {
-				statsToUse.push({
-					key: 'Bridge Volume',
-					value: `$${Number(fromProfileEndpoint.bridgeVolume).toFixed(0)}`
-				});
-			} else {
-				statsToUse.push({
-					key: 'Bridge Rank',
-					value: `Top ${(Number(fromProfileEndpoint.bridgeVolumeRank) * 100).toFixed(0)}%`
-				});
-			}
+			statsToUse.push({
+				key: 'Swap Rank',
+				value: `Top ${(Number(fromProfileEndpoint.swapVolumeRank) * 100).toFixed(0)}%`
+			});
+		}
 
-			if (Number(fromProfileEndpoint.swapVolume) > 0) {
-				statsToUse.push({
-					key: 'Swap Volume',
-					value: `$${Number(fromProfileEndpoint.swapVolume).toFixed(0)}`
-				});
-			} else {
-				statsToUse.push({
-					key: 'Swap Rank',
-					value: `Top ${(Number(fromProfileEndpoint.swapVolumeRank) * 100).toFixed(0)}%`
-				});
-			}
+		if (fromProfileEndpoint.numberOfChains === 0) {
+			statsToUse.push({key: 'Chains Explored', value: '1'});
+		} else {
+			statsToUse.push({key: 'Chains Explored', value: fromProfileEndpoint.numberOfChains});
+		}
 
-			if (fromProfileEndpoint.numberOfChains === 0) {
-				statsToUse.push({key: 'Chains Explored', value: '1'});
-			} else {
-				statsToUse.push({key: 'Chains Explored', value: fromProfileEndpoint.numberOfChains});
-			}
-
-			if (detectedProfile === 'Solana Soldier') {
-				statsToUse.push({key: 'Favorite Chain', value: 'Solana'});
-			} else {
-				if (fromProfileEndpoint.favoriteChain) {
-					const capitalizedChain =
-						fromProfileEndpoint.favoriteChain.charAt(0).toUpperCase() +
-						fromProfileEndpoint.favoriteChain.slice(1);
-					statsToUse.push({key: 'Favorite Chain', value: capitalizedChain});
-				}
+		if (detectedProfile === 'Solana Soldier') {
+			statsToUse.push({key: 'Favorite Chain', value: 'Solana'});
+		} else {
+			if (fromProfileEndpoint.favoriteChain) {
+				const capitalizedChain =
+					fromProfileEndpoint.favoriteChain.charAt(0).toUpperCase() +
+					fromProfileEndpoint.favoriteChain.slice(1);
+				statsToUse.push({key: 'Favorite Chain', value: capitalizedChain});
 			}
 		}
 	}

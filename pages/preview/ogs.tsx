@@ -21,12 +21,18 @@ export default function Index(): ReactElement {
 			{testingAddresses.map(address => (
 				<Image
 					key={address}
-					src={`/api/og?address=${address}&v=11`}
+					src={`/api/og?address=${address}&v=12`}
 					alt={'OG'}
 					width={1200}
 					height={630}
 				/>
 			))}
+			<Image
+				src={'/api/og'}
+				alt={'OG'}
+				width={1200}
+				height={630}
+			/>
 		</div>
 	);
 }
