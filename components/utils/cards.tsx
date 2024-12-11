@@ -2,6 +2,7 @@ import BelovedChain from '../cards/stats/BelovedChain';
 import ChainExploredCard from '../cards/stats/ChainExplored';
 import DayOfWeekCard from '../cards/stats/DayOfWeek';
 import FavTokenCard from '../cards/stats/FavToken';
+import {Intermediate} from '../cards/stats/Intermediate';
 import NumberOfTradeCard from '../cards/stats/NumberOfTrade';
 import TopBridgedChainCard from '../cards/stats/TopBridgedChain';
 import VolumeRankCard from '../cards/stats/VolumeRank';
@@ -60,6 +61,7 @@ export type TCardTypes = {
 	JumperWash: {
 		hasWashedNFT: boolean;
 	};
+	Intermediate: {statsAmount: number};
 	TransactionsNumber: {value: number; percentile: string};
 };
 
@@ -104,6 +106,7 @@ export const CARD_COMPONENTS: {
 	BusiestDay: dayOfYear => <DayOfYearCard dayOfYear={dayOfYear} />,
 	BusiestMonth: month => <MonthCard month={month} />,
 	BusiestWeekday: weekday => <DayOfWeekCard dayOfWeek={weekday as TDayOfWeek} />,
+	Intermediate: ({statsAmount}) => <Intermediate statsAmount={statsAmount} />,
 	TransactionsNumber: ({value}) => <NumberOfTradeCard count={value} />
 };
 

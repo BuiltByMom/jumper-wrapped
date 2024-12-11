@@ -1,3 +1,5 @@
+import {type ReactElement} from 'react';
+
 import ChainWhaleCard from '../cards/profiles/ChainWhale';
 import DegenElderCard from '../cards/profiles/DegenElder';
 import DivaCardCard from '../cards/profiles/Diva';
@@ -12,7 +14,6 @@ import {CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from '../
 import {getCardComponent} from '../utils/cards';
 import {CarouselCard} from './Card';
 
-import type {ReactElement} from 'react';
 import type {TUserProfile} from '../utils/cards';
 import type {TCarouselProps} from './types';
 

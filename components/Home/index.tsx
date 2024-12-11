@@ -59,7 +59,8 @@ export function HomePage(): ReactElement {
 	useEffect(() => {
 		if (evmOrSolAddress) {
 			fetchUserCards(evmOrSolAddress).then(cards => {
-				set_cards(cards);
+				const intermediateCard: TCardData = {id: 'Intermediate', data: {statsAmount: cards.length}};
+				set_cards([...cards, intermediateCard]);
 			});
 			fetchUserProfile(evmOrSolAddress).then(profile => {
 				set_profile(profile);
