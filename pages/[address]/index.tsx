@@ -1,20 +1,23 @@
 import {type ReactElement} from 'react';
 import Head from 'next/head';
 
+import type {GetServerSideProps} from 'next';
+import type {TUserProfile} from '@/components/utils/cards';
+
 import {SharedPage} from '@/components/SharedPage';
 
 const baseUrl = 'https://wrapped.jumper.exchange';
-export default function Home({address}: {address: string}): ReactElement {
+export default function Home({profile}: {profile: TUserProfile & {address: string}}): ReactElement {
 	return (
 		<>
 			<Head>
 				<meta
 					property={'og:image'}
-					content={`${baseUrl}/api/og?address=${address}`}
+					content={`${baseUrl}/api/og?address=${profile.address}`}
 				/>
 				<meta
 					name={'twitter:image'}
-					content={`${baseUrl}/api/og?address=${address}`}
+					content={`${baseUrl}/api/og?address=${profile.address}`}
 				/>
 				<meta
 					property={'twitter:card'}
@@ -22,14 +25,30 @@ export default function Home({address}: {address: string}): ReactElement {
 				/>
 			</Head>
 
-			<SharedPage address={address} />
+			<SharedPage
+				address={profile.address}
+				profile={profile}
+			/>
 		</>
 	);
 }
 
-export async function getServerSideProps(context: any): Promise<{props: {address: string}}> {
-	const address = context.query.address || '';
+type TAddressPageProps = {
+	profile: TUserProfile;
+};
+
+export const getServerSideProps: GetServerSideProps<TAddressPageProps> = async context => {
+	const address = typeof context.query.address === 'string' ? context.query.address : '';
+	const profileEndpoint = await fetch(`https://jumper-wash.builtby.dad/user/${address}/og`);
+
+	if (!profileEndpoint.ok) {
+		return {
+			notFound: true
+		};
+	}
+
+	const profile: TUserProfile = await profileEndpoint.json();
 	return {
-		props: {address}
+		props: {profile: {...profile, address}}
 	};
-}
+};
