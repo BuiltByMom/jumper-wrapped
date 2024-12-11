@@ -13,7 +13,7 @@ export default function DegenElderCard(props: TDegenElderCardProps): ReactElemen
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[352px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
 						{
 							'A crypto OG who’s weathered every market storm. This seasoned degen turns FUD into hopium and laughs in the face of rug pulls. HODL strong!'
 						}

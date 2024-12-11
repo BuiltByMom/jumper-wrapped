@@ -64,7 +64,7 @@ export function WalletSelector({isOpen, onClose}: TWalletSelectorProps): ReactEl
 										className={
 											'flex w-full items-center justify-between rounded-t-2xl bg-black px-6 py-5'
 										}>
-										<p className={'font-space-grotesk text-left text-xl  leading-6 text-white'}>
+										<p className={'font-urbanist text-left text-xl  leading-6 text-white'}>
 											{'Connect a wallet to continue'}
 										</p>
 										<button onClick={onClose}>

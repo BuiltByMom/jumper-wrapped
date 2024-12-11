@@ -13,7 +13,7 @@ export default function SwapaholicCard(props: TSwapaholicCardProps): ReactElemen
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[236px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
 						{
 							'Swapped tokens more times than a boomer asks "Wen Lambo?" Smooth brain move or secret gigabrain plan?'
 						}

@@ -13,7 +13,7 @@ export default function SerBridgealotCard(props: TSerBridgealotCardProps): React
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[195px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
 						{`Bridged a whopping $${props.volumeInUSD}, leaving ${props.topRatio.toFixed(
 							2
 						)}% of normies in the dust.`}

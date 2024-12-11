@@ -18,7 +18,7 @@ export default function FavTokenCard({tokenName, ...props}: TFavTokenCardProps):
 			backgroundImage={'url(/cards/stats/backgroundFavToken.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundFavTokenMobile.jpg)'}>
 			<CardTitle className={''}>
-				<b className={'font-space-grotesk text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
 					{'You yeeted this token into the abyss.'}
 				</b>
 			</CardTitle>
@@ -30,9 +30,7 @@ export default function FavTokenCard({tokenName, ...props}: TFavTokenCardProps):
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-space-grotesk text-xl font-medium'}>
-					{'Hope you were right fren. Sayonara, bags!'}
-				</p>
+				<p className={'font-urbanist text-xl font-medium'}>{'Hope you were right fren. Sayonara, bags!'}</p>
 			</CardCopy>
 		</Card>
 	);

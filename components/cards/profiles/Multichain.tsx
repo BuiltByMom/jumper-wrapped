@@ -12,7 +12,7 @@ export default function MultiChainCard(props: TMultiChainCardProps): ReactElemen
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[365px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
 						{`You aped into ${props.numberOfChains} chains! LFG!`}
 					</p>
 				</div>

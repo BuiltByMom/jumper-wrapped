@@ -13,7 +13,7 @@ export default function DivaCardCard(props: TDivaCardCardProps): ReactElement {
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[276px] px-6'}>
-					<p className={'font-space-grotesk text-center text-xl font-medium text-white'}>
+					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
 						{`You HODLed ${props.tokens[0]}, ${props.tokens[1]}, and ${props.tokens[2]}. Diamond hands for the diamond diva!`}
 					</p>
 				</div>
