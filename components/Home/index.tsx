@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {useRouter} from 'next/router';
 import {useAccount} from 'wagmi';
 import {AnimatePresence} from 'framer-motion';
@@ -35,8 +35,16 @@ export function HomePage(): ReactElement {
 
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
+
 	const router = useRouter();
 	const isNotEnoughData = cards && cards.length === 0;
+
+	const evmOrSolAddress = useMemo(() => {
+		if (account.publicKey) {
+			return account.publicKey.toString();
+		}
+		return address;
+	}, [account.publicKey, address]);
 
 	/**********************************************************************************************
 	 * Wallet Connection Effects
@@ -49,15 +57,15 @@ export function HomePage(): ReactElement {
 	}, [account, isConnected, router]);
 
 	useEffect(() => {
-		if (address) {
-			fetchUserCards(address).then(cards => {
+		if (evmOrSolAddress) {
+			fetchUserCards(evmOrSolAddress).then(cards => {
 				set_cards(cards);
 			});
-			fetchUserProfile(address).then(profile => {
+			fetchUserProfile(evmOrSolAddress).then(profile => {
 				set_profile(profile);
 			});
 		}
-	}, [address]);
+	}, [address, evmOrSolAddress]);
 
 	console.warn(profile);
 
