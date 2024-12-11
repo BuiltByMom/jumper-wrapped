@@ -1145,8 +1145,8 @@ export default async function handler(context: any): Promise<ImageResponse> {
 		});
 	}
 
-	const [profileEndpoint] = await Promise.all([
-		// fetch(new URL('/fonts/Urbanist-SemiBold.ttf', 'https://jumper-wrap.builtby.dad')),
+	const [boldFontDataRoot, profileEndpoint] = await Promise.all([
+		fetch(new URL('/fonts/Urbanist-SemiBold.ttf', 'https://jumper-wrap.builtby.dad')),
 		fetch(`https://jumper-wash.builtby.dad/user/${address}/og`)
 	]);
 
@@ -1232,7 +1232,7 @@ export default async function handler(context: any): Promise<ImageResponse> {
 		statsToUse.push({key: '', value: ''});
 	}
 
-	// const boldFontData = await boldFontDataRoot.arrayBuffer();
+	const boldFontData = await boldFontDataRoot.arrayBuffer();
 
 	let profile = PROFILES[detectedProfile as keyof typeof PROFILES];
 	if (!profile) {
@@ -1617,15 +1617,17 @@ export default async function handler(context: any): Promise<ImageResponse> {
 									fontSize: '20px',
 									color: textColor,
 									marginBottom: '16px',
+									fontFamily: 'Urbanist',
 									display: 'flex',
-									fontWeight: 'bold'
+									fontWeight: 700
 								}}>
 								{stat.key}
 							</div>
 							<div
 								style={{
 									fontSize: '56px',
-									fontWeight: 'bold',
+									fontWeight: 700,
+									fontFamily: 'Urbanist',
 									display: 'flex'
 								}}>
 								{stat.value}
@@ -1652,15 +1654,15 @@ export default async function handler(context: any): Promise<ImageResponse> {
 		),
 		{
 			width: 1200,
-			height: 630
-			// fonts: [
-			// 	{
-			// 		name: 'Urbanist',
-			// 		// data: boldFontData,
-			// 		style: 'normal',
-			// 		weight: 700
-			// 	}
-			// ]
+			height: 630,
+			fonts: [
+				{
+					name: 'Urbanist',
+					data: boldFontData,
+					style: 'normal',
+					weight: 700
+				}
+			]
 		}
 	);
 }
