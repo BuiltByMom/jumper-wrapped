@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useAccount} from 'wagmi';
-import {ConnectButton} from '@rainbow-me/rainbowkit';
+import {ConnectButton, useAccountModal, useChainModal, useConnectModal} from '@rainbow-me/rainbowkit';
 import {useWallet} from '@solana/wallet-adapter-react';
 import {WalletMultiButton} from '@solana/wallet-adapter-react-ui';
 
@@ -23,6 +23,9 @@ export function Header({
 	const account = useWallet();
 	const {isConnected} = useAccount();
 	const router = useRouter();
+	const {openConnectModal} = useConnectModal();
+	const {openAccountModal} = useAccountModal();
+	const {openChainModal} = useChainModal();
 
 	return (
 		<div
@@ -66,12 +69,20 @@ export function Header({
 					</div>
 				) : isConnected ? (
 					<ConnectButton.Custom>
-						{({account, openAccountModal, chain}) => (
+						{({account, chain}) => (
 							<button
 								className={
 									'flex h-[48px] w-[200px] items-center justify-center gap-4 rounded-[32px] bg-[#ffffff1a] font-bold text-white hover:bg-[#FFFFFF33] xl:h-[64px] xl:w-[320px]'
 								}
-								onClick={openAccountModal}
+								onClick={() => {
+									if (openConnectModal) {
+										openConnectModal();
+									} else if (openAccountModal) {
+										openAccountModal();
+									} else if (openChainModal) {
+										openChainModal();
+									}
+								}}
 								type={'button'}>
 								{chain?.iconUrl && (
 									<Image
