@@ -127,7 +127,7 @@ export async function fetchUserCards(address: string): Promise<TCardData[]> {
 	try {
 		const response = await fetch(`https://jumper-wash.builtby.dad/user/${address}`);
 		if (!response.ok) {
-			throw new Error('Failed to fetch user stats');
+			return [];
 		}
 
 		const cards: TCardData[] = await response.json();
@@ -146,7 +146,7 @@ export async function fetchUserProfile(address: string): Promise<TUserProfile | 
 	try {
 		const response = await fetch(`https://jumper-wash.builtby.dad/user/${address}/og`);
 		if (!response.ok) {
-			throw new Error('Failed to fetch user stats');
+			return null;
 		}
 
 		const profile: TUserProfile = await response.json();

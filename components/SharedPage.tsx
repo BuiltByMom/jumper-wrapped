@@ -11,45 +11,6 @@ import {cl} from './utils/tools';
 
 import type {TUserProfile} from './utils/cards';
 
-const stats = [
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	},
-	{
-		title: 'Stat',
-		value: '2%'
-	}
-];
-
 function StatOwner({address, className}: {address: string; className?: string}): ReactElement {
 	return (
 		<div

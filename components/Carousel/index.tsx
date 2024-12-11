@@ -23,6 +23,7 @@ export function ProfileByID(props: {
 	size?: number;
 }): ReactElement {
 	const size = props.size || 440;
+	// eslint-disable-next-line @typescript-eslint/naming-convention
 	const {profile, disableAnimation, noShare} = props;
 	if (!profile) {
 		return (
