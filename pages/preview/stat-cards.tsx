@@ -58,6 +58,8 @@ export default function Index(): ReactElement {
 				{CARD_COMPONENTS.TransactionsNumber({percentile: '0.19', value: 41})}
 				{CARD_COMPONENTS.TransactionsNumber({percentile: '0.19', value: 104})}
 				{CARD_COMPONENTS.TransactionsNumber({percentile: '0.19', value: 1450})}
+				{CARD_COMPONENTS.Intermediate({statsAmount: 4})}
+				{CARD_COMPONENTS.Intermediate({statsAmount: 5})}
 			</div>
 		</Fragment>
 	);
