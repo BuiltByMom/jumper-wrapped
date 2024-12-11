@@ -21,7 +21,7 @@ export default function SolanaSoldierCard(props: TSolanaSoldierCardProps): React
 				</div>
 			</div>
 			<div
-				className={'absolute inset-0 z-10 rounded-[32px] border-4 border-accent'}
+				className={'absolute inset-0 z-10 rounded-[32px] border-4 border-accent-hover'}
 				style={{backgroundImage: 'url(/cards/profiles/solana-soldier.jpg)'}}
 			/>
 		</Card>

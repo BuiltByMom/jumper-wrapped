@@ -11,7 +11,8 @@ const availableProfiles = [
 	'elder',
 	'swapaholic',
 	'solanaSoldier',
-	'paperHanded'
+	'paperHanded',
+	'noob'
 ];
 
 export default function Index(): ReactElement {

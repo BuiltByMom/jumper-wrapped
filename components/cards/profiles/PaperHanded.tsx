@@ -19,7 +19,7 @@ export default function PaperHandedCard(props: TPaperHandedCardProps): ReactElem
 				</div>
 			</div>
 			<div
-				className={'absolute inset-0 z-10 rounded-[32px] border-4 border-accent'}
+				className={'absolute inset-0 z-10 rounded-[32px] border-4 border-accent-hover'}
 				style={{backgroundImage: 'url(/cards/profiles/paper-handed-pleb.jpg)'}}
 			/>
 		</Card>

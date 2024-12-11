@@ -4,6 +4,7 @@ import ChainWhaleCard from '@/components/cards/profiles/ChainWhale';
 import DegenElderCard from '@/components/cards/profiles/DegenElder';
 import DivaCardCard from '@/components/cards/profiles/Diva';
 import MultiChainCard from '@/components/cards/profiles/Multichain';
+import NoobCard from '@/components/cards/profiles/Noob';
 import NoSleepCard from '@/components/cards/profiles/NoSleep';
 import PaperHandedCard from '@/components/cards/profiles/PaperHanded';
 import SerBridgealotCard from '@/components/cards/profiles/SerBridgealot';
@@ -56,6 +57,10 @@ export default function Index(): ReactElement {
 			<NoSleepCard
 				width={440}
 				timestamp={'234234234'}
+				disableAnimation
+			/>
+			<NoobCard
+				width={440}
 				disableAnimation
 			/>
 		</div>
