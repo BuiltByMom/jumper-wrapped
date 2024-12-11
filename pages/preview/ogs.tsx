@@ -36,7 +36,7 @@ export default function Index(): ReactElement {
 				{testingAddresses.map(address => (
 					<Image
 						key={address}
-						src={`/api/og?address=${address}&v=12`}
+						src={`/api/og?address=${address}&v=14`}
 						alt={'OG'}
 						width={1200}
 						height={630}
