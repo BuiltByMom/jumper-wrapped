@@ -1,11 +1,13 @@
 import {ImageResponse} from '@vercel/og';
 
+import type {TUserProfile} from '@/components/utils/cards';
+
 export const config = {
 	runtime: 'edge'
 };
 
 const PROFILES = {
-	bridgealot: {
+	'Ser Bridgealot': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -292,7 +294,7 @@ const PROFILES = {
 		bg: 'bridgealot-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	multichain: {
+	'Multi-chain Degen': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -412,7 +414,7 @@ const PROFILES = {
 		bg: 'multichain-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	diva: {
+	'Diamond Diva': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -479,7 +481,7 @@ const PROFILES = {
 		bg: 'diva-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	nosleep: {
+	'No Sleep Gang': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -558,7 +560,7 @@ const PROFILES = {
 		bg: 'nosleep-wrap-bg.jpg',
 		textColor: '#02693E'
 	},
-	chainwhale: {
+	'Chain whale': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -663,7 +665,7 @@ const PROFILES = {
 		bg: 'chainwhale-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	elder: {
+	'Degen Elder': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -736,7 +738,7 @@ const PROFILES = {
 		bg: 'elder-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	swapaholic: {
+	Swapaholic: {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -855,7 +857,7 @@ const PROFILES = {
 		bg: 'swapaholic-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	solanaSoldier: {
+	'Solana Soldier': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -944,7 +946,7 @@ const PROFILES = {
 		bg: 'solana-soldier-wrap-bg.jpg',
 		textColor: '#FFFFFF'
 	},
-	paperHanded: {
+	'Paper Handed Pleb': {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -1053,7 +1055,7 @@ const PROFILES = {
 		bg: 'paper-handed-wrap-bg.jpg',
 		textColor: '#000000'
 	},
-	noob: {
+	Noob: {
 		titleSVG: (
 			<svg
 				width={'1040'}
@@ -1129,24 +1131,106 @@ const PROFILES = {
 };
 
 export default async function handler(context: any): Promise<ImageResponse> {
-	const boldFontDataRoot = await fetch(new URL('/fonts/SpaceGrotesk-Bold.ttf', 'https://jumper-wrap.builtby.dad'));
-	const boldFontData = await boldFontDataRoot.arrayBuffer();
 	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
+	const address = (rootURL.searchParams.get('address') || '')?.toLowerCase();
 
-	let selectedProfile = 'multichain';
-	const profile = rootURL.searchParams.get('profile');
-	if (profile) {
-		selectedProfile = profile;
-	}
-	if (!PROFILES[selectedProfile as keyof typeof PROFILES]) {
-		selectedProfile = 'multichain';
+	if (!address) {
+		console.warn('No address provided');
+		return new Response('No address provided', {status: 400});
 	}
 
-	const currentProfiles = PROFILES[selectedProfile as keyof typeof PROFILES];
-	const backgroundURL = `${stringifiedRootURL}/og/${currentProfiles.bg}`;
-	const titleOG = currentProfiles.titleSVG;
-	const {textColor} = currentProfiles;
+	const [boldFontDataRoot, profileEndpoint] = await Promise.all([
+		fetch(new URL('/fonts/Urbanist-SemiBold.ttf', 'https://jumper-wrap.builtby.dad')),
+		fetch(`https://jumper-wash.builtby.dad/user/${address}/og`)
+	]);
+
+	const statsToUse: {key: string; value: string | number}[] = [];
+	let detectedProfile = 'Noob';
+	if (!profileEndpoint.ok) {
+		detectedProfile = 'Noob';
+	} else {
+		const fromProfileEndpoint: TUserProfile = await profileEndpoint.json();
+		detectedProfile = fromProfileEndpoint.profileName || 'Noob';
+		if (!detectedProfile || detectedProfile === null || detectedProfile === 'Noob') {
+			statsToUse.push({
+				key: 'Swap Volume',
+				value: `$${Number(fromProfileEndpoint.swapVolume).toFixed(0)}`
+			});
+			if (fromProfileEndpoint.numberOfChains === 0) {
+				statsToUse.push({key: 'Chains Explored', value: '1'});
+			} else {
+				statsToUse.push({key: 'Chains Explored', value: fromProfileEndpoint.numberOfChains});
+			}
+
+			if (address.startsWith('0x') && address.length === 42) {
+				if (fromProfileEndpoint.favoriteChain) {
+					const capitalizedChain =
+						fromProfileEndpoint.favoriteChain.charAt(0).toUpperCase() +
+						fromProfileEndpoint.favoriteChain.slice(1);
+					statsToUse.push({key: 'Favorite Chain', value: capitalizedChain});
+				}
+			} else {
+				statsToUse.push({key: 'Favorite Chain', value: 'Solana'});
+			}
+		} else {
+			if (Number(fromProfileEndpoint.bridgeVolume) > 0) {
+				statsToUse.push({
+					key: 'Bridge Volume',
+					value: `$${Number(fromProfileEndpoint.bridgeVolume).toFixed(0)}`
+				});
+			} else {
+				statsToUse.push({
+					key: 'Bridge Rank',
+					value: `Top ${(Number(fromProfileEndpoint.bridgeVolumeRank) * 100).toFixed(0)}%`
+				});
+			}
+
+			if (Number(fromProfileEndpoint.swapVolume) > 0) {
+				statsToUse.push({
+					key: 'Swap Volume',
+					value: `$${Number(fromProfileEndpoint.swapVolume).toFixed(0)}`
+				});
+			} else {
+				statsToUse.push({
+					key: 'Swap Rank',
+					value: `Top ${(Number(fromProfileEndpoint.swapVolumeRank) * 100).toFixed(0)}%`
+				});
+			}
+
+			if (fromProfileEndpoint.numberOfChains === 0) {
+				statsToUse.push({key: 'Chains Explored', value: '1'});
+			} else {
+				statsToUse.push({key: 'Chains Explored', value: fromProfileEndpoint.numberOfChains});
+			}
+
+			if (detectedProfile === 'Solana Soldier') {
+				statsToUse.push({key: 'Favorite Chain', value: 'Solana'});
+			} else {
+				if (fromProfileEndpoint.favoriteChain) {
+					const capitalizedChain =
+						fromProfileEndpoint.favoriteChain.charAt(0).toUpperCase() +
+						fromProfileEndpoint.favoriteChain.slice(1);
+					statsToUse.push({key: 'Favorite Chain', value: capitalizedChain});
+				}
+			}
+		}
+	}
+
+	while (statsToUse.length < 4) {
+		statsToUse.push({key: '', value: ''});
+	}
+
+	const boldFontData = await boldFontDataRoot.arrayBuffer();
+
+	let profile = PROFILES[detectedProfile as keyof typeof PROFILES];
+	if (!profile) {
+		profile = PROFILES['Noob'];
+	}
+
+	const backgroundURL = `${stringifiedRootURL}/og/${profile.bg}`;
+	const titleOG = profile.titleSVG;
+	const {textColor} = profile;
 
 	const footerBackground = (
 		<svg
@@ -1513,21 +1597,30 @@ export default async function handler(context: any): Promise<ImageResponse> {
 						paddingLeft: '80px',
 						paddingRight: '80px'
 					}}>
-					{['$1', '$5,301', '$17.9K', '$1.2M'].map(stat => (
+					{statsToUse.map(stat => (
 						<div
-							key={stat}
+							key={stat.key}
 							style={{color: textColor, display: 'flex', flexDirection: 'column'}}>
 							<div
 								style={{
 									fontSize: '20px',
 									color: textColor,
 									marginBottom: '16px',
-									fontFamily: 'Space Grotesk',
+									fontFamily: 'Urbanist',
+									display: 'flex',
 									fontWeight: 700
 								}}>
-								{'STAT EXAMPLE:'}
+								{stat.key}
 							</div>
-							<div style={{fontSize: '56px', fontWeight: 700, fontFamily: 'Space Grotesk'}}>{stat}</div>
+							<div
+								style={{
+									fontSize: '56px',
+									fontWeight: 700,
+									fontFamily: 'Urbanist',
+									display: 'flex'
+								}}>
+								{stat.value}
+							</div>
 						</div>
 					))}
 				</div>
@@ -1553,7 +1646,7 @@ export default async function handler(context: any): Promise<ImageResponse> {
 			height: 630,
 			fonts: [
 				{
-					name: 'Space Grotesk',
+					name: 'Urbanist',
 					data: boldFontData,
 					style: 'normal',
 					weight: 700
