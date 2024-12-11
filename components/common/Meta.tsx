@@ -169,20 +169,12 @@ export function Meta(meta: TMeta): ReactElement {
 				content={meta.description}
 			/>
 			<meta
-				property={'og:image'}
-				content={'https://wrapped.jumper.exchange/og/og.jpg'}
-			/>
-			<meta
 				property={'og:image:width'}
 				content={'1200'}
 			/>
 			<meta
 				property={'og:image:height'}
 				content={'630'}
-			/>
-			<meta
-				name={'twitter:image'}
-				content={'https://wrapped.jumper.exchange/og/og.jpg'}
 			/>
 		</Head>
 	);

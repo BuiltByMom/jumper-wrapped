@@ -1,6 +1,6 @@
+import {Fragment, type ReactElement} from 'react';
+import Head from 'next/head';
 import Image from 'next/image';
-
-import type {ReactElement} from 'react';
 
 const testingAddresses = [
 	'0x000000006f457c0f8f560333d9c2877287d92a92',
@@ -17,22 +17,34 @@ const testingAddresses = [
 
 export default function Index(): ReactElement {
 	return (
-		<div className={'grid grid-cols-2 items-center justify-center gap-4 p-10 md:grid-cols-2'}>
-			{testingAddresses.map(address => (
+		<Fragment>
+			<Head>
+				<meta
+					property={'og:image'}
+					content={'https://wrapped.jumper.exchange/og/og.jpg'}
+				/>
+				<meta
+					name={'twitter:image'}
+					content={'https://wrapped.jumper.exchange/og/og.jpg'}
+				/>
+			</Head>
+			<div className={'grid grid-cols-2 items-center justify-center gap-4 p-10 md:grid-cols-2'}>
+				{testingAddresses.map(address => (
+					<Image
+						key={address}
+						src={`/api/og?address=${address}&v=12`}
+						alt={'OG'}
+						width={1200}
+						height={630}
+					/>
+				))}
 				<Image
-					key={address}
-					src={`/api/og?address=${address}&v=12`}
+					src={'/api/og'}
 					alt={'OG'}
 					width={1200}
 					height={630}
 				/>
-			))}
-			<Image
-				src={'/api/og'}
-				alt={'OG'}
-				width={1200}
-				height={630}
-			/>
-		</div>
+			</div>
+		</Fragment>
 	);
 }

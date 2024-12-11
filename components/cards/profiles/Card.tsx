@@ -49,10 +49,11 @@ export type TCardProps = {
 	width: number;
 	className?: string;
 	disableAnimation?: boolean;
+	noShare?: boolean;
 };
 
 export default function Card(props: TCardProps): ReactElement {
-	const {canScrollNext} = useCarousel();
+	const {canScrollNext, api} = useCarousel();
 	const {width} = props;
 	const account = useWallet();
 	const {address} = useAccount();
@@ -62,28 +63,25 @@ export default function Card(props: TCardProps): ReactElement {
 		<motion.div
 			variants={cardAnimation}
 			initial={'initial'}
-			animate={!canScrollNext || props.disableAnimation ? 'animate' : 'exit'}
+			animate={!api || !canScrollNext || props.disableAnimation ? 'animate' : 'exit'}
 			exit={'exit'}
-			className={'relative w-fit !scale-75 md:!scale-100'}>
+			className={'relative w-fit scale-100'}>
 			<div
 				style={{transform: `scale(${width / 440})`, width: 440}}
-				className={cl(
-					'relative flex aspect-[440/600] overflow-hidden',
-					'origin-top',
-					'border-collapse',
-					props.className
-				)}>
+				className={cl('relative flex aspect-[440/600]', 'origin-top', 'border-collapse', props.className)}>
 				{props.children}
+				{!props.noShare && <ShareButton profile={profile} />}
+				{!props.noShare && (
+					<Link
+						href={'/'}
+						target={'_blank'}
+						className={
+							'absolute -bottom-16 left-1/2 z-50 -translate-x-1/2 text-accent underline transition-colors hover:text-white'
+						}>
+						{'How to share?'}
+					</Link>
+				)}
 			</div>
-			<ShareButton profile={profile} />
-			<Link
-				href={'/'}
-				target={'_blank'}
-				className={
-					'absolute -bottom-16 left-1/2 z-50 -translate-x-1/2 text-accent underline transition-colors hover:text-white'
-				}>
-				{'How to share?'}
-			</Link>
 		</motion.div>
 	);
 }

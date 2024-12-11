@@ -4,8 +4,6 @@ import {Button} from '../common/Button';
 
 import type {ReactElement} from 'react';
 
-const domain = 'https://jumper-wrap.builtby.dad';
-
 /************************************************************************************************
  * Share Button Component
  * Handles social sharing functionality
@@ -16,10 +14,11 @@ const domain = 'https://jumper-wrap.builtby.dad';
  ************************************************************************************************/
 export function ShareButton({profile}: {profile?: string}): ReactElement {
 	const clickToTweet = useCallback(async () => {
-		window.open(
-			`https://twitter.com/intent/tweet?url=${domain}/${profile}?text=Check out my wrapped Jumper!`,
-			'_blank'
-		);
+		const text = profile ? 'Check out my wrapped Jumper!' : 'Check out my wrapped Jumper!';
+		const baseTwitterUrl = 'https://x.com/intent/tweet';
+		const domain = `https://wrapped.jumper.exchange/${profile}`;
+
+		window.open(`${baseTwitterUrl}?url=${domain}&text=${text}`, '_blank');
 	}, [profile]);
 
 	return (

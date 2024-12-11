@@ -67,8 +67,6 @@ export function HomePage(): ReactElement {
 		}
 	}, [address, evmOrSolAddress]);
 
-	console.warn(profile);
-
 	return (
 		<>
 			<div className={cl('flex h-screen relative items-center justify-center w-full')}>

@@ -16,60 +16,117 @@ import type {ReactElement} from 'react';
 import type {TUserProfile} from '../utils/cards';
 import type {TCarouselProps} from './types';
 
-function ProfileByID({profile}: {profile: TUserProfile | null}): ReactElement {
+export function ProfileByID(props: {
+	profile: TUserProfile | null;
+	disableAnimation?: boolean;
+	noShare?: boolean;
+	size?: number;
+}): ReactElement {
+	const size = props.size || 440;
+	const {profile, disableAnimation, noShare} = props;
 	if (!profile) {
-		return <NoobCard width={440} />;
+		return (
+			<NoobCard
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
+			/>
+		);
 	}
 	if (profile.profileId === 1) {
 		return (
 			<SerBridgealotCard
 				volumeInUSD={1234567.89}
 				topRatio={42.42}
-				width={440}
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
 			/>
 		);
 	}
 	if (profile.profileId === 2) {
 		return (
 			<NoSleepCard
-				width={440}
+				width={size}
 				timestamp={'234234234'}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
 			/>
 		);
 	}
 	if (profile.profileId === 3) {
 		return (
 			<MultiChainCard
-				width={440}
+				width={size}
 				numberOfChains={profile.numberOfChains}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
 			/>
 		);
 	}
 	if (profile.profileId === 4) {
-		return <SwapaholicCard width={440} />;
+		return (
+			<SwapaholicCard
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
+			/>
+		);
 	}
 	if (profile.profileId === 5) {
-		return <DegenElderCard width={440} />;
+		return (
+			<DegenElderCard
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
+			/>
+		);
 	}
 	if (profile.profileId === 6) {
-		return <ChainWhaleCard width={440} />;
+		return (
+			<ChainWhaleCard
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
+			/>
+		);
 	}
 	if (profile.profileId === 7) {
-		return <SolanaSoldierCard width={440} />;
+		return (
+			<SolanaSoldierCard
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
+			/>
+		);
 	}
 	if (profile.profileId === 8) {
 		return (
 			<DivaCardCard
-				width={440}
+				width={size}
 				topRatio={42.42}
 				tokens={['DAI', 'USDC', 'USDT']}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
 			/>
 		);
 	}
 	if (profile.profileId === 9) {
-		return <PaperHandedCard width={440} />;
+		return (
+			<PaperHandedCard
+				width={size}
+				disableAnimation={disableAnimation}
+				noShare={noShare}
+			/>
+		);
 	}
-	return <NoobCard width={440} />;
+	return (
+		<NoobCard
+			width={size}
+			disableAnimation={disableAnimation}
+			noShare={noShare}
+		/>
+	);
 }
 
 /************************************************************************************************

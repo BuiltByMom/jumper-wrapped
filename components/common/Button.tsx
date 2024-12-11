@@ -16,6 +16,7 @@ export function Button({title, isBusy, children, className, ...props}: TButtonPr
 			{...props}
 			className={cl(
 				'flex h-14 w-60 items-center justify-center xl:rounded-[56px] rounded-[32px] bg-accent transition-all hover:bg-accent-hover xl:h-[64px] xl:w-[320px]',
+				'cursor-pointer',
 				className
 			)}>
 			{children ? (
