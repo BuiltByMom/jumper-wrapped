@@ -143,10 +143,7 @@ export function Meta(meta: TMeta): ReactElement {
 				content={'index,nofollow'}
 			/>
 			<meta charSet={'utf-8'} />
-			<meta
-				property={'twitter:card'}
-				content={'summary_large_image'}
-			/>
+
 			<meta
 				property={'twitter:title'}
 				content={meta.title}

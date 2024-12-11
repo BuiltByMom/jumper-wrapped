@@ -17,6 +17,10 @@ export default function Page404(): ReactElement {
 					name={'twitter:image'}
 					content={'https://wrapped.jumper.exchange/og/og.jpg'}
 				/>
+				<meta
+					property={'twitter:card'}
+					content={'summary_large_image'}
+				/>
 			</Head>
 			<div className={'flex h-screen w-full items-center justify-center bg-violet-light'}>
 				<PageBackground position={'center'} />

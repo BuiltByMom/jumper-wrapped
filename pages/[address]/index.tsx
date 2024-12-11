@@ -5,18 +5,20 @@ import {SharedPage} from '@/components/SharedPage';
 
 const baseUrl = 'https://wrapped.jumper.exchange';
 export default function Home({address}: {address: string}): ReactElement {
-	const ogImageUrl = address ? `${baseUrl}/api/og?address=${address}` : `${baseUrl}/og/og.jpg`;
-
 	return (
 		<>
 			<Head>
 				<meta
 					property={'og:image'}
-					content={ogImageUrl}
+					content={`${baseUrl}/api/og?address=${address}`}
 				/>
 				<meta
 					name={'twitter:image'}
-					content={ogImageUrl}
+					content={`${baseUrl}/api/og?address=${address}`}
+				/>
+				<meta
+					property={'twitter:card'}
+					content={'summary_large_image'}
 				/>
 			</Head>
 

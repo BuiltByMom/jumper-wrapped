@@ -27,6 +27,10 @@ export default function Index(): ReactElement {
 					name={'twitter:image'}
 					content={'https://wrapped.jumper.exchange/og/og.jpg'}
 				/>
+				<meta
+					property={'twitter:card'}
+					content={'summary_large_image'}
+				/>
 			</Head>
 			<div className={'grid grid-cols-2 items-center justify-center gap-4 p-10 md:grid-cols-2'}>
 				{testingAddresses.map(address => (

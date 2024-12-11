@@ -15,6 +15,10 @@ export default function Index(): ReactElement {
 					name={'twitter:image'}
 					content={'https://wrapped.jumper.exchange/og/og.jpg'}
 				/>
+				<meta
+					property={'twitter:card'}
+					content={'summary_large_image'}
+				/>
 			</Head>
 			<div
 				className={
