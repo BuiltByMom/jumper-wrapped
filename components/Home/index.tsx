@@ -37,7 +37,7 @@ export function HomePage(): ReactElement {
 	const {isConnected, address} = useAccount();
 
 	const router = useRouter();
-	const isNotEnoughData = cards && cards.length > 3;
+	const isNotEnoughData = cards && cards.length < 3;
 
 	const evmOrSolAddress = useMemo(() => {
 		if (account.publicKey) {
