@@ -153,14 +153,14 @@ export function Carousel({cards, profile}: TCarouselProps): ReactElement {
 						return (
 							<CarouselItem
 								key={index}
-								className={'h-screen w-screen md:h-[732px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
+								className={'h-dvh w-screen md:h-[732px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 								<CarouselCard index={index}>
 									{getCardComponent(cards[index].id, cards[index].data)}
 								</CarouselCard>
 							</CarouselItem>
 						);
 					})}
-					<CarouselItem className={'h-screen w-screen md:h-[732px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
+					<CarouselItem className={'h-dvh w-screen md:h-[732px] md:w-[440px] xl:h-[1200px] xl:w-[660px]'}>
 						<CarouselCard index={cards.length}>
 							<div
 								className={

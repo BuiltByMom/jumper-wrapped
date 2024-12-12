@@ -18,10 +18,10 @@ export function PageBackground({position = 'center', showFrame = true, className
 	return (
 		<div
 			className={cl(
-				'absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden',
+				'absolute left-1/2 top-1/2 h-dvh w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden',
 				className
 			)}>
-			<div className={'absolute h-screen w-screen bg-violet-dark'} />
+			<div className={'absolute h-dvh w-screen bg-violet-dark'} />
 
 			<div className={'hidden md:block xl:hidden'}>
 				<CircleGroup

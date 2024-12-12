@@ -39,7 +39,7 @@ export function Card(props: {
 			className={cl(
 				'relative overflow-hidden flex md:aspect-[440/600]',
 				'max-sm:pt-[80px] max-md:pt-[120px] pt-0',
-				'h-screen w-[calc(100vw+7px)] items-center md:pt-0',
+				'h-dvh w-[calc(100vw+7px)] items-center md:pt-0',
 				'md:h-auto md:w-[440px] md:items-baseline md:rounded-[32px]',
 				props.className
 			)}>

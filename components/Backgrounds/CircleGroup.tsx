@@ -21,7 +21,7 @@ export function CircleGroup({
 	isLarge?: boolean;
 }): ReactElement {
 	return (
-		<div className={'absolute z-10 h-screen w-screen'}>
+		<div className={'absolute z-10 h-dvh w-screen'}>
 			{showFrame && <BackgroundFrame className={'hidden md:block'} />}
 			<svg
 				width={'5400'}

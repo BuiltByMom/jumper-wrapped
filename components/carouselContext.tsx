@@ -56,10 +56,10 @@ export const Carousel = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement
 				...opts,
 				axis: orientation === 'horizontal' ? 'x' : 'y',
 				align: 'center',
+				containScroll: 'trimSnaps',
 				slidesToScroll: 1,
 				skipSnaps: false,
 				startIndex: 0,
-				containScroll: 'keepSnaps',
 				dragFree: false,
 				...opts
 			},

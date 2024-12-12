@@ -22,7 +22,7 @@ export default function Page404(): ReactElement {
 					content={'summary_large_image'}
 				/>
 			</Head>
-			<div className={'flex h-screen w-full items-center justify-center bg-violet-light'}>
+			<div className={'flex h-dvh w-full items-center justify-center bg-violet-light'}>
 				<PageBackground position={'center'} />
 				<Header
 					set_isWalletSelectorOpen={() => {}}

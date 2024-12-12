@@ -109,7 +109,7 @@ export function SharedPage({address}: {address: string}): ReactElement {
 	}, [address, profile]);
 
 	return (
-		<div className={'flex justify-between gap-10 bg-violet-dark p-6 md:h-screen md:w-screen'}>
+		<div className={'flex justify-between gap-10 bg-violet-dark p-6 md:h-dvh md:w-screen'}>
 			<div
 				className={cl(
 					'flex size-full flex-col items-center justify-center p-[4%] md:w-2/5 md:items-baseline lg:p-32'
