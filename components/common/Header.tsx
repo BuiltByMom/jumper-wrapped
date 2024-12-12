@@ -72,7 +72,7 @@ export function Header({
 						{({account, chain}) => (
 							<button
 								className={
-									'flex h-[48px] w-[200px] items-center justify-center gap-4 rounded-[32px] bg-[#ffffff1a] font-bold text-white hover:bg-[#FFFFFF33] xl:h-[64px] xl:w-[320px]'
+									'flex h-[48px] min-w-[200px] items-center justify-center gap-4 rounded-[32px] bg-[#ffffff1a] px-4 font-bold text-white hover:bg-[#FFFFFF33] xl:h-[64px] xl:w-[320px]'
 								}
 								onClick={() => {
 									if (openConnectModal) {
