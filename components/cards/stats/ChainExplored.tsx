@@ -44,7 +44,7 @@ export default function ChainExploredCard({amountOfChains, topRatio, ...props}: 
 
 			<CardCopy className={'mt-auto'}>
 				<p className={'font-urbanist text-xl font-medium'}>
-					{`${(topRatio * 100).toFixed(0) ?? 0}% of where sit within others users`}
+					{`You sit in the ${(topRatio * 100).toFixed(0) ?? 0}% percentile of Jumper users.`}
 				</p>
 			</CardCopy>
 		</Card>
