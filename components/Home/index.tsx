@@ -81,21 +81,22 @@ export function HomePage(): ReactElement {
 				<AnimatePresence
 					mode={'wait'}
 					initial={true}>
-					{view === 'greetings' ? (
+					{view === 'greetings' && (
 						<GreetingsSection
 							isWalletSelectorOpen={isWalletSelectorOpen}
 							set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 							view={view}
 							set_view={set_view}
 						/>
-					) : hasMoreThan3Cards && view === 'carousel' ? (
+					)}
+					{hasMoreThan3Cards && view === 'carousel' && (
 						<CarouselSection
 							profile={profile}
 							cards={cards || []}
 						/>
-					) : (
-						<NoDataSection />
 					)}
+
+					{!hasMoreThan3Cards && view === 'carousel' && <NoDataSection />}
 				</AnimatePresence>
 			</div>
 		</>
