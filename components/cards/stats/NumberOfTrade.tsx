@@ -16,16 +16,33 @@ export default function NumberOfTradeCard({count, ...props}: TNumberOfTradeCardP
 			backgroundImage={'url(/cards/stats/backgroundNumberTrade.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundNumberTradeMobile.jpg)'}>
 			<CardTitle className={''}>
-				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>{'Number of transactions'}</b>
+				<b className={'font-urbanist text-3xl font-bold uppercase leading-8 md:text-[32px]'}>
+					{'Number of transactions'}
+				</b>
 			</CardTitle>
 
 			<CardContent className={'mt-auto'}>
 				{count >= 1000 ? (
-					<b className={'font-urbanist text-center text-[112px] font-bold leading-[112px]'}>{count}</b>
+					<b
+						className={
+							'font-urbanist text-center text-[80px] font-bold leading-[80px] md:text-[112px] md:leading-[112px]'
+						}>
+						{count}
+					</b>
 				) : count >= 100 ? (
-					<b className={'font-urbanist text-center text-[160px] font-bold leading-[160px]'}>{count}</b>
+					<b
+						className={
+							'font-urbanist text-center text-[112px] font-bold leading-[112px] md:text-[160px] md:leading-[160px]'
+						}>
+						{count}
+					</b>
 				) : (
-					<b className={'font-urbanist text-center text-[200px] font-bold leading-[200px]'}>{count}</b>
+					<b
+						className={
+							'font-urbanist text-center text-[160px] font-bold leading-[160px] md:text-[200px] md:leading-[200px]'
+						}>
+						{count}
+					</b>
 				)}
 			</CardContent>
 

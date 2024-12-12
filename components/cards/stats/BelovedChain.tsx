@@ -19,26 +19,25 @@ export default function BelovedChainCard({chainName, ...props}: TBelovedChainCar
 			backgroundImage={'url(/cards/stats/backgroundBelovedChain.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundBelovedChainMobile.jpg)'}>
 			<CardTitle className={'text-white'}>
-				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-xl font-bold uppercase leading-8 md:text-[32px]'}>
 					{`Just can't quit ${chainName}, huh?`}
 				</b>
 			</CardTitle>
 
-			<CardContent
-				className={
-					'relative mt-auto flex aspect-square w-[208px] items-center justify-center pb-8 md:mt-auto md:pb-0'
-				}>
-				<Image
-					className={cl(
-						chainName === 'solana' ? 'size-[180px]' : 'h-[208px] w-auto rounded-full',
-						'-mt-[120px] md:mt-2'
-					)}
-					src={`/chains/${chainName}.svg`}
-					alt={chainName}
-					width={208}
-					height={208}
-					quality={100}
-				/>
+			<CardContent>
+				<div className={'absolute inset-0 flex items-center justify-center'}>
+					<Image
+						className={cl(
+							chainName === 'solana' ? 'w-[180px]' : 'h-[208px] w-auto rounded-full',
+							'-mt-20 md:-mt-0'
+						)}
+						src={`/chains/${chainName}.svg`}
+						alt={chainName}
+						width={208}
+						height={208}
+						quality={90}
+					/>
+				</div>
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>

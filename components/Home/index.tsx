@@ -70,7 +70,7 @@ export function HomePage(): ReactElement {
 
 	return (
 		<>
-			<div className={cl('flex h-screen relative items-center justify-center w-full')}>
+			<div className={cl('flex min-h-screen relative items-center justify-center w-full')}>
 				<Header
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 					isCarouselView={view === 'carousel'}

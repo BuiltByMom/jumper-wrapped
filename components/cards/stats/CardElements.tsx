@@ -30,7 +30,7 @@ export function CardContent(props: {children: ReactNode; className?: string; sty
 			variants={animations.content}
 			initial={'initial'}
 			animate={'animate'}
-			className={className}
+			className={cl('origin-center', className)}
 			style={style}>
 			{children}
 		</motion.div>

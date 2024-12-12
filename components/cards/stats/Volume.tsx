@@ -1,4 +1,4 @@
-import {type ReactElement, useMemo} from 'react';
+import {Fragment, type ReactElement, useMemo} from 'react';
 
 import {Card} from './Card';
 import {CardContent, CardCopy, CardTitle} from './CardElements';
@@ -41,7 +41,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 	const cardCopy = useMemo(() => {
 		if (cardVariant === 'Green') {
 			return (
-				<p className={' w-full text-xl font-medium text-black'}>
+				<p className={'w-full text-lg font-medium text-black md:text-xl'}>
 					{'Swapped token like it’s no tomorrow.'}
 					<br />
 					{'Nickname: Liquidity Queen'}
@@ -49,7 +49,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 			);
 		}
 		return (
-			<p className={' w-full text-xl font-medium text-black'}>
+			<p className={'w-full text-lg font-medium text-black md:text-xl'}>
 				{'Just dipping your toes into the swap game?'}
 				<br />
 				{'Even the biggest whales start small anon.'}
@@ -67,13 +67,15 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 			backgroundImage={`url(/cards/stats/backgroundVolume${cardVariant}.jpg)`}
 			mobileBackgroundImage={`url(/cards/stats/backgroundVolumeMobile${cardVariant}.jpg)`}>
 			<CardTitle>
-				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-3xl font-bold uppercase leading-8 md:text-[32px]'}>
 					{`${props.kind === 'swap' ? 'Ur Swap Volume' : 'Ur Bridge Volume'}`}
 				</b>
 			</CardTitle>
 
 			<CardContent>
-				<VolumePads value={formattedVolume} />
+				<div className={'absolute inset-0 flex flex-col items-center justify-center'}>
+					<VolumePads value={formattedVolume} />
+				</div>
 			</CardContent>
 
 			<CardCopy className={'!pt-6'}>{cardCopy}</CardCopy>
@@ -83,7 +85,7 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 
 function VolumePads({value}: {value: string}): ReactElement {
 	return (
-		<div className={'pt-12'}>
+		<Fragment>
 			{padsConfig.map(({gradientClasses, textClasses}, index) => (
 				<div
 					key={index}
@@ -95,6 +97,6 @@ function VolumePads({value}: {value: string}): ReactElement {
 					<p className={textClasses}>{value}</p>
 				</div>
 			))}
-		</div>
+		</Fragment>
 	);
 }

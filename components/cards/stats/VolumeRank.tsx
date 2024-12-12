@@ -24,15 +24,17 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 	const cardCopy = useMemo(() => {
 		if (cardVariant === 'Green') {
 			return (
-				<p className={cl('font-urbanist text-xl font-medium', 'text-black')}>{'Straight up chad right here'}</p>
+				<p className={cl('font-urbanist text-lg md:text-xl font-medium', 'text-black')}>
+					{'Straight up chad right here'}
+				</p>
 			);
 		}
 		return (
-			<p className={cl('font-urbanist text-xl font-medium', 'text-white')}>
+			<p className={cl('font-urbanist text-lg md:text-xl font-medium', 'text-white')}>
 				{'One smol step for anon. Every step counts.'}
 			</p>
 		);
-	}, []);
+	}, [cardVariant]);
 
 	return (
 		<Card
@@ -42,19 +44,27 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 			<CardTitle>
 				<b
 					className={cl(
-						'font-urbanist text-[32px] leading-8 font-bold uppercase',
+						'font-urbanist text-3xl font-urbanist md:text-[32px] leading-8 font-bold uppercase',
 						cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]'
 					)}>
 					{`${props.kind === 'swap' ? 'Swap rank' : 'Bridge rank'}`}
 				</b>
 			</CardTitle>
 
-			<CardContent className={'mt-32 md:mt-auto'}>
-				<div className={cl(cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]')}>
-					<b className={cl('block text-center text-[40px] leading-[4px]', fontThunder.className)}>{'TOP'}</b>
-					<b className={cl('block text-center text-[200px] leading-[200px] pt-6', fontThunder.className)}>
-						{`${(Number(props.percentile) * 100).toFixed(0)}%`}
-					</b>
+			<CardContent>
+				<div className={'absolute inset-0 flex flex-col items-center justify-center'}>
+					<div className={cl(cardVariant === 'Green' ? 'text-[#000000]' : 'text-[#FFFFFF]')}>
+						<b className={cl('block text-center text-[40px] leading-[4px]', fontThunder.className)}>
+							{'TOP'}
+						</b>
+						<b
+							className={cl(
+								'block text-center text-[160px] leading-[160px] md:text-[200px] md:leading-[200px] pt-6',
+								fontThunder.className
+							)}>
+							{`${(Number(props.percentile) * 100).toFixed(0)}%`}
+						</b>
+					</div>
 				</div>
 			</CardContent>
 

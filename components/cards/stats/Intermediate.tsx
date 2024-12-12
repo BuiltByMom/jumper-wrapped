@@ -58,7 +58,9 @@ export function Intermediate({statsAmount, ...props}: TIntermediateProps): React
 			mobileBackgroundImage={`url(/cards/stats/backgroundIntermediate${bgVariant}Mobile.jpg)`}>
 			<CardContent className={'my-auto'}>
 				<CardCopy className={'mb-4'}>
-					<p className={'font-urbanist text-[32px] font-bold leading-8 text-white'}>{copy.title}</p>
+					<p className={'font-urbanist text-3xl font-bold leading-8 text-white md:text-[32px]'}>
+						{copy.title}
+					</p>
 				</CardCopy>
 				<CardCopy>
 					<p className={'font-urbanist text-xl font-medium text-white'}>{copy.description}</p>

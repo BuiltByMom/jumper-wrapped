@@ -33,6 +33,7 @@ export function GreetingsSection({set_isWalletSelectorOpen, isWalletSelectorOpen
 	return (
 		<motion.div
 			key={'greetings-section'}
+			id={'primary-section'}
 			variants={greetingsAnimation}
 			initial={'initial'}
 			animate={'animate'}

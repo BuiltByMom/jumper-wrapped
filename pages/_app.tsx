@@ -1,4 +1,5 @@
-import {Fragment, type ReactElement} from 'react';
+import {type ReactElement, useEffect} from 'react';
+import {useWindowSize} from 'usehooks-ts';
 
 import type {AppProps} from 'next/app';
 
@@ -8,9 +9,26 @@ import {Meta} from '@/components/common/Meta';
 import {Providers} from '@/components/providers/Providers';
 
 export default function App({Component, pageProps}: AppProps): ReactElement {
+	const size = useWindowSize();
+	const minSupportedWidth = 375;
+	const minSupportedHeight = 667;
+
+	useEffect(() => {
+		if (size.width < minSupportedWidth || size.height < minSupportedHeight) {
+			if (typeof window !== 'undefined') {
+				console.warn('Please use a device with a minimum width of 375px and height of 667px');
+				const scale = Math.min(size.width / minSupportedWidth, size.height / minSupportedHeight);
+				const primarySection = document.getElementById('primary-section');
+				if (primarySection) {
+					primarySection.style.scale = `${scale}`;
+				}
+			}
+		}
+	}, [size, typeof window]);
+
 	return (
 		<Providers>
-			<Fragment>
+			<div>
 				<Component {...pageProps} />
 				<Meta
 					title={'Jumper Wrapped'}
@@ -19,7 +37,7 @@ export default function App({Component, pageProps}: AppProps): ReactElement {
 					description={'Your Jumper year in review'}
 					uri={'https://wrapped.jumper.exchange'}
 				/>
-			</Fragment>
+			</div>
 		</Providers>
 	);
 }

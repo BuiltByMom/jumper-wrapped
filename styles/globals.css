@@ -8,6 +8,7 @@ body,
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	background-color: rgb(80 0 255);
 }
 
 .font-urbanist {
@@ -54,4 +55,8 @@ body,
 	@apply -translate-x-1/2 -translate-y-1/2;
 	left: calc(100% - 48px);
 	top: calc(100% - 158px);
+}
+
+.scrollbar-hide {
+	scrollbar-width: none;
 }

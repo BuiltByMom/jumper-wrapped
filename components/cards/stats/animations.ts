@@ -24,9 +24,8 @@ export const animations = {
 		}
 	},
 	content: {
-		initial: {scale: 0.6, opacity: 0},
+		initial: {opacity: 0},
 		animate: {
-			scale: 1,
 			opacity: 1,
 			transition: animationConfig
 		}

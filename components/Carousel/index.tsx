@@ -164,7 +164,7 @@ export function Carousel({cards, profile}: TCarouselProps): ReactElement {
 						<CarouselCard index={cards.length}>
 							<div
 								className={
-									'relative flex items-center justify-center max-md:mt-16 max-md:scale-75 max-xs:mt-64'
+									'relative flex items-center justify-center max-md:mt-16 max-md:scale-75 max-sm:scale-[0.6] max-xs:mt-64'
 								}>
 								<ProfileByID profile={profile} />
 							</div>

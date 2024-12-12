@@ -23,18 +23,22 @@ export default function ChainExploredCard({amountOfChains, topRatio, ...props}: 
 				amountOfChains < 6 ? 'Few' : 'Alot'
 			}Mobile.jpg)`}>
 			<CardTitle className={''}>
-				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-3xl font-bold uppercase leading-8 md:text-[32px]'}>
 					{amountOfChains < 6
 						? 'You need to touch grass a little less and bridge more anon'
 						: 'Wow, look at you, you little multi chain adventurer!'}
 				</b>
 			</CardTitle>
 
-			<CardContent
-				className={'relative mt-auto flex aspect-square  items-center justify-center pb-8 md:mt-auto md:pb-0'}>
-				<div className={'flex w-full flex-col items-center justify-center'}>
-					<p className={'text-[200px] font-bold leading-[200px]'}>{amountOfChains}</p>
-					<p className={'min-w-full text-[40px] font-bold leading-[40px]'}>{'chains explored'}</p>
+			<CardContent>
+				<div
+					className={
+						'absolute inset-0 -mt-12 flex w-full flex-col items-center justify-center text-center md:mt-0'
+					}>
+					<p className={'text-[160px] font-bold leading-[160px] md:text-[200px] md:leading-[200px]'}>
+						{amountOfChains}
+					</p>
+					<p className={'w-full text-[40px] font-bold leading-[20px]'}>{'chains explored'}</p>
 				</div>
 			</CardContent>
 

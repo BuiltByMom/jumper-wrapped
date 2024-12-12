@@ -25,7 +25,7 @@ const cardAnimation = {
 			type: 'spring',
 			stiffness: 100,
 			damping: 5,
-			mass: 1,
+			mass: 0.8,
 			opacity: {duration: 0.4, delay: 0.4}
 		}
 	},
@@ -65,7 +65,7 @@ export default function Card(props: TCardProps): ReactElement {
 			initial={'initial'}
 			animate={!api || !canScrollNext || props.disableAnimation ? 'animate' : 'exit'}
 			exit={'exit'}
-			className={'relative w-fit md:scale-100'}>
+			className={'relative w-fit pb-0 md:pb-10'}>
 			<div
 				style={{transform: `scale(${width / 440})`}}
 				className={cl(

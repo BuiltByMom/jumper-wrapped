@@ -17,6 +17,7 @@ export function NoDataSection(): ReactElement {
 	return (
 		<motion.div
 			key={'no-data-section'}
+			id={'primary-section'}
 			{...noDataAnimation}>
 			<NextYearButton />
 		</motion.div>

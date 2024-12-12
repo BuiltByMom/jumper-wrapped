@@ -18,15 +18,17 @@ export default function FavTokenCard({tokenName, ...props}: TFavTokenCardProps):
 			backgroundImage={'url(/cards/stats/backgroundFavToken.jpg)'}
 			mobileBackgroundImage={'url(/cards/stats/backgroundFavTokenMobile.jpg)'}>
 			<CardTitle className={''}>
-				<b className={'font-urbanist text-[32px] font-bold uppercase leading-8'}>
+				<b className={'font-urbanist text-3xl font-bold uppercase leading-8 md:text-[32px]'}>
 					{'You yeeted this token into the abyss.'}
 				</b>
 			</CardTitle>
 
-			<CardContent className={'mt-auto'}>
-				<b className={`${fontThunder.className} text-center text-[64px] font-bold leading-[64px]`}>
-					{tokenName}
-				</b>
+			<CardContent>
+				<div className={'absolute inset-0 flex flex-col items-center justify-center'}>
+					<b className={`${fontThunder.className} text-center text-[64px] font-bold leading-[64px]`}>
+						{tokenName}
+					</b>
+				</div>
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>

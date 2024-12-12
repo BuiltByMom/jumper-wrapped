@@ -201,7 +201,7 @@ CarouselItem.displayName = 'CarouselItem';
 
 export const CarouselPrevious = forwardRef<HTMLButtonElement, ComponentProps<typeof Button>>(
 	({className, ...props}) => {
-		const {scrollPrev, canScrollPrev} = useCarousel();
+		const {scrollPrev, canScrollPrev, canScrollNext} = useCarousel();
 
 		return (
 			<>
@@ -217,11 +217,10 @@ export const CarouselPrevious = forwardRef<HTMLButtonElement, ComponentProps<typ
 				<button
 					className={cl(
 						'screen absolute left-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden',
-						canScrollPrev ? 'pointer-events-auto' : 'pointer-events-none',
-						'hidden'
+						canScrollPrev ? 'pointer-events-auto' : 'pointer-events-none'
 					)}
 					onClick={scrollPrev}
-					disabled={!canScrollPrev}
+					disabled={!canScrollPrev || !canScrollNext}
 				/>
 			</>
 		);
@@ -245,7 +244,7 @@ export const CarouselNext = forwardRef<HTMLButtonElement, ComponentProps<typeof 
 			</div>
 			<button
 				className={cl(
-					'screen absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-full cursor-pointer md:hidden',
+					'screen absolute right-0 top-[136px] z-[1000] h-[calc(100vh-136px)] w-[50vw] cursor-pointer md:hidden',
 					canScrollNext ? 'pointer-events-auto' : 'pointer-events-none'
 				)}
 				onClick={scrollNext}
