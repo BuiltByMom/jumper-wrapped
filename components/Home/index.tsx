@@ -37,7 +37,7 @@ export function HomePage(): ReactElement {
 	const {isConnected, address} = useAccount();
 
 	const router = useRouter();
-	const isNotEnoughData = cards && cards.length < 3;
+	const hasMoreThan3Cards = cards && cards.length > 3;
 
 	const evmOrSolAddress = useMemo(() => {
 		if (account.publicKey) {
@@ -81,7 +81,7 @@ export function HomePage(): ReactElement {
 				<AnimatePresence
 					mode={'wait'}
 					initial={true}>
-					{!isNotEnoughData && view === 'greetings' && (
+					{view === 'greetings' && (
 						<GreetingsSection
 							isWalletSelectorOpen={isWalletSelectorOpen}
 							set_isWalletSelectorOpen={set_isWalletSelectorOpen}
@@ -90,14 +90,14 @@ export function HomePage(): ReactElement {
 						/>
 					)}
 
-					{!isNotEnoughData && view === 'carousel' && (
+					{hasMoreThan3Cards && view === 'carousel' ? (
 						<CarouselSection
 							profile={profile}
 							cards={cards || []}
 						/>
+					) : (
+						<NoDataSection />
 					)}
-
-					{isNotEnoughData && <NoDataSection />}
 				</AnimatePresence>
 			</div>
 		</>
