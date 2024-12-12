@@ -1137,7 +1137,6 @@ const PROFILES = {
 const boldFontDataRoot = fetch(new URL('./Urbanist-SemiBold.ttf', import.meta.url)).then(async res =>
 	res.arrayBuffer()
 );
-const defaultOG = fetch(new URL('./og.jpg', import.meta.url)).then(async res => res.arrayBuffer());
 
 const bridgealotWrapBg = fetch(new URL('./bridgealot-wrap-bg.jpg', import.meta.url)).then(async res =>
 	res.arrayBuffer()
@@ -1165,9 +1164,11 @@ const swapaholicWrapBg = fetch(new URL('./swapaholic-wrap-bg.jpg', import.meta.u
 export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 	const rootURL = new URL(req.url);
 	const address = (rootURL.searchParams.get('address') || '')?.toLowerCase();
+	const stringifiedRootURL = rootURL.origin;
 
 	if (!address) {
-		return new Response(await defaultOG, {
+		const defaultOGResponse = await fetch(new URL('/og/og.jpg', stringifiedRootURL));
+		return new Response(await defaultOGResponse.arrayBuffer(), {
 			headers: {
 				'Content-Type': 'image/jpeg',
 				'Cache-Control': 'public, max-age=31536000, immutable'
@@ -1183,7 +1184,8 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 	const statsToUse: {key: string; value: string | number}[] = [];
 	let detectedProfile = 'Noob';
 	if (!profileEndpoint.ok) {
-		return new Response(await defaultOG, {
+		const defaultOGResponse = await fetch(new URL('/og/og.jpg', stringifiedRootURL));
+		return new Response(await defaultOGResponse.arrayBuffer(), {
 			headers: {
 				'Content-Type': 'image/jpeg',
 				'Cache-Control': 'public, max-age=31536000, immutable'
