@@ -1,4 +1,4 @@
-import {type ReactElement, useMemo} from 'react';
+import {type ReactElement, useEffect, useMemo, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,6 +6,7 @@ import {PageBackground} from './Backgrounds';
 import {ProfileByID} from './Carousel';
 import {Button} from './common/Button';
 import {IconJumperLogo} from './icons/IconJumperLogo';
+import {fetchUserProfile} from './utils/cards';
 import {cl} from './utils/tools';
 
 import type {TUserProfile} from './utils/cards';
@@ -24,7 +25,17 @@ function StatOwner({address, className}: {address: string; className?: string}):
 	);
 }
 
-export function SharedPage({address, profile}: {address: string; profile: TUserProfile}): ReactElement {
+export function SharedPage({address}: {address: string}): ReactElement {
+	const [profile, set_profile] = useState<TUserProfile | null>(null);
+
+	useEffect(() => {
+		if (address) {
+			fetchUserProfile(address).then(profile => {
+				set_profile(profile);
+			});
+		}
+	}, [address]);
+
 	const prepareStats = useMemo((): {key: string; value: string | number}[] => {
 		const statsToUse: {key: string; value: string | number}[] = [];
 		if (!profile) {
