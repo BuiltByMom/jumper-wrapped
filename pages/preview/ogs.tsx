@@ -15,8 +15,6 @@ const testingAddresses = [
 	'0x000000000036277944858dfe6b9ae18c929e570c'
 ];
 
-// https://wrapped.jumper.exchange/0x000000000000f8e4fe2a98574fa81c728e340764
-
 export default function Index(): ReactElement {
 	return (
 		<Fragment>
@@ -38,7 +36,7 @@ export default function Index(): ReactElement {
 				{testingAddresses.map(address => (
 					<Image
 						key={address}
-						src={`/api/og?address=${address}&v=14`}
+						src={`/api/og?address=${address}&v=18`}
 						alt={'OG'}
 						width={1200}
 						height={630}
