@@ -1,4 +1,4 @@
-import {type ReactElement} from 'react';
+import {type ReactElement, useEffect} from 'react';
 import Head from 'next/head';
 
 import type {GetServerSideProps} from 'next';
@@ -8,6 +8,13 @@ import {SharedPage} from '@/components/SharedPage';
 
 const baseUrl = 'https://wrapped.jumper.exchange';
 export default function Home({profile}: {profile: TUserProfile & {address: string}}): ReactElement {
+	useEffect(() => {
+		// Pre-warm the OG image as soon as the page loads
+		fetch(`https://wrapped.jumper.exchange/api/og?address=${profile.address}`, {method: 'HEAD'}).catch(() => {
+			/* ignore errors */
+		});
+	}, [profile.address]);
+
 	return (
 		<>
 			<Head>
