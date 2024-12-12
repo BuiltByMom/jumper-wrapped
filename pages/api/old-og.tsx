@@ -1,9 +1,6 @@
 import {ImageResponse} from '@vercel/og';
 
-import type {NextRequest} from 'next/server';
 import type {TUserProfile} from '@/components/utils/cards';
-
-export const runtime = 'edge';
 
 export const config = {
 	runtime: 'edge'
@@ -1133,14 +1130,8 @@ const PROFILES = {
 	}
 };
 
-const boldFontDataRoot = fetch(new URL('./Urbanist-SemiBold.ttf', import.meta.url)).then(async res =>
-	res.arrayBuffer()
-);
-
-export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
-	const rootURL = new URL(req.url);
-	// export default async function handler(context: any): Promise<ImageResponse> {
-	// const rootURL = new URL(context.url);
+export default async function handler(context: any): Promise<ImageResponse> {
+	const rootURL = new URL(context.url);
 	const stringifiedRootURL = rootURL.origin;
 	const address = (rootURL.searchParams.get('address') || '')?.toLowerCase();
 
@@ -1154,9 +1145,8 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 		});
 	}
 
-	const [boldFontData, profileEndpoint] = await Promise.all([
-		await boldFontDataRoot,
-		// fetch(new URL('/fonts/Urbanist-SemiBold.ttf', 'https://wrapped.jumper.exchange')),
+	const [boldFontDataRoot, profileEndpoint] = await Promise.all([
+		fetch(new URL('/fonts/Urbanist-SemiBold.ttf', 'https://wrapped.jumper.exchange')),
 		fetch(`https://jumper-wash.builtby.dad/user/${address}/og`)
 	]);
 
@@ -1242,7 +1232,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 		statsToUse.push({key: '', value: ''});
 	}
 
-	// const boldFontData = await boldFontDataRoot.arrayBuffer();
+	const boldFontData = await boldFontDataRoot.arrayBuffer();
 
 	let profile = PROFILES[detectedProfile as keyof typeof PROFILES];
 	if (!profile) {
