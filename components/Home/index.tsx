@@ -1,6 +1,5 @@
 import {useEffect, useMemo, useState} from 'react';
 import {useRouter} from 'next/router';
-import {AnimatePresence} from 'motion/react';
 import {useAccount} from 'wagmi';
 import {useWallet} from '@solana/wallet-adapter-react';
 
@@ -31,52 +30,36 @@ function MainContent(props: {
 	function renderMainContent(): ReactElement {
 		if (view === 'greetings') {
 			return (
-				<div key={'greetings-section'}>
-					<GreetingsSection
-						isWalletSelectorOpen={isWalletSelectorOpen}
-						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-						set_view={set_view}
-					/>
-				</div>
-			);
-		}
-
-		if (view === 'carousel' && hasMoreThan3Cards) {
-			return (
-				<div key={'carousel-section'}>
-					<CarouselSection
-						profile={profile}
-						cards={cards || []}
-					/>
-				</div>
-			);
-		}
-
-		if (view === 'carousel' && !hasMoreThan3Cards) {
-			return (
-				<div key={'no-data-section'}>
-					<NoDataSection />
-				</div>
-			);
-		}
-
-		return (
-			<div key={'greetings-section-fallback'}>
 				<GreetingsSection
 					isWalletSelectorOpen={isWalletSelectorOpen}
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 					set_view={set_view}
 				/>
-			</div>
+			);
+		}
+
+		if (view === 'carousel' && hasMoreThan3Cards) {
+			return (
+				<CarouselSection
+					profile={profile}
+					cards={cards || []}
+				/>
+			);
+		}
+
+		if (view === 'carousel' && !hasMoreThan3Cards) {
+			return <NoDataSection />;
+		}
+
+		return (
+			<GreetingsSection
+				isWalletSelectorOpen={isWalletSelectorOpen}
+				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+				set_view={set_view}
+			/>
 		);
 	}
-	return (
-		<AnimatePresence
-			mode={'wait'}
-			initial={true}>
-			{renderMainContent()}
-		</AnimatePresence>
-	);
+	return renderMainContent();
 }
 
 /************************************************************************************************
