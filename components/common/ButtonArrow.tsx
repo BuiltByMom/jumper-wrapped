@@ -1,4 +1,4 @@
-import {motion} from 'framer-motion';
+import {motion} from 'motion/react';
 
 import {IconArrow} from '../icons/IconArrow';
 import {cl} from '../utils/tools';

@@ -1,6 +1,6 @@
 import {type ReactElement, useCallback} from 'react';
+import {motion} from 'motion/react';
 import {useAccount} from 'wagmi';
-import {motion} from 'framer-motion';
 
 import {WalletSelector} from '../WalletSelector';
 import {WrappedButton} from '../WrappedButton';
@@ -32,7 +32,6 @@ export function GreetingsSection({set_isWalletSelectorOpen, isWalletSelectorOpen
 
 	return (
 		<motion.div
-			key={'greetings-section'}
 			id={'primary-section'}
 			variants={greetingsAnimation}
 			initial={'initial'}

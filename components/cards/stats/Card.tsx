@@ -1,6 +1,6 @@
 import {type ReactElement, type ReactNode, useEffect, useRef} from 'react';
+import {motion} from 'motion/react';
 import {useHover} from 'usehooks-ts';
-import {motion} from 'framer-motion';
 
 import {cl} from '@/components/utils/tools';
 

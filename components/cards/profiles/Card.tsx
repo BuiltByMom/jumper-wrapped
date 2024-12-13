@@ -1,7 +1,7 @@
 import {type ReactElement, type ReactNode, useMemo} from 'react';
 import Link from 'next/link';
+import {motion} from 'motion/react';
 import {useAccount} from 'wagmi';
-import {motion} from 'framer-motion';
 import {useWallet} from '@solana/wallet-adapter-react';
 
 import {ShareButton} from '@/components/Carousel/ShareButton';

@@ -41,9 +41,7 @@ export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: 
 	}, [canScrollNext, cards]);
 
 	return (
-		<div
-			key={'carousel-section'}
-			id={'primary-section'}>
+		<div id={'primary-section'}>
 			<div className={'scrollbar-hide overflow-y-auto overflow-x-hidden'}>
 				<Carousel
 					cards={cards}

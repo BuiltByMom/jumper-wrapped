@@ -1,5 +1,6 @@
-import {Fragment, useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {useRouter} from 'next/router';
+import {AnimatePresence} from 'motion/react';
 import {useAccount} from 'wagmi';
 import {useWallet} from '@solana/wallet-adapter-react';
 
@@ -30,36 +31,52 @@ function MainContent(props: {
 	function renderMainContent(): ReactElement {
 		if (view === 'greetings') {
 			return (
-				<GreetingsSection
-					isWalletSelectorOpen={isWalletSelectorOpen}
-					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					set_view={set_view}
-				/>
+				<div key={'greetings-section'}>
+					<GreetingsSection
+						isWalletSelectorOpen={isWalletSelectorOpen}
+						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+						set_view={set_view}
+					/>
+				</div>
 			);
 		}
 
 		if (view === 'carousel' && hasMoreThan3Cards) {
 			return (
-				<CarouselSection
-					profile={profile}
-					cards={cards || []}
-				/>
+				<div key={'carousel-section'}>
+					<CarouselSection
+						profile={profile}
+						cards={cards || []}
+					/>
+				</div>
 			);
 		}
 
 		if (view === 'carousel' && !hasMoreThan3Cards) {
-			return <NoDataSection />;
+			return (
+				<div key={'no-data-section'}>
+					<NoDataSection />
+				</div>
+			);
 		}
 
 		return (
-			<GreetingsSection
-				isWalletSelectorOpen={isWalletSelectorOpen}
-				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-				set_view={set_view}
-			/>
+			<div key={'greetings-section-fallback'}>
+				<GreetingsSection
+					isWalletSelectorOpen={isWalletSelectorOpen}
+					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+					set_view={set_view}
+				/>
+			</div>
 		);
 	}
-	return renderMainContent();
+	return (
+		<AnimatePresence
+			mode={'wait'}
+			initial={true}>
+			{renderMainContent()}
+		</AnimatePresence>
+	);
 }
 
 /************************************************************************************************
@@ -80,11 +97,6 @@ export function HomePage(): ReactElement {
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
 	const router = useRouter();
-	const [isMounted, set_isMounted] = useState(false);
-
-	useEffect(() => {
-		set_isMounted(true);
-	}, []);
 
 	const evmOrSolAddress = useMemo(() => {
 		if (account.publicKey) {
@@ -114,10 +126,6 @@ export function HomePage(): ReactElement {
 			});
 		}
 	}, [address, evmOrSolAddress]);
-
-	if (!isMounted) {
-		return <Fragment />;
-	}
 
 	return (
 		<div className={cl('flex min-h-dvh relative items-center justify-center w-full')}>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
+import {motion} from 'motion/react';
 import {useAccount} from 'wagmi';
-import {motion} from 'framer-motion';
 import {useWallet} from '@solana/wallet-adapter-react';
 
 import {Button} from './common/Button';

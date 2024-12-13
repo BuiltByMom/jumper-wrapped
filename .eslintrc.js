@@ -186,7 +186,6 @@ module.exports = {
 								'^axios',
 								'^swr',
 								'^tailwindcss',
-								'^framer-motion',
 								'^nprogress',
 								'^@?\\w',
 								'^(@yearn-finance/.*)?\\w',

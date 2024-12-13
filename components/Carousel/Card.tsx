@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'motion/react';
 
 import {useCarousel} from '../carouselContext';
 import {cardAnimation} from './animations';

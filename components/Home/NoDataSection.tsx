@@ -1,4 +1,4 @@
-import {motion} from 'framer-motion';
+import {motion} from 'motion/react';
 
 import {NextYearButton} from '../NextYearButton';
 import {noDataAnimation} from './animations';
@@ -16,7 +16,6 @@ import type {ReactElement} from 'react';
 export function NoDataSection(): ReactElement {
 	return (
 		<motion.div
-			key={'no-data-section'}
 			id={'primary-section'}
 			{...noDataAnimation}>
 			<NextYearButton />
