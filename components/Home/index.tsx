@@ -6,6 +6,7 @@ import {useWallet} from '@solana/wallet-adapter-react';
 import {PageBackground} from '../Backgrounds';
 import {Header} from '../common/Header';
 import {fetchUserCards, fetchUserProfile} from '../utils/cards';
+import {WalletSelector} from '../WalletSelector';
 import {CarouselSection} from './CarouselSection';
 import {GreetingsSection} from './GreetingsSection';
 import {NoDataSection} from './NoDataSection';
@@ -18,48 +19,42 @@ import {cl} from '@/components/utils/tools';
 
 function MainContent(props: {
 	view: TViewState;
-	isWalletSelectorOpen: boolean;
 	set_isWalletSelectorOpen: (value: boolean) => void;
 	set_view: (value: TViewState) => void;
 	profile: TUserProfile | null;
 	cards: TCardData[] | undefined;
 }): ReactElement {
-	const {view, isWalletSelectorOpen, set_isWalletSelectorOpen, set_view, profile, cards} = props;
+	const {view, set_isWalletSelectorOpen, set_view, profile, cards} = props;
 	const hasMoreThan3Cards = cards && cards.length > 3;
 
-	function renderMainContent(): ReactElement {
-		if (view === 'greetings') {
-			return (
-				<GreetingsSection
-					isWalletSelectorOpen={isWalletSelectorOpen}
-					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					set_view={set_view}
-				/>
-			);
-		}
-
-		if (view === 'carousel' && hasMoreThan3Cards) {
-			return (
-				<CarouselSection
-					profile={profile}
-					cards={cards || []}
-				/>
-			);
-		}
-
-		if (view === 'carousel' && !hasMoreThan3Cards) {
-			return <NoDataSection />;
-		}
-
+	if (view === 'greetings') {
 		return (
 			<GreetingsSection
-				isWalletSelectorOpen={isWalletSelectorOpen}
 				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 				set_view={set_view}
 			/>
 		);
 	}
-	return renderMainContent();
+
+	if (view === 'carousel' && hasMoreThan3Cards) {
+		return (
+			<CarouselSection
+				profile={profile}
+				cards={cards || []}
+			/>
+		);
+	}
+
+	if (view === 'carousel' && !hasMoreThan3Cards) {
+		return <NoDataSection />;
+	}
+
+	return (
+		<GreetingsSection
+			set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+			set_view={set_view}
+		/>
+	);
 }
 
 /************************************************************************************************
@@ -121,11 +116,15 @@ export function HomePage(): ReactElement {
 
 			<MainContent
 				view={view}
-				isWalletSelectorOpen={isWalletSelectorOpen}
 				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 				set_view={set_view}
 				profile={profile}
 				cards={cards}
+			/>
+
+			<WalletSelector
+				isOpen={isWalletSelectorOpen}
+				onClose={() => set_isWalletSelectorOpen(false)}
 			/>
 		</div>
 	);

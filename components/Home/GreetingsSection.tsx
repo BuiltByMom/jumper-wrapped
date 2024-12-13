@@ -2,7 +2,6 @@ import {type ReactElement, useCallback} from 'react';
 import {motion} from 'motion/react';
 import {useAccount} from 'wagmi';
 
-import {WalletSelector} from '../WalletSelector';
 import {WrappedButton} from '../WrappedButton';
 import {greetingsAnimation} from './animations';
 
@@ -16,7 +15,7 @@ import type {THomeProps} from './types';
  * - Welcome animations
  * - Wallet selector modal
  ************************************************************************************************/
-export function GreetingsSection({set_isWalletSelectorOpen, isWalletSelectorOpen, set_view}: THomeProps): ReactElement {
+export function GreetingsSection({set_isWalletSelectorOpen, set_view}: THomeProps): ReactElement {
 	const {address} = useAccount();
 
 	const postOnStartMessage = useCallback(() => {
@@ -40,10 +39,6 @@ export function GreetingsSection({set_isWalletSelectorOpen, isWalletSelectorOpen
 			<WrappedButton
 				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
 				onStart={postOnStartMessage}
-			/>
-			<WalletSelector
-				isOpen={isWalletSelectorOpen}
-				onClose={() => set_isWalletSelectorOpen(false)}
 			/>
 		</motion.div>
 	);
