@@ -15,6 +15,8 @@ type TChainExploredCardProps = {
 } & TBaseCardProps;
 
 export default function ChainExploredCard({amountOfChains, topRatio, ...props}: TChainExploredCardProps): ReactElement {
+	const rank = topRatio < 0.001 ? '0.1' : (topRatio * 100).toFixed(0);
+
 	return (
 		<Card
 			{...props}
@@ -44,7 +46,7 @@ export default function ChainExploredCard({amountOfChains, topRatio, ...props}: 
 
 			<CardCopy className={'mt-auto'}>
 				<p className={'font-urbanist text-xl font-medium'}>
-					{`You sit in the ${(topRatio * 100).toFixed(0) ?? 0}% percentile of Jumper users.`}
+					{`You sit in the ${rank}% percentile of Jumper users.`}
 				</p>
 			</CardCopy>
 		</Card>

@@ -36,6 +36,8 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 		);
 	}, [cardVariant]);
 
+	const rank = Number(props.percentile) < 0.001 ? '0.1' : (Number(props.percentile) * 100).toFixed(0);
+
 	return (
 		<Card
 			{...props}
@@ -62,7 +64,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 								'block text-center text-[160px] leading-[160px] md:text-[200px] md:leading-[200px] pt-6',
 								fontThunder.className
 							)}>
-							{`${(Number(props.percentile) * 100).toFixed(0)}%`}
+							{`${rank}%`}
 						</b>
 					</div>
 				</div>

@@ -72,7 +72,11 @@ export function SharedPage({address}: {address: string}): ReactElement {
 			} else {
 				statsToUse.push({
 					key: 'Bridge Rank',
-					value: `Top ${(Number(profile.bridgeVolumeRank) * 100).toFixed(0)}%`
+					value: `Top ${
+						Number(profile.bridgeVolumeRank) < 0.001
+							? '0.1'
+							: (Number(profile.bridgeVolumeRank) * 100).toFixed(0)
+					}%`
 				});
 			}
 
@@ -84,7 +88,11 @@ export function SharedPage({address}: {address: string}): ReactElement {
 			} else {
 				statsToUse.push({
 					key: 'Swap Rank',
-					value: `Top ${(Number(profile.swapVolumeRank) * 100).toFixed(0)}%`
+					value: `Top ${
+						Number(profile.swapVolumeRank) < 0.001
+							? '0.1'
+							: (Number(profile.swapVolumeRank) * 100).toFixed(0)
+					}%`
 				});
 			}
 
