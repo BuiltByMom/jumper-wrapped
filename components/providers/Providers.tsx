@@ -1,6 +1,7 @@
 'use client';
 
 import {type ReactElement, useMemo} from 'react';
+import {MotionConfig} from 'motion/react';
 import {arbitrum, base, mainnet, optimism, polygon} from 'viem/chains';
 import {WagmiProvider} from 'wagmi';
 import {darkTheme, getDefaultConfig, RainbowKitProvider} from '@rainbow-me/rainbowkit';
@@ -55,7 +56,9 @@ export function Providers({children}: {children: ReactElement}): ReactElement {
 								<WalletProvider
 									wallets={[]}
 									autoConnect>
-									<WalletModalProvider>{children}</WalletModalProvider>
+									<WalletModalProvider>
+										<MotionConfig reducedMotion={'user'}>{children}</MotionConfig>
+									</WalletModalProvider>
 								</WalletProvider>
 							</ConnectionProvider>
 						</RainbowKitProvider>

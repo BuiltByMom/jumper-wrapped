@@ -18,6 +18,7 @@ const breathingAnimation = {
 	animate: {
 		opacity: 1,
 		scale: [1, 1.02, 1],
+		z: 1,
 		transition: {
 			duration: 3,
 			scale: {
@@ -28,7 +29,7 @@ const breathingAnimation = {
 			}
 		}
 	},
-	exit: {opacity: 0, scale: 0}
+	exit: {opacity: 0, scale: 0, z: 1}
 };
 
 export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): ReactElement {

@@ -42,7 +42,9 @@ export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: 
 	}, [canScrollNext, cards]);
 
 	return (
-		<motion.div id={'primary-section-carousel'}>
+		<motion.div
+			id={'primary-section-carousel'}
+			className={'z-30'}>
 			<div className={'scrollbar-hide overflow-y-auto overflow-x-hidden'}>
 				<Carousel
 					cards={cards}

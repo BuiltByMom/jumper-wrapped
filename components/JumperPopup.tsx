@@ -18,12 +18,14 @@ const popupAnimation = {
 	initial: {
 		opacity: 0,
 		y: 100,
-		scale: 0.95
+		scale: 0.95,
+		z: 1
 	},
 	animate: {
 		opacity: 1,
 		y: 0,
 		scale: 1,
+		z: 1,
 		transition: {
 			type: 'spring',
 			stiffness: 100,
@@ -36,6 +38,7 @@ const popupAnimation = {
 		opacity: 0,
 		y: 50,
 		scale: 0.95,
+		z: 1,
 		transition: {
 			duration: 0.2
 		}

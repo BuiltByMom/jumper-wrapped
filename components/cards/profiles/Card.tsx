@@ -17,10 +17,11 @@ import {cl} from '@/components/utils/tools';
  * - Staggered children animations
  ************************************************************************************************/
 const cardAnimation = {
-	initial: {opacity: 0, scale: 0},
+	initial: {opacity: 0, scale: 0, z: 1},
 	animate: {
 		opacity: 1,
 		scale: 1,
+		z: 1,
 		transition: {
 			type: 'spring',
 			stiffness: 100,
@@ -31,7 +32,8 @@ const cardAnimation = {
 	},
 	exit: {
 		opacity: 0,
-		scale: 0
+		scale: 0,
+		z: 1
 	}
 };
 

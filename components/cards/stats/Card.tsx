@@ -27,7 +27,8 @@ export function Card(props: {
 		<motion.div
 			ref={ref}
 			animate={{
-				scale: isHovering ? 1.05 : 1
+				scale: isHovering ? 1.05 : 1,
+				z: 1
 			}}
 			transition={{
 				type: 'spring',

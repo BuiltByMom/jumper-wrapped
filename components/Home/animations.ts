@@ -3,10 +3,11 @@
  * Defines animation variants for different sections of the home page
  ************************************************************************************************/
 export const greetingsAnimation = {
-	initial: {opacity: 0, scale: 0},
+	initial: {opacity: 0, scale: 0, z: 1},
 	animate: {
 		opacity: 1,
 		scale: 1,
+		z: 1,
 		transition: {
 			type: 'spring',
 			stiffness: 100,
@@ -18,6 +19,7 @@ export const greetingsAnimation = {
 	exit: {
 		opacity: 0,
 		scale: 0.8,
+		z: 1,
 		transition: {
 			type: 'spring',
 			stiffness: 200,
@@ -27,8 +29,8 @@ export const greetingsAnimation = {
 };
 
 export const noDataAnimation = {
-	initial: {opacity: 0, scale: 0.9},
-	animate: {opacity: 1, scale: 1},
-	exit: {opacity: 0, scale: 0.8},
+	initial: {opacity: 0, scale: 0.9, z: 1},
+	animate: {opacity: 1, scale: 1, z: 1},
+	exit: {opacity: 0, scale: 0.8, z: 1},
 	transition: {duration: 1}
 };

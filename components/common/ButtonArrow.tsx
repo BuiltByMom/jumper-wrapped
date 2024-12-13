@@ -16,6 +16,7 @@ type TButtonArrowProps = {
 const buttonAnimation = {
 	tap: {
 		scale: 0.9,
+		z: 1,
 		transition: {
 			type: 'spring',
 			stiffness: 400,

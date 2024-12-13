@@ -38,7 +38,7 @@ export function CircleGroup({
 						height={'920'}
 						fill={'#5000FF'}
 					/>
-					{Array.from({length: 1000}).map((_, index) => (
+					{Array.from({length: 100}).map((_, index) => (
 						<AnimatedCircle
 							key={index}
 							index={index}

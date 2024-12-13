@@ -52,34 +52,6 @@ function MainContent(props: {
 				/>
 			)}
 		</AnimatePresence>
-		// if (view === 'greetings') {
-		// 	return (
-		// 		<GreetingsSection
-		// 			set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-		// 			set_view={set_view}
-		// 		/>
-		// 	);
-		// }
-
-		// if (view === 'carousel' && hasMoreThan3Cards) {
-		// 	return (
-		// 		<CarouselSection
-		// 			profile={profile}
-		// 			cards={cards || []}
-		// 		/>
-		// 	);
-		// }
-
-		// if (view === 'carousel' && !hasMoreThan3Cards) {
-		// 	return <NoDataSection />;
-		// }
-
-		// return (
-		// 	<GreetingsSection
-		// 		set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-		// 		set_view={set_view}
-		// 	/>
-		// );
 	);
 }
 
