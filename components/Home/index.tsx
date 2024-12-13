@@ -1,11 +1,7 @@
-import {useEffect, useMemo, useState} from 'react';
-import {useRouter} from 'next/router';
-import {useAccount} from 'wagmi';
-import {useWallet} from '@solana/wallet-adapter-react';
+import {useMemo, useState} from 'react';
 
 import {PageBackground} from '../Backgrounds';
 import {Header} from '../common/Header';
-import {fetchUserCards, fetchUserProfile} from '../utils/cards';
 import {WalletSelector} from '../WalletSelector';
 import {CarouselSection} from './CarouselSection';
 import {GreetingsSection} from './GreetingsSection';
@@ -25,7 +21,7 @@ function MainContent(props: {
 	cards: TCardData[] | undefined;
 }): ReactElement {
 	const {view, set_isWalletSelectorOpen, set_view, profile, cards} = props;
-	const hasMoreThan3Cards = cards && cards.length > 3;
+	const hasMoreThan3Cards = useMemo(() => cards && cards.length > 3, [cards]);
 
 	if (view === 'greetings') {
 		return (
@@ -70,40 +66,40 @@ function MainContent(props: {
 export function HomePage(): ReactElement {
 	const [isWalletSelectorOpen, set_isWalletSelectorOpen] = useState(false);
 	const [view, set_view] = useState<TViewState>('greetings');
-	const [cards, set_cards] = useState<TCardData[] | undefined>(undefined);
-	const [profile, set_profile] = useState<TUserProfile | null>(null);
-	const account = useWallet();
-	const {isConnected, address} = useAccount();
-	const router = useRouter();
+	const [cards] = useState<TCardData[] | undefined>(undefined);
+	const [profile] = useState<TUserProfile | null>(null);
+	// const account = useWallet();
+	// const {isConnected, address} = useAccount();
+	// const router = useRouter();
 
-	const evmOrSolAddress = useMemo(() => {
-		if (account.publicKey) {
-			return account.publicKey.toString();
-		}
-		return address;
-	}, [account.publicKey, address]);
+	// const evmOrSolAddress = useMemo(() => {
+	// 	if (account.publicKey) {
+	// 		return account.publicKey.toString();
+	// 	}
+	// 	return address;
+	// }, [account.publicKey, address]);
 
 	/**********************************************************************************************
 	 * Wallet Connection Effects
 	 * Handles wallet connection state and data fetching
 	 *********************************************************************************************/
-	useEffect(() => {
-		if (!account.connected && !isConnected && view !== 'greetings') {
-			set_view('greetings');
-		}
-	}, [account, isConnected, router, view]);
+	// useEffect(() => {
+	// 	if (!account.connected && !isConnected && view !== 'greetings') {
+	// 		set_view('greetings');
+	// 	}
+	// }, [account, isConnected, router, view]);
 
-	useEffect(() => {
-		if (evmOrSolAddress) {
-			fetchUserCards(evmOrSolAddress).then(cards => {
-				const intermediateCard: TCardData = {id: 'Intermediate', data: {statsAmount: cards.length}};
-				set_cards([...cards, intermediateCard]);
-			});
-			fetchUserProfile(evmOrSolAddress).then(profile => {
-				set_profile(profile);
-			});
-		}
-	}, [address, evmOrSolAddress]);
+	// useEffect(() => {
+	// 	if (evmOrSolAddress) {
+	// 		fetchUserCards(evmOrSolAddress).then(cards => {
+	// 			const intermediateCard: TCardData = {id: 'Intermediate', data: {statsAmount: cards.length}};
+	// 			set_cards([...cards, intermediateCard]);
+	// 		});
+	// 		fetchUserProfile(evmOrSolAddress).then(profile => {
+	// 			set_profile(profile);
+	// 		});
+	// 	}
+	// }, [address, evmOrSolAddress]);
 
 	return (
 		<div className={cl('flex min-h-dvh relative items-center justify-center w-full')}>

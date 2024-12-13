@@ -3,7 +3,7 @@
  * Defines animation variants for different sections of the home page
  ************************************************************************************************/
 export const greetingsAnimation = {
-	initial: {opacity: 0.5, scale: 0.5},
+	initial: {opacity: 0, scale: 0},
 	animate: {
 		opacity: 1,
 		scale: 1,
