@@ -17,6 +17,62 @@ import type {TViewState} from './types';
 
 import {cl} from '@/components/utils/tools';
 
+function MainContent(props: {
+	view: TViewState;
+	isWalletSelectorOpen: boolean;
+	set_isWalletSelectorOpen: (value: boolean) => void;
+	set_view: (value: TViewState) => void;
+	profile: TUserProfile | null;
+	cards: TCardData[] | undefined;
+}): ReactElement {
+	const {view, isWalletSelectorOpen, set_isWalletSelectorOpen, set_view, profile, cards} = props;
+	const hasMoreThan3Cards = cards && cards.length > 3;
+
+	function renderMainContent(): ReactElement {
+		if (view === 'greetings') {
+			return (
+				<div key={'greetings-section'}>
+					<GreetingsSection
+						isWalletSelectorOpen={isWalletSelectorOpen}
+						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+						set_view={set_view}
+					/>
+				</div>
+			);
+		}
+
+		if (view === 'carousel' && hasMoreThan3Cards) {
+			return (
+				<div key={'carousel-section'}>
+					<CarouselSection
+						profile={profile}
+						cards={cards || []}
+					/>
+				</div>
+			);
+		}
+
+		if (view === 'carousel' && !hasMoreThan3Cards) {
+			return (
+				<div key={'no-data-section'}>
+					<NoDataSection />
+				</div>
+			);
+		}
+
+		return (
+			<div key={'greetings-section'}>
+				<GreetingsSection
+					isWalletSelectorOpen={isWalletSelectorOpen}
+					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+					set_view={set_view}
+				/>
+			</div>
+		);
+	}
+	return <AnimatePresence mode={'wait'}>{renderMainContent()}</AnimatePresence>;
+}
+
 /************************************************************************************************
  * Home Page Component
  * Main landing page with wallet connection and stats display
@@ -35,7 +91,6 @@ export function HomePage(): ReactElement {
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
 	const router = useRouter();
-	const hasMoreThan3Cards = cards && cards.length > 3;
 	const [isMounted, set_isMounted] = useState(false);
 
 	useEffect(() => {
@@ -71,39 +126,6 @@ export function HomePage(): ReactElement {
 		}
 	}, [address, evmOrSolAddress]);
 
-	function renderMainContent(): ReactElement {
-		if (view === 'greetings') {
-			return (
-				<GreetingsSection
-					isWalletSelectorOpen={isWalletSelectorOpen}
-					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					set_view={set_view}
-				/>
-			);
-		}
-
-		if (view === 'carousel' && hasMoreThan3Cards) {
-			return (
-				<CarouselSection
-					profile={profile}
-					cards={cards || []}
-				/>
-			);
-		}
-
-		if (view === 'carousel' && !hasMoreThan3Cards) {
-			return <NoDataSection />;
-		}
-
-		return (
-			<GreetingsSection
-				isWalletSelectorOpen={isWalletSelectorOpen}
-				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-				set_view={set_view}
-			/>
-		);
-	}
-
 	if (!isMounted) {
 		return <Fragment />;
 	}
@@ -117,11 +139,14 @@ export function HomePage(): ReactElement {
 			/>
 			<PageBackground position={view === 'greetings' ? 'center' : 'bottom-right'} />
 
-			<AnimatePresence
-				mode={'wait'}
-				initial={true}>
-				{renderMainContent()}
-			</AnimatePresence>
+			<MainContent
+				view={view}
+				isWalletSelectorOpen={isWalletSelectorOpen}
+				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+				set_view={set_view}
+				profile={profile}
+				cards={cards}
+			/>
 		</div>
 	);
 }
