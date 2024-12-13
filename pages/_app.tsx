@@ -15,7 +15,7 @@ export default function App({Component, pageProps}: AppProps): ReactElement {
 
 	useEffect(() => {
 		if (size.width < minSupportedWidth || size.height < minSupportedHeight) {
-			if (typeof window !== 'undefined') {
+			if (typeof window !== 'undefined' && size.width > 0 && size.height > 0) {
 				console.warn('Please use a device with a minimum width of 375px and height of 667px');
 				const scale = Math.min(size.width / minSupportedWidth, size.height / minSupportedHeight);
 				const primarySectionGreetings = document.getElementById('primary-section-greetings');
