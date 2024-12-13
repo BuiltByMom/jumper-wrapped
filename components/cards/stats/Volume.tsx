@@ -33,29 +33,61 @@ const padsConfig = [
 
 type TVolumeCardProps = TBaseCardProps & TWithVolume & TWithKind;
 
+function VolumePads({value}: {value: string}): ReactElement {
+	return (
+		<Fragment>
+			{padsConfig.map(({gradientClasses, textClasses}, index) => (
+				<div
+					key={index}
+					className={cl(
+						'rounded-2xl min-w-[296px] flex justify-center border px-8 py-2 border-[#FDDE2C] bg-gradient-to-r',
+						gradientClasses,
+						'[box-shadow:0px_8px_0px_0px_#FBB42D]'
+					)}>
+					<p className={textClasses}>{value}</p>
+				</div>
+			))}
+		</Fragment>
+	);
+}
+
 export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 	const cardVariant = useMemo(() => {
 		return getCardVariant(props.percentile);
 	}, [props.percentile]);
 
 	const cardCopy = useMemo(() => {
+		if (props.kind === 'swap') {
+			if (cardVariant === 'Green') {
+				return (
+					<p className={'w-full text-lg font-medium text-black md:text-xl'}>
+						{'Swapped token like it’s no tomorrow.'}
+						<br />
+						{'Nickname: Liquidity Queen'}
+					</p>
+				);
+			}
+			return (
+				<p className={'w-full text-lg font-medium text-black md:text-xl'}>
+					{'Just dipping your toes into the swap game?'}
+					<br />
+					{'Even the biggest whales start small anon.'}
+				</p>
+			);
+		}
 		if (cardVariant === 'Green') {
 			return (
 				<p className={'w-full text-lg font-medium text-black md:text-xl'}>
-					{'Swapped token like it’s no tomorrow.'}
-					<br />
-					{'Nickname: Liquidity Queen'}
+					{'You a whale son. Impressive numbers, keep bridging them bags.'}
 				</p>
 			);
 		}
 		return (
 			<p className={'w-full text-lg font-medium text-black md:text-xl'}>
-				{'Just dipping your toes into the swap game?'}
-				<br />
-				{'Even the biggest whales start small anon.'}
+				{'A journey started is better than one not begun at all. o7'}
 			</p>
 		);
-	}, [cardVariant]);
+	}, [cardVariant, props.kind]);
 
 	const formattedVolume = useMemo(() => {
 		return formatVolume(props.volume);
@@ -80,23 +112,5 @@ export default function VolumeCard(props: TVolumeCardProps): ReactElement {
 
 			<CardCopy className={'!pt-6'}>{cardCopy}</CardCopy>
 		</Card>
-	);
-}
-
-function VolumePads({value}: {value: string}): ReactElement {
-	return (
-		<Fragment>
-			{padsConfig.map(({gradientClasses, textClasses}, index) => (
-				<div
-					key={index}
-					className={cl(
-						'rounded-2xl min-w-[296px] flex justify-center border px-8 py-2 border-[#FDDE2C] bg-gradient-to-r',
-						gradientClasses,
-						'[box-shadow:0px_8px_0px_0px_#FBB42D]'
-					)}>
-					<p className={textClasses}>{value}</p>
-				</div>
-			))}
-		</Fragment>
 	);
 }

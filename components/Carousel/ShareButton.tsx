@@ -13,12 +13,19 @@ import type {ReactElement} from 'react';
  * - Responsive positioning
  ************************************************************************************************/
 export function ShareButton({profile}: {profile?: string}): ReactElement {
+	function buildShareMessage(): string {
+		const lines = ["I've been Making. The. Jump 😌", '', 'Check out my Jumper Wrapped 2024 💜'];
+		return encodeURIComponent(lines.join('\n'));
+	}
+
 	const clickToTweet = useCallback(async () => {
-		const text = profile ? 'Check out my wrapped Jumper!' : 'Check out my wrapped Jumper!';
+		const text = buildShareMessage();
 		const baseTwitterUrl = 'https://x.com/intent/tweet';
 		const domain = `https://wrapped.jumper.exchange/${profile}`;
 
-		window.open(`${baseTwitterUrl}?url=${domain}&text=${text}`, '_blank');
+		const shareUrl = `${baseTwitterUrl}?text=${text}&url=${encodeURIComponent(domain)}`;
+
+		window.open(shareUrl, '_blank');
 	}, [profile]);
 
 	return (
