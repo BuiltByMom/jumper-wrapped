@@ -35,7 +35,6 @@ export default function Index(): ReactElement {
 				}>
 				<DivaCardCard
 					tokens={['DAI', 'USDC', 'USDT']}
-					topRatio={42.42}
 					width={440}
 					disableAnimation
 				/>
@@ -72,7 +71,7 @@ export default function Index(): ReactElement {
 				/>
 				<NoSleepCard
 					width={440}
-					timestamp={'234234234'}
+					busiestHour={'0'}
 					disableAnimation
 				/>
 				<NoobCard

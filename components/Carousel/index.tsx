@@ -39,8 +39,8 @@ export function ProfileByID(props: {
 	if (profile.profileId === 1) {
 		return (
 			<SerBridgealotCard
-				volumeInUSD={1234567.89}
-				topRatio={42.42}
+				volumeInUSD={profile.bridgeVolume}
+				topRatio={Number(profile.bridgeVolumeRank)}
 				width={size}
 				disableAnimation={disableAnimation}
 				noShare={noShare}
@@ -51,7 +51,7 @@ export function ProfileByID(props: {
 		return (
 			<NoSleepCard
 				width={size}
-				timestamp={'234234234'}
+				busiestHour={profile.busiestHour}
 				disableAnimation={disableAnimation}
 				noShare={noShare}
 			/>
@@ -90,6 +90,9 @@ export function ProfileByID(props: {
 			<ChainWhaleCard
 				width={size}
 				disableAnimation={disableAnimation}
+				chainName={profile.favoriteChain}
+				volume={profile.swapVolume}
+				topRatio={Number(profile.swapVolumeRank)}
 				noShare={noShare}
 			/>
 		);
@@ -107,7 +110,6 @@ export function ProfileByID(props: {
 		return (
 			<DivaCardCard
 				width={size}
-				topRatio={42.42}
 				tokens={['DAI', 'USDC', 'USDT']}
 				disableAnimation={disableAnimation}
 				noShare={noShare}

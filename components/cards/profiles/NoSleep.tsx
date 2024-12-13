@@ -1,33 +1,25 @@
 import {type ReactElement, useMemo} from 'react';
 
+import {getLocalTimeFromUTC} from '../stats/utils';
 import Card from './Card';
 
 import type {TCardProps} from './Card';
 
 type TNoSleepCardProps = Omit<TCardProps, 'children'> & {
-	timestamp: string;
+	busiestHour: string | undefined;
 };
 
 export default function NoSleepCard(props: TNoSleepCardProps): ReactElement {
-	const [time, amOrPm] = useMemo((): [string, string] => {
-		const date = new Date(Number(props.timestamp) * 1000);
-		const hours = date.getHours();
-		const minutes = date.getMinutes();
+	const {time, amPm} = useMemo(() => getLocalTimeFromUTC(props.busiestHour), [props.busiestHour]);
 
-		// Format time as HH:MM
-		const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-
-		// Determine AM/PM
-		const amPm = hours >= 12 ? 'PM' : 'AM';
-
-		return [formattedTime, amPm];
-	}, [props.timestamp]);
 	return (
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute bottom-[48px] px-6'}>
 					<p className={'font-urbanist text-center text-xl font-medium text-[#02693E]'}>
-						{`Trading at ${time} ${amOrPm} while normies catch Z's. NGMI? Not you!`}
+						{`Trading ${time ? 'at' : ''} ${time ?? ''} ${
+							amPm ?? ''
+						} while normies catch Z's. NGMI? Not you!`}
 					</p>
 				</div>
 			</div>

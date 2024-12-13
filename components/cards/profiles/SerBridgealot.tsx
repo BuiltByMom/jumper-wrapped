@@ -9,12 +9,13 @@ type TSerBridgealotCardProps = Omit<TCardProps, 'children'> & {
 };
 
 export default function SerBridgealotCard(props: TSerBridgealotCardProps): ReactElement {
+	const reversedTopRation = 1 - props.topRatio;
 	return (
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[195px] px-6'}>
 					<p className={'font-urbanist text-center text-xl font-medium text-white'}>
-						{`Bridged a whopping $${props.volumeInUSD}, leaving ${props.topRatio.toFixed(
+						{`Bridged a whopping $${props.volumeInUSD}, leaving ${(reversedTopRation * 100).toFixed(
 							2
 						)}% of normies in the dust.`}
 					</p>

@@ -17,11 +17,15 @@ export function getCardVariant(percentile: string): 'Green' | 'Purple' {
 	return Number(percentile) <= 0.5 ? 'Green' : 'Purple';
 }
 
-export function getLocalTimeFromUTC(hour: string | number): {
-	time: string;
-	amPm: string;
-	dayOrNight: string;
+export function getLocalTimeFromUTC(hour: string | number | undefined): {
+	time: string | undefined;
+	amPm: string | undefined;
+	dayOrNight: string | undefined;
 } {
+	if (!hour) {
+		return {time: undefined, amPm: undefined, dayOrNight: undefined};
+	}
+
 	const date = new Date();
 	date.setUTCHours(Number(hour), 0, 0, 0);
 	const localHour = date.getHours();
