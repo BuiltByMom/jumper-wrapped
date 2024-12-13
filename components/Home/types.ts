@@ -7,6 +7,5 @@ export type TViewState = 'greetings' | 'carousel';
 export type THomeProps = {
 	isWalletSelectorOpen: boolean;
 	set_isWalletSelectorOpen: (value: boolean) => void;
-	view: TViewState;
 	set_view: (value: TViewState) => void;
 };

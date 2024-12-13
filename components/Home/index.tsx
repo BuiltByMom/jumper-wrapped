@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import {Fragment, useEffect, useMemo, useState} from 'react';
 import {useRouter} from 'next/router';
 import {useAccount} from 'wagmi';
 import {AnimatePresence} from 'framer-motion';
@@ -32,12 +32,15 @@ export function HomePage(): ReactElement {
 	const [view, set_view] = useState<TViewState>('greetings');
 	const [cards, set_cards] = useState<TCardData[] | undefined>(undefined);
 	const [profile, set_profile] = useState<TUserProfile | null>(null);
-
 	const account = useWallet();
 	const {isConnected, address} = useAccount();
-
 	const router = useRouter();
 	const hasMoreThan3Cards = cards && cards.length > 3;
+	const [isMounted, set_isMounted] = useState(false);
+
+	useEffect(() => {
+		set_isMounted(true);
+	}, []);
 
 	const evmOrSolAddress = useMemo(() => {
 		if (account.publicKey) {
@@ -74,7 +77,6 @@ export function HomePage(): ReactElement {
 				<GreetingsSection
 					isWalletSelectorOpen={isWalletSelectorOpen}
 					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					view={view}
 					set_view={set_view}
 				/>
 			);
@@ -97,28 +99,29 @@ export function HomePage(): ReactElement {
 			<GreetingsSection
 				isWalletSelectorOpen={isWalletSelectorOpen}
 				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-				view={view}
 				set_view={set_view}
 			/>
 		);
 	}
 
-	return (
-		<>
-			<div className={cl('flex min-h-dvh relative items-center justify-center w-full')}>
-				<Header
-					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					isCarouselView={view === 'carousel'}
-					cardsAmount={cards?.length || 0}
-				/>
-				<PageBackground position={view === 'greetings' ? 'center' : 'bottom-right'} />
+	if (!isMounted) {
+		return <Fragment />;
+	}
 
-				<AnimatePresence
-					mode={'wait'}
-					initial={true}>
-					{renderMainContent()}
-				</AnimatePresence>
-			</div>
-		</>
+	return (
+		<div className={cl('flex min-h-dvh relative items-center justify-center w-full')}>
+			<Header
+				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+				isCarouselView={view === 'carousel'}
+				cardsAmount={cards?.length || 0}
+			/>
+			<PageBackground position={view === 'greetings' ? 'center' : 'bottom-right'} />
+
+			<AnimatePresence
+				mode={'wait'}
+				initial={true}>
+				{renderMainContent()}
+			</AnimatePresence>
+		</div>
 	);
 }
