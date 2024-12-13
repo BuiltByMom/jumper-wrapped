@@ -41,7 +41,10 @@ export default function BelovedChainCard({chainName, ...props}: TBelovedChainCar
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-urbanist text-xl font-medium text-white'}>{'True degen romance right there.'}</p>
+				<p className={'font-urbanist text-xl font-medium text-white'}>
+					{'There’s only one chain for you.'}
+					<br /> {'True degen romance right there.'}
+				</p>
 			</CardCopy>
 		</Card>
 	);

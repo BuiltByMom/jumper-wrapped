@@ -36,7 +36,10 @@ export default function TopBridgedChainCard({chainName, ...props}: TTopBridgedCh
 			</CardContent>
 
 			<CardCopy className={'mt-auto'}>
-				<p className={'font-urbanist text-xl font-medium text-white'}>{'Do you need an intervention?'}</p>
+				<p className={'font-urbanist text-xl font-medium text-white'}>
+					{'Your number one place to hang.'}
+					<br /> {'Do you need an intervention?'}
+				</p>
 			</CardCopy>
 		</Card>
 	);
