@@ -31,9 +31,7 @@ export function Providers({children}: {children: ReactElement}): ReactElement {
 	return (
 		<WithFonts>
 			<Carousel
-				opts={{
-					align: 'start'
-				}}
+				opts={{align: 'start'}}
 				className={'w-full'}>
 				<WagmiProvider config={config}>
 					<QueryClientProvider client={queryClient}>

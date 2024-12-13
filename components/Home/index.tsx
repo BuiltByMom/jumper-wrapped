@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from 'react';
 import {useRouter} from 'next/router';
-import {AnimatePresence} from 'motion/react';
+import {AnimatePresence, motion} from 'motion/react';
 import {useAccount} from 'wagmi';
 import {useWallet} from '@solana/wallet-adapter-react';
 
@@ -31,25 +31,30 @@ function MainContent(props: {
 	return (
 		<AnimatePresence mode={'wait'}>
 			{view === 'greetings' ? (
-				<GreetingsSection
-					key={'greetings'}
-					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					set_view={set_view}
-				/>
+				<motion.div key={'greetings'}>
+					<GreetingsSection
+						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+						set_view={set_view}
+					/>
+				</motion.div>
 			) : view === 'carousel' && hasMoreThan3Cards ? (
-				<CarouselSection
-					key={'carousel'}
-					profile={profile}
-					cards={cards || []}
-				/>
+				<motion.div key={'carousel'}>
+					<CarouselSection
+						profile={profile}
+						cards={cards || []}
+					/>
+				</motion.div>
 			) : view === 'carousel' && !hasMoreThan3Cards ? (
-				<NoDataSection key={'no-data'} />
+				<motion.div key={'no-data'}>
+					<NoDataSection />
+				</motion.div>
 			) : (
-				<GreetingsSection
-					key={'greetings-fallback'}
-					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-					set_view={set_view}
-				/>
+				<motion.div key={'greetings-fallback'}>
+					<GreetingsSection
+						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+						set_view={set_view}
+					/>
+				</motion.div>
 			)}
 		</AnimatePresence>
 		// if (view === 'greetings') {
