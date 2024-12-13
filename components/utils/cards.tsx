@@ -25,6 +25,7 @@ export type TUserProfile = {
 	favoriteChain: string;
 	swapVolumeRank: string;
 	bridgeVolumeRank: string;
+	busiestHour?: string | undefined;
 };
 
 /************************************************************************************************

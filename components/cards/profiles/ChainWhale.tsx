@@ -10,14 +10,16 @@ type TChainWhaleCardProps = Omit<TCardProps, 'children'> & {
 };
 
 export default function ChainWhaleCard(props: TChainWhaleCardProps): ReactElement {
+	const rank = (props.topRatio ?? 0) < 0.001 ? '0.1' : ((props.topRatio ?? 0) * 100).toFixed(0);
+
 	return (
 		<Card {...props}>
 			<div className={'relative z-50 flex size-full'}>
 				<div className={'absolute top-[304px] px-6'}>
 					<p className={'font-urbanist mt-5 text-center text-xl font-medium text-white'}>
-						{`Moved $${props.volume?.toLocaleString()} on ${props.chainName}, putting you in the top ${
-							props.topRatio
-						}% of traders. Chad.`}
+						{`Moved $${props.volume?.toLocaleString()}${props.chainName ? ' on ' : ''}${
+							props.chainName
+						}, putting you in the top ${rank}% of traders. Chad.`}
 					</p>
 				</div>
 			</div>

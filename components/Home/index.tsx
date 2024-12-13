@@ -121,12 +121,15 @@ export function HomePage(): ReactElement {
 
 	useEffect(() => {
 		if (evmOrSolAddress) {
+			let busiestHour: string | undefined;
 			fetchUserCards(evmOrSolAddress).then(cards => {
 				const intermediateCard: TCardData = {id: 'Intermediate', data: {statsAmount: cards.length}};
+				busiestHour = cards.find(card => card.id === 'BusiestHour')?.data as string | undefined;
 				set_cards([...cards, intermediateCard]);
 			});
 			fetchUserProfile(evmOrSolAddress).then(profile => {
-				set_profile(profile);
+				const newProfile: TUserProfile | null = profile ? {...profile, busiestHour} : null;
+				set_profile(newProfile);
 			});
 		}
 	}, [address, evmOrSolAddress]);
