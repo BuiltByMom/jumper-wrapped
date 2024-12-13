@@ -68,6 +68,41 @@ export function HomePage(): ReactElement {
 		}
 	}, [address, evmOrSolAddress]);
 
+	function renderMainContent(): ReactElement {
+		if (view === 'greetings') {
+			return (
+				<GreetingsSection
+					isWalletSelectorOpen={isWalletSelectorOpen}
+					set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+					view={view}
+					set_view={set_view}
+				/>
+			);
+		}
+
+		if (view === 'carousel' && hasMoreThan3Cards) {
+			return (
+				<CarouselSection
+					profile={profile}
+					cards={cards || []}
+				/>
+			);
+		}
+
+		if (view === 'carousel' && !hasMoreThan3Cards) {
+			return <NoDataSection />;
+		}
+
+		return (
+			<GreetingsSection
+				isWalletSelectorOpen={isWalletSelectorOpen}
+				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+				view={view}
+				set_view={set_view}
+			/>
+		);
+	}
+
 	return (
 		<>
 			<div className={cl('flex min-h-dvh relative items-center justify-center w-full')}>
@@ -81,22 +116,7 @@ export function HomePage(): ReactElement {
 				<AnimatePresence
 					mode={'wait'}
 					initial={true}>
-					{view === 'greetings' && (
-						<GreetingsSection
-							isWalletSelectorOpen={isWalletSelectorOpen}
-							set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-							view={view}
-							set_view={set_view}
-						/>
-					)}
-					{hasMoreThan3Cards && view === 'carousel' && (
-						<CarouselSection
-							profile={profile}
-							cards={cards || []}
-						/>
-					)}
-
-					{!hasMoreThan3Cards && view === 'carousel' && <NoDataSection />}
+					{renderMainContent()}
 				</AnimatePresence>
 			</div>
 		</>
