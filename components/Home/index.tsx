@@ -88,10 +88,10 @@ export function HomePage(): ReactElement {
 	 * Handles wallet connection state and data fetching
 	 *********************************************************************************************/
 	useEffect(() => {
-		if (!account.connected && !isConnected) {
+		if (!account.connected && !isConnected && view !== 'greetings') {
 			set_view('greetings');
 		}
-	}, [account, isConnected, router]);
+	}, [account, isConnected, router, view]);
 
 	useEffect(() => {
 		if (evmOrSolAddress) {

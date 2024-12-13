@@ -15,7 +15,6 @@ type TProps = {
 };
 
 const breathingAnimation = {
-	initial: {opacity: 0, scale: 0},
 	animate: {
 		opacity: 1,
 		scale: [1, 1.02, 1],
@@ -43,7 +42,6 @@ export function WrappedButton({set_isWalletSelectorOpen, onStart}: TProps): Reac
 	return (
 		<div className={'relative'}>
 			<motion.div
-				key={'greetings-section'}
 				variants={breathingAnimation}
 				animate={'animate'}
 				exit={'exit'}>
