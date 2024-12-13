@@ -78,7 +78,9 @@ export default function Card(props: TCardProps): ReactElement {
 				{!props.noShare && <ShareButton profile={profile} />}
 				{!props.noShare && (
 					<Link
-						href={'/'}
+						href={
+							'https://lifi.notion.site/How-to-Share-Your-Jumper-Wrapped-on-X-15bf0ff14ac78050a00be3a9505e80c0?pvs=4'
+						}
 						target={'_blank'}
 						className={
 							'absolute -bottom-16 left-1/2 z-50 -translate-x-1/2 text-accent underline transition-colors hover:text-white'
