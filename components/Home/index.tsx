@@ -1,6 +1,5 @@
 import {useEffect, useMemo, useState} from 'react';
 import {useRouter} from 'next/router';
-import {AnimatePresence, motion} from 'motion/react';
 import {useAccount} from 'wagmi';
 import {useWallet} from '@solana/wallet-adapter-react';
 
@@ -28,63 +27,33 @@ function MainContent(props: {
 	const {view, set_isWalletSelectorOpen, set_view, profile, cards} = props;
 	const hasMoreThan3Cards = cards && cards.length > 3;
 
+	if (view === 'greetings') {
+		return (
+			<GreetingsSection
+				set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+				set_view={set_view}
+			/>
+		);
+	}
+
+	if (view === 'carousel' && hasMoreThan3Cards) {
+		return (
+			<CarouselSection
+				profile={profile}
+				cards={cards || []}
+			/>
+		);
+	}
+
+	if (view === 'carousel' && !hasMoreThan3Cards) {
+		return <NoDataSection />;
+	}
+
 	return (
-		<AnimatePresence mode={'wait'}>
-			{view === 'greetings' ? (
-				<motion.div key={'greetings'}>
-					<GreetingsSection
-						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-						set_view={set_view}
-					/>
-				</motion.div>
-			) : view === 'carousel' && hasMoreThan3Cards ? (
-				<motion.div key={'carousel'}>
-					<CarouselSection
-						profile={profile}
-						cards={cards || []}
-					/>
-				</motion.div>
-			) : view === 'carousel' && !hasMoreThan3Cards ? (
-				<motion.div key={'no-data'}>
-					<NoDataSection />
-				</motion.div>
-			) : (
-				<motion.div key={'greetings-fallback'}>
-					<GreetingsSection
-						set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-						set_view={set_view}
-					/>
-				</motion.div>
-			)}
-		</AnimatePresence>
-		// if (view === 'greetings') {
-		// 	return (
-		// 		<GreetingsSection
-		// 			set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-		// 			set_view={set_view}
-		// 		/>
-		// 	);
-		// }
-
-		// if (view === 'carousel' && hasMoreThan3Cards) {
-		// 	return (
-		// 		<CarouselSection
-		// 			profile={profile}
-		// 			cards={cards || []}
-		// 		/>
-		// 	);
-		// }
-
-		// if (view === 'carousel' && !hasMoreThan3Cards) {
-		// 	return <NoDataSection />;
-		// }
-
-		// return (
-		// 	<GreetingsSection
-		// 		set_isWalletSelectorOpen={set_isWalletSelectorOpen}
-		// 		set_view={set_view}
-		// 	/>
-		// );
+		<GreetingsSection
+			set_isWalletSelectorOpen={set_isWalletSelectorOpen}
+			set_view={set_view}
+		/>
 	);
 }
 

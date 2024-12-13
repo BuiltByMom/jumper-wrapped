@@ -16,7 +16,7 @@ import type {ReactElement} from 'react';
 export function NoDataSection(): ReactElement {
 	return (
 		<motion.div
-			id={'primary-section'}
+			id={'primary-section-nodata'}
 			{...noDataAnimation}>
 			<NextYearButton />
 		</motion.div>

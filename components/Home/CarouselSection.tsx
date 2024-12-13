@@ -1,5 +1,6 @@
 import {type ReactElement, useEffect, useState} from 'react';
 import Confetti from 'react-confetti';
+import {motion} from 'motion/react';
 
 import {Carousel} from '../Carousel';
 import {useCarousel} from '../carouselContext';
@@ -41,7 +42,7 @@ export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: 
 	}, [canScrollNext, cards]);
 
 	return (
-		<div id={'primary-section'}>
+		<motion.div id={'primary-section-carousel'}>
 			<div className={'scrollbar-hide overflow-y-auto overflow-x-hidden'}>
 				<Carousel
 					cards={cards}
@@ -66,6 +67,6 @@ export function CarouselSection({cards, profile}: {cards: TCardData[]; profile: 
 					}}
 				/>
 			)}
-		</div>
+		</motion.div>
 	);
 }

@@ -31,7 +31,7 @@ export function GreetingsSection({set_isWalletSelectorOpen, set_view}: THomeProp
 
 	return (
 		<motion.div
-			id={'primary-section'}
+			id={'primary-section-greetings'}
 			{...greetingsAnimation}>
 			<WrappedButton
 				set_isWalletSelectorOpen={set_isWalletSelectorOpen}

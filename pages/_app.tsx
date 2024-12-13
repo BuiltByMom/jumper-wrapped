@@ -18,9 +18,19 @@ export default function App({Component, pageProps}: AppProps): ReactElement {
 			if (typeof window !== 'undefined') {
 				console.warn('Please use a device with a minimum width of 375px and height of 667px');
 				const scale = Math.min(size.width / minSupportedWidth, size.height / minSupportedHeight);
-				const primarySection = document.getElementById('primary-section');
-				if (primarySection) {
-					primarySection.style.scale = `${scale}`;
+				const primarySectionGreetings = document.getElementById('primary-section-greetings');
+				if (primarySectionGreetings) {
+					primarySectionGreetings.style.scale = `${scale}`;
+				}
+
+				const primarySectionCarousel = document.getElementById('primary-section-carousel');
+				if (primarySectionCarousel) {
+					primarySectionCarousel.style.scale = `${scale}`;
+				}
+
+				const primarySectionNoData = document.getElementById('primary-section-nodata');
+				if (primarySectionNoData) {
+					primarySectionNoData.style.scale = `${scale}`;
 				}
 			}
 		}
