@@ -30,7 +30,7 @@ export function Header({
 	return (
 		<div
 			className={
-				'absolute left-0 top-0 z-20 flex w-full flex-col items-center px-6 py-4 md:bg-violet-light xl:p-16'
+				'absolute left-0 top-0 z-[5000] flex w-full flex-col items-center px-6 py-4 md:bg-violet-light xl:p-16'
 			}>
 			<div
 				className={

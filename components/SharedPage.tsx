@@ -10,6 +10,7 @@ import {fetchUserProfile} from './utils/cards';
 import {cl} from './utils/tools';
 
 import type {TUserProfile} from './utils/cards';
+import {useRouter} from 'next/router';
 
 function StatOwner({address, className}: {address: string; className?: string}): ReactElement {
 	return (
@@ -26,11 +27,15 @@ function StatOwner({address, className}: {address: string; className?: string}):
 }
 
 export function SharedPage({address}: {address: string}): ReactElement {
+	const router = useRouter();
 	const [profile, set_profile] = useState<TUserProfile | null>(null);
 
 	useEffect(() => {
 		if (address) {
 			fetchUserProfile(address).then(profile => {
+				if (!profile) {
+					router.push('/404');
+				}
 				set_profile(profile);
 			});
 		}
