@@ -15,7 +15,7 @@ type TChainExploredCardProps = {
 } & TBaseCardProps;
 
 export default function ChainExploredCard({amountOfChains, topRatio, ...props}: TChainExploredCardProps): ReactElement {
-	const rank = topRatio <= 0.001 ? '0.1' : (topRatio * 100).toFixed(0);
+	const rank = (topRatio * 100).toFixed(topRatio < 0.01 ? 1 : 0);
 
 	return (
 		<Card

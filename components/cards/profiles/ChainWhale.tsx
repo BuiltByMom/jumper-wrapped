@@ -10,7 +10,7 @@ type TChainWhaleCardProps = Omit<TCardProps, 'children'> & {
 };
 
 export default function ChainWhaleCard(props: TChainWhaleCardProps): ReactElement {
-	const rank = (props.topRatio ?? 0) <= 0.001 ? '0.1' : ((props.topRatio ?? 0) * 100).toFixed(0);
+	const rank = ((props.topRatio ?? 0) * 100).toFixed((props.topRatio ?? 0) < 0.01 ? 1 : 0);
 
 	return (
 		<Card {...props}>

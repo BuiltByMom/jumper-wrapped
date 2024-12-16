@@ -1225,11 +1225,9 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 		} else {
 			statsToUse.push({
 				key: 'Bridge Rank',
-				value: `Top ${
-					Number(fromProfileEndpoint.bridgeVolumeRank) <= 0.001
-						? '0.1'
-						: (Number(fromProfileEndpoint.bridgeVolumeRank) * 100).toFixed(0)
-				}%`
+				value: `Top ${(Number(fromProfileEndpoint.bridgeVolumeRank) * 100).toFixed(
+					Number(fromProfileEndpoint.bridgeVolumeRank) < 0.01 ? 1 : 0
+				)}%`
 			});
 		}
 
@@ -1241,11 +1239,9 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 		} else {
 			statsToUse.push({
 				key: 'Swap Rank',
-				value: `Top ${
-					Number(fromProfileEndpoint.swapVolumeRank) < 0.01
-						? '0.1'
-						: (Number(fromProfileEndpoint.swapVolumeRank) * 100).toFixed(0)
-				}%`
+				value: `Top ${(Number(fromProfileEndpoint.swapVolumeRank) * 100).toFixed(
+					Number(fromProfileEndpoint.swapVolumeRank) < 0.01 ? 1 : 0
+				)}%`
 			});
 		}
 
