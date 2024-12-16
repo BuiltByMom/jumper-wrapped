@@ -23,14 +23,14 @@ export function NextYearButton(): ReactElement {
 					}>
 					<p>{'Weird'}</p>
 					<p>{'U better use Jumper next year'}</p>
+					<Link
+						href={'https://jumper.exchange/'}
+						className={'z-50 mt-10 hidden flex-col md:flex'}>
+						<Button className={'!w-full !bg-accent-hover !px-12 hover:!bg-accent'}>
+							<IconJumperLogo />
+						</Button>
+					</Link>
 				</div>
-				<Link
-					href={'https://jumper.exchange/'}
-					className={'absolute left-1/2 top-80 z-50 mt-10 hidden -translate-x-1/2 flex-col md:flex'}>
-					<Button className={'!w-full !bg-accent-hover !px-12 hover:!bg-accent'}>
-						<IconJumperLogo />
-					</Button>
-				</Link>
 			</div>
 
 			<Link
