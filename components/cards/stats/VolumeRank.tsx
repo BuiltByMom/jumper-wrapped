@@ -36,7 +36,7 @@ export default function VolumeRankCard(props: TVolumeRankCardProps): ReactElemen
 		);
 	}, [cardVariant]);
 
-	const rank = Number(props.percentile) < 0.001 ? '0.1' : (Number(props.percentile) * 100).toFixed(0);
+	const rank = Number(props.percentile) <= 0.001 ? '0.1' : (Number(props.percentile) * 100).toFixed(0);
 
 	return (
 		<Card

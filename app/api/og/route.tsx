@@ -1226,7 +1226,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 			statsToUse.push({
 				key: 'Bridge Rank',
 				value: `Top ${
-					Number(fromProfileEndpoint.bridgeVolumeRank) < 0.001
+					Number(fromProfileEndpoint.bridgeVolumeRank) <= 0.001
 						? '0.1'
 						: (Number(fromProfileEndpoint.bridgeVolumeRank) * 100).toFixed(0)
 				}%`
