@@ -1,6 +1,7 @@
 import {type ReactElement, useEffect, useMemo, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 import {PageBackground} from './Backgrounds';
 import {ProfileByID} from './Carousel';
@@ -10,7 +11,6 @@ import {fetchUserProfile} from './utils/cards';
 import {cl} from './utils/tools';
 
 import type {TUserProfile} from './utils/cards';
-import {useRouter} from 'next/router';
 
 function StatOwner({address, className}: {address: string; className?: string}): ReactElement {
 	return (
@@ -39,7 +39,7 @@ export function SharedPage({address}: {address: string}): ReactElement {
 				set_profile(profile);
 			});
 		}
-	}, [address]);
+	}, [address, router]);
 
 	const prepareStats = useMemo((): {key: string; value: string | number}[] => {
 		const statsToUse: {key: string; value: string | number}[] = [];
