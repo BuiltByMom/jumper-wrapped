@@ -117,6 +117,12 @@ export function SharedPage({address}: {address: string}): ReactElement {
 		return statsToUse;
 	}, [address, profile]);
 
+	useEffect(() => {
+		if (typeof document !== 'undefined') {
+			document.body.classList.add('max-md:overflow-y-visible');
+		}
+	}, [typeof document]);
+
 	return (
 		<div className={'flex justify-between gap-10 bg-violet-dark p-6 md:h-dvh md:w-screen'}>
 			<div
