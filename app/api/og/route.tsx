@@ -1275,7 +1275,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
 	}
 
 	let backgroundOG: ArrayBuffer | null = null;
-	if (detectedProfile === 'Bridgealot') {
+	if (detectedProfile === 'Ser Bridgealot') {
 		backgroundOG = await bridgealotWrapBg;
 	} else if (detectedProfile === 'Chain whale') {
 		backgroundOG = await chainwhaleWrapBg;
