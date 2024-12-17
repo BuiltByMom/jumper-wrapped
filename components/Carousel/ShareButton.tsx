@@ -14,7 +14,7 @@ import type {ReactElement} from 'react';
  ************************************************************************************************/
 export function ShareButton({profile}: {profile?: string}): ReactElement {
 	function buildShareMessage(): string {
-		const lines = ["I've been Making. The. Jump 😌", '', 'Check out my Jumper Wrapped 2024 💜'];
+		const lines = ["I've been Making. The. Jump 😌", '', 'Check out my Jumper Wrapped 2024 💜 #jumperwrapped', ''];
 		return encodeURIComponent(lines.join('\n'));
 	}
 
