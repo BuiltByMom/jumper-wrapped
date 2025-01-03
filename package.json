@@ -29,7 +29,7 @@
 		"eslint-plugin-tailwindcss": "^3.17.5",
 		"eslint-plugin-unused-imports": "^4.1.4",
 		"motion": "^11.14.3",
-		"next": "15.0.3",
+		"next": "15.1.2",
 		"react": "19.0.0-rc-66855b96-20241106",
 		"react-confetti": "^6.1.0",
 		"react-dom": "19.0.0-rc-66855b96-20241106",
