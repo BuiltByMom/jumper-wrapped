@@ -6,6 +6,13 @@ const nextConfig: NextConfig = {
 	env: {
 		WALLETCONNECT_PROJECT_ID: process.env.WALLETCONNECT_PROJECT_ID ?? ''
 	},
+	images: {
+		localPatterns: [
+			{
+				pathname: '/api/og'
+			}
+		]
+	},
 	async headers() {
 		return [
 			{
